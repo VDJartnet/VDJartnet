@@ -38,8 +38,12 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
     m_Enable = 0;
     m_Refresh = 0;
 
+    for (int i = 0; i < 512; i++) {
+        channelCommands[i] = "";
+    }
+
     zed_net_init();
-    zed_net_get_address(&address, host, port);
+    zed_net_get_address(&address, host.c_str(), port);
     zed_net_udp_socket_open(&socket, 0, 0);
 
     globalCVDJartnet = this;
@@ -128,28 +132,41 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
         if (fin.is_open()) {
             //fgets(host, commandLength, file);
             //fin >> host;
-            fin.getline(host, commandLength);
+            //fin.getline(host, commandLength);
 
-            zed_net_get_address(&address, host, port);
+            //fin >> host;
+            safeGetline(fin, host);
+            zed_net_get_address(&address, host.c_str(), port);
 
-            for (int i = 0; i < 512; i++) {
-                free(channelCommands[i]);
-            }
-
-            char line[commandLength + 4];
+            //char line[commandLength + 4];
 
             //while (fgets(line, commandLength + 4, file)) {
             //while (fin >> line) {
             //while (!std::ios::eof()) {
-            while (fin.getline(line, commandLength + 4)) {
-                int channelNo = (int)strtol(strtok(line, "~"), nullptr, 0) - 1;
+            //while (fin.getline(line, commandLength + 4)) {
+                //int channelNo = (int)strtol(strtok(line, "~"), nullptr, 0) - 1;
+                //if (channelNo < noChannels && channelNo >= 0) {
+                    //free(channelCommands[channelNo]);
+                    //channelCommands[channelNo] = (char*)calloc(512, 1);
+                    //strcpy(channelCommands[channelNo], strtok(nullptr, ""));
+                //}
+            //}
+
+            std::string line;
+
+            //while (fin >> line) {
+            safeGetline(fin, line);
+            while (line != "") {
+                int posOfDelim = (int)line.find('~'); //Convert unsigned long to int explicitly to stop compiler complaining
+                std::string channelNoS = line.substr(0, posOfDelim);
+                int channelNo = stoi(channelNoS) - 1;
+
                 if (channelNo < noChannels && channelNo >= 0) {
-                    free(channelCommands[channelNo]);
-                    channelCommands[channelNo] = (char*)calloc(512, 1);
-                    strcpy(channelCommands[channelNo], strtok(nullptr, ""));
+                    channelCommands[channelNo] = line.substr(posOfDelim + 1, std::string::npos);
                 }
+                safeGetline(fin, line);
             }
-            
+
             //fclose(file);
             fin.close();
         }
@@ -209,9 +226,9 @@ void CVDJartnet::updateDMXvalues() {
         bool updated = false;
 
         for (int i = 0; i < noChannels; i++) {
-            if (channelCommands[i] != nullptr) {
+            if (channelCommands[i] != "") {
                 double resultDouble = -1;
-                GetInfo(channelCommands[i], &resultDouble);
+                GetInfo(channelCommands[i].c_str(), &resultDouble);
                 int resultInt = (int)round(resultDouble);
                 if (resultInt >= 0 && resultInt <= 255) {
                     if (packet.data[i] != resultInt) {
