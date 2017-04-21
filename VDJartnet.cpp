@@ -132,6 +132,10 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
             zed_net_get_address(&address, host, port);
 
+            for (int i = 0; i < 512; i++) {
+                free(channelCommands[i]);
+            }
+
             char line[commandLength + 4];
 
             //while (fgets(line, commandLength + 4, file)) {
@@ -140,9 +144,8 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
             while (fin.getline(line, commandLength + 4)) {
                 int channelNo = (int)strtol(strtok(line, "~"), nullptr, 0) - 1;
                 if (channelNo < noChannels && channelNo >= 0) {
-                    if (channelCommands[channelNo] == nullptr) {
-                        channelCommands[channelNo] = (char*)malloc(512);
-                    }
+                    free(channelCommands[channelNo]);
+                    channelCommands[channelNo] = (char*)calloc(512, 1);
                     strcpy(channelCommands[channelNo], strtok(nullptr, ""));
                 }
             }
