@@ -121,15 +121,23 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 #endif
 
 
-        FILE* file = fopen(path, "r");
+        //FILE* file = fopen(path, "r");
+        std::ifstream fin (path);
 
-        if (file != nullptr) {
-            fgets(host, commandLength, file);
+        //if (file != nullptr) {
+        if (fin.is_open()) {
+            //fgets(host, commandLength, file);
+            //fin >> host;
+            fin.getline(host, commandLength);
+
             zed_net_get_address(&address, host, port);
 
             char line[commandLength + 4];
 
-            while (fgets(line, commandLength + 4, file)) {
+            //while (fgets(line, commandLength + 4, file)) {
+            //while (fin >> line) {
+            //while (!std::ios::eof()) {
+            while (fin.getline(line, commandLength + 4)) {
                 int channelNo = (int)strtol(strtok(line, "~"), nullptr, 0) - 1;
                 if (channelNo < noChannels && channelNo >= 0) {
                     if (channelCommands[channelNo] == nullptr) {
@@ -139,7 +147,8 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
                 }
             }
             
-            fclose(file);
+            //fclose(file);
+            fin.close();
         }
     } while (0);
     break;
