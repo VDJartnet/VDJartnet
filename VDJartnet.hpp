@@ -110,6 +110,8 @@ private:
     zed_net_socket_t socket;
 
     void sendArtnetPacket();
+    void parseConfigLine(std::string line);
+    void parseCommandConfigLine(std::string line);
 
     std::thread *pollThread;
     std::thread *setupThread;
