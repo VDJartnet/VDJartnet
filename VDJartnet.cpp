@@ -172,27 +172,33 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
         }
     } while (0);
     break;
-/*
+
     case ID_CONFIG_BUTTON:
     do {
         char path[256];
+        GetStringInfo("get_vdj_folder", path, 256);
 
-#if (defined(VDJ_WIN))
+        #if (defined(VDJ_WIN))
 
         //strcat(path, getenv("USERPROFILE"));
         //strcat(path, "\\artnet.cfg");
         //strcat(path, ".\\Documents\\VirtualDJ\\artnet.cfg");
 
-        wchar_t* pathW = nullptr;
-        SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
-        wcstombs(path, pathW, 256);
-        strcat(path, "\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.exe");
+        //wchar_t* pathW = nullptr;
+        //SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
+        //wcstombs(path, pathW, 256);
 
-#elif (defined(VDJ_MAC))
+        //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
 
-        strcat(path, "open ");
-        strcat(path, getenv("HOME"));
-        strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.app");
+        strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.exe");
+
+        #elif (defined(VDJ_MAC))
+
+        //strcat(path, getenv("HOME"));
+        //strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt");
+
+        strcat(path, "/Plugins64/AutoStart/VDJartnet/config.app");
+
 
         //system(path);
 
@@ -202,7 +208,7 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 #endif
     } while (0);
     break;
-s*/
+
     }
 
     return S_OK;
