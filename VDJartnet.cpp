@@ -268,17 +268,33 @@ void CVDJartnet::parseCommandConfigLine(std::string line){
 }
 
 void CVDJartnet::parseConfigLine(std::string line){
-  if(line.at(0) == "@"){
+  if(line.at(0) == '@'){
     //include statement
     //load a second fine and begin a parse on that
     //included file cannot include hostname
     std::string path = line.substr(1, std::string::npos);
 
-
+    loadConfigNoHost(path);
     //finished with new file
     return;
   }
 
   //line does not match any special command line so assume it is a channel definition
   parseCommandConfigLine(line);
+}
+
+void CVDJartnet::loadConfigNoHost(std::string path){
+  std::ifstream fin (path.c_str());
+
+  if (fin.is_open()) {
+      std::string line;
+
+      safeGetline(fin, line);
+      while (line != "") {
+          parseConfigLine(line);
+          safeGetline(fin, line);
+      }
+
+      fin.close();
+  }
 }
