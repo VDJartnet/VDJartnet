@@ -97,74 +97,76 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
         break;
 
     case ID_REFRESH_BUTTON:
-    do {
-        char path[256];
-        GetStringInfo("get_vdj_folder", path, 256);
+    if (m_Config == 1) {
+        do {
+            char path[256];
+            GetStringInfo("get_vdj_folder", path, 256);
 
 #if (defined(VDJ_WIN))
 
-        //strcat(path, getenv("USERPROFILE"));
-        //strcat(path, "\\artnet.cfg");
-        //strcat(path, ".\\Documents\\VirtualDJ\\artnet.cfg");
+            //strcat(path, getenv("USERPROFILE"));
+            //strcat(path, "\\artnet.cfg");
+            //strcat(path, ".\\Documents\\VirtualDJ\\artnet.cfg");
 
-        //wchar_t* pathW = nullptr;
-        //SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
-        //wcstombs(path, pathW, 256);
+            //wchar_t* pathW = nullptr;
+            //SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
+            //wcstombs(path, pathW, 256);
 
-        //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
+            //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
 
-        strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.txt");
+            strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.txt");
 
 #elif (defined(VDJ_MAC))
 
-        //strcat(path, getenv("HOME"));
-        //strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt");
+            //strcat(path, getenv("HOME"));
+            //strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt");
 
-        strcat(path, "/Plugins64/AutoStart/VDJartnet/config.txt");
+            strcat(path, "/Plugins64/AutoStart/VDJartnet/config.txt");
 
 #endif
 
 
-        //FILE* file = fopen(path, "r");
-        std::ifstream fin (path);
+            //FILE* file = fopen(path, "r");
+            std::ifstream fin (path);
 
-        //if (file != nullptr) {
-        if (fin.is_open()) {
-            //fgets(host, commandLength, file);
-            //fin >> host;
-            //fin.getline(host, commandLength);
+            //if (file != nullptr) {
+            if (fin.is_open()) {
+                //fgets(host, commandLength, file);
+                //fin >> host;
+                //fin.getline(host, commandLength);
 
-            //fin >> host;
-            safeGetline(fin, host);
-            zed_net_get_address(&address, host.c_str(), port);
+                //fin >> host;
+                safeGetline(fin, host);
+                zed_net_get_address(&address, host.c_str(), port);
 
-            //char line[commandLength + 4];
+                //char line[commandLength + 4];
 
-            //while (fgets(line, commandLength + 4, file)) {
-            //while (fin >> line) {
-            //while (!std::ios::eof()) {
-            //while (fin.getline(line, commandLength + 4)) {
-                //int channelNo = (int)strtol(strtok(line, "~"), nullptr, 0) - 1;
-                //if (channelNo < noChannels && channelNo >= 0) {
-                    //free(channelCommands[channelNo]);
-                    //channelCommands[channelNo] = (char*)calloc(512, 1);
-                    //strcpy(channelCommands[channelNo], strtok(nullptr, ""));
+                //while (fgets(line, commandLength + 4, file)) {
+                //while (fin >> line) {
+                //while (!std::ios::eof()) {
+                //while (fin.getline(line, commandLength + 4)) {
+                    //int channelNo = (int)strtol(strtok(line, "~"), nullptr, 0) - 1;
+                    //if (channelNo < noChannels && channelNo >= 0) {
+                        //free(channelCommands[channelNo]);
+                        //channelCommands[channelNo] = (char*)calloc(512, 1);
+                        //strcpy(channelCommands[channelNo], strtok(nullptr, ""));
+                    //}
                 //}
-            //}
 
-            std::string line;
+                std::string line;
 
-            //while (fin >> line) {
-            safeGetline(fin, line);
-            while (line != "") {
-                parseConfigLine(line);
+                //while (fin >> line) {
                 safeGetline(fin, line);
-            }
+                while (line != "") {
+                    parseConfigLine(line);
+                    safeGetline(fin, line);
+                }
 
-            //fclose(file);
-            fin.close();
-        }
-    } while (0);
+                //fclose(file);
+                fin.close();
+            }
+        } while (0);
+    }
     break;
 
     case ID_CONFIG_BUTTON:
