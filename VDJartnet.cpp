@@ -184,7 +184,7 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
         //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
 
-        strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.exe");
+        strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.winapp\\config.exe");
 
         STARTUPINFO si;
         PROCESS_INFORMATION pi;
