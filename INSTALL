@@ -1,0 +1,5 @@
+To install copy a .bundle (Mac) or .dll (Windows) file to the Plugins[64]/AutoStart directory
+
+To compile on Mac make sure to use C++14 and the compiler flag -x objective-c++ in Xcode
+
+To compile on Windows use the command cl /LD /EHsc <path to VDJartnet.cpp> <path to main.cpp>
