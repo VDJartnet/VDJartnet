@@ -186,6 +186,15 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
         strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.exe");
 
+        STARTUPINFO si;
+        PROCESS_INFORMATION pi;
+
+        ZeroMemory( &si, sizeof(si) );
+        si.cb = sizeof(si);
+        ZeroMemory( &pi, sizeof(pi) );
+
+        CreateProcess(path, nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi);
+
         #elif (defined(VDJ_MAC))
 
         //strcat(path, getenv("HOME"));
@@ -196,9 +205,15 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
         //system(path);
 
-        //CFURLRef url = CFURLCreateWithString(nullptr, CFStringCreateWithCString(nullptr, (char*)path + 1, kCFStringEncodingASCII), nullptr);
+        //CFURLRef url = CFURLCreateWithString(nullptr, CFStringCreateWithCString(nullptr, path, kCFStringEncodingASCII), nullptr);
+        //CFArrayRef urls = CFArrayCreate(kCFAllocatorDefault, [url], 1, nullptr);
 
         //LSOpenCFURLRef(url, nullptr);
+        //LSOpenURLsWithRole(urls, kLSRolesShell, nullptr, nullptr, nullptr, 0);
+
+        //NSWorkspace.sharedWorkspace->launchApplication([NSString stringWithUTF8String:path]);
+        [[NSWorkspace sharedWorkspace] launchApplication: [NSString stringWithUTF8String:path]];
+
 #endif
     } while (0);
     break;
@@ -260,10 +275,12 @@ void CVDJartnet::sendArtnetPacket() {
 void CVDJartnet::parseCommandConfigLine(std::string line){
   int posOfDelim = (int)line.find('~'); //Convert unsigned long to int explicitly to stop compiler complaining
   std::string channelNoS = line.substr(0, posOfDelim);
-  int channelNo = stoi(channelNoS) - 1;
+  if ((channelNoS.find_first_not_of("0123456789") == std::string::npos)) {
+    int channelNo = stoi(channelNoS) - 1;
 
-  if (channelNo < noChannels && channelNo >= 0) {
-      channelCommands[channelNo] = line.substr(posOfDelim + 1, std::string::npos);
+    if (channelNo < noChannels && channelNo >= 0) {
+        channelCommands[channelNo] = line.substr(posOfDelim + 1, std::string::npos);
+    }
   }
 }
 

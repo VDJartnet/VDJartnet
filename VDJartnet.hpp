@@ -53,8 +53,10 @@ using namespace std::chrono_literals;
 //#include <windows.h>
 //#include <shlobj.h>
 #elif (defined(VDJ_MAC))
-#include <CoreFoundation/CoreFoundation.h>
-#include <CoreServices/CoreServices.h>
+//#include <CoreFoundation/CoreFoundation.h>
+//#include <CoreServices/CoreServices.h>
+//#include <Foundation/Foundation.h>
+#include <AppKit/AppKit.h>
 #endif
 
 #define commandLength 512
