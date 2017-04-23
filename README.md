@@ -18,7 +18,6 @@ where \#\#\# is the three digit channel number from 001 to 512 signifying which 
 Additional configuration files may be included by adding a line \@\<file path\> where \<file path\> is the path to the additional configuration file, this additional file must not include a connection ip address, only channel definitions and further include statements.
 
 ### Example commands are as follows
-Additional
 ```
 001~get_constant 255
 //sends a constant value of 255 to artnet channel 1
