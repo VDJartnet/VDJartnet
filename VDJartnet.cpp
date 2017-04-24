@@ -55,7 +55,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
     //OnParameter(ID_REFRESH_BUTTON);
 
     pollThread = new std::thread(globalUpdate);
-    //setupThread = new std::thread(globalSetup);
+    setupThread = new std::thread(globalSetup);
 
     return S_OK;
 }
@@ -168,54 +168,56 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
     break;
 
     case ID_CONFIG_BUTTON:
-    do {
-        char path[256];
-        GetStringInfo("get_vdj_folder", path, 256);
+    if (m_Config == 1) {
+        do {
+            char path[256];
+            GetStringInfo("get_vdj_folder", path, 256);
 
-        #if (defined(VDJ_WIN))
+            #if (defined(VDJ_WIN))
 
-        //strcat(path, getenv("USERPROFILE"));
-        //strcat(path, "\\artnet.cfg");
-        //strcat(path, ".\\Documents\\VirtualDJ\\artnet.cfg");
+            //strcat(path, getenv("USERPROFILE"));
+            //strcat(path, "\\artnet.cfg");
+            //strcat(path, ".\\Documents\\VirtualDJ\\artnet.cfg");
 
-        //wchar_t* pathW = nullptr;
-        //SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
-        //wcstombs(path, pathW, 256);
+            //wchar_t* pathW = nullptr;
+            //SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
+            //wcstombs(path, pathW, 256);
 
-        //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
+            //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
 
-        strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.exe");
+            strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.winapp\\config.exe");
 
-        STARTUPINFO si;
-        PROCESS_INFORMATION pi;
+            STARTUPINFO si;
+            PROCESS_INFORMATION pi;
 
-        ZeroMemory( &si, sizeof(si) );
-        si.cb = sizeof(si);
-        ZeroMemory( &pi, sizeof(pi) );
+            ZeroMemory( &si, sizeof(si) );
+            si.cb = sizeof(si);
+            ZeroMemory( &pi, sizeof(pi) );
 
-        CreateProcess(path, nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi);
+            CreateProcess(path, nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi);
 
-        #elif (defined(VDJ_MAC))
+            #elif (defined(VDJ_MAC))
 
-        //strcat(path, getenv("HOME"));
-        //strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt");
+            //strcat(path, getenv("HOME"));
+            //strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt");
 
-        strcat(path, "/Plugins64/AutoStart/VDJartnet/config.app");
+            strcat(path, "/Plugins64/AutoStart/VDJartnet/config.app");
 
 
-        //system(path);
+            //system(path);
 
-        //CFURLRef url = CFURLCreateWithString(nullptr, CFStringCreateWithCString(nullptr, path, kCFStringEncodingASCII), nullptr);
-        //CFArrayRef urls = CFArrayCreate(kCFAllocatorDefault, [url], 1, nullptr);
+            //CFURLRef url = CFURLCreateWithString(nullptr, CFStringCreateWithCString(nullptr, path, kCFStringEncodingASCII), nullptr);
+            //CFArrayRef urls = CFArrayCreate(kCFAllocatorDefault, [url], 1, nullptr);
 
-        //LSOpenCFURLRef(url, nullptr);
-        //LSOpenURLsWithRole(urls, kLSRolesShell, nullptr, nullptr, nullptr, 0);
+            //LSOpenCFURLRef(url, nullptr);
+            //LSOpenURLsWithRole(urls, kLSRolesShell, nullptr, nullptr, nullptr, 0);
 
-        //NSWorkspace.sharedWorkspace->launchApplication([NSString stringWithUTF8String:path]);
-        [[NSWorkspace sharedWorkspace] launchApplication: [NSString stringWithUTF8String:path]];
+            //NSWorkspace.sharedWorkspace->launchApplication([NSString stringWithUTF8String:path]);
+            [[NSWorkspace sharedWorkspace] launchApplication: [NSString stringWithUTF8String:path]];
 
-#endif
-    } while (0);
+    #endif
+        } while (0);
+    }
     break;
 
     }

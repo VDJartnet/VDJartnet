@@ -64,6 +64,10 @@ using namespace std::chrono_literals;
 class CVDJartnet : public IVdjPlugin8
 {
 public:
+    int m_Enable;
+    int m_Refresh;
+    int m_Config;
+
     HRESULT VDJ_API OnLoad();
     HRESULT VDJ_API OnGetPluginInfo(TVdjPluginInfo8 *infos);
     ULONG VDJ_API Release();
@@ -99,9 +103,6 @@ private:
         uint8_t data[512];
     } ArtNetPacket;
 
-    int m_Enable;
-    int m_Refresh;
-    int m_Config;
     std::string channelCommands[512];
     ArtNetPacket packet;
     int skippedPackets = 0;
@@ -122,6 +123,7 @@ private:
 
 #ifdef GLOBALIMPLEMENTATION
 CVDJartnet *globalCVDJartnet;
+
 void globalUpdate() {
     for (;;) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
