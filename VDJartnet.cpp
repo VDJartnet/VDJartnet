@@ -100,7 +100,9 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
     do {
         char path[256];
         GetStringInfo("get_vdj_folder", path, 256);
-
+            for (int i = 0; i < 512; i++) {
+                channelCommands[i] = "";
+            }
 #if (defined(VDJ_WIN))
 
         //strcat(path, getenv("USERPROFILE"));
