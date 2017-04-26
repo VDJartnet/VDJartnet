@@ -247,6 +247,7 @@ void CVDJartnet::updateDMXvalues() {
         for (int i = 0; i < noChannels; i++) {
             if (channelCommands[i] != "") {
                 double resultDouble = -1;
+                SendCommand("set $VDJartnetSend 256");
                 SendCommand(channelCommands[i].c_str());
                 GetInfo("get_var $VDJartnetSend", &resultDouble);
                 //GetInfo(channelCommands[i].c_str(), &resultDouble);
