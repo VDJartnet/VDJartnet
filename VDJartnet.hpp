@@ -75,6 +75,8 @@ public:
     HRESULT VDJ_API OnParameter(int id);
     HRESULT VDJ_API OnGetParameterString(int id, char *outParam, int outParamSize);
 
+    std::chrono::milliseconds checkRate = std::chrono::milliseconds(10);
+
     void updateDMXvalues();
 
     typedef enum _ID_Interface
@@ -108,6 +110,7 @@ private:
     int skippedPackets = 0;
     int skipPacketLimit = 10;
 
+
     std::string host = "127.0.0.1";
     const unsigned short port = 0x1936;
     zed_net_address_t address;
@@ -130,7 +133,7 @@ void globalUpdate() {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
         globalCVDJartnet->updateDMXvalues();
         //std::this_thread::sleep_for(10ms);
-        std::this_thread::sleep_until(start + 10ms);
+        std::this_thread::sleep_until(start + globalCVDJartnet->checkRate);
     }
 }
 

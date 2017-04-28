@@ -302,9 +302,14 @@ void CVDJartnet::parseConfigLine(std::string line){
     return;
   }
 
-  if(line.substr(0,2).compare("+R") == 0){
+  if(line.substr(0,2).compare("+T") == 0){
     std::string rateS = line.substr(2, std::string::npos);
     skipPacketLimit = stoi(rateS);
+  }
+
+  if(line.substr(0,2).compare("+C") == 0){
+    std::string rateS = line.substr(2, std::string::npos);
+    checkRate = std::chrono::milliseconds(stoi(rateS));
   }
 
   //line does not match any special command line so assume it is a channel definition
