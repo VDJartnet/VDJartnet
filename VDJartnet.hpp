@@ -106,6 +106,7 @@ private:
     std::string channelCommands[512];
     ArtNetPacket packet;
     int skippedPackets = 0;
+    int skipPacketLimit = 10;
 
     std::string host = "127.0.0.1";
     const unsigned short port = 0x1936;

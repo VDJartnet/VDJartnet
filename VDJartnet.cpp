@@ -260,7 +260,7 @@ void CVDJartnet::updateDMXvalues() {
             }
         }
 
-        if (updated || skippedPackets > 100) {
+        if (updated || skippedPackets > skipPacketLimit) {
             sendArtnetPacket();
         } else {
             skippedPackets += 1;
@@ -300,6 +300,11 @@ void CVDJartnet::parseConfigLine(std::string line){
     loadConfigNoHost(path);
     //finished with new file
     return;
+  }
+
+  if(line.substr(0,2).compare("+R") == 0){
+    std::string rateS = line.substr(1, std::string::npos);
+    skipPacketLimit = stoi(rateS);
   }
 
   //line does not match any special command line so assume it is a channel definition
