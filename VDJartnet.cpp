@@ -303,7 +303,7 @@ void CVDJartnet::parseConfigLine(std::string line){
   }
 
   if(line.substr(0,2).compare("+R") == 0){
-    std::string rateS = line.substr(1, std::string::npos);
+    std::string rateS = line.substr(2, std::string::npos);
     skipPacketLimit = stoi(rateS);
   }
 
