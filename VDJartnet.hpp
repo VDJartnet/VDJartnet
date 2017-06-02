@@ -53,7 +53,7 @@ using namespace std::chrono_literals;
 //#include <windows.h>
 //#include <shlobj.h>
 #elif (defined(VDJ_MAC))
-//#include <CoreFoundation/CoreFoundation.h>
+#include <CoreFoundation/CoreFoundation.h>
 //#include <CoreServices/CoreServices.h>
 //#include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
@@ -61,8 +61,7 @@ using namespace std::chrono_literals;
 
 #define commandLength 512
 
-class CVDJartnet : public IVdjPlugin8
-{
+class CVDJartnet : public IVdjPlugin8 {
 public:
     int m_Enable;
     int m_Refresh;
@@ -83,8 +82,14 @@ public:
     {
     ID_ENABLE_BUTTON,
     ID_REFRESH_BUTTON,
-    ID_CONFIG_BUTTON
+    ID_CONFIG_BUTTON,
+    ID_SAVE
     } ID_Interface;
+
+    std::string host = "127.0.0.1";
+    const unsigned short port = 0x1936;
+    
+    std::string channelCommands[512];
 
 private:
     const int noLength = 3;
@@ -105,14 +110,11 @@ private:
         uint8_t data[512];
     } ArtNetPacket;
 
-    std::string channelCommands[512];
     ArtNetPacket packet;
     int skippedPackets = 0;
     int skipPacketLimit = 10;
 
 
-    std::string host = "127.0.0.1";
-    const unsigned short port = 0x1936;
     zed_net_address_t address;
     zed_net_socket_t socket;
 
@@ -123,9 +125,14 @@ private:
 
     std::thread *pollThread;
     std::thread *setupThread;
+
+#ifdef VDJ_MAC
+    //void* configWindow;
+    void* configWindow;
+#endif
 };
 
-#ifdef GLOBALIMPLEMENTATION
+#ifdef VDJartnet_GLOBALIMPLEMENTATION
 CVDJartnet *globalCVDJartnet;
 
 void globalUpdate() {
@@ -175,6 +182,11 @@ std::istream& safeGetline(std::istream& is, std::string& t)
         }
     }
 }
+#else
+extern CVDJartnet *globalCVDJartnet;
+extern void globalUpdate();
+extern void globalSetup();
+extern std::istream& safeGetline(std::istream& is, std::string& t);
 #endif
 
 #endif /* VDJartnet_hpp */
