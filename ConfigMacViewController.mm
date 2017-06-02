@@ -28,16 +28,31 @@
     [scrollView setDocumentView:_tableView];
     [scrollView setHasVerticalScroller:YES];
     [[self view] addSubview:scrollView];
+
+    _ipAddress = [[NSTextField alloc] initWithFrame:CGRectMake(50,100,100,30)];
+    _ipAddress.stringValue = [NSString stringWithCString:_vdjArtnet->host.c_str() encoding:[NSString defaultCStringEncoding]];
+    [_ipAddress setEditable:YES];
+    [_ipAddress setDelegate:self];
+    [[self view] addSubview:_ipAddress];
+
+    _ipLabel = [[NSTextField alloc] initWithFrame:CGRectMake(0,100,100,30)];
+    _ipLabel.stringValue = @"IP address:";
+    [_ipLabel setEditable:NO];
+    [_ipLabel setSelectable:NO];
+    [_ipLabel setBordered:NO];
+    [[self view] addSubview:_ipLabel];
 }
 
 - (void)viewDidLayout {
     [super viewDidLayout];
 
-    CGPoint origin = [[self view] frame].origin;
-    CGSize size = [[[self view] window] frame].size;
-    [scrollView setFrame:CGRectMake(origin.x, origin.y, size.width, size.height)];
+    CGPoint origin = [[[self view] window] contentRectForFrameRect:[[self view] frame]].origin;
+    CGSize size = [[[self view] window] contentRectForFrameRect:[[[self view] window] frame]].size;
+    [_ipLabel setFrame:CGRectMake(origin.x, origin.y + size.height - _ipAddress.frame.size.height - 30, _ipLabel.frame.size.width, _ipAddress.frame.size.height)];
+    [_ipAddress setFrame:CGRectMake(origin.x + _ipLabel.frame.size.width, origin.y + size.height - _ipAddress.frame.size.height - 30, size.width - _ipLabel.frame.size.width, _ipAddress.frame.size.height)];
+    [scrollView setFrame:CGRectMake(origin.x, origin.y, size.width, _ipAddress.frame.origin.y - origin.y)];
     [[_tableView tableColumns][0] setWidth:50];
-    [[_tableView tableColumns][1] setWidth:[[[self view] window] frame].size.width - [[_tableView tableColumns][0] width] - 10];
+    [[_tableView tableColumns][1] setWidth:size.width - [[_tableView tableColumns][0] width] - 10];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -57,6 +72,13 @@
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     _vdjArtnet->channelCommands[row] = [object cStringUsingEncoding:[NSString defaultCStringEncoding]];
     _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    _vdjArtnet->host = std::string([_ipAddress.stringValue cStringUsingEncoding:[NSString defaultCStringEncoding]]);
+    _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+
+    return YES;
 }
 
 @end

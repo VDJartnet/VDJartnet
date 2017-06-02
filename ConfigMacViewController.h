@@ -14,10 +14,12 @@
 #include "VDJartnet.hpp"
 #endif
 
-@interface ConfigViewController : NSViewController <NSTableViewDataSource>
+@interface ConfigViewController : NSViewController <NSTableViewDataSource, NSTextFieldDelegate>
 
 @property CVDJartnet* vdjArtnet;
 @property (strong) NSTableView* tableView;
+@property (strong) NSTextField* ipAddress;
+@property (strong) NSTextField* ipLabel;
 
 - (void)loadView;
 - (void)viewDidLayout;
@@ -25,6 +27,8 @@
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor;
 @end
 
 #endif /* ConfigMacViewController_h */
