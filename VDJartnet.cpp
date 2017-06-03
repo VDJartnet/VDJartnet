@@ -122,6 +122,18 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
             fin.close();
         }
+
+    } while (0);
+    do {
+        char path[256];
+        GetStringInfo("get_vdj_folder", path, 256);
+#if (defined(VDJ_WIN))
+        strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\presets.txt");
+#elif (defined(VDJ_MAC))
+        strcat(path, "/Plugins64/AutoStart/VDJartnet/presets.txt");
+#endif
+
+        presetFin = new std::ifstream(path);
     } while (0);
     break;
 
@@ -142,14 +154,14 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
             for (int i = 0; i < noChannels; i++) {
                 if (channelCommands[i] != "") {
-                    fout << std::string(floor(log10(i + 1)) + 1,'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
+                    fout << std::string(3 - (floor(log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
                 }
             }
 
             fout.close();
         }
     } while (0);
-            break;
+    break;
 
     case ID_CONFIG_BUTTON:
     if (m_Config == 1) {

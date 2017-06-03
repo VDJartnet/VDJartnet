@@ -18,13 +18,19 @@
 #endif
 
 #include "ConfigMacViewController.h"
+#include "ConfigMacPresetDataSource.h"
 
-@interface ConfigWindow : NSObject <NSWindowDelegate>
+@interface ConfigWindow : NSObject
 
 @property (strong) NSWindow* window;
+@property (strong) NSWindow* presetWindow;
 
 - (id) initWithVDJartnet:(CVDJartnet*)vdjArtnet;
 - (void) dealloc;
+
+- (void) copy;
+- (void) paste;
+- (void) deleteRow;
 @end
 
 #endif /* ConfigMac_h */

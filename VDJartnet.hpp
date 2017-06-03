@@ -91,6 +91,12 @@ public:
     
     std::string channelCommands[512];
 
+    std::ifstream* presetFin;
+
+#ifdef VDJ_MAC
+    void* configWindow;
+#endif
+
 private:
     const int noLength = 3;
     const int noChannels = 512;
@@ -125,11 +131,6 @@ private:
 
     std::thread *pollThread;
     std::thread *setupThread;
-
-#ifdef VDJ_MAC
-    //void* configWindow;
-    void* configWindow;
-#endif
 };
 
 #ifdef VDJartnet_GLOBALIMPLEMENTATION

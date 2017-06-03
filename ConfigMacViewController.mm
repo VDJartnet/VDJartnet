@@ -15,14 +15,18 @@
 - (void)loadView {
     self.view = [[NSView alloc] init];
 
-    _tableView = [[NSTableView alloc] init];
+    _tableView = [[ConfigTableView alloc] init];
     [_tableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"Channel"]];
     [_tableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"VDJscript"]];
     [[_tableView tableColumns][0] setTitle:@"Channel"];
     [[_tableView tableColumns][0] setEditable:NO];
     [[_tableView tableColumns][1] setTitle:@"VDJscript"];
     [_tableView setDataSource:self];
+    [_tableView setDelegate:self];
     [_tableView reloadData];
+    [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
+    [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
+    [_tableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
 
     scrollView = [[NSScrollView alloc] initWithFrame:CGRectMake(0,0,100,100)];
     [scrollView setDocumentView:_tableView];
@@ -70,8 +74,10 @@
 }
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    [[[[tableView window] undoManager] prepareWithInvocationTarget:self] tableView:tableView setObjectValue:[NSString stringWithCString:_vdjArtnet->channelCommands[row].c_str() encoding:[NSString defaultCStringEncoding]] forTableColumn:tableColumn row:row];
     _vdjArtnet->channelCommands[row] = [object cStringUsingEncoding:[NSString defaultCStringEncoding]];
     _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    [tableView reloadData];
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
@@ -79,6 +85,27 @@
     _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
 
     return YES;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+    [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
+    [pboard setString:[self tableView:tableView objectValueForTableColumn:[tableView tableColumns][1] row:[rowIndexes firstIndex]] forType:NSStringPboardType];
+
+    return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
+    return NSDragOperationCopy;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
+    [self tableView:tableView setObjectValue:[[info draggingPasteboard] stringForType:NSStringPboardType] forTableColumn:[tableView tableColumns][1] row:row];
+    return YES;
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    CFRelease(_vdjArtnet->configWindow);
+    _vdjArtnet->configWindow = nullptr;
 }
 
 @end
