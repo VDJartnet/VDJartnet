@@ -97,7 +97,7 @@ public:
     void* configWindow;
 #endif
 #ifdef VDJ_WIN
-    void^ configWindow;
+    void* configWindow;
 #endif
 
 private:
@@ -132,8 +132,8 @@ private:
     void parseCommandConfigLine(std::string line);
     void loadConfigNoHost(std::string path);
 
-    std::thread *pollThread;
-    std::thread *setupThread;
+    void* pollThread; //std::thread
+    void* setupThread; //std::thread
 };
 
 #ifdef VDJartnet_GLOBALIMPLEMENTATION

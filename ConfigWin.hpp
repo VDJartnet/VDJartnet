@@ -15,7 +15,7 @@
 using namespace System;
 using namespace System.Windows.Forms;
 
-ref class ConfigWindow : public Object {
+class ConfigWindow : public Object {
     
 public:
     ConfigWindow(CVDJartnet vdjArtnet);

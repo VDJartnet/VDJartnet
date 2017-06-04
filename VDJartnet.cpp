@@ -174,7 +174,7 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
             #if (defined(VDJ_WIN))
 
-            configWindow = gcnew ConfigWindow(this);
+            configWindow = new ConfigWindow(this);
 
             //strcat(path, getenv("USERPROFILE"));
             //strcat(path, "\\artnet.cfg");
