@@ -15,14 +15,14 @@
 #include <msclr\marshal_cppstd.h>
 
 using namespace System;
-using namespace System.Windows.Forms;
+using namespace System::Windows::Forms;
 
 ref class ConfigRowString : public Object {
     CVDJartnet* _vdjArtnet;
     int row;
 
-    property String Value {
-        String get() {
+    property String^ Value {
+        String^ get() {
             return String(_vdjArtnet->channelCommands[row].c_str());
         }
         void set(String^ newVal) {
@@ -31,9 +31,9 @@ ref class ConfigRowString : public Object {
         }
     }
 
-    CStringRef(CVDJartnet* vdjArtnetTMP, int rowTMP) {
+    ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP) {
         _vdjArtnet = vdjArtnetTMP;
-        row = rowTMP
+        row = rowTMP;
     }
 };
 
@@ -52,8 +52,6 @@ public:
             DataSource->Add(gcnew ConfigRowString(_vdjArtnet, row));
         }
     }
-
-protected:
-}
+};
 
 #endif /* ConfigWinDataSource_hpp */
