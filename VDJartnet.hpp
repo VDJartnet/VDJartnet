@@ -96,6 +96,9 @@ public:
 #ifdef VDJ_MAC
     void* configWindow;
 #endif
+#ifdef VDJ_WIN
+    void^ configWindow;
+#endif
 
 private:
     const int noLength = 3;

@@ -35,6 +35,9 @@
 #if (defined(VDJ_MAC))
 #include "ConfigMac.h"
 #endif
+#if (defined(VDJ_WIN))
+#include "ConfigWin.hpp"
+#endif
 
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnLoad() {
@@ -166,10 +169,12 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
     case ID_CONFIG_BUTTON:
     if (m_Config == 1) {
         do {
-            char path[256];
-            GetStringInfo("get_vdj_folder", path, 256);
+            //char path[256];
+            //GetStringInfo("get_vdj_folder", path, 256);
 
             #if (defined(VDJ_WIN))
+
+            configWindow = gcnew ConfigWindow(this);
 
             //strcat(path, getenv("USERPROFILE"));
             //strcat(path, "\\artnet.cfg");
@@ -181,16 +186,16 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
             //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
 
-            strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.winapp\\config.exe");
+            //strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.winapp\\config.exe");
 
-            STARTUPINFO si;
-            PROCESS_INFORMATION pi;
+            //STARTUPINFO si;
+            //PROCESS_INFORMATION pi;
 
-            ZeroMemory( &si, sizeof(si) );
-            si.cb = sizeof(si);
-            ZeroMemory( &pi, sizeof(pi) );
+            //ZeroMemory( &si, sizeof(si) );
+            //si.cb = sizeof(si);
+            //ZeroMemory( &pi, sizeof(pi) );
 
-            CreateProcess(path, nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi);
+            //CreateProcess(path, nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi);
 
             #elif (defined(VDJ_MAC))
 
