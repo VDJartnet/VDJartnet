@@ -8,7 +8,7 @@
 
 #include "ConfigWin.hpp"
 
-ConfigWindow::ConfigWindow(CVDJartnet vdjArtnet) {
+ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnet) {
     window = gcnew Form;
     window->Name = "VDJartnetConfig";
     window->Text = "VDJartnetConfig";
@@ -22,14 +22,14 @@ ConfigWindow::ConfigWindow(CVDJartnet vdjArtnet) {
     dataSource = gcnew ConfigDataSource(vdjArtnet);
     tableView->DataSource = dataSource->DataSource;
 
-    DataGridViewTextBoxColumn^ vdjScriptColumn = new DataGridViewTextBoxColumn();
-    vdjScriptColumn.Name = "VDJscript";
-    vdjScriptColumn.DataPropertyName = "Value";
-    vdjScriptColumn.ReadOnly = false;
-    tableView.Columns.Add(vdjScriptColumn);
+    DataGridViewTextBoxColumn^ vdjScriptColumn = gcnew DataGridViewTextBoxColumn();
+    vdjScriptColumn->Name = "VDJscript";
+    vdjScriptColumn->DataPropertyName = "Value";
+    vdjScriptColumn->ReadOnly = false;
+    tableView->Columns->Add(vdjScriptColumn);
 
-    for each (DataGridViewRow row in tableView->Rows) {
-        row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
+    for each (DataGridViewRow^ row in tableView->Rows) {
+        row->HeaderCell->Value = (row->Index + 1).ToString();
     }
 
     window->Controls->Add(tableView);

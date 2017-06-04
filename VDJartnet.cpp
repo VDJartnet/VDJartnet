@@ -37,6 +37,7 @@
 #include "ConfigMac.h"
 #endif
 #if (defined(VDJ_WIN))
+#define CLRFREE
 #include "ConfigWin.hpp"
 #endif
 
@@ -175,7 +176,7 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
             #if (defined(VDJ_WIN))
 
-            configWindow = new ConfigWindow(this);
+            configWindow = createConfigWindow(this);
 
             //strcat(path, getenv("USERPROFILE"));
             //strcat(path, "\\artnet.cfg");

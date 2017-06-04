@@ -2,4 +2,6 @@ To install copy a .bundle (Mac) or .dll (Windows) file to the Plugins[64]/AutoSt
 
 To compile on Mac make sure to use C++14 and the compiler flag -x objective-c++ in Xcode
 
-To compile on Windows use the command cl /LD /EHsc <path to VDJartnet.cpp> <path to main.cpp>
+To compile on Windows use the commands:
+cl /Fo /clr /MD <path to ConfigWin.cpp>
+cl /LD /EHsc /MD <path to VDJartnet.cpp> <path to main.cpp> <path to ConfigWin.obj>

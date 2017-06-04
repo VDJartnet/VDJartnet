@@ -10,20 +10,28 @@
 #define ConfigWinDataSource_hpp
 
 #include <stdio.h>
+
+#define NODLLEXPORT
 #include "VDJartnet.hpp"
 
+#include "windows.h" 
+
+#using <mscorlib.dll> 
+#using <System.dll> 
+#using <System.Windows.Forms.dll> 
 #include <msclr\marshal_cppstd.h>
 
-using namespace System;
 using namespace System::Windows::Forms;
+using namespace System;
 
 ref class ConfigRowString : public Object {
+public:
     CVDJartnet* _vdjArtnet;
     int row;
 
     property String^ Value {
         String^ get() {
-            return String(_vdjArtnet->channelCommands[row].c_str());
+            return gcnew String(_vdjArtnet->channelCommands[row].c_str());
         }
         void set(String^ newVal) {
             _vdjArtnet->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
@@ -38,15 +46,14 @@ ref class ConfigRowString : public Object {
 };
 
 ref class ConfigDataSource {
-
 public:
     CVDJartnet* _vdjArtnet;
-    List<ConfigRowString>^ DataSource;
+    System::Collections::Generic::List<ConfigRowString^>^ DataSource;
 
     ConfigDataSource(CVDJartnet* vdjArtnetTMP) {
         _vdjArtnet = vdjArtnetTMP;
 
-        DataSource = gcnew List<ConfigRowString>(512);
+        DataSource = gcnew System::Collections::Generic::List<ConfigRowString^>(512);
 
         for (int row = 0; row < 512; row++) {
             DataSource->Add(gcnew ConfigRowString(_vdjArtnet, row));
