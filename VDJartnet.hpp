@@ -43,7 +43,6 @@
 
 #include <string>
 #include <fstream>
-#include <thread>
 #include <chrono>
 using namespace std::chrono_literals;
 

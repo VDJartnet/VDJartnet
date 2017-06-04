@@ -30,6 +30,7 @@
 
 #define ZED_NET_IMPLEMENTATION
 #define VDJartnet_GLOBALIMPLEMENTATION
+#include <thread>
 #include "VDJartnet.hpp"
 
 #if (defined(VDJ_MAC))
