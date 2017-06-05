@@ -31,10 +31,17 @@ using namespace System;
 ref class ConfigWindow {
     
 public:
-    ConfigWindow(CVDJartnet* vdjArtnet);
+    CVDJartnet* _vdjArtnet;
 
+    ConfigWindow(CVDJartnet* vdjArtnetTMP);
+	void reLayout(Object^ sender, LayoutEventArgs^ e);
+	void didClose(Object^ sender, FormClosedEventArgs^ e);
+	void updateIPaddress(Object^ sender, EventArgs^ e);
+	void ipKeyDown(Object^ sender, KeyEventArgs^ e);
 protected:
     Form^ window;
+	Label^ ipLabel;
+	TextBox^ ipAddress;
     DataGridView^ tableView;
     ConfigDataSource^ dataSource;
 };

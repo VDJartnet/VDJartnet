@@ -144,7 +144,9 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
     case ID_SAVE:
     do {
-        char path[256];
+        zed_net_get_address(&address, host.c_str(), port);
+
+		char path[256];
         GetStringInfo("get_vdj_folder", path, 256);
 #if (defined(VDJ_WIN))
         strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.txt");
