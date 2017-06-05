@@ -81,6 +81,18 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 }
 //---------------------------------------------------------------------------
 ULONG VDJ_API CVDJartnet::Release() {
+#if (defined(VDJ_WIN))
+	closeConfigWindow(configWindow);
+	delete configWindow;
+	configWindow = nullptr;
+#elif (defined(VDJ_MAC))
+    if (configWindow != nullptr) {
+        CFRelease(configWindow);
+        configWindow = nullptr;
+    }
+#endif
+
+
     zed_net_socket_close(&socket);
 
     delete this;

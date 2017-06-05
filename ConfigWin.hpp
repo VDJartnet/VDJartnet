@@ -24,6 +24,7 @@ extern void* createConfigWindow(CVDJartnet* vdjArtnet);
 #include <msclr\gcroot.h>
 
 #include "ConfigWinDataSource.hpp"
+#include "ConfigWinPresetDataSource.hpp"
 
 using namespace System::Windows::Forms;
 using namespace System;
@@ -35,15 +36,32 @@ public:
 
     ConfigWindow(CVDJartnet* vdjArtnetTMP);
 	void reLayout(Object^ sender, LayoutEventArgs^ e);
+	void reLayoutPreset(Object^ sender, LayoutEventArgs^ e);
 	void didClose(Object^ sender, FormClosedEventArgs^ e);
 	void updateIPaddress(Object^ sender, EventArgs^ e);
 	void ipKeyDown(Object^ sender, KeyEventArgs^ e);
+	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+	void presetTableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+	void presetTableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+	void tableViewDragEnter(Object^ sender, DragEventArgs^ e);
+	void tableViewDragDrop(Object^ sender, DragEventArgs^ e);
+	void hide();
 protected:
     Form^ window;
 	Label^ ipLabel;
 	TextBox^ ipAddress;
     DataGridView^ tableView;
     ConfigDataSource^ dataSource;
+	
+	Form^ presetWindow;
+    DataGridView^ presetTableView;
+    ConfigPresetDataSource^ presetDataSource;
+	
+private:
+	DataGridViewRow^ rowToDrag;
+	System::Drawing::Rectangle dragBoxFromMouseDown;
+
 };
 
 class ConfigWindowNative {
@@ -55,6 +73,10 @@ public:
 
 void* createConfigWindow(CVDJartnet* vdjArtnet) {
 	return new ConfigWindowNative(vdjArtnet);
+}
+
+void closeConfigWindow(void* configWindow) {
+	((ConfigWindowNative*)configWindow)->configWindow->hide();
 }
 
 #endif /* ConfigWin_hpp */
