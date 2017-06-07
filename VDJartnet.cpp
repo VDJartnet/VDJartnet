@@ -53,7 +53,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
 
     zed_net_init();
     zed_net_get_address(&address, host.c_str(), port);
-    zed_net_udp_socket_open(&socket, 0, 0);
+    zed_net_udp_socket_open(&socket, 64444, 0);
 
     globalCVDJartnet = this;
 
@@ -294,13 +294,15 @@ void CVDJartnet::updateDMXvalues() {
 }
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::sendArtnetPacket() {
-    zed_net_udp_socket_send(&socket, address, &packet, sizeof(packet));
-    if (packet.sequence == 0xFF) {
-        packet.sequence = 1;
-    } else {
-        packet.sequence += 1;
+    if (socket != nullptr) {
+        zed_net_udp_socket_send(&socket, address, &packet, sizeof(packet));
+        if (packet.sequence == 0xFF) {
+            packet.sequence = 1;
+        } else {
+            packet.sequence += 1;
+        }
+        skippedPackets = 0;
     }
-    skippedPackets = 0;
 }
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::parseCommandConfigLine(std::string line){
