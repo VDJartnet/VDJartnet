@@ -1,5 +1,5 @@
 //
-//  ConfigWinDataSource.hpp
+//  ConfigWinTableView.hpp
 //  VDJartnet
 //
 //  Created by Jonathan Tanner on 03/06/2017.
@@ -34,13 +34,10 @@
 //{Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.}
 
-#ifndef ConfigWinDataSource_hpp
-#define ConfigWinDataSource_hpp
+#ifndef ConfigWinTableView_hpp
+#define ConfigWinTableView_hpp
 
 #include <stdio.h>
-
-#define NODLLEXPORT
-#include "VDJartnet.hpp"
 
 #include "windows.h" 
 
@@ -52,45 +49,23 @@
 using namespace System::Windows::Forms;
 using namespace System;
 
-ref class ConfigRowString : public Object {
-public:
-    CVDJartnet* _vdjArtnet;
-    int row;
+delegate void ConfigTableViewKeyEventHandler(Message% msg, Keys keyData);  
 
-    property String^ Value {
-        String^ get() {
-            return gcnew String(_vdjArtnet->channelCommands[row].c_str());
-        }
-        void set(String^ newVal) {
-			if (newVal == nullptr) {
-				_vdjArtnet->channelCommands[row] = "";
-			} else {
-				_vdjArtnet->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
-			}
-            _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
-        }
-    }
-
-    ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP) {
-        _vdjArtnet = vdjArtnetTMP;
-        row = rowTMP;
-    }
+interface struct IConfigTableView {  
+public:  
+	event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
 };
 
-ref class ConfigDataSource {
+ref class ConfigTableView : public DataGridView, public IConfigTableView {
 public:
-    CVDJartnet* _vdjArtnet;
-    System::Collections::Generic::List<ConfigRowString^>^ DataSource;
+	virtual event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
 
-    ConfigDataSource(CVDJartnet* vdjArtnetTMP) {
-        _vdjArtnet = vdjArtnetTMP;
-
-        DataSource = gcnew System::Collections::Generic::List<ConfigRowString^>(512);
-
-        for (int row = 0; row < 512; row++) {
-            DataSource->Add(gcnew ConfigRowString(_vdjArtnet, row));
-        }
-    }
+	virtual bool ProcessCmdKey(Message% msg, Keys keyData) override {
+		//if (ConfigTableViewKeyDown != nullptr) {
+			ConfigTableViewKeyDown(msg, keyData);
+		//}
+		return DataGridView::ProcessCmdKey(msg, keyData);
+    }	
 };
 
-#endif /* ConfigWinDataSource_hpp */
+#endif /* ConfigWinTableView_hpp */

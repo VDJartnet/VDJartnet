@@ -5,6 +5,34 @@
 //  Created by Jonathan Tanner on 03/06/2017.
 //  Copyright © 2017 Jonathan Tanner. All rights reserved.
 //
+//This file is part of VDJartnet.
+//
+//VDJartnet is free software: you can redistribute it and/or modify
+//it under the terms of the GNU General Public License as published by
+//the Free Software Foundation, either version 3 of the License, or
+//(at your option) any later version.
+//
+//VDJartnet is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//GNU General Public License for more details.
+//
+//You should have received a copy of the GNU General Public License
+//along with VDJartnet.  If not, see <http://www.gnu.org/licenses/>.
+//
+//Additional permission under GNU GPL version 3 section 7
+//
+//If you modify this Program, or any covered work, by linking or
+//combining it with VirtualDJ, the licensors of this Program grant you
+//additional permission to convey the resulting work.
+//{Corresponding Source for a non-source form of such a combination shall not
+//include the source code for the parts of VirtualDJ used as well as that of the covered work.}
+//
+//If you modify this Program, or any covered work, by linking or
+//combining it with the Visual C++ Runtime, the licensors of this Program grant you
+//additional permission to convey the resulting work.
+//{Corresponding Source for a non-source form of such a combination shall not
+//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.}
 
 #include "ConfigWin.hpp"
 
@@ -16,6 +44,7 @@ ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnetTMP) {
     window->Text = "VDJartnetConfig";
 	window->Size = System::Drawing::Size(600, 600);
     window->StartPosition = FormStartPosition::CenterScreen;
+	window->KeyPreview = true;
 	
 	ipLabel = gcnew Label();
 	ipLabel->Text = "IP Address:";
@@ -28,12 +57,13 @@ ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnetTMP) {
 	ipAddress->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::ipKeyDown);
 	window->Controls->Add(ipAddress);
 	
-    tableView = gcnew DataGridView();
+    tableView = gcnew ConfigTableView();
     tableView->Name = "VDJscript";
 	tableView->AutoGenerateColumns = false;
 	tableView->RowHeadersVisible = true;
 	tableView->AllowDrop = true;
 	tableView->AllowUserToAddRows = false;
+	tableView->ClipboardCopyMode = DataGridViewClipboardCopyMode::Disable;
 
     dataSource = gcnew ConfigDataSource(_vdjArtnet);
     tableView->DataSource = dataSource->DataSource;
@@ -46,6 +76,9 @@ ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnetTMP) {
 	tableView->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
 
 	window->Layout += gcnew LayoutEventHandler(this, &ConfigWindow::reLayout);
+	//tableView->ConfigTableViewKeyDown += gcnew ConfigTableViewKeyEventHandler(this, &ConfigWindow::tableViewKeyDown);
+	tableView->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::tableViewKeyDown);
+	tableView->EditingControlShowing += gcnew DataGridViewEditingControlShowingEventHandler(this, &ConfigWindow::tableViewEditingControlShowing);
 	tableView->MouseDown += gcnew MouseEventHandler(this, &ConfigWindow::tableViewMouseDown);
 	tableView->MouseMove += gcnew MouseEventHandler(this, &ConfigWindow::tableViewMouseMove);
 	tableView->DragEnter += gcnew DragEventHandler(this, &ConfigWindow::tableViewDragEnter);
@@ -65,6 +98,7 @@ ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnetTMP) {
 	presetTableView->RowHeadersVisible = false;
 	presetTableView->AllowDrop = false;
 	presetTableView->AllowUserToAddRows = false;
+	presetTableView->ClipboardCopyMode = DataGridViewClipboardCopyMode::Disable;
 
 	presetDataSource = gcnew ConfigPresetDataSource(_vdjArtnet);
     presetTableView->DataSource = presetDataSource->DataSource;
@@ -123,6 +157,44 @@ void ConfigWindow::ipKeyDown(Object^ sender, KeyEventArgs^ e) {
 	if (e->KeyCode == Keys::Enter) {
 		updateIPaddress(sender, e);
 	}
+}
+
+void ConfigWindow::tableViewKeyDown(Object^ sender, KeyEventArgs^ e) {
+//void ConfigWindow::tableViewKeyDown(Message% msg, Keys keyData) {
+//	if (tableView->Focused) {
+		//if ((int)(keyData & Keys::Control)) {
+		//if (e->Control) {
+			//switch (keyData & ~Keys::Control) {
+			switch (e->KeyCode) {
+			case Keys::D:
+				if (tableView->SelectedRows->Count >= 1) {
+					Clipboard::SetText(((ConfigRowString^)(tableView->SelectedRows[0]->DataBoundItem))->Value);
+				}
+				break;
+			case Keys::F:
+				if (tableView->SelectedRows->Count >= 1) {
+					((ConfigRowString^)(tableView->SelectedRows[0]->DataBoundItem))->Value = Clipboard::GetText();
+					tableView->Refresh();
+				}
+				break;
+			case Keys::Z:
+				if (!e->Shift) {
+					break;
+				}
+			//case Keys::Z | Keys::Shift:
+			case Keys::Y:
+				break;
+			}
+		//}
+//	}
+}
+
+void ConfigWindow::tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e) {
+    DataGridViewTextBoxEditingControl^ tb = dynamic_cast<DataGridViewTextBoxEditingControl^>(e->Control);
+	if (tb != nullptr) {
+        tb->KeyDown -= gcnew KeyEventHandler(this, &ConfigWindow::tableViewKeyDown);
+        tb->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::tableViewKeyDown);
+    }
 }
 
 void ConfigWindow::tableViewMouseDown(Object^ sender, MouseEventArgs^ e) {
