@@ -59,7 +59,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
 
     zed_net_init();
     zed_net_get_address(&address, host.c_str(), port);
-    zed_net_udp_socket_open(&socket, 64444, 0);
+    zed_net_udp_socket_open(socket, 64444, 0);
 
     globalCVDJartnet = this;
 
@@ -99,7 +99,7 @@ ULONG VDJ_API CVDJartnet::Release() {
 #endif
 
 
-    zed_net_socket_close(&socket);
+    zed_net_socket_close(socket);
 
     delete this;
     return 0;
@@ -301,7 +301,7 @@ void CVDJartnet::updateDMXvalues() {
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::sendArtnetPacket() {
     if (socket != nullptr) {
-        zed_net_udp_socket_send(&socket, address, &packet, sizeof(packet));
+        zed_net_udp_socket_send(socket, address, &packet, sizeof(packet));
         if (packet.sequence == 0xFF) {
             packet.sequence = 1;
         } else {

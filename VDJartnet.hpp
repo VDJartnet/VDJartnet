@@ -130,7 +130,7 @@ private:
 
 
     zed_net_address_t address;
-    zed_net_socket_t socket;
+    zed_net_socket_t* socket;
 
     void sendArtnetPacket();
     void parseConfigLine(std::string line);
