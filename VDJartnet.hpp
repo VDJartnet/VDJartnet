@@ -50,7 +50,7 @@
 #include <string>
 #include <fstream>
 #include <chrono>
-using namespace std::literals::chrono_literals;
+//using namespace std::chrono_literals;
 
 #include <iostream>
 
@@ -155,7 +155,7 @@ void globalUpdate() {
 
 void globalSetup() {
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-    std::this_thread::sleep_until(start + 1s);
+    std::this_thread::sleep_until(start + std::chrono::seconds(1));
     globalCVDJartnet->OnParameter(globalCVDJartnet->ID_REFRESH_BUTTON);
 }
 
