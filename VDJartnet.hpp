@@ -110,11 +110,11 @@ private:
     const int noChannels = 512;
 
     typedef struct _ArtNetPacket {
-        constexpr static const uint8_t header[8] = "Art-Net";
-        constexpr static const uint8_t opcodeLo = 0x00;
-        constexpr static const uint8_t opcodeHi = 0x50;
-        constexpr static const uint8_t versionHi = 00;
-        constexpr static const uint8_t versionLo = 14;
+        uint8_t header[8] = "Art-Net";
+        uint8_t opcodeLo = 0x00;
+        uint8_t opcodeHi = 0x50;
+        uint8_t versionHi = 00;
+        uint8_t versionLo = 14;
         uint8_t sequence = 1;
         uint8_t physical = 0;
         uint8_t universeLo = 0;
