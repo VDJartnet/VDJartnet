@@ -50,7 +50,7 @@
 #include <string>
 #include <fstream>
 #include <chrono>
-using namespace std::chrono_literals;
+using namespace std::literals::chrono_literals;
 
 #include <iostream>
 
