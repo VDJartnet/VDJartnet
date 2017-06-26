@@ -1,0 +1,18 @@
+osx_image: xcode8.3
+language: objective-c
+xcode_project: VDJartnet.xcodeproj
+xcode_scheme: VDJartnet
+script: xcodebuild clean && xcodebuild build -project VDJartnet.xcodeproj -scheme VDJartnet
+branches:
+  except: .*\d+\.\d+\.\d+.*
+notifications:
+  slack:
+    secure: r8sd/nmD3v/JvGPFcNePKuf8bW2VhiIomsGPixp36FYI3p5VX8DtOi5YCBq/GY96ztVJYS0TYXjiJkXXuY0doi4tPB7rp+g8DvrU2DfYCluvexj4pKiNEZ/wugpaI8+LUl/mVT9k7ol8QFH+CMWjTYx46niPW5CRwaq0dOk6jQaNYnJKF3V5SItsDQJjZ/q9yp+Ly3THw4rENv0CWKrS1Aji7cjE0DAquWHrPVfE/+1ud2Z1Mhf5sHjWbUePPTL5w4KOID/vaJxtD7icLQqGmPK07iTH0pC88nrZSk+8uIxzWynIITw2Jx/Hi51G814e+VlpngWBrcBv97ffIiC21DcmAcnhy6eUtNV6k8xe6PYVvWA8waUWww3soCebu3iad1f0fem0TZFbGTkBWRXy3cCprqCvO8I8AmTC3shs/GXB+1b1SxjaWMhNgAlPN/c9oU9Htmgi/aY2H126Aca4KqnkYFk753P/tcW9kovnCaMgdRyhwU5XEkOOcUXAcC1l07Ty1IgivZXMNWGOQHc3L3NZfNgOsU+HT6Idw07LnDpPbEuGOPya1hZsIwFBfEInwOeJSctbi5W5WU0FKfXbhflLJN95tyJGAM/4YTbpupNQRYrj8yga+7mIoW9UzVdwKaXxMo09LN4wuh2r2VW+pjEtrngJI+pJSQNd6/r7OHo=
+deploy:
+  provider: releases
+  api_key:
+    secure: wXsRyzXLThmWN2w6m4OatrWGSY6kqdzGxxYK911lClyBYo9DRh4aHh9N8wYEpk4N9pWUiT5NaoYhJzw5O/VlvjatxywIN/waaVKJLN/PanCX5X89GRZY2U6aII0A1t9G00gSGtsVJqazmGW330YW6a2RafhOCUpf0GUfV62h0jXM5EnSlOPJhKsXMbMzK8+U7yh9crlwf1o+UGi8LQqDX4ACCY6xnhZ+Kt8B3kHyf2AK1ybWez0ENqaOBR6BPaCdLxSA837RkSERs+YuevXNnowK9YrLXEPyME4DeP20NRG9Jz0bvKmcRw0Llrin4eKOlZHzhLy9MmjuYOfZQBgdw++L/nS9hlL8gRqnglmeD1sbd6eQaWkgvKVidNzf3LtRBBygw+MGl99IaMuFmB9du5oMdr3bVKkhEHQxfR23psdnXVUTdxI7rDBtYYGeL63+Xm3lTeXJQFxoB3XqvrMk1MNZ8AZHklgjUQ4/A563sOFDM6EimZUIXBjY9OLrznOhl3vEj0UZxoV7zE++u7u2U/u7yAoz5HoeOunHH9NLwtUFR/P7kO0K147JXlQfX4sSqkxokcG+mobUMt6aE6Dtc/YyxgeeU1VcIGoFpJk7tZGfeoW5pXv5d/xKk6HIVRhJCQ6HzX0W6sZ2AmtyG3+jJ4ymRzNJkGbgnB3edHJ7Y24=
+  file: $BUILD_DIR/VDJartnet.bundle
+  branch: master
+  on:
+    repo: VDJartnet/VDJartnet
