@@ -2,7 +2,7 @@ osx_image: xcode8.3
 language: objective-c
 xcode_project: VDJartnet.xcodeproj
 xcode_scheme: VDJartnet
-script: xcodebuild clean && xcodebuild build -project VDJartnet.xcodeproj -scheme VDJartnet
+script: xcodebuild clean && xcodebuild build -project VDJartnet.xcodeproj -scheme VDJartnet -resultBundlePath $BUILD_DIR/VDJartnet.bundle
 before_deploy: zip -r $BUILD_DIR/VDJartnet.bundle.zip $BUILD_DIR/VDJartnet.bundle
 branches:
   only: master
