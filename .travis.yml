@@ -3,7 +3,7 @@ language: objective-c
 xcode_project: VDJartnet.xcodeproj
 xcode_scheme: VDJartnet
 script: xcodebuild clean && xcodebuild build -project VDJartnet.xcodeproj -scheme VDJartnet -resultBundlePath /tmp/VDJartnet.bundle
-before_deploy: zip -r /tmp/VDJartnet.bundle.zip /tmp/VDJartnet.bundle
+before_deploy: zip -r /tmp/VDJartnet.bundle.zip /tmp/VDJartnet.bundle/
 branches:
   only: master
   #except: .*\d+\.\d+\.\d+.*
