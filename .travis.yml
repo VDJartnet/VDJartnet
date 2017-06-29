@@ -6,7 +6,7 @@ script: xcodebuild clean && xcodebuild build -project VDJartnet.xcodeproj -schem
 before_deploy: zip -r /tmp/VDJartnet.bundle.zip /tmp/VDJartnet.bundle/
 branches:
   #only: master
-  only: .*\d+\.\d+\.\d+.*
+  only: /.*\d+\.\d+\.\d+.*/
 notifications:
   slack:
     secure: r8sd/nmD3v/JvGPFcNePKuf8bW2VhiIomsGPixp36FYI3p5VX8DtOi5YCBq/GY96ztVJYS0TYXjiJkXXuY0doi4tPB7rp+g8DvrU2DfYCluvexj4pKiNEZ/wugpaI8+LUl/mVT9k7ol8QFH+CMWjTYx46niPW5CRwaq0dOk6jQaNYnJKF3V5SItsDQJjZ/q9yp+Ly3THw4rENv0CWKrS1Aji7cjE0DAquWHrPVfE/+1ud2Z1Mhf5sHjWbUePPTL5w4KOID/vaJxtD7icLQqGmPK07iTH0pC88nrZSk+8uIxzWynIITw2Jx/Hi51G814e+VlpngWBrcBv97ffIiC21DcmAcnhy6eUtNV6k8xe6PYVvWA8waUWww3soCebu3iad1f0fem0TZFbGTkBWRXy3cCprqCvO8I8AmTC3shs/GXB+1b1SxjaWMhNgAlPN/c9oU9Htmgi/aY2H126Aca4KqnkYFk753P/tcW9kovnCaMgdRyhwU5XEkOOcUXAcC1l07Ty1IgivZXMNWGOQHc3L3NZfNgOsU+HT6Idw07LnDpPbEuGOPya1hZsIwFBfEInwOeJSctbi5W5WU0FKfXbhflLJN95tyJGAM/4YTbpupNQRYrj8yga+7mIoW9UzVdwKaXxMo09LN4wuh2r2VW+pjEtrngJI+pJSQNd6/r7OHo=
