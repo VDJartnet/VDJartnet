@@ -150,7 +150,7 @@ private:
 };
 
 #ifdef VDJartnet_GLOBALIMPLEMENTATION
-CVDJartnet *globalCVDJartnet;
+CVDJartnet* globalCVDJartnet = new CVDJartnet();
 
 void globalUpdate() {
     for (;;) {

@@ -61,7 +61,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
     zed_net_get_address(&address, host.c_str(), port);
     zed_net_udp_socket_open(socket, 64444, 0);
 
-    globalCVDJartnet = this;
+    //globalCVDJartnet = this;
 
     DeclareParameterSwitch(&m_Enable,ID_ENABLE_BUTTON,"Enable","E", true);
     DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
