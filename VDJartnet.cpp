@@ -326,7 +326,7 @@ void CVDJartnet::parseCommandConfigLine(std::string line){
 void CVDJartnet::parseConfigLine(std::string line){
   if(line.at(0) == '@'){
     //include statement
-    //load a second fine and begin a parse on that
+    //load a second file and begin a parse on that
     //included file cannot include hostname
     std::string path = line.substr(1, std::string::npos);
 
@@ -341,8 +341,8 @@ void CVDJartnet::parseConfigLine(std::string line){
   }
 
   if(line.substr(0,2).compare("+C") == 0){
-    std::string rateS = line.substr(2, std::string::npos);
-    checkRate = std::chrono::milliseconds(stoi(rateS));
+    std::string checkS = line.substr(2, std::string::npos);
+    checkRate = std::chrono::milliseconds(stoi(checkS));
   }
 
   //line does not match any special command line so assume it is a channel definition
