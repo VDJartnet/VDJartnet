@@ -106,6 +106,8 @@ public:
 #endif
 
 private:
+    bool loaded = false;
+    
     const int noLength = 3;
     const int noChannels = 512;
 
@@ -138,7 +140,6 @@ private:
 
 
     zed_net_address_t address;
-    zed_net_socket_t* socket = (zed_net_socket_t*)malloc(sizeof(zed_net_socket_t));
 
     void sendArtnetPacket();
     void parseConfigLine(std::string line);
@@ -151,6 +152,8 @@ private:
 
 #ifdef VDJartnet_GLOBALIMPLEMENTATION
 CVDJartnet* globalCVDJartnet = new CVDJartnet();
+zed_net_socket_t* globalCVDJartnetSocket = (zed_net_socket_t*)malloc(sizeof(zed_net_socket_t));
+
 
 void globalUpdate() {
     for (;;) {
@@ -201,6 +204,7 @@ std::istream& safeGetline(std::istream& is, std::string& t)
 }
 #else
 extern CVDJartnet *globalCVDJartnet;
+extern zed_net_socket_t* globalCVDJartnetSocket;
 extern void globalUpdate();
 extern void globalSetup();
 extern std::istream& safeGetline(std::istream& is, std::string& t);

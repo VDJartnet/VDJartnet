@@ -50,28 +50,31 @@
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnLoad() {
     // ADD YOUR CODE HERE WHEN THE PLUGIN IS CALLED
-    m_Enable = 0;
-    m_Refresh = 0;
+    if (!loaded) {
+        loaded = true;
+        
+        m_Enable = 1;
+        m_Refresh = 0;
 
-    for (int i = 0; i < 512; i++) {
-        channelCommands[i] = "";
+        for (int i = 0; i < 512; i++) {
+            channelCommands[i] = "";
+        }
+
+        zed_net_init();
+        zed_net_get_address(&address, host.c_str(), port);
+        zed_net_udp_socket_open(globalCVDJartnetSocket, 64444, 0);
+
+        //globalCVDJartnet = this;
+
+        DeclareParameterSwitch(&m_Enable,ID_ENABLE_BUTTON,"Enable","E", true);
+        DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
+        DeclareParameterButton(&m_Config,ID_CONFIG_BUTTON,"Config","C");
+
+        //OnParameter(ID_REFRESH_BUTTON);
+
+        pollThread = new std::thread(globalUpdate);
+        setupThread = new std::thread(globalSetup);
     }
-
-    zed_net_init();
-    zed_net_get_address(&address, host.c_str(), port);
-    zed_net_udp_socket_open(socket, 64444, 0);
-
-    //globalCVDJartnet = this;
-
-    DeclareParameterSwitch(&m_Enable,ID_ENABLE_BUTTON,"Enable","E", true);
-    DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
-    DeclareParameterButton(&m_Config,ID_CONFIG_BUTTON,"Config","C");
-
-    //OnParameter(ID_REFRESH_BUTTON);
-
-    pollThread = new std::thread(globalUpdate);
-    setupThread = new std::thread(globalSetup);
-
     return S_OK;
 }
 //-----------------------------------------------------------------------------
@@ -99,7 +102,7 @@ ULONG VDJ_API CVDJartnet::Release() {
 #endif
 
 
-    zed_net_socket_close(socket);
+    zed_net_socket_close(globalCVDJartnetSocket);
 
     delete this;
     return 0;
@@ -300,8 +303,8 @@ void CVDJartnet::updateDMXvalues() {
 }
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::sendArtnetPacket() {
-    if (socket != nullptr) {
-        zed_net_udp_socket_send(socket, address, &packet, sizeof(packet));
+    if (globalCVDJartnetSocket != nullptr) {
+        zed_net_udp_socket_send(globalCVDJartnetSocket, address, &packet, sizeof(packet));
         if (packet.sequence == 0xFF) {
             packet.sequence = 1;
         } else {
