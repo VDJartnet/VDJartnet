@@ -71,7 +71,7 @@
 
         [_presetWindow setReleasedWhenClosed: NO];
         [_presetWindow setContentView:presetScrollView];
-        [_presetWindow setTitle: @"presets"];
+        [_presetWindow setTitle: @"Presets"];
         [_presetWindow makeKeyAndOrderFront:self];
         
         [_window setReleasedWhenClosed: NO];
