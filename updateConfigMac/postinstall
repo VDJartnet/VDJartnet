@@ -1,0 +1,18 @@
+#! /bin/sh
+
+configURL=https://go.kepler22b.uk/vdjartnet/config.txt
+configPath=~/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt
+
+if [[ -e $configPath ]]; then
+  curl -o /tmp/configNew.txt -L $configURL
+  cp $configPath /tmp/configOld.txt
+  sed -i "" -E "s/([[:digit:]][[:digit:]][[:digit:]])~.*$/\1/g" /tmp/configOld.txt
+  sed -i "" -E "/^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$/d" /tmp/configOld.txt
+  sed -i "" -E "/^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$/d" /tmp/configNew.txt
+  while read line; do
+    sed -i "" -E "/^$line~.*$/d" /tmp/configNew.txt
+  done </tmp/configOld.txt
+  cat /tmp/configNew >> $configPath
+else
+  curl -o $configPath -L $configURL
+fi

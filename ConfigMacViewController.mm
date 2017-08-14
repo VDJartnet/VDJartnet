@@ -25,8 +25,6 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
-//{Corresponding Source for a non-source form of such a combination shall not
-//include the source code for the parts of VirtualDJ used as well as that of the covered work.}
 
 #import "ConfigMacViewController.h"
 

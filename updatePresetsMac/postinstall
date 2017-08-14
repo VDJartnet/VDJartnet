@@ -1,0 +1,18 @@
+#! /bin/sh
+
+presetsURL=https://go.kepler22b.uk/vdjartnet/presets.txt
+presetsPath=~/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/presets.txt
+
+if [[ -e $presetsPath ]]; then
+  curl -o /tmp/presetsNew.txt -L $presetsURL
+  cp $presetsPath /tmp/presetsOld.txt
+  sed -i "" -E "s/([[:digit:]][[:digit:]][[:digit:]])~.*$/\1/g" /tmp/presetsOld.txt
+  sed -i "" -E "/^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$/d" /tmp/presetsOld.txt
+  sed -i "" -E "/^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$/d" /tmp/presetsNew.txt
+  while read line; do
+    sed -i "" -E "/^$line~.*$/d" /tmp/presetsNew.txt
+  done </tmp/presetsOld.txt
+  cat /tmp/presetsNew >> $presetsPath
+else
+  curl -o $presetsPath -L $presetsURL
+fi
