@@ -14,5 +14,6 @@ if [[ -e $configPath ]]; then
   done </tmp/configOld.txt
   cat /tmp/configNew >> $configPath
 else
+  mkdir -p "$(dirname $configPath)"
   curl -o $configPath -L $configURL
 fi

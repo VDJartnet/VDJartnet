@@ -14,5 +14,6 @@ if [[ -e $presetsPath ]]; then
   done </tmp/presetsOld.txt
   cat /tmp/presetsNew >> $presetsPath
 else
+  mkdir -p "$(dirname $presetsPath)"
   curl -o $presetsPath -L $presetsURL
 fi
