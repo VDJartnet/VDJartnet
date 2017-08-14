@@ -24,7 +24,7 @@ then
 else
   pandocURL="$(curl -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep '"browser_download_url": ".*\.pkg"' | sed -E 's/"browser_download_url": "(.*\.pkg)"/\1/g')"
   curl -o /tmp/pandoc.pkg -L $pandocURL
-  sud0 installer -package /tmp/pandoc.pkg -target /
+  sudo installer -package /tmp/pandoc.pkg -target /
 fi
 
 pandoc -s -S -f markdown_github -t html ./README.md -o $buildDir/README.html
