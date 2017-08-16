@@ -102,8 +102,6 @@ public:
 #endif
 
 private:
-    bool loaded = false;
-    
     const int noLength = 3;
     const int noChannels = 512;
 
@@ -147,8 +145,9 @@ private:
 };
 
 #ifdef VDJartnet_GLOBALIMPLEMENTATION
-CVDJartnet* globalCVDJartnet = new CVDJartnet();
+CVDJartnet* globalCVDJartnet = (CVDJartnet*)malloc(sizeof(CVDJartnet));
 zed_net_socket_t* globalCVDJartnetSocket = (zed_net_socket_t*)malloc(sizeof(zed_net_socket_t));
+bool globalCVDJartnetLoaded = false;
 
 
 void globalUpdate() {
@@ -201,6 +200,7 @@ std::istream& safeGetline(std::istream& is, std::string& t)
 #else
 extern CVDJartnet *globalCVDJartnet;
 extern zed_net_socket_t* globalCVDJartnetSocket;
+extern bool globalCVDJartnetLoaded;
 extern void globalUpdate();
 extern void globalSetup();
 extern std::istream& safeGetline(std::istream& is, std::string& t);

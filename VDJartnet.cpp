@@ -46,8 +46,8 @@
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnLoad() {
     // ADD YOUR CODE HERE WHEN THE PLUGIN IS CALLED
-    if (!loaded) {
-        loaded = true;
+    if (!globalCVDJartnetLoaded) {
+        globalCVDJartnetLoaded = true;
         
         m_Enable = 1;
         m_Refresh = 0;
@@ -58,15 +58,12 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
 
         zed_net_init();
         zed_net_get_address(&address, host.c_str(), port);
+        zed_net_socket_close(globalCVDJartnetSocket);
         zed_net_udp_socket_open(globalCVDJartnetSocket, 64444, 0);
-
-        //globalCVDJartnet = this;
 
         DeclareParameterSwitch(&m_Enable,ID_ENABLE_BUTTON,"Enable","E", true);
         DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
         DeclareParameterButton(&m_Config,ID_CONFIG_BUTTON,"Config","C");
-
-        //OnParameter(ID_REFRESH_BUTTON);
 
         pollThread = new std::thread(globalUpdate);
         setupThread = new std::thread(globalSetup);
@@ -96,7 +93,6 @@ ULONG VDJ_API CVDJartnet::Release() {
         configWindow = nullptr;
     }
 #endif
-
 
     zed_net_socket_close(globalCVDJartnetSocket);
 
@@ -190,63 +186,15 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
     case ID_CONFIG_BUTTON:
     if (m_Config == 1) {
         do {
-            //char path[256];
-            //GetStringInfo("get_vdj_folder", path, 256);
-
-            #if (defined(VDJ_WIN))
-
+#if (defined(VDJ_WIN))
             configWindow = createConfigWindow(this);
-
-            //strcat(path, getenv("USERPROFILE"));
-            //strcat(path, "\\artnet.cfg");
-            //strcat(path, ".\\Documents\\VirtualDJ\\artnet.cfg");
-
-            //wchar_t* pathW = nullptr;
-            //SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_DEFAULT, nullptr, (PWSTR*)pathW);
-            //wcstombs(path, pathW, 256);
-
-            //strcat(path, "S:\\Documents\\VirtualDJ\\Plugins\\AutoStart\\VDJartnet\\config.txt");
-
-            //strcat(path, "\\Plugins\\AutoStart\\VDJartnet\\config.winapp\\config.exe");
-
-            //STARTUPINFO si;
-            //PROCESS_INFORMATION pi;
-
-            //ZeroMemory( &si, sizeof(si) );
-            //si.cb = sizeof(si);
-            //ZeroMemory( &pi, sizeof(pi) );
-
-            //CreateProcess(path, nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi);
-
-            #elif (defined(VDJ_MAC))
-
-//            if (![[configWindow window] isVisible]) {
+#elif (defined(VDJ_MAC))
             if (configWindow != nullptr) {
                 CFRelease(configWindow);
                 configWindow = nullptr;
             }
             configWindow = (__bridge_retained void*)[[ConfigWindow alloc] initWithVDJartnet: this];
-//            }
-
-/*
-            //strcat(path, getenv("HOME"));
-            //strcat(path, "/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt");
-
-            strcat(path, "/Plugins64/AutoStart/VDJartnet/config.app");
-
-
-            //system(path);
-
-            //CFURLRef url = CFURLCreateWithString(nullptr, CFStringCreateWithCString(nullptr, path, kCFStringEncodingASCII), nullptr);
-            //CFArrayRef urls = CFArrayCreate(kCFAllocatorDefault, [url], 1, nullptr);
-
-            //LSOpenCFURLRef(url, nullptr);
-            //LSOpenURLsWithRole(urls, kLSRolesShell, nullptr, nullptr, nullptr, 0);
-
-            //NSWorkspace.sharedWorkspace->launchApplication([NSString stringWithUTF8String:path]);
-            [[NSWorkspace sharedWorkspace] launchApplication: [NSString stringWithUTF8String:path]];
-*/
-    #endif
+#endif
         } while (0);
     }
     break;
