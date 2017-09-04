@@ -16,15 +16,15 @@
         <line choice="uk.kepler22b.vdjartnet.config"/>
         <line choice="uk.kepler22b.vdjartnet.presets"/>
       </choices-outline>
-      <choice id="uk.kepler22b.vdjartnet.vdjartnet" description="Install VDJartnet" title="VDJartnet" enabled="false" visible="true">
+      <choice id="uk.kepler22b.vdjartnet.vdjartnet" title="VDJartnet" description="Install VDJartnet" enabled="false" visible="true">
         <pkg-ref id="uk.kepler22b.vdjartnet.vdjartnet"/>
       </choice>
       <pkg-ref id="uk.kepler22b.vdjartnet.vdjartnet" version="0" onConclusion="none">component-vdjartnet.pkg</pkg-ref>
-      <choice id="uk.kepler22b.vdjartnet.config" description="Install updated config.txt" title="config.txt" visible="true" start_selected="true" enabled="system.run(&quot;if [[ -e \&quot;~/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt\&quot; ]]; then exit 0; else exit 1; fi&quot;)">
+      <choice id="uk.kepler22b.vdjartnet.config" title="config.txt" description="Install updated config.txt" visible="true" start_selected="true" enabled="system.run(&quot;if [[ -e \&quot;~/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/config.txt\&quot; ]]; then exit 0; else exit 1; fi&quot;)">
         <pkg-ref id="uk.kepler22b.vdjartnet.config"/>
       </choice>
       <pkg-ref id="uk.kepler22b.vdjartnet.config" version="0" onConclusion="none">component-config.pkg</pkg-ref>
-      <choice id="uk.kepler22b.vdjartnet.presets" description="Install updated presets.txt" title="presets.txt" visible="true" start_selected="true" enabled="system.run(&quot;if [[ -e \&quot;~/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/presets.txt\&quot; ]]; then exit 0; else exit 1; fi&quot;)">
+      <choice id="uk.kepler22b.vdjartnet.presets" title="presets.txt" description="Install updated presets.txt" visible="true" start_selected="true" enabled="system.run(&quot;if [[ -e \&quot;~/Documents/VirtualDJ/Plugins64/AutoStart/VDJartnet/presets.txt\&quot; ]]; then exit 0; else exit 1; fi&quot;)">
         <pkg-ref id="uk.kepler22b.vdjartnet.presets"/>
       </choice>
       <pkg-ref id="uk.kepler22b.vdjartnet.presets" version="0" onConclusion="none">component-presets.pkg</pkg-ref>

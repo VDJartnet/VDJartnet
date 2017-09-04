@@ -1,0 +1,22 @@
+version: 0.2.{build}
+skip_non_tags: true
+image: Visual Studio 2017
+build_script:
+- cmd: .\buildPackageWin.bat
+artifacts:
+- path: .\VDJartnet.dll
+  name: DLL
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: onlf1RIaslpMcyN4fJCFFm1B/+ar+qwh4xaOy/7BWJiqbBfuIkf4BB/ljtBHlGBF
+  artifact: DLL
+  prerelease: true
+notifications:
+- provider: Slack
+  incoming_webhook:
+    secure: xnZ00LjjrPhBKbNKxbx0I83KJSTADV4h0MtsjFmXE6rRt+yFjbYN3CA8HwDpg5KA0BWIAPsJ2V61Cq5NX+8sHYPIYR5pcEIGU2DFF87metY=
+  channel: '#vdjartnet'
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true

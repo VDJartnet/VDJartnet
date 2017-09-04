@@ -1,3 +1,5 @@
 packages/
 *.obj
 *.dll
+*.wixobj
+*.msi
