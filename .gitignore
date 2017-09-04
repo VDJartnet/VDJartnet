@@ -2,4 +2,8 @@ packages/
 *.obj
 *.dll
 *.wixobj
+*.wixpdb
 *.msi
+*.exp
+*.lib
+*.DS_Store
