@@ -30,7 +30,7 @@
           <Directory Id="Plugins" Name="Plugins">
             <Directory Id="AutoStart" Name="AutoStart">
 
-              <Component Id="VDJartnet.dll" Guid="542e0393-7ed1-4d90-b3ea-eea2a6dac2af">
+              <Component Id="VDJartnet.dll" Guid="542e0393-7ed1-4d90-b3ea-eea2a6dac2af" Location="local">
                 <RemoveFolder Id="VirtualDJRemove" Directory="VirtualDJ" On="uninstall" />
                 <RemoveFolder Id="PluginsRemove" Directory="Plugins" On="uninstall" />
                 <RemoveFolder Id="AutoStartRemove" Directory="AutoStart" On="uninstall" />
@@ -40,13 +40,13 @@
 
               <Directory Id="VDJartnet" Name="VDJartnet">
 
-                <Component Id="config.txt" Guid="cdb51818-5d0a-43f9-b66d-2136734aca9d">
+                <Component Id="config.txt" Guid="cdb51818-5d0a-43f9-b66d-2136734aca9d" Location="local">
                   <RemoveFolder Id="VDJartnetRemoveConfig" On="uninstall" />
 			      <RegistryValue Root="HKCU" Key="Software\VDJartnet\configtxt" Type="string" Name="configtxt" Value="configtxt" KeyPath="yes" />
                   <File Id="config.txt" Name="config.txt" Source="$(env.TEMP)\config.txt" Vital="no" />
                 </Component>
 
-                <Component Id="presets.txt" Guid="338f7bde-1f30-438e-90d2-08412c63b081">
+                <Component Id="presets.txt" Guid="338f7bde-1f30-438e-90d2-08412c63b081" Location="local">
                   <RemoveFolder Id="VDJartnetRemovePresets" On="uninstall" />
 			      <RegistryValue Root="HKCU" Key="Software\VDJartnet\presetstxt" Type="string" Name="presetstxt" Value="presetstxt" KeyPath="yes" />
                   <File Id="presets.txt" Name="presets.txt" Source="$(env.TEMP)\presets.txt" Vital="no" />
@@ -71,18 +71,18 @@
       </DirectorySearch>
     </Property>
 
-    <Feature Id="VDJartnet.dll" Title="VDJartnet" Description="Install VDJartnet" Level="1" Absent="disallow">
+    <Feature Id="VDJartnet.dll" Title="VDJartnet" Description="Install VDJartnet" Level="1" Absent="disallow" AllowAdvertise="no">
       <ComponentRef Id="VDJartnet.dll" />
     </Feature>
 
-    <Feature Id="config.txt" Title="config.txt" Description="Install updated config.txt" Level="1" Absent="allow">
+    <Feature Id="config.txt" Title="config.txt" Description="Install updated config.txt" Level="1" Absent="allow" AllowAdvertise="no">
       <ComponentRef Id="config.txt" />
       <Condition Level="0">
         CONFIGEXISTS
       </Condition>
     </Feature>
 
-    <Feature Id="presets.txt" Title="presets.txt" Description="Install updated presets.txt" Level="1" Absent="allow">
+    <Feature Id="presets.txt" Title="presets.txt" Description="Install updated presets.txt" Level="1" Absent="allow" AllowAdvertise="no">
       <ComponentRef Id="presets.txt" />
       <Condition Level="0">
         PRESETSEXISTS
@@ -92,15 +92,17 @@
     <WixVariable Id="WixUIReadmeRtf" Value="README.rtf" />
     <WixVariable Id="WixUILicenseRtf" Value="COPYING" />
 
-    <!--<UI Id="MyWixUI_Mondo">-->
+    <UI Id="MyWixUI_FeatureTree">
       <UIRef Id="WixUI_FeatureTree" />
       <UIRef Id="WixUI_ErrorProgressText" />
-<!--
+
       <DialogRef Id="ReadmeDlg" />
 
       <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ReadmeDlg">NOT Installed</Publish>
+      <Publish Dialog="ReadmeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+      <Publish Dialog="ReadmeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
       <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="ReadmeDlg">1</Publish>
     </UI>
--->
+
   </Product>
 </Wix>

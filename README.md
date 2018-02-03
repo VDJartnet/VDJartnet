@@ -24,3 +24,7 @@ Additional configuration files may be included by adding a line \@\<file path\> 
 002~var $artnet 1 ? get_constant 255 : get_constant 0
 //sends a value of 255 to artnet channel 2 if the variable $artnet equals 1, otherwise sends a value of 0
 ```
+## For help
+* Visit the wiki at https://github.com/VDJartnet/VDJartnet/wiki
+* Ask on https://gitter.im/VDJartnet
+* Email VDJ.artnet@gmail.com
