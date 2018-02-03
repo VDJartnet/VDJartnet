@@ -14,6 +14,14 @@
 		6842A79C1F006145009EC942 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
 		6842A79D1F00614A009EC942 /* ConfigMacTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA871EE206F700335D50 /* ConfigMacTableView.m */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		68F9E8531F981DAF002F8CEF /* ReadmeDlg.wxs in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */; };
+		68F9E8541F981DAF002F8CEF /* buildPackageWin.bat in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */; };
+		68F9E8551F981DAF002F8CEF /* buildPackageMac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */; };
+		68F9E8561F981DAF002F8CEF /* distributionTransformMac.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8511F981DAE002F8CEF /* distributionTransformMac.xsl */; };
+		68F9E8571F981DAF002F8CEF /* winInstaller.wxs in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8521F981DAF002F8CEF /* winInstaller.wxs */; };
+		68F9E85C1F981DBC002F8CEF /* postinstall in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8591F981DBC002F8CEF /* postinstall */; };
+		68F9E85D1F981DBC002F8CEF /* postinstall in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85B1F981DBC002F8CEF /* postinstall */; };
+		68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +46,16 @@
 		686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinDataSource.hpp; sourceTree = "<group>"; };
 		68B464111E4F7F21002523CD /* zed_net-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "zed_net-master"; sourceTree = "<group>"; };
 		68C4F73E1EACE18B007C4A7D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReadmeDlg.wxs; sourceTree = "<group>"; };
+		68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = buildPackageWin.bat; sourceTree = "<group>"; };
+		68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildPackageMac.sh; sourceTree = "<group>"; };
+		68F9E8511F981DAE002F8CEF /* distributionTransformMac.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = distributionTransformMac.xsl; sourceTree = "<group>"; };
+		68F9E8521F981DAF002F8CEF /* winInstaller.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = winInstaller.wxs; sourceTree = "<group>"; };
+		68F9E8591F981DBC002F8CEF /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
+		68F9E85B1F981DBC002F8CEF /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
+		68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VDJartnet.plist; sourceTree = "<group>"; };
+		68F9E8601F981E10002F8CEF /* ConfigWinTableView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinTableView.hpp; sourceTree = "<group>"; };
+		68F9E8611F981E10002F8CEF /* ConfigWinPresetDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinPresetDataSource.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				686A93D11E4D291B002C7ED1 /* VDJartnet */,
+				68F9E85E1F981DC5002F8CEF /* Installers */,
 				686A93D01E4D291B002C7ED1 /* Products */,
 				686A93E41E4E57FD002C7ED1 /* Frameworks */,
 			);
@@ -91,6 +110,8 @@
 				686CB3AB1EE30495008A8883 /* ConfigWin.cpp */,
 				686CB3AC1EE30495008A8883 /* ConfigWin.hpp */,
 				686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */,
+				68F9E8611F981E10002F8CEF /* ConfigWinPresetDataSource.hpp */,
+				68F9E8601F981E10002F8CEF /* ConfigWinTableView.hpp */,
 			);
 			name = VDJartnet;
 			sourceTree = "<group>";
@@ -101,6 +122,37 @@
 				68C4F73E1EACE18B007C4A7D /* AppKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68F9E8581F981DBC002F8CEF /* updateConfigMac */ = {
+			isa = PBXGroup;
+			children = (
+				68F9E8591F981DBC002F8CEF /* postinstall */,
+			);
+			path = updateConfigMac;
+			sourceTree = "<group>";
+		};
+		68F9E85A1F981DBC002F8CEF /* updatePresetsMac */ = {
+			isa = PBXGroup;
+			children = (
+				68F9E85B1F981DBC002F8CEF /* postinstall */,
+			);
+			path = updatePresetsMac;
+			sourceTree = "<group>";
+		};
+		68F9E85E1F981DC5002F8CEF /* Installers */ = {
+			isa = PBXGroup;
+			children = (
+				68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */,
+				68F9E8511F981DAE002F8CEF /* distributionTransformMac.xsl */,
+				68F9E8581F981DBC002F8CEF /* updateConfigMac */,
+				68F9E85A1F981DBC002F8CEF /* updatePresetsMac */,
+				68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */,
+				68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */,
+				68F9E8521F981DAF002F8CEF /* winInstaller.wxs */,
+				68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */,
+			);
+			name = Installers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +212,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F9E8541F981DAF002F8CEF /* buildPackageWin.bat in Resources */,
+				68F9E8551F981DAF002F8CEF /* buildPackageMac.sh in Resources */,
+				68F9E85C1F981DBC002F8CEF /* postinstall in Resources */,
+				68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */,
+				68F9E8561F981DAF002F8CEF /* distributionTransformMac.xsl in Resources */,
+				68F9E8531F981DAF002F8CEF /* ReadmeDlg.wxs in Resources */,
+				68F9E8571F981DAF002F8CEF /* winInstaller.wxs in Resources */,
+				68F9E85D1F981DBC002F8CEF /* postinstall in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
