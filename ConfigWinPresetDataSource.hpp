@@ -41,6 +41,7 @@
 
 #define NODLLEXPORT
 #include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "windows.h" 
 
@@ -59,7 +60,7 @@ public:
             return _name;
         }
         void set(String^ newVal) {
-			_name = newVal;
+            _name = newVal;
         }
     }
 
@@ -68,7 +69,7 @@ public:
             return _preset;
         }
         void set(String^ newVal) {
-			_preset = newVal;
+            _preset = newVal;
         }
     }
 
@@ -76,7 +77,12 @@ public:
         _name = nameTMP;
         _preset = presetTMP;
     }
-	
+
+    ConfigPresetRowString(Preset preset) {
+        _name = preset.name;
+        _preset = preset.preset;
+    }
+    
 private:
     String^ _name;
     String^ _preset;
@@ -92,23 +98,11 @@ public:
 
         DataSource = gcnew System::Collections::Generic::List<ConfigPresetRowString^>(512);
 
-        if (_vdjArtnet->presetFin->is_open()) {
-            _vdjArtnet->presetFin->clear();
-            _vdjArtnet->presetFin->seekg(0);
-            std::string line;
-            safeGetline(*(_vdjArtnet->presetFin), line);
-            while (line != "") {
-                int posOfDelim = (int)line.find('~'); //Convert unsigned long to int explicitly to stop compiler complaining
-                String^ name = gcnew String(line.substr(0, posOfDelim).c_str());
-                String^ preset = gcnew String(line.substr(posOfDelim + 1, std::string::npos).c_str());
-
-				DataSource->Add(gcnew ConfigPresetRowString(name, preset));
-                safeGetline(*(_vdjArtnet->presetFin), line);
-            }
-            _vdjArtnet->presetFin->clear();
-            _vdjArtnet->presetFin->seekg(0);
+        for (int i = 0; i < _vdjArtnet->config->getPresets().size()) {
+            DataSource->Add(gcnew ConfigPresetRowString(_vdjArtnet->config->getPresets()[i]));
         }
     }
 };
 
 #endif /* ConfigWinPresetDataSource_hpp */
+

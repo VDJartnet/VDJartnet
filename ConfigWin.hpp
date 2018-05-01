@@ -29,12 +29,14 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
+
+#ifndef ConfigWin_hpp
+#define ConfigWin_hpp
+
 #ifdef CLRFREE
 extern void* createConfigWindow(CVDJartnet* vdjArtnet);
 extern void closeConfigWindow(void* configWindow);
 #else
-#ifndef ConfigWin_hpp
-#define ConfigWin_hpp
 
 #include <stdio.h>
 
@@ -60,52 +62,52 @@ public:
     CVDJartnet* _vdjArtnet;
 
     ConfigWindow(CVDJartnet* vdjArtnetTMP);
-	void reLayout(Object^ sender, LayoutEventArgs^ e);
-	void reLayoutPreset(Object^ sender, LayoutEventArgs^ e);
-	void didClose(Object^ sender, FormClosedEventArgs^ e);
-	void updateIPaddress(Object^ sender, EventArgs^ e);
-	void ipKeyDown(Object^ sender, KeyEventArgs^ e);
-	void tableViewKeyDown(Object^ sender, KeyEventArgs^ e);
-//	void tableViewKeyDown(Message% msg, Keys keyData);
-	void tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e);
-	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
-	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
-	void presetTableViewMouseDown(Object^ sender, MouseEventArgs^ e);
-	void presetTableViewMouseMove(Object^ sender, MouseEventArgs^ e);
-	void tableViewDragEnter(Object^ sender, DragEventArgs^ e);
-	void tableViewDragDrop(Object^ sender, DragEventArgs^ e);
-	void hide();
+    void reLayout(Object^ sender, LayoutEventArgs^ e);
+    void reLayoutPreset(Object^ sender, LayoutEventArgs^ e);
+    void didClose(Object^ sender, FormClosedEventArgs^ e);
+    void updateIPaddress(Object^ sender, EventArgs^ e);
+    void ipKeyDown(Object^ sender, KeyEventArgs^ e);
+    void tableViewKeyDown(Object^ sender, KeyEventArgs^ e);
+//    void tableViewKeyDown(Message% msg, Keys keyData);
+    void tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e);
+    void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+    void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+    void presetTableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+    void presetTableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+    void tableViewDragEnter(Object^ sender, DragEventArgs^ e);
+    void tableViewDragDrop(Object^ sender, DragEventArgs^ e);
+    void hide();
 protected:
     Form^ window;
-	Label^ ipLabel;
-	TextBox^ ipAddress;
+    Label^ ipLabel;
+    TextBox^ ipAddress;
     DataGridView^ tableView;
     ConfigDataSource^ dataSource;
-	
-	Form^ presetWindow;
+    
+    Form^ presetWindow;
     DataGridView^ presetTableView;
     ConfigPresetDataSource^ presetDataSource;
-	
+    
 private:
-	DataGridViewRow^ rowToDrag;
-	System::Drawing::Rectangle dragBoxFromMouseDown;
+    DataGridViewRow^ rowToDrag;
+    System::Drawing::Rectangle dragBoxFromMouseDown;
 
 };
 
 class ConfigWindowNative {
 public:
-	msclr::gcroot<ConfigWindow^> configWindow;
-	
-	ConfigWindowNative(CVDJartnet* vdjArtnet) : configWindow(gcnew ConfigWindow(vdjArtnet)) {}
+    msclr::gcroot<ConfigWindow^> configWindow;
+    
+    ConfigWindowNative(CVDJartnet* vdjArtnet) : configWindow(gcnew ConfigWindow(vdjArtnet)) {}
 };
 
 void* createConfigWindow(CVDJartnet* vdjArtnet) {
-	return new ConfigWindowNative(vdjArtnet);
+    return new ConfigWindowNative(vdjArtnet);
 }
 
 void closeConfigWindow(void* configWindow) {
-	((ConfigWindowNative*)configWindow)->configWindow->hide();
+    ((ConfigWindowNative*)configWindow)->configWindow->hide();
 }
 
-#endif /* ConfigWin_hpp */
 #endif // CLRFREE
+#endif /* ConfigWin_hpp */

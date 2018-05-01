@@ -40,13 +40,12 @@
 
 #include "vdjPlugin8.h"
 
-#define noTCP
-#include "zed_net-master/zed_net.h"
+#include "Config.hpp"
+#include "Artnet.hpp"
 
 #include <string>
 #include <fstream>
 #include <chrono>
-//using namespace std::chrono_literals;
 
 #include <iostream>
 
@@ -64,6 +63,12 @@
 
 class CVDJartnet : public IVdjPlugin8 {
 public:
+    static CVDJartnet* getInstance() {
+        static CVDJartnet* instance = (CVDJartnet*)malloc(sizeof(CVDJartnet));
+        return instance;
+    }
+    static bool isLoaded = false;
+
     int m_Enable;
     int m_Refresh;
     int m_Config;
@@ -75,7 +80,7 @@ public:
     HRESULT VDJ_API OnParameter(int id);
     HRESULT VDJ_API OnGetParameterString(int id, char *outParam, int outParamSize);
 
-    std::chrono::milliseconds checkRate = std::chrono::milliseconds(10);
+    void init();
 
     void updateDMXvalues();
 
@@ -87,12 +92,7 @@ public:
     ID_SAVE
     } ID_Interface;
 
-    std::string host = "127.0.0.1";
-    const unsigned short port = 0x1936;
-    
-    std::string channelCommands[512];
-
-    std::ifstream* presetFin;
+    Config* config;
 
 #ifdef VDJ_MAC
     void* configWindow;
@@ -102,108 +102,13 @@ public:
 #endif
 
 private:
-    const int noLength = 3;
-    const int noChannels = 512;
+    Artnet artnet;
 
-    typedef struct _ArtNetPacket {
-        //uint8_t header[8] = "Art-Net";
-        uint8_t header0 = 'A';
-        uint8_t header1 = 'r';
-        uint8_t header2 = 't';
-        uint8_t header3 = '-';
-        uint8_t header4 = 'N';
-        uint8_t header5 = 'e';
-        uint8_t header6 = 't';
-        uint8_t header7 = 0;
-        uint8_t opcodeLo = 0x00;
-        uint8_t opcodeHi = 0x50;
-        uint8_t versionHi = 00;
-        uint8_t versionLo = 14;
-        uint8_t sequence = 1;
-        uint8_t physical = 0;
-        uint8_t universeLo = 0;
-        uint8_t universeHi = 0;
-        uint8_t lengthHi = 0x02;
-        uint8_t lengthLo = 0x00;
-        uint8_t data[512];
-    } ArtNetPacket;
-
-    ArtNetPacket packet;
     int skippedPackets = 0;
     int skipPacketLimit = 10;
 
-
-    zed_net_address_t address;
-
-    void sendArtnetPacket();
-    void parseConfigLine(std::string line);
-    void parseCommandConfigLine(std::string line);
-    void loadConfigNoHost(std::string path);
-
-    void* pollThread; //std::thread
     void* setupThread; //std::thread
+    void* pollThread; //std::thread
 };
-
-#ifdef VDJartnet_GLOBALIMPLEMENTATION
-CVDJartnet* globalCVDJartnet = (CVDJartnet*)malloc(sizeof(CVDJartnet));
-zed_net_socket_t* globalCVDJartnetSocket = (zed_net_socket_t*)malloc(sizeof(zed_net_socket_t));
-bool globalCVDJartnetLoaded = false;
-
-
-void globalUpdate() {
-    for (;;) {
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        globalCVDJartnet->updateDMXvalues();
-        //std::this_thread::sleep_for(10ms);
-        std::this_thread::sleep_until(start + globalCVDJartnet->checkRate);
-    }
-}
-
-void globalSetup() {
-    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-    std::this_thread::sleep_until(start + std::chrono::seconds(1));
-    globalCVDJartnet->OnParameter(globalCVDJartnet->ID_REFRESH_BUTTON);
-}
-
-std::istream& safeGetline(std::istream& is, std::string& t)
-{
-    t.clear();
-
-    // The characters in the stream are read one-by-one using a std::streambuf.
-    // That is faster than reading them one-by-one using the std::istream.
-    // Code that uses streambuf this way must be guarded by a sentry object.
-    // The sentry object performs various tasks,
-    // such as thread synchronization and updating the stream state.
-
-    std::istream::sentry se(is, true);
-    std::streambuf* sb = is.rdbuf();
-
-    for(;;) {
-        int c = sb->sbumpc();
-        switch (c) {
-            case '\n':
-                return is;
-            case '\r':
-                if(sb->sgetc() == '\n')
-                    sb->sbumpc();
-                return is;
-            case EOF:
-                // Also handle the case when the last line has no line ending
-                if(t.empty())
-                    is.setstate(std::ios::eofbit);
-                return is;
-            default:
-                t += (char)c;
-        }
-    }
-}
-#else
-extern CVDJartnet *globalCVDJartnet;
-extern zed_net_socket_t* globalCVDJartnetSocket;
-extern bool globalCVDJartnetLoaded;
-extern void globalUpdate();
-extern void globalSetup();
-extern std::istream& safeGetline(std::istream& is, std::string& t);
-#endif
 
 #endif /* VDJartnet_hpp */
