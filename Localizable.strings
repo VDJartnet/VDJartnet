@@ -1,0 +1,36 @@
+/* DMX Channel */
+"Channel" = "Channel";
+
+/* Copy menu item */
+"Copy" = "Copy";
+
+/* Delete menu item */
+"Delete" = "Delete";
+
+/* Edit menu title */
+"Edit" = "Edit";
+
+/* No comment provided by engineer. */
+"IP address:" = "IP address:";
+
+/* Name of preset */
+"Name" = "Name";
+
+/* Paste menu item */
+"Paste" = "Paste";
+
+/* Presets window title */
+"Presets" = "Presets";
+
+/* Redo menu item */
+"Redo" = "Redo";
+
+/* Undo menu item */
+"Undo" = "Undo";
+
+/* Config window title */
+"VDJartnetConfig" = "VDJartnetConfig";
+
+/* No comment provided by engineer. */
+"VDJscript" = "VDJscript";
+

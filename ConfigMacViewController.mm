@@ -38,9 +38,9 @@
     _tableView = [[ConfigTableView alloc] init];
     [_tableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"Channel"]];
     [_tableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"VDJscript"]];
-    [[_tableView tableColumns][0] setTitle:@"Channel"];
+    [[_tableView tableColumns][0] setTitle:NSLocalizedString(@"Channel", @"DMX Channel")];
     [[_tableView tableColumns][0] setEditable:NO];
-    [[_tableView tableColumns][1] setTitle:@"VDJscript"];
+    [[_tableView tableColumns][1] setTitle:NSLocalizedString(@"VDJscript", @"")];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [_tableView reloadData];
@@ -60,7 +60,7 @@
     [[self view] addSubview:_ipAddress];
 
     _ipLabel = [[NSTextField alloc] initWithFrame:CGRectMake(0,100,100,30)];
-    _ipLabel.stringValue = @"IP address:";
+    _ipLabel.stringValue = NSLocalizedString(@"IP address:", @"");
     [_ipLabel setEditable:NO];
     [_ipLabel setSelectable:NO];
     [_ipLabel setBordered:NO];
@@ -109,7 +109,7 @@
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
     [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [pboard setString:[self tableView:tableView objectValueForTableColumn:[tableView tableColumns][1] row:[rowIndexes firstIndex]] forType:NSStringPboardType];
+    [pboard setString:[self tableView:tableView objectValueForTableColumn:[tableView tableColumns][1] row:(NSInteger)[rowIndexes firstIndex]] forType:NSStringPboardType];
 
     return YES;
 }

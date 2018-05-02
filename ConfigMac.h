@@ -31,6 +31,7 @@
 
 #include <stdio.h>
 
+#include <CoreFoundation/CoreFoundation.h>
 #include <AppKit/AppKit.h>
 
 #ifdef __cplusplus
@@ -48,8 +49,8 @@
 - (id) initWithVDJartnet:(CVDJartnet*)vdjArtnet;
 - (void) dealloc;
 
-- (void) copy;
-- (void) paste;
+- (void) copyRow;
+- (void) pasteRow;
 - (void) deleteRow;
 @end
 

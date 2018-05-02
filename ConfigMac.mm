@@ -41,8 +41,8 @@
 
 - (id) initWithVDJartnet:(CVDJartnet*)vdjArtnet {
     if ( self = [super init] ) {
-        _window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 600, 600) styleMask:(NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView) backing:NSBackingStoreRetained defer:false screen:nullptr];
-        _presetWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(600, 0, 200, 600) styleMask:(NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView) backing:NSBackingStoreRetained defer:false screen:nullptr];
+        _window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 600, 600) styleMask:(NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView) backing:NSBackingStoreBuffered defer:false screen:nullptr];
+        _presetWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(600, 0, 200, 600) styleMask:(NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView) backing:NSBackingStoreBuffered defer:false screen:nullptr];
 //        windowController = [[NSWindowController alloc] initWithWindow:_window];
 //        [windowController showWindow:self];
 
@@ -51,7 +51,7 @@
 
         presetTableView = [[ConfigTableView alloc] initWithFrame:[_presetWindow frame]];
         [presetTableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"Names"]];
-        [[presetTableView tableColumns][0] setTitle:@"Name"];
+        [[presetTableView tableColumns][0] setTitle:NSLocalizedString(@"Name", @"Name of preset")];
         [[presetTableView tableColumns][0] setEditable:NO];
         [presetTableView setHeaderView:nil];
 
@@ -69,43 +69,43 @@
 
         [_presetWindow setReleasedWhenClosed: NO];
         [_presetWindow setContentView:presetScrollView];
-        [_presetWindow setTitle: @"Presets"];
+        [_presetWindow setTitle: NSLocalizedString(@"Presets", @"Presets window title")];
         [_presetWindow makeKeyAndOrderFront:self];
         
         [_window setReleasedWhenClosed: NO];
         [_window setContentView:[viewController view]];
         [_window setDelegate:viewController];
-        [_window setTitle: @"VDJartnetConfig"];
+        [_window setTitle: NSLocalizedString(@"VDJartnetConfig", @"Config window title")];
         [_window makeKeyAndOrderFront:self];
 
-        NSMenu* editMenu = [[NSMenu alloc] initWithTitle:@"Edit"];
+        NSMenu* editMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Edit", @"Edit menu title")];
 
-        NSMenuItem* undoItem = [[NSMenuItem alloc] initWithTitle:@"Undo" action:@selector(undo) keyEquivalent:@"z"];
+        NSMenuItem* undoItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Undo", @"Undo menu item") action:@selector(undo) keyEquivalent:@"z"];
         [undoItem setTarget:[_window undoManager]];
         [undoItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
         [editMenu addItem:undoItem];
 
-        NSMenuItem* redoItem = [[NSMenuItem alloc] initWithTitle:@"Redo" action:@selector(redo) keyEquivalent:@"z"];
+        NSMenuItem* redoItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Redo", @"Redo menu item") action:@selector(redo) keyEquivalent:@"z"];
         [redoItem setTarget:[_window undoManager]];
         [redoItem setKeyEquivalentModifierMask:(NSEventModifierFlagCommand | NSEventModifierFlagShift)];
         [editMenu addItem:redoItem];
 
-        NSMenuItem* copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy" action:@selector(copy) keyEquivalent:@"c"];
+        NSMenuItem* copyItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Copy", @"Copy menu item") action:@selector(copyRow) keyEquivalent:@"c"];
         [copyItem setTarget:self];
         [copyItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
         [editMenu addItem:copyItem];
 
-        NSMenuItem* pasteItem = [[NSMenuItem alloc] initWithTitle:@"Paste" action:@selector(paste) keyEquivalent:@"v"];
+        NSMenuItem* pasteItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Paste", @"Paste menu item") action:@selector(pasteRow) keyEquivalent:@"v"];
         [pasteItem setTarget:self];
         [pasteItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
         [editMenu addItem:pasteItem];
 
-        NSMenuItem* deleteItem = [[NSMenuItem alloc] initWithTitle:@"Delete" action:@selector(deleteRow) keyEquivalent:[NSString stringWithFormat:@"%c", NSBackspaceCharacter]];
+        NSMenuItem* deleteItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Delete", @"Delete menu item") action:@selector(deleteRow) keyEquivalent:[NSString stringWithFormat:@"%c", NSBackspaceCharacter]];
         [deleteItem setTarget:self];
         [deleteItem setKeyEquivalentModifierMask:0];
         [editMenu addItem:deleteItem];
 
-        editMenuItem = [[[NSApplication sharedApplication] mainMenu] addItemWithTitle:@"Edit" action:nil keyEquivalent:@""];
+        editMenuItem = [[[NSApplication sharedApplication] mainMenu] addItemWithTitle:NSLocalizedString(@"Edit", @"Edit menu title") action:nil keyEquivalent:@""];
         [editMenuItem setSubmenu:editMenu];
 
         return self;
@@ -120,18 +120,18 @@
     [[[NSApplication sharedApplication] mainMenu] removeItem:editMenuItem];
 }
 
-- (void) copy {
+- (void) copyRow {
     [[NSPasteboard generalPasteboard] declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [[NSPasteboard generalPasteboard] setString:[viewController tableView:[viewController tableView] objectValueForTableColumn:[[viewController tableView] tableColumns][1] row:[[viewController tableView] selectedRow]] forType:NSStringPboardType];
+    [[NSPasteboard generalPasteboard] setString:[viewController tableView:[viewController tableView] objectValueForTableColumn:[[viewController tableView] tableColumns][1] row:(NSInteger)[[viewController tableView] selectedRow]] forType:NSStringPboardType];
 
 }
 
-- (void) paste {
-    [viewController tableView:[viewController tableView] setObjectValue:[[NSPasteboard generalPasteboard] stringForType:NSStringPboardType] forTableColumn:[[viewController tableView] tableColumns][1] row:[[viewController tableView] selectedRow]];
+- (void) pasteRow {
+    [viewController tableView:[viewController tableView] setObjectValue:[[NSPasteboard generalPasteboard] stringForType:NSStringPboardType] forTableColumn:[[viewController tableView] tableColumns][1] row:(NSInteger)[[viewController tableView] selectedRow]];
 }
 
 - (void) deleteRow {
-    [viewController tableView:[viewController tableView] setObjectValue:@"" forTableColumn:[[viewController tableView] tableColumns][1] row:[[viewController tableView] selectedRow]];
+    [viewController tableView:[viewController tableView] setObjectValue:@"" forTableColumn:[[viewController tableView] tableColumns][1] row:(NSInteger)[[viewController tableView] selectedRow]];
 }
 
 @end

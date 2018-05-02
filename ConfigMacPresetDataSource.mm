@@ -55,7 +55,7 @@
             std::string line;
             safeGetline(*(_vdjArtnet->presetFin), line);
             while (line != "") {
-                int posOfDelim = (int)line.find('~'); //Convert unsigned long to int explicitly to stop compiler complaining
+                size_t posOfDelim = line.find('~');
                 NSString* name = [NSString stringWithCString:line.substr(0, posOfDelim).c_str() encoding:[NSString defaultCStringEncoding]];
                 NSString* preset = [NSString stringWithCString:line.substr(posOfDelim + 1, std::string::npos).c_str() encoding:[NSString defaultCStringEncoding]];
 
@@ -72,11 +72,11 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [_presets count];
+    return (NSInteger) [_presets count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    return [_presets[row] name];
+    return [_presets[(NSUInteger) row] name];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {

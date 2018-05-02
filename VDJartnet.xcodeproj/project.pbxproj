@@ -9,18 +9,14 @@
 /* Begin PBXBuildFile section */
 		6842A7981F00612B009EC942 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DD1E4D29FF002C7ED1 /* main.cpp */; };
 		6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */; };
-		6842A79A1F006137009EC942 /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684CFF651ECCAD6500C538B2 /* ConfigMac.mm */; };
-		6842A79B1F00613F009EC942 /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA811EE170B500335D50 /* ConfigMacViewController.mm */; };
-		6842A79C1F006145009EC942 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
-		6842A79D1F00614A009EC942 /* ConfigMacTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA871EE206F700335D50 /* ConfigMacTableView.m */; };
+		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
+		68B8DB5D2026840400449F10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 686A93D21E4D291B002C7ED1 /* Info.plist */; };
+		68B8DB5E202749E900449F10 /* networking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B8DB59202654F800449F10 /* networking.cpp */; };
+		68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684CFF651ECCAD6500C538B2 /* ConfigMac.mm */; };
+		68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA811EE170B500335D50 /* ConfigMacViewController.mm */; };
+		68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
+		68B8DB62202749FB00449F10 /* ConfigMacTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA871EE206F700335D50 /* ConfigMacTableView.m */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		68F9E8531F981DAF002F8CEF /* ReadmeDlg.wxs in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */; };
-		68F9E8541F981DAF002F8CEF /* buildPackageWin.bat in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */; };
-		68F9E8551F981DAF002F8CEF /* buildPackageMac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */; };
-		68F9E8561F981DAF002F8CEF /* distributionTransformMac.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8511F981DAE002F8CEF /* distributionTransformMac.xsl */; };
-		68F9E8571F981DAF002F8CEF /* winInstaller.wxs in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8521F981DAF002F8CEF /* winInstaller.wxs */; };
-		68F9E85C1F981DBC002F8CEF /* postinstall in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E8591F981DBC002F8CEF /* postinstall */; };
-		68F9E85D1F981DBC002F8CEF /* postinstall in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85B1F981DBC002F8CEF /* postinstall */; };
 		68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */; };
 /* End PBXBuildFile section */
 
@@ -38,13 +34,13 @@
 		686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VDJartnet.cpp; sourceTree = "<group>"; };
 		686A93DB1E4D29E0002C7ED1 /* VDJartnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VDJartnet.hpp; sourceTree = "<group>"; };
 		686A93DD1E4D29FF002C7ED1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		686A93DF1E4D2A46002C7ED1 /* vdjDsp8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vdjDsp8.h; sourceTree = "<group>"; };
 		686A93E01E4D2A46002C7ED1 /* vdjPlugin8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vdjPlugin8.h; sourceTree = "<group>"; };
-		686A93E11E4D2A46002C7ED1 /* vdjVideo8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vdjVideo8.h; sourceTree = "<group>"; };
 		686CB3AB1EE30495008A8883 /* ConfigWin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigWin.cpp; sourceTree = "<group>"; };
 		686CB3AC1EE30495008A8883 /* ConfigWin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConfigWin.hpp; sourceTree = "<group>"; };
 		686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinDataSource.hpp; sourceTree = "<group>"; };
-		68B464111E4F7F21002523CD /* zed_net-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "zed_net-master"; sourceTree = "<group>"; };
+		68B8DB57202654C200449F10 /* networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = networking.h; path = /Users/jonathantanner/Documents/VDJartnet/Sources/VDJartnet/networking.h; sourceTree = "<absolute>"; };
+		68B8DB59202654F800449F10 /* networking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = networking.cpp; sourceTree = "<group>"; };
+		68B8DB5B20267B8600449F10 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		68C4F73E1EACE18B007C4A7D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReadmeDlg.wxs; sourceTree = "<group>"; };
 		68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = buildPackageWin.bat; sourceTree = "<group>"; };
@@ -91,27 +87,27 @@
 		686A93D11E4D291B002C7ED1 /* VDJartnet */ = {
 			isa = PBXGroup;
 			children = (
-				686A93DF1E4D2A46002C7ED1 /* vdjDsp8.h */,
 				686A93E01E4D2A46002C7ED1 /* vdjPlugin8.h */,
-				686A93E11E4D2A46002C7ED1 /* vdjVideo8.h */,
-				68B464111E4F7F21002523CD /* zed_net-master */,
 				686A93D21E4D291B002C7ED1 /* Info.plist */,
+				68B8DB5B20267B8600449F10 /* Localizable.strings */,
 				686A93DD1E4D29FF002C7ED1 /* main.cpp */,
-				686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */,
 				686A93DB1E4D29E0002C7ED1 /* VDJartnet.hpp */,
-				684CFF651ECCAD6500C538B2 /* ConfigMac.mm */,
+				686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */,
 				684CFF661ECCAD6500C538B2 /* ConfigMac.h */,
-				6801FA811EE170B500335D50 /* ConfigMacViewController.mm */,
+				684CFF651ECCAD6500C538B2 /* ConfigMac.mm */,
 				6801FA831EE170D100335D50 /* ConfigMacViewController.h */,
-				6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */,
+				6801FA811EE170B500335D50 /* ConfigMacViewController.mm */,
 				6801FA861EE1D5D000335D50 /* ConfigMacPresetDataSource.h */,
-				6801FA871EE206F700335D50 /* ConfigMacTableView.m */,
+				6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */,
 				6801FA891EE2070500335D50 /* ConfigMacTableView.h */,
-				686CB3AB1EE30495008A8883 /* ConfigWin.cpp */,
+				6801FA871EE206F700335D50 /* ConfigMacTableView.m */,
 				686CB3AC1EE30495008A8883 /* ConfigWin.hpp */,
-				686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */,
+				686CB3AB1EE30495008A8883 /* ConfigWin.cpp */,
 				68F9E8611F981E10002F8CEF /* ConfigWinPresetDataSource.hpp */,
+				686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */,
 				68F9E8601F981E10002F8CEF /* ConfigWinTableView.hpp */,
+				68B8DB57202654C200449F10 /* networking.h */,
+				68B8DB59202654F800449F10 /* networking.cpp */,
 			);
 			name = VDJartnet;
 			sourceTree = "<group>";
@@ -181,7 +177,7 @@
 		686A93C71E4D2919002C7ED1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Jonathan Tanner";
 				TargetAttributes = {
 					686A93CE1E4D2919002C7ED1 = {
@@ -212,14 +208,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68F9E8541F981DAF002F8CEF /* buildPackageWin.bat in Resources */,
-				68F9E8551F981DAF002F8CEF /* buildPackageMac.sh in Resources */,
-				68F9E85C1F981DBC002F8CEF /* postinstall in Resources */,
+				68B8DB5D2026840400449F10 /* Info.plist in Resources */,
 				68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */,
-				68F9E8561F981DAF002F8CEF /* distributionTransformMac.xsl in Resources */,
-				68F9E8531F981DAF002F8CEF /* ReadmeDlg.wxs in Resources */,
-				68F9E8571F981DAF002F8CEF /* winInstaller.wxs in Resources */,
-				68F9E85D1F981DBC002F8CEF /* postinstall in Resources */,
+				68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,10 +223,11 @@
 			files = (
 				6842A7981F00612B009EC942 /* main.cpp in Sources */,
 				6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */,
-				6842A79A1F006137009EC942 /* ConfigMac.mm in Sources */,
-				6842A79C1F006145009EC942 /* ConfigMacPresetDataSource.mm in Sources */,
-				6842A79D1F00614A009EC942 /* ConfigMacTableView.m in Sources */,
-				6842A79B1F00613F009EC942 /* ConfigMacViewController.mm in Sources */,
+				68B8DB5E202749E900449F10 /* networking.cpp in Sources */,
+				68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */,
+				68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */,
+				68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */,
+				68B8DB62202749FB00449F10 /* ConfigMacTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,87 +237,132 @@
 		686A93D31E4D291B002C7ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		686A93D41E4D291B002C7ED1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};

@@ -33,34 +33,24 @@
 #ifndef VDJartnet_hpp
 #define VDJartnet_hpp
 
-// we include stdio.h only to use the sprintf() function
-// we define _CRT_SECURE_NO_WARNINGS for the warnings of the sprintf() function
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
 #include "vdjPlugin8.h"
 
-#define noTCP
-#include "zed_net-master/zed_net.h"
+#include "networking.h"
 
 #include <string>
 #include <fstream>
 #include <chrono>
-//using namespace std::chrono_literals;
+#include <thread>
 
-#include <iostream>
-
-#if (defined(VDJ_WIN))
-//#include <windows.h>
-//#include <shlobj.h>
-#elif (defined(VDJ_MAC))
-#include <CoreFoundation/CoreFoundation.h>
-//#include <CoreServices/CoreServices.h>
-//#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
-#endif
+//#include <iostream>
 
 #define commandLength 512
+
+#if (defined(VDJ_WIN))
+#define pluginPath "\\Plugins\\AutoStart\\"
+#elif (defined(VDJ_MAC))
+#define pluginPath "/Plugins64/AutoStart/"
+#endif
 
 class CVDJartnet : public IVdjPlugin8 {
 public:
@@ -84,29 +74,24 @@ public:
     ID_ENABLE_BUTTON,
     ID_REFRESH_BUTTON,
     ID_CONFIG_BUTTON,
+    ID_SETUP,
     ID_SAVE
     } ID_Interface;
 
     std::string host = "127.0.0.1";
     const unsigned short port = 0x1936;
-    
+
     std::string channelCommands[512];
 
     std::ifstream* presetFin;
 
-#ifdef VDJ_MAC
     void* configWindow;
-#endif
-#ifdef VDJ_WIN
-    void* configWindow;
-#endif
 
 private:
     const int noLength = 3;
     const int noChannels = 512;
 
     typedef struct _ArtNetPacket {
-        //uint8_t header[8] = "Art-Net";
         uint8_t header0 = 'A';
         uint8_t header1 = 'r';
         uint8_t header2 = 't';
@@ -133,7 +118,7 @@ private:
     int skipPacketLimit = 10;
 
 
-    zed_net_address_t address;
+    Address* address;
 
     void sendArtnetPacket();
     void parseConfigLine(std::string line);
@@ -144,66 +129,11 @@ private:
     void* setupThread; //std::thread
 };
 
-#ifdef VDJartnet_GLOBALIMPLEMENTATION
-CVDJartnet* globalCVDJartnet = (CVDJartnet*)malloc(sizeof(CVDJartnet));
-zed_net_socket_t* globalCVDJartnetSocket = (zed_net_socket_t*)malloc(sizeof(zed_net_socket_t));
-bool globalCVDJartnetLoaded = false;
-
-
-void globalUpdate() {
-    for (;;) {
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        globalCVDJartnet->updateDMXvalues();
-        //std::this_thread::sleep_for(10ms);
-        std::this_thread::sleep_until(start + globalCVDJartnet->checkRate);
-    }
-}
-
-void globalSetup() {
-    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-    std::this_thread::sleep_until(start + std::chrono::seconds(1));
-    globalCVDJartnet->OnParameter(globalCVDJartnet->ID_REFRESH_BUTTON);
-}
-
-std::istream& safeGetline(std::istream& is, std::string& t)
-{
-    t.clear();
-
-    // The characters in the stream are read one-by-one using a std::streambuf.
-    // That is faster than reading them one-by-one using the std::istream.
-    // Code that uses streambuf this way must be guarded by a sentry object.
-    // The sentry object performs various tasks,
-    // such as thread synchronization and updating the stream state.
-
-    std::istream::sentry se(is, true);
-    std::streambuf* sb = is.rdbuf();
-
-    for(;;) {
-        int c = sb->sbumpc();
-        switch (c) {
-            case '\n':
-                return is;
-            case '\r':
-                if(sb->sgetc() == '\n')
-                    sb->sbumpc();
-                return is;
-            case EOF:
-                // Also handle the case when the last line has no line ending
-                if(t.empty())
-                    is.setstate(std::ios::eofbit);
-                return is;
-            default:
-                t += (char)c;
-        }
-    }
-}
-#else
 extern CVDJartnet *globalCVDJartnet;
-extern zed_net_socket_t* globalCVDJartnetSocket;
+extern Socket* globalCVDJartnetSocket;
 extern bool globalCVDJartnetLoaded;
 extern void globalUpdate();
 extern void globalSetup();
 extern std::istream& safeGetline(std::istream& is, std::string& t);
-#endif
-
+extern std::string toStringOfLength(size_t len, int value);
 #endif /* VDJartnet_hpp */
