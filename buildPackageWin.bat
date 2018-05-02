@@ -4,7 +4,7 @@ set "VSCMD_START_DIR=%CD%"
 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
 
 cl /Fo.\ConfigWin.obj /c /clr /MD .\ConfigWin.cpp
-cl /Fe.\VDJartnet.dll /LD /EHsc /MD .\VDJartnet.cpp .\main.cpp .\ConfigWin.obj /link /LIBPATH:"C:\Program Files\Microsoft Visual Studio 14.0\VC\lib"
+cl /Fe.\VDJartnet.dll /LD /EHsc /MD .\VDJartnet.cpp .\Config.cpp .\Artnet.cpp .\Socket.cpp .\main.cpp .\ConfigWin.obj /link /LIBPATH:"C:\Program Files\Microsoft Visual Studio 14.0\VC\lib"
 
 echo README > README.rtf
 mkdir "%TEMP%\pandoc\"
@@ -18,3 +18,4 @@ candle winInstaller.wxs ReadmeDlg.wxs
 light -ext WixUIExtension -out VDJartnet.msi winInstaller.wixobj ReadmeDlg.wixobj
 
 ::rmdir /s /q "%TEMP%\pandoc\"
+::

@@ -1,8 +1,8 @@
 //
-//  ConfigMacPresetDataSource.m
+//  Artnet.cpp
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 02/06/2017.
+//  Created by Jonathan Tanner on 09/02/2017.
 //  Copyright © 2017 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
@@ -25,32 +25,29 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
+//
+//If you modify this Program, or any covered work, by linking or
+//combining it with the Visual C++ Runtime, the licensors of this Program grant you
+//additional permission to convey the resulting work.
 
-#import "ConfigMacPresetDataSource.h"
+bool Artnet::setChannel(int channel, uint8_t value) {
+    if (channel >= 0 && channel < 512) {
+        if (packet.data[channel] != value) {
+            packet.data[channel] = value;
+            return true
+        }
+    }
+    return false
+}
 
-@implementation ConfigPresetDataSource
-
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnet {
-    if ( self = [super init] ) {
-        _vdjArtnet = vdjArtnet;
-        return self;
-    } else {
-        return nil;
+void Artnet::sendArtnetPacket(std::string host, unsigned short port) {
+    if (globalArtnetSocket != nullptr) {
+        getSocket().send(host, port, &packet, sizeof(packet));
+        if (packet.sequence == 0xFF) {
+            packet.sequence = 1;
+        } else {
+            packet.sequence += 1;
+        }
+        skippedPackets = 0;
     }
 }
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return _vdjArtnet->config->getPresets().size();
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    return @(_vdjArtnet->config->getPresets()[row].name);
-}
-
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
-    [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [pboard setString:[_presets[[rowIndexes firstIndex]] preset] forType:NSStringPboardType];
-    return YES;
-}
-
-@end

@@ -1,5 +1,5 @@
 //
-//  VDJartnet.hpp
+//  Config.hpp
 //  VDJartnet
 //
 //  Created by Jonathan Tanner on 09/02/2017.
@@ -30,71 +30,52 @@
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
 
-#ifndef VDJartnet_hpp
-#define VDJartnet_hpp
-
-#include "vdjPlugin8.h"
-
-#include "Config.hpp"
-#include "Artnet.hpp"
+#ifndef Config_hpp
+#define Config_hpp
 
 #include <string>
+#include <vector>
 #include <fstream>
 #include <chrono>
-#include <thread>
 
-#define commandLength 512
+#include <iostream>
 
-#if (defined(VDJ_WIN))
-#define pluginPath "\\Plugins\\AutoStart\\"
-#elif (defined(VDJ_MAC))
-#define pluginPath "/Plugins64/AutoStart/"
-#endif
+struct Preset {
+    std::string name;
+    std::string preset;
+}
 
-class CVDJartnet : public IVdjPlugin8 {
+class Config {
 public:
-    static CVDJartnet* getInstance() {
-        static CVDJartnet* instance = (CVDJartnet*)malloc(sizeof(CVDJartnet));
-        return instance;
-    }
-    static bool isLoaded = false;
+    std::string channelCommands[512];
+    std::string host = "127.0.0.1";
+    unsigned short port = 0x1936;
 
-    int m_Enable;
-    int m_Refresh;
-    int m_Config;
+    std::vector<Preset> const& getPresets() { return &presets }
 
-    HRESULT VDJ_API OnLoad();
-    HRESULT VDJ_API OnGetPluginInfo(TVdjPluginInfo8 *infos);
-    ULONG VDJ_API Release();
-    HRESULT VDJ_API OnGetUserInterface(TVdjPluginInterface8 *pluginInterface);
-    HRESULT VDJ_API OnParameter(int id);
-    HRESULT VDJ_API OnGetParameterString(int id, char *outParam, int outParamSize);
+    int getSkipPacketLimit() { return skipPacketLimit; }
+    int getCheckRate() { return checkRate; }
 
-    void init();
-
-    void updateDMXvalues();
-
-    typedef enum _ID_Interface
-    {
-    ID_ENABLE_BUTTON,
-    ID_REFRESH_BUTTON,
-    ID_CONFIG_BUTTON,
-    ID_SETUP,
-    ID_SAVE
-    } ID_Interface;
-
-    Config* config;
-
-    void* configWindow;
+    Config(std::string configPathTMP, std::string presetsPathTMP)
+    void loadConfig();
+    void saveConfig();
 
 private:
-    Artnet artnet;
+    std::string configPath;
 
-    int skippedPackets = 0;
-    int skipPacketLimit = 10;
+    std::vector<Preset> presets;
 
-    void* setupThread; //std::thread
-    void* pollThread; //std::thread
+    int skipPacketLimit;
+    std::chrono::milliseconds checkRate = std::chrono::milliseconds(10);
+
+    void loadPresetPresets();
+    void parsePresetsFile(std::string path);
+
+    void parseConfigFile(std::ifstream fin);
+    void parseConfigLine(std::string line);
+    void parseCommandConfigLine(std::string line);
 };
+
+std::istream& safeGetLine(std::istream& is, std::string& t);
 
 #endif /* VDJartnet_hpp */

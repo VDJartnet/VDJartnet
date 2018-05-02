@@ -54,7 +54,7 @@
     [[self view] addSubview:scrollView];
 
     _ipAddress = [[NSTextField alloc] initWithFrame:CGRectMake(50,100,100,30)];
-    _ipAddress.stringValue = [NSString stringWithCString:_vdjArtnet->host.c_str() encoding:[NSString defaultCStringEncoding]];
+    _ipAddress.stringValue = @(_vdjArtnet->config->host.c_str());
     [_ipAddress setEditable:YES];
     [_ipAddress setDelegate:self];
     [[self view] addSubview:_ipAddress];
@@ -87,7 +87,7 @@
     if ([[tableColumn identifier]  isEqual: @"Channel"]) {
         return [[NSString alloc] initWithFormat:@"%ld", row + 1 ];
     } else if ([[tableColumn identifier]  isEqual: @"VDJscript"]) {
-        return [NSString stringWithCString:_vdjArtnet->channelCommands[row].c_str() encoding:[NSString defaultCStringEncoding]];
+        return @(_vdjArtnet->config->channelCommands[row].c_str())
     } else {
         return @"";
     }

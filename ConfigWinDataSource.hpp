@@ -54,14 +54,14 @@ public:
 
     property String^ Value {
         String^ get() {
-            return gcnew String(_vdjArtnet->channelCommands[row].c_str());
+            return gcnew String(_vdjArtnet->config->channelCommands[row].c_str());
         }
         void set(String^ newVal) {
-			if (newVal == nullptr) {
-				_vdjArtnet->channelCommands[row] = "";
-			} else {
-				_vdjArtnet->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
-			}
+            if (newVal == nullptr) {
+                _vdjArtnet->config->channelCommands[row] = "";
+            } else {
+                _vdjArtnet->config->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
+            }
             _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
         }
     }
@@ -89,3 +89,4 @@ public:
 };
 
 #endif /* ConfigWinDataSource_hpp */
+

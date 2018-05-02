@@ -16,6 +16,9 @@
 		68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA811EE170B500335D50 /* ConfigMacViewController.mm */; };
 		68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
 		68B8DB62202749FB00449F10 /* ConfigMacTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA871EE206F700335D50 /* ConfigMacTableView.m */; };
+		68BC26CD2099460500B79334 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26C72099460400B79334 /* Config.cpp */; };
+		68BC26CE2099460500B79334 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26C92099460500B79334 /* Socket.cpp */; };
+		68BC26CF2099460500B79334 /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26CB2099460500B79334 /* Artnet.cpp */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,12 @@
 		68B8DB57202654C200449F10 /* networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = networking.h; path = /Users/jonathantanner/Documents/VDJartnet/Sources/VDJartnet/networking.h; sourceTree = "<absolute>"; };
 		68B8DB59202654F800449F10 /* networking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = networking.cpp; sourceTree = "<group>"; };
 		68B8DB5B20267B8600449F10 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		68BC26C72099460400B79334 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		68BC26C82099460500B79334 /* Artnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Artnet.hpp; sourceTree = "<group>"; };
+		68BC26C92099460500B79334 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
+		68BC26CA2099460500B79334 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		68BC26CB2099460500B79334 /* Artnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Artnet.cpp; sourceTree = "<group>"; };
+		68BC26CC2099460500B79334 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
 		68C4F73E1EACE18B007C4A7D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReadmeDlg.wxs; sourceTree = "<group>"; };
 		68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = buildPackageWin.bat; sourceTree = "<group>"; };
@@ -93,6 +102,12 @@
 				686A93DD1E4D29FF002C7ED1 /* main.cpp */,
 				686A93DB1E4D29E0002C7ED1 /* VDJartnet.hpp */,
 				686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */,
+				68BC26CA2099460500B79334 /* Config.hpp */,
+				68BC26C72099460400B79334 /* Config.cpp */,
+				68BC26C82099460500B79334 /* Artnet.hpp */,
+				68BC26CB2099460500B79334 /* Artnet.cpp */,
+				68BC26CC2099460500B79334 /* Socket.hpp */,
+				68BC26C92099460500B79334 /* Socket.cpp */,
 				684CFF661ECCAD6500C538B2 /* ConfigMac.h */,
 				684CFF651ECCAD6500C538B2 /* ConfigMac.mm */,
 				6801FA831EE170D100335D50 /* ConfigMacViewController.h */,
@@ -222,12 +237,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6842A7981F00612B009EC942 /* main.cpp in Sources */,
+				68BC26CD2099460500B79334 /* Config.cpp in Sources */,
 				6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */,
 				68B8DB5E202749E900449F10 /* networking.cpp in Sources */,
 				68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */,
 				68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */,
 				68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */,
+				68BC26CE2099460500B79334 /* Socket.cpp in Sources */,
 				68B8DB62202749FB00449F10 /* ConfigMacTableView.m in Sources */,
+				68BC26CF2099460500B79334 /* Artnet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
