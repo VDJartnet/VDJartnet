@@ -45,7 +45,7 @@ void Config::loadConfig() {
             channelCommands[i] = "";
         }
 
-        std::string line
+        std::string line;
         safeGetLine(fin, line);
         size_t delimPos = line.find(":");
         host = line.substr(0, delimPos);
@@ -56,42 +56,42 @@ void Config::loadConfig() {
             }
         }
     }
-    presets.clear()
-    parseConfigFile(fin)
-    loadPresetPresets()
+    presets.clear();
+    parseConfigFile(fin);
+    loadPresetPresets();
 }
 
 void Config::loadPresetPresets() {
 
 }
 
-void Config::parsePresetsFile(std::ifstream fin) {
+void Config::parsePresetsFile(std::ifstream& fin) {
     if (fin.is_open()) {
         std::string line;
         safeGetLine(fin, line);
         size_t delimPos = line.find("~");
         Preset preset;
         preset.name = line.substr(0, delimPos);
-        preset.value = line.substr(delimPos + 1, std::string::npos);
-        presets.pushBack(preset);
+        preset.preset = line.substr(delimPos + 1, std::string::npos);
+        presets.push_back(preset);
         fin.close();
     }
 }
 
-void Config::saveConfig() {}
+void Config::saveConfig() {
     std::ofstream fout(configPath);
     if (fout.is_open()) {
         fout << host << std::endl;
         for (int i = 0; i < 512; i++) {
             if (channelCommands[i] != "") {
-                fout << std::string(3 - (floor(log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
+                fout << std::string(3 - (floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
             }
         }
         fout.close();
     }
 }
 
-void Config::parseConfigFile(std::ifstream fin){
+void Config::parseConfigFile(std::ifstream& fin){
     if (fin.is_open()) {
         std::string line;
         safeGetLine(fin, line);
@@ -124,7 +124,7 @@ void Config::parseConfigLine(std::string line){
         if (rateS.find_first_not_of("0123456789") == std::string::npos) {
             skipPacketLimit = stoi(rateS);
         }
-        return
+        return;
     }
 
     if(line.substr(0,2).compare("+C") == 0){
@@ -132,7 +132,7 @@ void Config::parseConfigLine(std::string line){
         if (checkS.find_first_not_of("0123456789") == std::string::npos) {
             checkRate = std::chrono::milliseconds(stoi(checkS));
         }
-        return
+        return;
     }
 
     //line does not match any special command line so assume it is a channel definition
@@ -145,7 +145,7 @@ void Config::parseCommandConfigLine(std::string line){
     if ((channelNoS.find_first_not_of("0123456789") == std::string::npos)) {
         int channelNo = stoi(channelNoS) - 1;
         if (channelNo < 512 && channelNo >= 0) {
-            channelCommands[channelNo] = line.substr(posOfDelim + 1, std::string::npos);
+            channelCommands[channelNo] = line.substr(delimPos + 1, std::string::npos);
         }
     }
 }

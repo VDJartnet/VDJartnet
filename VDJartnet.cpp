@@ -41,8 +41,9 @@
 
 HRESULT VDJ_API CVDJartnet::OnLoad() {
     // ADD YOUR CODE HERE WHEN THE PLUGIN IS CALLED
-    if (!CVDJartnet.isLoaded) {
-        CVDJartnet.isLoaded = true;
+    static bool isLoaded = false;
+    if (!isLoaded) {
+        isLoaded = true;
         
         m_Enable = 1;
         m_Refresh = 0;
@@ -57,7 +58,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
     return S_OK;
 }
 //-----------------------------------------------------------------------------
-void init() {
+void CVDJartnet::init() {
     if (config == nullptr) {
         char pathC[256];
         GetStringInfo("get_vdj_folder", pathC, 256);
@@ -68,7 +69,7 @@ void init() {
         path += std::string("/Plugins64/AutoStart/VDJartnet.conf");
 #endif
 
-        config = new Config(path)
+        config = new Config(path);
     }
 }
 //-----------------------------------------------------------------------------
@@ -97,7 +98,6 @@ ULONG VDJ_API CVDJartnet::Release() {
 
     delete config;
     delete this;
-    CVDJartnet.isLoaded = false;
     return 0;
 }
 
@@ -160,7 +160,7 @@ void CVDJartnet::updateDMXvalues() {
         bool updated = false;
 
         for (int i = 0; i < 512; i++) {
-            if (channelCommands[i] != "") {
+            if (config->channelCommands[i] != "") {
                 double resultDouble = -1;
                 SendCommand("set $VDJartnetSend 256");
                 SendCommand(config->channelCommands[i].c_str());
@@ -173,8 +173,8 @@ void CVDJartnet::updateDMXvalues() {
         }
 
         if (updated || skippedPackets > skipPacketLimit) {
-            artnet->sendArtnetPacket(config->host, config->port);
-            skippedPackets = 0
+            artnet.sendArtnetPacket(config->host, config->port);
+            skippedPackets = 0;
         } else {
             skippedPackets += 1;
         }
@@ -184,14 +184,14 @@ void CVDJartnet::updateDMXvalues() {
 void globalSetup() {
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     std::this_thread::sleep_until(start + std::chrono::seconds(1));
-    CVDJartnet.getInstance()->init()
+    CVDJartnet::getInstance()->init();
 }
 //-------------------------------------------------------------------------------------------------------------------------------------
 void globalUpdate() {
     for (;;) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        CVDJartnet.getInstance()->updateDMXvalues();
-        std::this_thread::sleep_until(start + globalCVDJartnet->checkRate);
+        CVDJartnet::getInstance()->updateDMXvalues();
+        std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
     }   
 }
 

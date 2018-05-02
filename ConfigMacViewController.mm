@@ -87,21 +87,21 @@
     if ([[tableColumn identifier]  isEqual: @"Channel"]) {
         return [[NSString alloc] initWithFormat:@"%ld", row + 1 ];
     } else if ([[tableColumn identifier]  isEqual: @"VDJscript"]) {
-        return @(_vdjArtnet->config->channelCommands[row].c_str())
+        return @(_vdjArtnet->config->channelCommands[row].c_str());
     } else {
         return @"";
     }
 }
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    [[[[tableView window] undoManager] prepareWithInvocationTarget:self] tableView:tableView setObjectValue:[NSString stringWithCString:_vdjArtnet->channelCommands[row].c_str() encoding:[NSString defaultCStringEncoding]] forTableColumn:tableColumn row:row];
-    _vdjArtnet->channelCommands[row] = [object cStringUsingEncoding:[NSString defaultCStringEncoding]];
+    [[[[tableView window] undoManager] prepareWithInvocationTarget:self] tableView:tableView setObjectValue:@(_vdjArtnet->config->channelCommands[row].c_str()) forTableColumn:tableColumn row:row];
+    _vdjArtnet->config->channelCommands[row] = std::string([object UTF8String]);
     _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
     [tableView reloadData];
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    _vdjArtnet->host = std::string([_ipAddress.stringValue cStringUsingEncoding:[NSString defaultCStringEncoding]]);
+    _vdjArtnet->config->host = std::string([_ipAddress.stringValue UTF8String]);
     _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
 
     return YES;

@@ -45,19 +45,12 @@
 
 #define commandLength 512
 
-#if (defined(VDJ_WIN))
-#define pluginPath "\\Plugins\\AutoStart\\"
-#elif (defined(VDJ_MAC))
-#define pluginPath "/Plugins64/AutoStart/"
-#endif
-
 class CVDJartnet : public IVdjPlugin8 {
 public:
     static CVDJartnet* getInstance() {
         static CVDJartnet* instance = (CVDJartnet*)malloc(sizeof(CVDJartnet));
         return instance;
     }
-    static bool isLoaded = false;
 
     int m_Enable;
     int m_Refresh;
@@ -96,5 +89,8 @@ private:
     void* setupThread; //std::thread
     void* pollThread; //std::thread
 };
+
+void globalSetup();
+void globalUpdate();
 
 #endif /* VDJartnet_hpp */

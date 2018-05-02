@@ -33,19 +33,19 @@
 #ifndef Socket_hpp
 #define Socket_hpp
 
-#include <stdlib>
+#include <stdlib.h>
 #include <string>
-#include <time>
+#include <time.h>
 
 #ifdef _WIN32
 #include <winsock2.h>
 #else
-#include <sys/socket>
-#include <unistd>
-#include <netinet/in>
-#include <arpa/inet>
-#include <netdb>
-#include <fcntl>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <fcntl.h>
 #endif
 
 class Socket {
@@ -53,7 +53,7 @@ public:
     Socket(unsigned int port, int non_blocking);
     ~Socket();
 
-    void send(std::string host, unsigned int port, const void* data, int size);
+    void send(std::string hostS, unsigned short port, const void* data, int size);
 
 private:
     int handle;

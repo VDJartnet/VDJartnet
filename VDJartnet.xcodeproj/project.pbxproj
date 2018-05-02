@@ -11,7 +11,6 @@
 		6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */; };
 		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
 		68B8DB5D2026840400449F10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 686A93D21E4D291B002C7ED1 /* Info.plist */; };
-		68B8DB5E202749E900449F10 /* networking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B8DB59202654F800449F10 /* networking.cpp */; };
 		68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684CFF651ECCAD6500C538B2 /* ConfigMac.mm */; };
 		68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA811EE170B500335D50 /* ConfigMacViewController.mm */; };
 		68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
@@ -237,15 +236,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6842A7981F00612B009EC942 /* main.cpp in Sources */,
-				68BC26CD2099460500B79334 /* Config.cpp in Sources */,
 				6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */,
-				68B8DB5E202749E900449F10 /* networking.cpp in Sources */,
+				68BC26CD2099460500B79334 /* Config.cpp in Sources */,
+				68BC26CF2099460500B79334 /* Artnet.cpp in Sources */,
+				68BC26CE2099460500B79334 /* Socket.cpp in Sources */,
 				68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */,
 				68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */,
 				68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */,
-				68BC26CE2099460500B79334 /* Socket.cpp in Sources */,
 				68B8DB62202749FB00449F10 /* ConfigMacTableView.m in Sources */,
-				68BC26CF2099460500B79334 /* Artnet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

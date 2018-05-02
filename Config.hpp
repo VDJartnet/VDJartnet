@@ -37,13 +37,14 @@
 #include <vector>
 #include <fstream>
 #include <chrono>
+#include <cmath>
 
 #include <iostream>
 
 struct Preset {
     std::string name;
     std::string preset;
-}
+};
 
 class Config {
 public:
@@ -51,12 +52,12 @@ public:
     std::string host = "127.0.0.1";
     unsigned short port = 0x1936;
 
-    std::vector<Preset> const& getPresets() { return &presets }
+    std::vector<Preset> const& getPresets() { return presets; }
 
     int getSkipPacketLimit() { return skipPacketLimit; }
-    int getCheckRate() { return checkRate; }
+    std::chrono::milliseconds getCheckRate() { return checkRate; }
 
-    Config(std::string configPathTMP, std::string presetsPathTMP)
+    Config(std::string configPathTMP);
     void loadConfig();
     void saveConfig();
 
@@ -69,9 +70,9 @@ private:
     std::chrono::milliseconds checkRate = std::chrono::milliseconds(10);
 
     void loadPresetPresets();
-    void parsePresetsFile(std::string path);
+    void parsePresetsFile(std::ifstream& fin);
 
-    void parseConfigFile(std::ifstream fin);
+    void parseConfigFile(std::ifstream& fin);
     void parseConfigLine(std::string line);
     void parseCommandConfigLine(std::string line);
 };

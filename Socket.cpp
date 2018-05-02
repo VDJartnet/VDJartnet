@@ -30,6 +30,8 @@
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
 
+#include "Socket.hpp"
+
 Socket::Socket(unsigned int port, int non_blocking) {
 #ifdef _WIN32
     WSADATA wsa_data;
@@ -89,9 +91,9 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
     if (hostS.empty()) {
         host = INADDR_ANY;
     } else {
-        host = inet_addr(hostS.c_str();
+        host = inet_addr(hostS.c_str());
         if (host == INADDR_NONE) {
-            struct hostent *hostent = gethostbyname(host);
+            struct hostent *hostent = gethostbyname(hostS.c_str());
             if (hostent) {
                 memcpy(&host, hostent->h_addr, hostent->h_length);
             } else {
@@ -105,7 +107,7 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
     address.sin_addr.s_addr = host;
     address.sin_port = htons(port);
 
-    int sent_bytes = sendto(socket->handle, (const char *) data, size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
+    int sent_bytes = sendto(handle, (const char *) data, size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
     if (sent_bytes != size) {
         throw std::runtime_error("Failed to send data");
     }

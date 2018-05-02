@@ -37,8 +37,8 @@
 
 class Artnet {
 public:
-    void setChannel(int channel, int value);
-    void sendArtnetPacket(std::string host, int port);
+    bool setChannel(int channel, uint8_t value);
+    void sendArtnetPacket(std::string host, unsigned short port);
 
 private:
     typedef struct _ArtNetPacket {

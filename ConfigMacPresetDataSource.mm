@@ -44,12 +44,12 @@
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    return @(_vdjArtnet->config->getPresets()[row].name);
+    return @(_vdjArtnet->config->getPresets()[row].name.c_str());
 }
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
     [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [pboard setString:[_presets[[rowIndexes firstIndex]] preset] forType:NSStringPboardType];
+    [pboard setString:@(_vdjArtnet->config->getPresets()[[rowIndexes firstIndex]].preset.c_str()) forType:NSStringPboardType];
     return YES;
 }
 

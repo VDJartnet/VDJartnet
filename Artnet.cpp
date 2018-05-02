@@ -30,24 +30,23 @@
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
 
+#include "Artnet.hpp"
+
 bool Artnet::setChannel(int channel, uint8_t value) {
     if (channel >= 0 && channel < 512) {
         if (packet.data[channel] != value) {
             packet.data[channel] = value;
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 void Artnet::sendArtnetPacket(std::string host, unsigned short port) {
-    if (globalArtnetSocket != nullptr) {
-        getSocket().send(host, port, &packet, sizeof(packet));
-        if (packet.sequence == 0xFF) {
-            packet.sequence = 1;
-        } else {
-            packet.sequence += 1;
-        }
-        skippedPackets = 0;
+    getSocket()->send(host, port, &packet, sizeof(packet));
+    if (packet.sequence == 0xFF) {
+        packet.sequence = 1;
+    } else {
+        packet.sequence += 1;
     }
 }
