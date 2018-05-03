@@ -40,24 +40,27 @@ extern void closeConfigWindow(void* configWindow);
 
 #include <stdio.h>
 
-#include "windows.h" 
-
-#using <mscorlib.dll> 
-#using <System.dll> 
-#using <System.Windows.Forms.dll> 
-#using <System.Drawing.dll> 
-
-#include <msclr\gcroot.h>
+#include "VDJartnet.hpp"
 
 #include "ConfigWinDataSource.hpp"
 #include "ConfigWinPresetDataSource.hpp"
 #include "ConfigWinTableView.hpp"
 
+#include "windows.h"
+
+#using <mscorlib.dll>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
+
+#include <msclr\gcroot.h>
+
 using namespace System::Windows::Forms;
+using namespace System::Drawing;
 using namespace System;
 
 ref class ConfigWindow {
-    
+
 public:
     CVDJartnet* _vdjArtnet;
 
@@ -83,11 +86,11 @@ protected:
     TextBox^ ipAddress;
     DataGridView^ tableView;
     ConfigDataSource^ dataSource;
-    
+
     Form^ presetWindow;
     DataGridView^ presetTableView;
     ConfigPresetDataSource^ presetDataSource;
-    
+
 private:
     DataGridViewRow^ rowToDrag;
     System::Drawing::Rectangle dragBoxFromMouseDown;
@@ -97,7 +100,7 @@ private:
 class ConfigWindowNative {
 public:
     msclr::gcroot<ConfigWindow^> configWindow;
-    
+
     ConfigWindowNative(CVDJartnet* vdjArtnet) : configWindow(gcnew ConfigWindow(vdjArtnet)) {}
 };
 

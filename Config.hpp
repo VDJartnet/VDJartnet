@@ -41,10 +41,10 @@
 
 #include <iostream>
 
-struct Preset {
+typedef struct _Preset {
     std::string name;
     std::string preset;
-};
+} Preset;
 
 class Config {
 public:

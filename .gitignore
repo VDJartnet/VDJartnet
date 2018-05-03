@@ -1,4 +1,9 @@
 packages/
+Debug/
+Release/
+x64/
+build/
+.vs/
 *.obj
 *.dll
 *.wixobj

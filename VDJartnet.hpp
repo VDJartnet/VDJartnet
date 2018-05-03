@@ -41,15 +41,15 @@
 #include <string>
 #include <fstream>
 #include <chrono>
-#include <thread>
+//Don't include thread here because thread is incompatible with CLR
 
 #define commandLength 512
 
 class CVDJartnet : public IVdjPlugin8 {
 public:
     static CVDJartnet* getInstance() {
-        static CVDJartnet* instance = (CVDJartnet*)malloc(sizeof(CVDJartnet));
-        return instance;
+		static CVDJartnet* instance = new CVDJartnet();
+		return instance;
     }
 
     int m_Enable;
@@ -86,8 +86,8 @@ private:
     int skippedPackets = 0;
     int skipPacketLimit = 10;
 
-    void* setupThread; //std::thread
-    void* pollThread; //std::thread
+    void* setupThread; //std::thread but can't be of thread type as thread is incompatible with CLR
+    void* pollThread; //std::thread but can't be of thread type as thread is incompatible with CLR
 };
 
 void globalSetup();
