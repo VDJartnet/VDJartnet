@@ -42,7 +42,7 @@ void Config::loadConfig() {
     std::ifstream fin(configPath);
     if (fin.is_open()) {
         for (int i = 0; i < 512; i++) {
-            channelCommands[i] = "";
+            channelCommands[i].clear();
         }
 
         std::string line;
@@ -69,11 +69,14 @@ void Config::parsePresetsFile(std::ifstream& fin) {
     if (fin.is_open()) {
         std::string line;
         safeGetLine(fin, line);
-        size_t delimPos = line.find("~");
-        Preset preset;
-        preset.name = line.substr(0, delimPos);
-        preset.preset = line.substr(delimPos + 1, std::string::npos);
-        presets.push_back(preset);
+		while (!line.empty()) {
+			size_t delimPos = line.find("~");
+			Preset preset;
+			preset.name = line.substr(0, delimPos);
+			preset.preset = line.substr(delimPos + 1, std::string::npos);
+			presets.push_back(preset);
+			safeGetLine(fin, line);
+		}
         fin.close();
     }
 }
@@ -95,7 +98,7 @@ void Config::parseConfigFile(std::ifstream& fin){
     if (fin.is_open()) {
         std::string line;
         safeGetLine(fin, line);
-        while (line != "") {
+        while (!line.empty()) {
             parseConfigLine(line);
             safeGetLine(fin, line);
         }

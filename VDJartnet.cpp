@@ -39,12 +39,14 @@
 #include "ConfigMac.h"
 #endif
 
+#include <thread> //Include here because thread is incompatible with CLR
+
 HRESULT VDJ_API CVDJartnet::OnLoad() {
     // ADD YOUR CODE HERE WHEN THE PLUGIN IS CALLED
     static bool isLoaded = false;
     if (!isLoaded) {
         isLoaded = true;
-        
+
         m_Enable = 1;
         m_Refresh = 0;
 
@@ -52,8 +54,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
         DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
         DeclareParameterButton(&m_Config,ID_CONFIG_BUTTON,"Config","C");
 
-        pollThread = new std::thread(globalUpdate);
-        setupThread = new std::thread(globalSetup);
+		setupThread = new std::thread(globalSetup);
     }
     return S_OK;
 }
@@ -71,6 +72,10 @@ void CVDJartnet::init() {
 
         config = new Config(path);
     }
+
+	if (pollThread == nullptr) {
+		pollThread = new std::thread(globalUpdate);
+	}
 }
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
@@ -80,7 +85,7 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
     infos->Version = "1.0";
     infos->Flags = 0x00;
     infos->Bitmap = NULL;
-    
+
     return S_OK;
 }
 
@@ -102,9 +107,9 @@ ULONG VDJ_API CVDJartnet::Release() {
 }
 
 HRESULT VDJ_API CVDJartnet::OnGetUserInterface(TVdjPluginInterface8 *pluginInterface) {
-    
+
     pluginInterface->Type = VDJINTERFACE_DEFAULT;
-    
+
     return S_OK;
 }
 
@@ -123,22 +128,20 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
         case ID_CONFIG_BUTTON:
             if (m_Config == 1) {
-                do {
 #if (defined(VDJ_WIN))
-                    configWindow = createConfigWindow(this);
+                configWindow = createConfigWindow(this);
 #elif (defined(VDJ_MAC))
-                    if (configWindow != nullptr) {
-                        CFRelease(configWindow);
-                        configWindow = nullptr;
-                    }
-                    configWindow = (__bridge_retained void*)[[ConfigWindow alloc] initWithVDJartnet: this];
+                if (configWindow != nullptr) {
+                    CFRelease(configWindow);
+                    configWindow = nullptr;
+                }
+                configWindow = (__bridge_retained void*)[[ConfigWindow alloc] initWithVDJartnet: this];
 #endif
-                } while (0);
             }
             break;
 
     }
-    
+
     return S_OK;
 }
 
@@ -151,7 +154,7 @@ HRESULT VDJ_API CVDJartnet::OnGetParameterString(int id, char *outParam, int out
         case ID_CONFIG_BUTTON:
             break;
     }
-    
+
     return S_OK;
 }
 
@@ -160,7 +163,7 @@ void CVDJartnet::updateDMXvalues() {
         bool updated = false;
 
         for (int i = 0; i < 512; i++) {
-            if (config->channelCommands[i] != "") {
+            if (!config->channelCommands[i].empty()) {
                 double resultDouble = -1;
                 SendCommand("set $VDJartnetSend 256");
                 SendCommand(config->channelCommands[i].c_str());
@@ -191,7 +194,6 @@ void globalUpdate() {
     for (;;) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
         CVDJartnet::getInstance()->updateDMXvalues();
-        std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
-    }   
+		std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
+    }
 }
-

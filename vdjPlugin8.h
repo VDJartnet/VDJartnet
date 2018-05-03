@@ -33,19 +33,19 @@
 #if (defined(_M_X64) || defined(__amd64__))
 #define VDJ_IS_WIN64 // if you need special code for the 64bit version of VirtualDJ, use this
 #endif
-#define VDJ_EXPORT    __declspec( dllexport )
-#define VDJ_API    __stdcall
-#define VDJ_BITMAP    HBITMAP
-#define VDJ_HINSTANCE    HINSTANCE
-#define VDJ_WINDOW    HWND
+#define VDJ_EXPORT	__declspec( dllexport )
+#define VDJ_API	__stdcall
+#define VDJ_BITMAP	HBITMAP
+#define VDJ_HINSTANCE	HINSTANCE
+#define VDJ_WINDOW	HWND
 #elif (defined(__APPLE__) || defined(MACOSX) || defined(__MACOSX__))
 #include <CoreFoundation/CoreFoundation.h>
 #include <MacTypes.h>
 #define VDJ_MAC
-#define VDJ_EXPORT    __attribute__ ((visibility ("default")))
+#define VDJ_EXPORT	__attribute__ ((visibility ("default")))
 #define VDJ_API
-#define VDJ_BITMAP    char *
-#define VDJ_HINSTANCE    CFBundleRef
+#define VDJ_BITMAP	char *
+#define VDJ_HINSTANCE	CFBundleRef
 #define VDJ_WINDOW void* // VDJ_Window expected to be a NSWindow
 typedef SInt32 HRESULT;
 typedef UInt32 ULONG;
@@ -55,14 +55,14 @@ typedef unsigned int DWORD;
 #define E_NOTIMPL ((HRESULT)0x80004001L)
 #define E_FAIL ((HRESULT)0x80004005L)
 #define CLASS_E_CLASSNOTAVAILABLE -1
-#define NO_ERROR    0
+#define NO_ERROR	0
 #ifndef GUID_DEFINED
 #define GUID_DEFINED
 typedef struct _GUID {
-    unsigned long Data1;
-    unsigned short Data2;
-    unsigned short Data3;
-    unsigned char Data4[ 8 ];
+unsigned long Data1;
+unsigned short Data2;
+unsigned short Data3;
+unsigned char Data4[ 8 ];
 } GUID;
 #endif
 #endif
@@ -74,12 +74,12 @@ typedef struct _GUID {
 // structure used in plugin identification
 struct TVdjPluginInfo8
 {
-    const char *PluginName;
-    const char *Author;
-    const char *Description;
-    const char *Version;
-    VDJ_BITMAP Bitmap;
-    DWORD Flags;
+const char *PluginName;
+const char *Author;
+const char *Description;
+const char *Version;
+VDJ_BITMAP Bitmap;
+DWORD Flags;
 };
 
 // flags used for struct TVdjPluginInfo8
@@ -89,39 +89,39 @@ struct TVdjPluginInfo8
 #define VDJFLAG_PROCESSLAST 0x8
 
 // flags used for plugin's parameters
-#define VDJPARAM_BUTTON    0
-#define VDJPARAM_SLIDER    1
-#define VDJPARAM_SWITCH    2
-#define VDJPARAM_STRING    3
-#define VDJPARAM_CUSTOM    4
-#define VDJPARAM_RADIO    5
+#define VDJPARAM_BUTTON	0
+#define VDJPARAM_SLIDER	1
+#define VDJPARAM_SWITCH	2
+#define VDJPARAM_STRING	3
+#define VDJPARAM_CUSTOM	4
+#define VDJPARAM_RADIO	5
 #define VDJPARAM_COMMAND 6
 
 struct TVdjPluginInterface8
 {
-    DWORD Type;
-    // xml and image buffers if Type==VDJINTERFACE_SKIN
-    const char *Xml;
-    void *ImageBuffer;
-    int ImageSize;
-    // Type==VDJINTERFACE_DIALOG. HWND returned by CreateDialog or CreateWindow on Windows, or NSWindow pointer on mac
-    VDJ_WINDOW hWnd;
+DWORD Type;
+// xml and image buffers if Type==VDJINTERFACE_SKIN
+const char *Xml;
+void *ImageBuffer;
+int ImageSize;
+// Type==VDJINTERFACE_DIALOG. HWND returned by CreateDialog or CreateWindow on Windows, or NSWindow pointer on mac
+VDJ_WINDOW hWnd;
 };
 
 // structure used for custom interfaces
-#define VDJINTERFACE_DEFAULT    0
-#define VDJINTERFACE_SKIN    1
+#define VDJINTERFACE_DEFAULT	0
+#define VDJINTERFACE_SKIN	1
 #define VDJINTERFACE_DIALOG 2
 
 //////////////////////////////////////////////////////////////////////////
 // Internal structures
 struct IVdjCallbacks8
 {
-    virtual HRESULT SendCommand(const char *command)=0;
-    virtual HRESULT GetInfo(const char *command,double *result)=0;
-    virtual HRESULT GetStringInfo(const char *command,void *result,int size)=0;
-    virtual HRESULT DeclareParameter(void *parameter,int type,int id,const char *name,const char *shortName,float defaultvalue)=0;
-    virtual HRESULT GetSongBuffer(int pos, int nb, short **buffer)=0;
+virtual HRESULT SendCommand(const char *command)=0;
+virtual HRESULT GetInfo(const char *command,double *result)=0;
+virtual HRESULT GetStringInfo(const char *command,void *result,int size)=0;
+virtual HRESULT DeclareParameter(void *parameter,int type,int id,const char *name,const char *shortName,float defaultvalue)=0;
+virtual HRESULT GetSongBuffer(int pos, int nb, short **buffer)=0;
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -132,40 +132,40 @@ struct IVdjCallbacks8;
 class IVdjPlugin8
 {
 public:
-    // Initialization
-    virtual HRESULT VDJ_API OnLoad() {return S_OK;}
-    virtual HRESULT VDJ_API OnGetPluginInfo(TVdjPluginInfo8 *info) {return E_NOTIMPL;}
-    virtual ULONG VDJ_API Release() {delete this; return S_OK;}
-    virtual ~IVdjPlugin8() {}
-    
-    // call DeclareParameter*() for all your variables during OnLoad()
-    // if type=VDJPARAM_CUSTOM or VDJPARAM_STRING, parameterSize must be set to sizeof(*parameter)
-    HRESULT DeclareParameterButton(int *parameter, int id, const char *name, const char *shortName) {return cb->DeclareParameter(parameter,VDJPARAM_BUTTON,id,name,shortName,0.0f);}
-    HRESULT DeclareParameterSlider(float *parameter, int id, const char *name, const char *shortName, float defaultvalue) {return cb->DeclareParameter(parameter,VDJPARAM_SLIDER,id,name,shortName,defaultvalue);}
-    HRESULT DeclareParameterSwitch(int *parameter, int id, const char *name, const char *shortName, bool defaultvalue) {return cb->DeclareParameter(parameter,VDJPARAM_SWITCH,id,name,shortName,(float) defaultvalue);}
-    HRESULT DeclareParameterString(char *parameter, int id, const char *name, const char *shortName, int parameterSize) {return cb->DeclareParameter(parameter,VDJPARAM_STRING,id,name,shortName,(float) parameterSize);}
-    HRESULT DeclareParameterCustom(void *parameter, int id, const char *name, const char *shortName, int parameterSize) {return cb->DeclareParameter(parameter,VDJPARAM_CUSTOM,id,name,shortName,(float) parameterSize);}
-    HRESULT DeclareParameterRadio(int *parameter, int id, const char *name, const char *shortName, float defaultvalue) {return cb->DeclareParameter(parameter,VDJPARAM_RADIO,id,name,shortName,(float) defaultvalue);}
-    HRESULT DeclareParameterCommand(char *parameter, int id, const char *name, const char *shortName, int parameterSize) {return cb->DeclareParameter(parameter,VDJPARAM_COMMAND,id,name,shortName,(float)parameterSize);}
-    
-    // OnParameter will be called each time a parameter is changed from within VirtualDJ
-    virtual HRESULT VDJ_API OnParameter(int id) {return S_OK;}
-    // OnGetParameterString will be called each time the string label of a parameter is requested by VirtualDJ
-    virtual HRESULT VDJ_API OnGetParameterString(int id, char *outParam, int outParamSize) {return E_NOTIMPL;} ;
-    
-    // Custom user-interface
-    // Fill the VDJ_WINDOW or xml/bitmap info in the passed pluginInterface structure, to define your own plugin window
-    virtual HRESULT VDJ_API OnGetUserInterface(TVdjPluginInterface8 *pluginInterface) {return E_NOTIMPL;}
-    
-    // send a VDJScript command to VirtualDJ
-    HRESULT SendCommand(const char *command) {return cb->SendCommand(command);}
-    // get info from VirtualDJ (as a value, or as a utf-8 string). You can also use command = "setting 'xxx'" for VirtualDJ options
-    HRESULT GetInfo(const char *command, double *result) {return cb->GetInfo(command,result);}
-    HRESULT GetStringInfo(const char *command, char *result, int size) {return cb->GetStringInfo(command,result,size);}
-    
-    VDJ_HINSTANCE hInstance;
-    
-    IVdjCallbacks8 *cb;
+// Initialization
+virtual HRESULT VDJ_API OnLoad() {return S_OK;}
+virtual HRESULT VDJ_API OnGetPluginInfo(TVdjPluginInfo8 *info) {return E_NOTIMPL;}
+virtual ULONG VDJ_API Release() {delete this; return S_OK;}
+virtual ~IVdjPlugin8() {}
+
+// call DeclareParameter*() for all your variables during OnLoad()
+// if type=VDJPARAM_CUSTOM or VDJPARAM_STRING, parameterSize must be set to sizeof(*parameter)
+HRESULT DeclareParameterButton(int *parameter, int id, const char *name, const char *shortName) {return cb->DeclareParameter(parameter,VDJPARAM_BUTTON,id,name,shortName,0.0f);}
+HRESULT DeclareParameterSlider(float *parameter, int id, const char *name, const char *shortName, float defaultvalue) {return cb->DeclareParameter(parameter,VDJPARAM_SLIDER,id,name,shortName,defaultvalue);}
+HRESULT DeclareParameterSwitch(int *parameter, int id, const char *name, const char *shortName, bool defaultvalue) {return cb->DeclareParameter(parameter,VDJPARAM_SWITCH,id,name,shortName,(float) defaultvalue);}
+HRESULT DeclareParameterString(char *parameter, int id, const char *name, const char *shortName, int parameterSize) {return cb->DeclareParameter(parameter,VDJPARAM_STRING,id,name,shortName,(float) parameterSize);}
+HRESULT DeclareParameterCustom(void *parameter, int id, const char *name, const char *shortName, int parameterSize) {return cb->DeclareParameter(parameter,VDJPARAM_CUSTOM,id,name,shortName,(float) parameterSize);}
+HRESULT DeclareParameterRadio(int *parameter, int id, const char *name, const char *shortName, float defaultvalue) {return cb->DeclareParameter(parameter,VDJPARAM_RADIO,id,name,shortName,(float) defaultvalue);}
+HRESULT DeclareParameterCommand(char *parameter, int id, const char *name, const char *shortName, int parameterSize) {return cb->DeclareParameter(parameter,VDJPARAM_COMMAND,id,name,shortName,(float)parameterSize);}
+
+// OnParameter will be called each time a parameter is changed from within VirtualDJ
+virtual HRESULT VDJ_API OnParameter(int id) {return S_OK;}
+// OnGetParameterString will be called each time the string label of a parameter is requested by VirtualDJ
+virtual HRESULT VDJ_API OnGetParameterString(int id, char *outParam, int outParamSize) {return E_NOTIMPL;} ;
+
+// Custom user-interface
+// Fill the VDJ_WINDOW or xml/bitmap info in the passed pluginInterface structure, to define your own plugin window
+virtual HRESULT VDJ_API OnGetUserInterface(TVdjPluginInterface8 *pluginInterface) {return E_NOTIMPL;}
+
+// send a VDJScript command to VirtualDJ
+HRESULT SendCommand(const char *command) {return cb->SendCommand(command);}
+// get info from VirtualDJ (as a value, or as a utf-8 string). You can also use command = "setting 'xxx'" for VirtualDJ options
+HRESULT GetInfo(const char *command, double *result) {return cb->GetInfo(command,result);}
+HRESULT GetStringInfo(const char *command, char *result, int size) {return cb->GetStringInfo(command,result,size);}
+
+VDJ_HINSTANCE hInstance;
+
+IVdjCallbacks8 *cb;
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -187,7 +187,7 @@ extern static const GUID IID_IVdjPluginBasic8;
 #ifdef __cplusplus
 extern "C" {
 #endif
-    VDJ_EXPORT HRESULT VDJ_API DllGetClassObject(const GUID &rclsid,const GUID &riid,void** ppObject);
+VDJ_EXPORT HRESULT VDJ_API DllGetClassObject(const GUID &rclsid,const GUID &riid,void** ppObject);
 #ifdef __cplusplus
 }
 #endif

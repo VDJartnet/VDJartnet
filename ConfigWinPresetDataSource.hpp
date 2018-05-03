@@ -41,13 +41,12 @@
 
 #define NODLLEXPORT
 #include "VDJartnet.hpp"
-#include "Config.hpp"
 
-#include "windows.h" 
+#include "windows.h"
 
-#using <mscorlib.dll> 
-#using <System.dll> 
-#using <System.Windows.Forms.dll> 
+#using <mscorlib.dll>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
 #include <msclr\marshal_cppstd.h>
 
 using namespace System::Windows::Forms;
@@ -78,11 +77,11 @@ public:
         _preset = presetTMP;
     }
 
-    ConfigPresetRowString(Preset preset) {
-        _name = preset.name;
-        _preset = preset.preset;
+    ConfigPresetRowString(const struct _Preset preset) {
+        _name = gcnew String(preset.name.c_str());
+        _preset = gcnew String(preset.preset.c_str());
     }
-    
+
 private:
     String^ _name;
     String^ _preset;
@@ -98,11 +97,10 @@ public:
 
         DataSource = gcnew System::Collections::Generic::List<ConfigPresetRowString^>(512);
 
-        for (int i = 0; i < _vdjArtnet->config->getPresets().size()) {
+        for (int i = 0; i < _vdjArtnet->config->getPresets().size(); i++) {
             DataSource->Add(gcnew ConfigPresetRowString(_vdjArtnet->config->getPresets()[i]));
         }
     }
 };
 
 #endif /* ConfigWinPresetDataSource_hpp */
-

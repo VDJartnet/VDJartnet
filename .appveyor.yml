@@ -4,7 +4,7 @@ image: Visual Studio 2017
 build_script:
 - cmd: .\buildPackageWin.bat
 artifacts:
-- path: .\VDJartnet.dll
+- path: .\Release\VDJartnet.dll
   name: DLL
 deploy:
 - provider: GitHub
