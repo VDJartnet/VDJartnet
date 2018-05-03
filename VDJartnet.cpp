@@ -167,7 +167,7 @@ void CVDJartnet::updateDMXvalues() {
                 GetInfo("get_var $VDJartnetSend", &resultDouble);
                 int resultInt = (int)round(resultDouble);
                 if (resultInt >= 0 && resultInt <= 255) {
-                    updated = artnet.setChannel(i, resultInt);
+                    updated = artnet.setChannel(i, (uint8_t)resultInt);
                 }
             }
         }

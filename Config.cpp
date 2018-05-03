@@ -52,7 +52,7 @@ void Config::loadConfig() {
         if (delimPos != std::string::npos) {
             std::string portS = line.substr(delimPos + 1, std::string::npos);
             if (portS.find_first_not_of("0123456789") == std::string::npos) {
-                port = std::stoi(portS);
+                port = (unsigned short)std::stoi(portS);
             }
         }
     }
@@ -84,7 +84,7 @@ void Config::saveConfig() {
         fout << host << std::endl;
         for (int i = 0; i < 512; i++) {
             if (channelCommands[i] != "") {
-                fout << std::string(3 - (floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
+                fout << std::string(3 - ((int)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
             }
         }
         fout.close();

@@ -10,7 +10,6 @@
 		6842A7981F00612B009EC942 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DD1E4D29FF002C7ED1 /* main.cpp */; };
 		6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */; };
 		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
-		68B8DB5D2026840400449F10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 686A93D21E4D291B002C7ED1 /* Info.plist */; };
 		68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684CFF651ECCAD6500C538B2 /* ConfigMac.mm */; };
 		68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA811EE170B500335D50 /* ConfigMacViewController.mm */; };
 		68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
@@ -191,7 +190,7 @@
 		686A93C71E4D2919002C7ED1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Jonathan Tanner";
 				TargetAttributes = {
 					686A93CE1E4D2919002C7ED1 = {
@@ -222,7 +221,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68B8DB5D2026840400449F10 /* Info.plist in Resources */,
 				68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */,
 				68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */,
 			);
@@ -291,6 +289,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -315,6 +315,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -359,6 +360,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

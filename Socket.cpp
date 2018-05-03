@@ -95,7 +95,7 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
         if (host == INADDR_NONE) {
             struct hostent *hostent = gethostbyname(hostS.c_str());
             if (hostent) {
-                memcpy(&host, hostent->h_addr, hostent->h_length);
+                memcpy(&host, hostent->h_addr, (size_t)hostent->h_length);
             } else {
                 throw std::runtime_error("Invalid host name");
             }
@@ -107,7 +107,7 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
     address.sin_addr.s_addr = host;
     address.sin_port = htons(port);
 
-    int sent_bytes = sendto(handle, (const char *) data, size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
+    ssize_t sent_bytes = sendto(handle, (const char *) data, size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
     if (sent_bytes != size) {
         throw std::runtime_error("Failed to send data");
     }
