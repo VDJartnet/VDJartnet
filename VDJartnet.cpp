@@ -93,16 +93,16 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 }
 
 ULONG VDJ_API CVDJartnet::Release() {
+	if (configTool != nullptr) {
 #if (defined(VDJ_WIN))
-    closeConfigWindow(configWindow);
-    delete configWindow;
-    configWindow = nullptr;
+		closeConfigTool(configTool);
+		delete configTool;
+		configTool = nullptr;
 #elif (defined(VDJ_MAC))
-    if (configTool != nullptr) {
         CFRelease(configTool);
         configTool = nullptr;
-    }
 #endif
+	}
 
     delete config;
     delete this;
@@ -132,7 +132,12 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
         case ID_CONFIG_BUTTON:
             if (m_Config == 1) {
 #if (defined(VDJ_WIN))
-                configWindow = createConfigWindow(this);
+				if (configTool != nullptr) {
+					closeConfigTool(configTool);
+					delete configTool;
+					configTool = nullptr;
+				}
+				configTool = createConfigTool(this);
 #elif (defined(VDJ_MAC))
                 if (configTool != nullptr) {
                     CFRelease(configTool);

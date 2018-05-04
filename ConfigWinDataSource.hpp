@@ -51,44 +51,30 @@ using namespace System;
 
 ref class ConfigRowString : public Object {
 public:
-    CVDJartnet* _vdjArtnet;
-    int row;
-
     property String^ Value {
         String^ get() {
-            return gcnew String(_vdjArtnet->config->channelCommands[row].c_str());
+            return gcnew String(vdjArtnet->config->channelCommands[row].c_str());
         }
         void set(String^ newVal) {
             if (newVal == nullptr) {
-                _vdjArtnet->config->channelCommands[row] = "";
+                vdjArtnet->config->channelCommands[row] = "";
             } else {
-                _vdjArtnet->config->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
+                vdjArtnet->config->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
             }
-            _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+            vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
         }
     }
 
     ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP) {
-        _vdjArtnet = vdjArtnetTMP;
+        vdjArtnet = vdjArtnetTMP;
         row = rowTMP;
     }
+private:
+	CVDJartnet * vdjArtnet;
+	int row;
 };
 
-ref class ConfigDataSource {
-public:
-    CVDJartnet* _vdjArtnet;
-    System::Collections::Generic::List<ConfigRowString^>^ DataSource;
-
-    ConfigDataSource(CVDJartnet* vdjArtnetTMP) {
-        _vdjArtnet = vdjArtnetTMP;
-
-        DataSource = gcnew System::Collections::Generic::List<ConfigRowString^>(512);
-
-        for (int row = 0; row < 512; row++) {
-            DataSource->Add(gcnew ConfigRowString(_vdjArtnet, row));
-        }
-    }
-};
+typedef System::Collections::Generic::List<ConfigRowString^> ConfigDataSource;
 
 #endif /* ConfigWinDataSource_hpp */
 

@@ -84,20 +84,6 @@ private:
     String^ _preset;
 };
 
-ref class ConfigPresetDataSource {
-public:
-    CVDJartnet* _vdjArtnet;
-    System::Collections::Generic::List<ConfigPresetRowString^>^ DataSource;
-
-    ConfigPresetDataSource(CVDJartnet* vdjArtnetTMP) {
-        _vdjArtnet = vdjArtnetTMP;
-
-        DataSource = gcnew System::Collections::Generic::List<ConfigPresetRowString^>(512);
-
-        for (int i = 0; i < _vdjArtnet->config->getPresets().size(); i++) {
-            DataSource->Add(gcnew ConfigPresetRowString(_vdjArtnet->config->getPresets()[i]));
-        }
-    }
-};
+typedef System::Collections::Generic::List<ConfigPresetRowString^> ConfigPresetDataSource;
 
 #endif /* ConfigWinPresetDataSource_hpp */

@@ -122,6 +122,9 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="ConfigWinPresetWindow.cpp" />
+    <ClCompile Include="ConfigWinTableView.cpp" />
+    <ClCompile Include="ConfigWinWindow.cpp" />
     <ClCompile Include="main.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
@@ -141,7 +144,9 @@
     <ClInclude Include="ConfigWin.hpp" />
     <ClInclude Include="ConfigWinDataSource.hpp" />
     <ClInclude Include="ConfigWinPresetDataSource.hpp" />
+    <ClInclude Include="ConfigWinPresetWindow.hpp" />
     <ClInclude Include="ConfigWinTableView.hpp" />
+    <ClInclude Include="ConfigWinWindow.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Socket.hpp" />
     <ClInclude Include="VDJartnet.hpp" />
@@ -149,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="presets.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

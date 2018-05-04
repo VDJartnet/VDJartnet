@@ -2,7 +2,7 @@
 //  ConfigWin.hpp
 //  VDJartnet
 //
-//  Copyright Â© 2017-18 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -31,20 +31,12 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef ConfigWin_hpp
-#define ConfigWin_hpp
+#ifndef ConfigWinPresetWindow_hpp
+#define ConfigWinPresetWindow_hpp
 
 #include "VDJartnet.hpp"
 
-void* createConfigTool(CVDJartnet* vdjArtnet);
-void closeConfigTool(void* configWindow);
-
-#ifndef CLRFREE
-
-#include <stdio.h>
-
-#include "ConfigWinWindow.hpp"
-#include "ConfigWinPresetWindow.hpp"
+#include "ConfigWinPresetDataSource.hpp"
 
 #include "windows.h"
 
@@ -53,33 +45,26 @@ void closeConfigTool(void* configWindow);
 #using <System.Windows.Forms.dll>
 #using <System.Drawing.dll>
 
-#include <msclr\gcroot.h>
-
 using namespace System::Windows::Forms;
 using namespace System::Drawing;
 using namespace System;
 
-ref class ConfigTool {
-public:
-     ConfigTool(CVDJartnet* vdjArtnetTMP);
-     void hide();
+ref class ConfigPresetWindow : public Form {
 
+public:
+	ConfigPresetWindow(CVDJartnet* vdjArtnetTMP);
+	void reLayout(Object^ sender, LayoutEventArgs^ e);
+	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+	//void hide();
 private:
 	CVDJartnet * vdjArtnet;
 
-    ConfigWindow^ window;
-	ConfigPresetWindow^ presetWindow;
+	DataGridView^ tableView;
+	ConfigPresetDataSource^ dataSource;
 
-    DataGridViewRow^ rowToDrag;
-    System::Drawing::Rectangle dragBoxFromMouseDown;
+	DataGridViewRow ^ rowToDrag;
+	System::Drawing::Rectangle dragBoxFromMouseDown;
 };
 
-class ConfigToolNative {
-public:
-    msclr::gcroot<ConfigTool^> configTool;
-
-	ConfigToolNative(CVDJartnet* vdjArtnet) : configTool(gcnew ConfigTool(vdjArtnet)) {}
-};
-
-#endif // CLRFREE
-#endif /* ConfigWin_hpp */
+#endif /* ConfigWinPresetWindow_hpp */

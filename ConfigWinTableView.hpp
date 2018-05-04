@@ -36,6 +36,10 @@
 
 #include <stdio.h>
 
+#include "VDJartnet.hpp"
+
+#include "ConfigWinDataSource.hpp"
+
 #include "windows.h" 
 
 #using <mscorlib.dll> 
@@ -58,11 +62,22 @@ public:
 	virtual event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
 
 	virtual bool ProcessCmdKey(Message% msg, Keys keyData) override {
-		//if (ConfigTableViewKeyDown != nullptr) {
-			ConfigTableViewKeyDown(msg, keyData);
-		//}
+		ConfigTableViewKeyDown(msg, keyData);
 		return DataGridView::ProcessCmdKey(msg, keyData);
-    }	
+    }
+
+	ConfigTableView(CVDJartnet* vdjArtnet);
+
+	void tableViewKeyDown(Object^ sender, KeyEventArgs^ e);
+	void tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e);
+	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+	void tableViewDragEnter(Object^ sender, DragEventArgs^ e);
+	void tableViewDragDrop(Object^ sender, DragEventArgs^ e);
+
+private:
+	DataGridViewRow ^ rowToDrag;
+	System::Drawing::Rectangle dragBoxFromMouseDown;
 };
 
 #endif /* ConfigWinTableView_hpp */

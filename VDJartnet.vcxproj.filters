@@ -33,6 +33,15 @@
     <ClCompile Include="ConfigWin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigWinWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigWinTableView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigWinPresetWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vdjPlugin8.h">
@@ -65,5 +74,14 @@
     <ClInclude Include="ConfigWinTableView.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConfigWinWindow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigWinPresetWindow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="presets.txt" />
   </ItemGroup>
 </Project>
