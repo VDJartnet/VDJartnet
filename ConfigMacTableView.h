@@ -2,8 +2,7 @@
 //  ConfigMacTableView.h
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 02/06/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -30,10 +29,23 @@
 #define ConfigMacTableView_h
 
 #include <AppKit/AppKit.h>
+#ifdef __cplusplus
+#include "VDJartnet.hpp"
+#endif
 
-@interface ConfigTableView : NSTableView
+@interface ConfigTableView : NSTableView <NSTableViewDataSource, NSTableViewDelegate>
+
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)localDestination;
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView;
+- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row;
+- (void)tableView:(NSTableView*)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row;
+
+- (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard*)pboard;
+- (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation;
+- (BOOL)tableView:(NSTableView*)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation;
 
 @end
 

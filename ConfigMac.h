@@ -2,8 +2,7 @@
 //  ConfigMac.h
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 17/05/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -38,20 +37,15 @@
 #include "VDJartnet.hpp"
 #endif
 
-#include "ConfigMacViewController.h"
-#include "ConfigMacPresetDataSource.h"
+#include "ConfigMacWindow.h"
+#include "ConfigMacPresetWindow.h"
 
-@interface ConfigWindow : NSObject
+@interface ConfigTool : NSObject <NSWindowDelegate>
 
-@property (strong) NSWindow* window;
-@property (strong) NSWindow* presetWindow;
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnet;
-- (void) dealloc;
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
+- (void)dealloc;
 
-- (void) copyRow;
-- (void) pasteRow;
-- (void) deleteRow;
 @end
 
 #endif /* ConfigMac_h */

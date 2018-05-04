@@ -1,5 +1,5 @@
 //
-//  Socket.hpp
+//  ConfigMacIpAddress.mm
 //  VDJartnet
 //
 //  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
@@ -24,41 +24,32 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
-//
-//If you modify this Program, or any covered work, by linking or
-//combining it with the Visual C++ Runtime, the licensors of this Program grant you
-//additional permission to convey the resulting work.
-//Corresponding Source for a non-source form of such a combination shall not
-//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef Socket_hpp
-#define Socket_hpp
+#import "ConfigMacIpAddress.h"
 
-#include <stdlib.h>
-#include <string>
-#include <time.h>
+@implementation ConfigIpAddress {
+    CVDJartnet* vdjArtnet;
+}
 
-#ifdef _WIN32
-#include <winsock2.h>
-#else
-#include <sys/socket.h>
-#include <unistd.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <fcntl.h>
-#endif
+- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP {
+    if ( self = [super init]){//WithFrame:frame] ) {
+        vdjArtnet = vdjArtnetTMP;
+        
+        [self setStringValue: @(vdjArtnet->config->host.c_str())];
+        [self setEditable:YES];
+        [self setDelegate:self];
+        
+        return self;
+    } else {
+        return nil;
+    }
+}
 
-class Socket {
-public:
-    Socket(unsigned int port, int non_blocking);
-    ~Socket();
+- (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor {
+    vdjArtnet->config->host = std::string([[fieldEditor string] UTF8String]);
+    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    
+    return YES;
+}
 
-    void send(std::string hostS, unsigned short port, const void* data, int size);
-
-private:
-    int handle;
-    int non_blocking;
-};
-
-#endif /* Socket_hpp */
+@end

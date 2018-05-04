@@ -1,5 +1,5 @@
 //
-//  Socket.hpp
+//  ConfigMacIpPort.h
 //  VDJartnet
 //
 //  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
@@ -24,41 +24,15 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
-//
-//If you modify this Program, or any covered work, by linking or
-//combining it with the Visual C++ Runtime, the licensors of this Program grant you
-//additional permission to convey the resulting work.
-//Corresponding Source for a non-source form of such a combination shall not
-//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef Socket_hpp
-#define Socket_hpp
-
-#include <stdlib.h>
-#include <string>
-#include <time.h>
-
-#ifdef _WIN32
-#include <winsock2.h>
-#else
-#include <sys/socket.h>
-#include <unistd.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <fcntl.h>
+#include <AppKit/AppKit.h>
+#ifdef __cplusplus
+#include "VDJartnet.hpp"
 #endif
 
-class Socket {
-public:
-    Socket(unsigned int port, int non_blocking);
-    ~Socket();
+@interface ConfigIpPort : NSTextField <NSTextFieldDelegate>
 
-    void send(std::string hostS, unsigned short port, const void* data, int size);
+- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP;
+- (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor;
 
-private:
-    int handle;
-    int non_blocking;
-};
-
-#endif /* Socket_hpp */
+@end

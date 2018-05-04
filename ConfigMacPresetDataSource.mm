@@ -1,9 +1,8 @@
 //
-//  ConfigMacPresetDataSource.m
+//  ConfigMacPresetDataSource.mm
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 02/06/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -28,28 +27,30 @@
 
 #import "ConfigMacPresetDataSource.h"
 
-@implementation ConfigPresetDataSource
+@implementation ConfigPresetDataSource {
+    CVDJartnet* vdjArtnet;
+}
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnet {
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
     if ( self = [super init] ) {
-        _vdjArtnet = vdjArtnet;
+        vdjArtnet = vdjArtnetTMP;
         return self;
     } else {
         return nil;
     }
 }
 
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return _vdjArtnet->config->getPresets().size();
+- (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView {
+    return (NSInteger)vdjArtnet->config->getPresets().size();
 }
 
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    return @(_vdjArtnet->config->getPresets()[row].name.c_str());
+- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row {
+    return @(vdjArtnet->config->getPresets()[(unsigned long)row].name.c_str());
 }
 
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+- (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard*)pboard {
     [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [pboard setString:@(_vdjArtnet->config->getPresets()[[rowIndexes firstIndex]].preset.c_str()) forType:NSStringPboardType];
+    [pboard setString:@(vdjArtnet->config->getPresets()[[rowIndexes firstIndex]].preset.c_str()) forType:NSStringPboardType];
     return YES;
 }
 

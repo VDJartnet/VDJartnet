@@ -1,9 +1,8 @@
 //
-//  ConfigMacTableView.m
+//  ConfigMacIpAddress.h
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 02/06/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -26,12 +25,14 @@
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
 
-#import "ConfigMacTableView.h"
+#include <AppKit/AppKit.h>
+#ifdef __cplusplus
+#include "VDJartnet.hpp"
+#endif
 
-@implementation ConfigTableView
+@interface ConfigIpAddress : NSTextField <NSTextFieldDelegate>
 
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)localDestination {
-    return NSDragOperationEvery;
-}
+- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP;
+- (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor;
 
 @end

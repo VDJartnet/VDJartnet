@@ -1,9 +1,8 @@
 //
-//  ConfigMacViewController.m
+//  ConfigMacViewController.mm
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 02/06/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -29,103 +28,71 @@
 #import "ConfigMacViewController.h"
 
 @implementation ConfigViewController {
+    CVDJartnet* vdjArtnet;
+    
     NSScrollView* scrollView;
+    ConfigIpAddress* ipAddress;
+    ConfigIpPort* ipPort;
+    NSTextField* ipLabel;
+}
+
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
+    if ( self = [super initWithNibName:nil bundle:nil] ) {
+        vdjArtnet = vdjArtnetTMP;
+        return self;
+    } else {
+        return nil;
+    }
 }
 
 - (void)loadView {
     self.view = [[NSView alloc] init];
 
-    _tableView = [[ConfigTableView alloc] init];
-    [_tableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"Channel"]];
-    [_tableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"VDJscript"]];
-    [[_tableView tableColumns][0] setTitle:NSLocalizedString(@"Channel", @"DMX Channel")];
-    [[_tableView tableColumns][0] setEditable:NO];
-    [[_tableView tableColumns][1] setTitle:NSLocalizedString(@"VDJscript", @"")];
-    [_tableView setDataSource:self];
-    [_tableView setDelegate:self];
-    [_tableView reloadData];
-    [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
-    [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
-    [_tableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
+    _tableView = [[ConfigTableView alloc] initWithVDJartnet:vdjArtnet];
 
-    scrollView = [[NSScrollView alloc] initWithFrame:CGRectMake(0,0,100,100)];
+    scrollView = [[NSScrollView alloc] initWithFrame:NSZeroRect];
     [scrollView setDocumentView:_tableView];
     [scrollView setHasVerticalScroller:YES];
     [[self view] addSubview:scrollView];
+    
+    ipAddress = [[ConfigIpAddress alloc] initWithFrame:NSZeroRect VDJartnet:vdjArtnet];
+    [[self view] addSubview:ipAddress];
+    
+    ipPort = [[ConfigIpPort alloc] initWithFrame:NSZeroRect VDJartnet:vdjArtnet];
+    [[self view] addSubview:ipPort];
 
-    _ipAddress = [[NSTextField alloc] initWithFrame:CGRectMake(50,100,100,30)];
-    _ipAddress.stringValue = @(_vdjArtnet->config->host.c_str());
-    [_ipAddress setEditable:YES];
-    [_ipAddress setDelegate:self];
-    [[self view] addSubview:_ipAddress];
+    ipLabel = [[NSTextField alloc] initWithFrame:NSZeroRect];
+    [ipLabel setStringValue: NSLocalizedString(@"IP address:", @"")];
+    [ipLabel setEditable:NO];
+    [ipLabel setSelectable:NO];
+    [ipLabel setBordered:NO];
+    [ipLabel setBackgroundColor:[NSColor clearColor]];
+    [[self view] addSubview:ipLabel];
+    
+    [scrollView setTranslatesAutoresizingMaskIntoConstraints:false];
+    [ipAddress setTranslatesAutoresizingMaskIntoConstraints:false];
+    [ipLabel setTranslatesAutoresizingMaskIntoConstraints:false];
+    [ipPort setTranslatesAutoresizingMaskIntoConstraints:false];
 
-    _ipLabel = [[NSTextField alloc] initWithFrame:CGRectMake(0,100,100,30)];
-    _ipLabel.stringValue = NSLocalizedString(@"IP address:", @"");
-    [_ipLabel setEditable:NO];
-    [_ipLabel setSelectable:NO];
-    [_ipLabel setBordered:NO];
-    [[self view] addSubview:_ipLabel];
+    [[[scrollView bottomAnchor] constraintEqualToAnchor:[[self view] bottomAnchor]] setActive:true];
+    [[[scrollView topAnchor] constraintEqualToAnchor:[ipAddress bottomAnchor] constant: 5] setActive:true];
+    [[[scrollView leftAnchor] constraintEqualToAnchor:[[self view] leftAnchor]] setActive:true];
+    [[[scrollView rightAnchor] constraintEqualToAnchor:[[self view] rightAnchor]] setActive:true];
+
+    [[[ipAddress topAnchor] constraintEqualToAnchor:[[self view] topAnchor] constant:30] setActive:true];
+    [[[ipAddress leftAnchor] constraintEqualToAnchor:[ipLabel rightAnchor]] setActive:true];
+    [[[ipAddress rightAnchor] constraintEqualToAnchor:[ipPort leftAnchor]] setActive:true];
+    
+    [[[ipLabel centerYAnchor] constraintEqualToAnchor:[ipAddress centerYAnchor]] setActive:true];
+    [[[ipLabel leftAnchor] constraintEqualToAnchor:[[self view] leftAnchor]] setActive:true];
+
+    [[[ipPort centerYAnchor] constraintEqualToAnchor:[ipAddress centerYAnchor]] setActive:true];
+    [[[ipPort rightAnchor] constraintEqualToAnchor:[[self view] rightAnchor]] setActive:true];
+    [[[ipPort widthAnchor] constraintEqualToConstant:50] setActive:true];
 }
 
 - (void)viewDidLayout {
     [super viewDidLayout];
-
-    CGPoint origin = [[[self view] window] contentRectForFrameRect:[[self view] frame]].origin;
-    CGSize size = [[[self view] window] contentRectForFrameRect:[[[self view] window] frame]].size;
-    [_ipLabel setFrame:CGRectMake(origin.x, origin.y + size.height - _ipAddress.frame.size.height - 30, _ipLabel.frame.size.width, _ipAddress.frame.size.height)];
-    [_ipAddress setFrame:CGRectMake(origin.x + _ipLabel.frame.size.width, origin.y + size.height - _ipAddress.frame.size.height - 30, size.width - _ipLabel.frame.size.width, _ipAddress.frame.size.height)];
-    [scrollView setFrame:CGRectMake(origin.x, origin.y, size.width, _ipAddress.frame.origin.y - origin.y)];
-    [[_tableView tableColumns][0] setWidth:50];
-    [[_tableView tableColumns][1] setWidth:size.width - [[_tableView tableColumns][0] width] - 10];
-}
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 512;
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    if ([[tableColumn identifier]  isEqual: @"Channel"]) {
-        return [[NSString alloc] initWithFormat:@"%ld", row + 1 ];
-    } else if ([[tableColumn identifier]  isEqual: @"VDJscript"]) {
-        return @(_vdjArtnet->config->channelCommands[row].c_str());
-    } else {
-        return @"";
-    }
-}
-
-- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    [[[[tableView window] undoManager] prepareWithInvocationTarget:self] tableView:tableView setObjectValue:@(_vdjArtnet->config->channelCommands[row].c_str()) forTableColumn:tableColumn row:row];
-    _vdjArtnet->config->channelCommands[row] = std::string([object UTF8String]);
-    _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
-    [tableView reloadData];
-}
-
-- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    _vdjArtnet->config->host = std::string([_ipAddress.stringValue UTF8String]);
-    _vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
-
-    return YES;
-}
-
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
-    [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [pboard setString:[self tableView:tableView objectValueForTableColumn:[tableView tableColumns][1] row:(NSInteger)[rowIndexes firstIndex]] forType:NSStringPboardType];
-
-    return YES;
-}
-
-- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
-    return NSDragOperationCopy;
-}
-
-- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
-    [self tableView:tableView setObjectValue:[[info draggingPasteboard] stringForType:NSStringPboardType] forTableColumn:[tableView tableColumns][1] row:row];
-    return YES;
-}
-
-- (void)windowWillClose:(NSNotification *)notification {
-    CFRelease(_vdjArtnet->configWindow);
-    _vdjArtnet->configWindow = nullptr;
 }
 
 @end

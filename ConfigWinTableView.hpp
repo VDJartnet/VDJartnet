@@ -2,8 +2,7 @@
 //  ConfigWinTableView.hpp
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 03/06/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -25,14 +24,12 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
-//{Corresponding Source for a non-source form of such a combination shall not
-//include the source code for the parts of VirtualDJ used as well as that of the covered work.}
 //
 //If you modify this Program, or any covered work, by linking or
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
-//{Corresponding Source for a non-source form of such a combination shall not
-//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.}
+//Corresponding Source for a non-source form of such a combination shall not
+//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
 #ifndef ConfigWinTableView_hpp
 #define ConfigWinTableView_hpp

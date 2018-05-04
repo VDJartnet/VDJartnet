@@ -1,0 +1,20 @@
+R"~~~(Is Playing~play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Is Not Playing~play ? set $VDJartnetsend 0 : set $VDJartnetsend 255
+Deck 1 Playing~deck 1 play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Deck 2 Playing~deck 2 play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Deck 3 Playing~deck 3 play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Deck 4 Playing~deck 4 play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Every Beat~param_greater get_beat_bar 12.5% ? set $VDJartnetsend 255 : param_greater get_beat_bar 25% ? set $VDJartnetsend 0 : param_greater get_beat_bar 37.5% ? set $VDJartnetsend 255 : param_greater get_beat_bar 50% ? set $VDJartnetsend 0 : param_greater get_beat_bar 62.5% ? set $VDJartnetsend 255 : param_greater get_beat_bar 75% ? set $VDJartnetsend 0 : param_greater get_beat_bar 87.5% ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Twice A beat~param_greater get_beat_bar 6.75% ? set $VDJartnetsend 255 : param_greater get_beat_bar 12.5% ? set $VDJartnetsend 0 : param_greater get_beat_bar 18.75% ? set $VDJartnetsend 255 : param_greater get_beat_bar 25% ? set $VDJartnetsend 0 : param_greater get_beat_bar 31.25% ? set $VDJartnetsend 255 : param_greater get_beat_bar 37.5% ? set $VDJartnetsend 0 : param_greater get_beat_bar 43.75% ? set $VDJartnetsend 255 : param_greater get_beat_bar 50% ? set $VDJartnetsend 0 : param_greater get_beat_bar 56.25% ? set $VDJartnetsend 255 : param_greater get_beat_bar 62.5% ? set $VDJartnetsend 0 : param_greater get_beat_bar 68.75% ? set $VDJartnetsend 255 : param_greater get_beat_bar 75% ? set $VDJartnetsend 0 : param_greater get_beat_bar 81.25% ? set $VDJartnetsend 255 : param_greater get_beat_bar 87.5% ? set $VDJartnetsend 0 : param_greater get_beat_bar 93.75% ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Every Other Beat~get_beat_num 1 ? set $VDJartnetsend 255 : get_beat_num 3 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 001~var $artnet 1 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 002~var $artnet 3 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 003~var $artnet 4 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 004~var $artnet 5 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 005~var $artnet 6 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 006~var $artnet 6 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 007~var $artnet 7 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 008~var $artnet 8 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 009~var $artnet 9 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Cue 1 if deck is active & faded up~var artnet 1 ? is_audible deck active ? set $VDJartnetSend 255 : set $VDJartnetSend 0 : set $VDJartnetSend 0
+)~~~"

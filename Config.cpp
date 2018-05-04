@@ -2,8 +2,7 @@
 //  Config.cpp
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 09/02/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -29,6 +28,8 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
+//Corresponding Source for a non-source form of such a combination shall not
+//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
 #include "Config.hpp"
 
@@ -62,32 +63,38 @@ void Config::loadConfig() {
 }
 
 void Config::loadPresetPresets() {
-
+    std::string presetPresets =
+#include "presets.txt"
+    ;
+    std::istringstream presetPresetsStream(presetPresets);
+    parsePresetsStream(presetPresetsStream);
 }
 
-void Config::parsePresetsFile(std::ifstream& fin) {
-    if (fin.is_open()) {
-        std::string line;
-        safeGetLine(fin, line);
-		while (!line.empty()) {
-			size_t delimPos = line.find("~");
-			Preset preset;
-			preset.name = line.substr(0, delimPos);
-			preset.preset = line.substr(delimPos + 1, std::string::npos);
-			presets.push_back(preset);
-			safeGetLine(fin, line);
-		}
-        fin.close();
+void Config::parsePresetsStream(std::istream& stin) {
+    std::string line;
+    safeGetLine(stin, line);
+    stin.eof();
+    while (!line.empty()) {
+        parsePresetsLine(line);
+        safeGetLine(stin, line);
     }
+}
+
+void Config::parsePresetsLine(std::string line) {
+    size_t delimPos = line.find("~");
+    Preset preset;
+    preset.name = line.substr(0, delimPos);
+    preset.preset = line.substr(delimPos + 1, std::string::npos);
+    presets.push_back(preset);
 }
 
 void Config::saveConfig() {
     std::ofstream fout(configPath);
     if (fout.is_open()) {
-        fout << host << std::endl;
+        fout << host << ":" << port << std::endl;
         for (int i = 0; i < 512; i++) {
             if (channelCommands[i] != "") {
-                fout << std::string(3 - ((int)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
+                fout << std::string(3 - ((unsigned long)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
             }
         }
         fout.close();
@@ -116,7 +123,10 @@ void Config::parseConfigLine(std::string line){
         if (line.at(1) == 'c') {
             parseConfigFile(fin);
         } else if (line.at(1) == 'p') {
-            parsePresetsFile(fin);
+            if (fin.is_open()) {
+                parsePresetsStream(fin);
+                fin.close();
+            }
         }
         //finished with new file
         return;

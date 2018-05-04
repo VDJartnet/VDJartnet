@@ -2,8 +2,7 @@
 //  VDJartnet.cpp
 //  VDJartnet
 //
-//  Created by Jonathan Tanner on 09/02/2017.
-//  Copyright © 2017 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -29,6 +28,8 @@
 //If you modify this Program, or any covered work, by linking or
 //combining it with the Visual C++ Runtime, the licensors of this Program grant you
 //additional permission to convey the resulting work.
+//Corresponding Source for a non-source form of such a combination shall not
+//include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
 #include "VDJartnet.hpp"
 
@@ -60,6 +61,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
 }
 //-----------------------------------------------------------------------------
 void CVDJartnet::init() {
+    
     if (config == nullptr) {
         char pathC[256];
         GetStringInfo("get_vdj_folder", pathC, 256);
@@ -71,6 +73,7 @@ void CVDJartnet::init() {
 #endif
 
         config = new Config(path);
+        
     }
 
 	if (pollThread == nullptr) {
@@ -95,9 +98,9 @@ ULONG VDJ_API CVDJartnet::Release() {
     delete configWindow;
     configWindow = nullptr;
 #elif (defined(VDJ_MAC))
-    if (configWindow != nullptr) {
-        CFRelease(configWindow);
-        configWindow = nullptr;
+    if (configTool != nullptr) {
+        CFRelease(configTool);
+        configTool = nullptr;
     }
 #endif
 
@@ -131,11 +134,11 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 #if (defined(VDJ_WIN))
                 configWindow = createConfigWindow(this);
 #elif (defined(VDJ_MAC))
-                if (configWindow != nullptr) {
-                    CFRelease(configWindow);
-                    configWindow = nullptr;
+                if (configTool != nullptr) {
+                    CFRelease(configTool);
+                    configTool = nullptr;
                 }
-                configWindow = (__bridge_retained void*)[[ConfigWindow alloc] initWithVDJartnet: this];
+                configTool = (__bridge_retained void*)[[ConfigTool alloc] initWithVDJartnet: this];
 #endif
             }
             break;
@@ -171,7 +174,11 @@ void CVDJartnet::updateDMXvalues() {
                 int resultInt = (int)round(resultDouble);
                 if (resultInt >= 0 && resultInt <= 255) {
                     updated = artnet.setChannel(i, (uint8_t)resultInt);
+                } else {
+                    updated = artnet.setChannel(i, 0);
                 }
+            } else {
+                updated = artnet.setChannel(i, 0);
             }
         }
 
