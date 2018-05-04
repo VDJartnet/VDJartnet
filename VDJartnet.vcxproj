@@ -122,6 +122,7 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="ConfigWinPresetTableView.cpp" />
     <ClCompile Include="ConfigWinPresetWindow.cpp" />
     <ClCompile Include="ConfigWinTableView.cpp" />
     <ClCompile Include="ConfigWinWindow.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="ConfigWin.hpp" />
     <ClInclude Include="ConfigWinDataSource.hpp" />
     <ClInclude Include="ConfigWinPresetDataSource.hpp" />
+    <ClInclude Include="ConfigWinPresetTableView.hpp" />
     <ClInclude Include="ConfigWinPresetWindow.hpp" />
     <ClInclude Include="ConfigWinTableView.hpp" />
     <ClInclude Include="ConfigWinWindow.hpp" />

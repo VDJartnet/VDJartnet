@@ -72,8 +72,11 @@ ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnetTMP) {
 void ConfigWindow::reLayout(Object^ sender, LayoutEventArgs^ e) {
 	ipLabel->Location = System::Drawing::Point(0, 0);
 
+	ipPort->Size = System::Drawing::Size(50, 20);
+	ipAddress->Size = System::Drawing::Size(this->ClientSize.Width - ipLabel->Width - ipPort->Width, 20);
+
+	ipPort->Location = System::Drawing::Point(this->ClientSize.Width - ipPort->Width, 0);
 	ipAddress->Location = System::Drawing::Point(ipLabel->Width, 0);
-	ipAddress->Size = System::Drawing::Size(this->ClientSize.Width - ipLabel->Width, 20);
 
 	tableView->Location = System::Drawing::Point(0, 20);
 	tableView->Size = System::Drawing::Size(this->ClientSize.Width, this->ClientSize.Height - ipAddress->Height);
@@ -96,12 +99,13 @@ void ConfigWindow::updateIPaddress(Object^ sender, EventArgs^ e) {
 }
 
 void ConfigWindow::updateIPport(Object^ sender, EventArgs^ e) {
-	vdjArtnet->config->port = (unsigned short)int::Parse(ipAddress->Text);
+	vdjArtnet->config->port = (unsigned short)int::Parse(ipPort->Text);
 	vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
 }
 
 void ConfigWindow::ipKeyDown(Object^ sender, KeyEventArgs^ e) {
 	if (e->KeyCode == Keys::Enter) {
 		updateIPaddress(sender, e);
+		updateIPport(sender, e);
 	}
 }

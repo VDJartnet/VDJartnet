@@ -1,8 +1,8 @@
 //
-//  ConfigWin.hpp
+//  ConfigWinTableView.hpp
 //  VDJartnet
 //
-//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
+//  Copyright Â© 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -31,31 +31,39 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef ConfigWinPresetWindow_hpp
-#define ConfigWinPresetWindow_hpp
+#ifndef ConfigWinPresetTableView_hpp
+#define ConfigWinPresetTableView_hpp
+
+#include <stdio.h>
 
 #include "VDJartnet.hpp"
 
-#include "ConfigWinPresetTableView.hpp"
+#include "ConfigWinPresetDataSource.hpp"
 
-#include "windows.h"
+#include "windows.h" 
 
-#using <mscorlib.dll>
-#using <System.dll>
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
+#using <mscorlib.dll> 
+#using <System.dll> 
+#using <System.Windows.Forms.dll> 
+#include <msclr\marshal_cppstd.h>
 
 using namespace System::Windows::Forms;
-using namespace System::Drawing;
 using namespace System;
 
-ref class ConfigPresetWindow : public Form {
-
+ref class ConfigPresetTableView : public DataGridView {
 public:
-	ConfigPresetWindow(CVDJartnet* vdjArtnetTMP);
-	void reLayout(Object^ sender, LayoutEventArgs^ e);
+	ConfigPresetTableView(CVDJartnet* vdjArtnet);
+
+	DataObject^ GetClipboardContent() override;
+
+	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+
 private:
-	ConfigPresetTableView^ tableView;
+	ConfigPresetDataSource ^ dataSource;
+
+	DataGridViewRow ^ rowToDrag;
+	System::Drawing::Rectangle dragBoxFromMouseDown;
 };
 
-#endif /* ConfigWinPresetWindow_hpp */
+#endif /* ConfigWinPresetTableView_hpp */

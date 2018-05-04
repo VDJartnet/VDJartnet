@@ -39,7 +39,8 @@ ConfigTableView::ConfigTableView(CVDJartnet* vdjArtnet) {
 	this->RowHeadersVisible = true;
 	this->AllowDrop = true;
 	this->AllowUserToAddRows = false;
-	this->ClipboardCopyMode = DataGridViewClipboardCopyMode::Disable;
+	this->ClipboardCopyMode = DataGridViewClipboardCopyMode::EnableWithoutHeaderText;
+	this->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
 
 	ConfigDataSource^ dataSource = gcnew ConfigDataSource(512);
 	for (int row = 0; row < 512; row++) {
@@ -64,22 +65,23 @@ ConfigTableView::ConfigTableView(CVDJartnet* vdjArtnet) {
 
 void ConfigTableView::tableViewKeyDown(Object^ sender, KeyEventArgs^ e) {
 	switch (e->KeyCode) {
-	case Keys::D:
-		if (this->SelectedRows->Count >= 1) {
-			Clipboard::SetText(((ConfigRowString^)(this->SelectedRows[0]->DataBoundItem))->Value);
-		}
-		break;
-	case Keys::F:
+	case Keys::V:
 		if (this->SelectedRows->Count >= 1) {
 			((ConfigRowString^)(this->SelectedRows[0]->DataBoundItem))->Value = Clipboard::GetText();
+			this->Refresh();
+		}
+		break;
+	case Keys::Delete:
+	case Keys::Back:
+		if (this->SelectedRows->Count >= 1) {
+			((ConfigRowString^)(this->SelectedRows[0]->DataBoundItem))->Value = "";
 			this->Refresh();
 		}
 		break;
 	case Keys::Z:
 		if (!e->Shift) {
 			break;
-		}
-		//case Keys::Z | Keys::Shift:
+		} // else fallthrough
 	case Keys::Y:
 		break;
 	}

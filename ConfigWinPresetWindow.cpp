@@ -33,37 +33,14 @@
 
 #include "ConfigWinPresetWindow.hpp"
 
-ConfigPresetWindow::ConfigPresetWindow(CVDJartnet* vdjArtnetTMP) {
-	vdjArtnet = vdjArtnetTMP;
-
+ConfigPresetWindow::ConfigPresetWindow(CVDJartnet* vdjArtnet) {
 	this->Name = "Presets";
 	this->Text = "Presets";
 	this->Size = System::Drawing::Size(200, 600);
 
-	tableView = gcnew DataGridView();
-	tableView->Name = "Presets";
-	tableView->AutoGenerateColumns = false;
-	tableView->RowHeadersVisible = false;
-	tableView->AllowDrop = false;
-	tableView->AllowUserToAddRows = false;
-	tableView->ClipboardCopyMode = DataGridViewClipboardCopyMode::Disable;
-
-	ConfigPresetDataSource^ dataSource = gcnew ConfigPresetDataSource(512);
-	for (int i = 0; i < vdjArtnet->config->getPresets().size(); i++) {
-		dataSource->Add(gcnew ConfigPresetRowString(vdjArtnet->config->getPresets()[i]));
-	}
-	tableView->DataSource = dataSource;
-
-	DataGridViewTextBoxColumn^ presetColumn = gcnew DataGridViewTextBoxColumn();
-	presetColumn->Name = "Presets";
-	presetColumn->DataPropertyName = "Name";
-	presetColumn->ReadOnly = true;
-	tableView->Columns->Add(presetColumn);
-	tableView->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
+	tableView = gcnew ConfigPresetTableView(vdjArtnet);
 
 	this->Layout += gcnew LayoutEventHandler(this, &ConfigPresetWindow::reLayout);
-	tableView->MouseDown += gcnew MouseEventHandler(this, &ConfigPresetWindow::tableViewMouseDown);
-	tableView->MouseMove += gcnew MouseEventHandler(this, &ConfigPresetWindow::tableViewMouseMove);
 	this->Controls->Add(tableView);
 
 	this->Show();
@@ -74,27 +51,3 @@ void ConfigPresetWindow::reLayout(Object^ sender, LayoutEventArgs^ e) {
 	tableView->Size = this->ClientSize;
 }
 
-void ConfigPresetWindow::tableViewMouseDown(Object^ sender, MouseEventArgs^ e) {
-	DataGridView::HitTestInfo^ hit = tableView->HitTest(e->X, e->Y);
-
-	if (hit->Type == DataGridViewHitTestType::Cell) {
-		rowToDrag = tableView->Rows[hit->RowIndex];
-
-		System::Drawing::Size dragSize = SystemInformation::DragSize;
-		dragBoxFromMouseDown = System::Drawing::Rectangle(System::Drawing::Point(e->X - (dragSize.Width / 2), e->Y - (dragSize.Height / 2)), dragSize);
-	}
-	else {
-		rowToDrag = nullptr;
-		dragBoxFromMouseDown = System::Drawing::Rectangle::Empty;
-	}
-}
-
-void ConfigPresetWindow::tableViewMouseMove(Object^ sender, MouseEventArgs^ e) {
-	if ((e->Button & ::MouseButtons::Left) == ::MouseButtons::Left) {
-		if (dragBoxFromMouseDown != System::Drawing::Rectangle::Empty && !dragBoxFromMouseDown.Contains(e->X, e->Y)) {
-			if (rowToDrag != nullptr) {
-				tableView->DoDragDrop(((ConfigPresetRowString^)(rowToDrag->DataBoundItem))->Preset, DragDropEffects::Copy);
-			}
-		}
-	}
-}
