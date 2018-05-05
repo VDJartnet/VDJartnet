@@ -80,7 +80,7 @@ void Config::parsePresetsLine(std::string line) {
 void Config::saveConfig() {
     std::ofstream fout(configPath);
     if (fout.is_open()) {
-        fout << << "+H " << host << ":" << port << std::endl;
+        fout << "+H " << host << ":" << port << std::endl;
         for (int i = 0; i < 512; i++) {
             if (channelCommands[i] != "") {
                 fout << std::string(3 - ((unsigned long)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
