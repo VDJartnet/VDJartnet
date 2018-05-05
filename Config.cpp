@@ -117,6 +117,8 @@ void Config::parseConfigLine(std::string line){
           //skip this line as we have already consumed this file
           return;
         }
+        //insert into the set of loaded config files to stop a ensure the same file is not looped over
+        loadedConfigPaths.insert(path);
 
         std::ifstream fin(path);
         if (line.at(1) == 'c') {
@@ -127,8 +129,6 @@ void Config::parseConfigLine(std::string line){
                 fin.close();
             }
         }
-        //insert into the set of loaded config files to stop a ensure the same file is not looped over
-        loadedConfigPaths.insert(path);
         //finished with new file
         return;
     }
