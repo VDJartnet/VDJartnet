@@ -106,7 +106,8 @@ void Config::parseConfigLine(std::string line){
     if (line.at(0) == '@'){
         //include statement
         //load a second file and begin a parse on that
-        std::string path = line.substr(2, std::string::npos);
+		size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
+		std::string path = line.substr(pathStart, std::string::npos);
         std::ifstream fin(path);
         if (line.at(1) == 'c') {
             parseConfigFile(fin);
@@ -152,10 +153,6 @@ void Config::parseConfigLine(std::string line){
 	}
 
     //line does not match any special command line so assume it is a channel definition
-    parseCommandConfigLine(line);
-}
-
-void Config::parseCommandConfigLine(std::string line){
     size_t delimPos = line.find('~');
     std::string channelNoS = line.substr(0, delimPos);
     if ((channelNoS.find_first_not_of("0123456789") == std::string::npos)) {
