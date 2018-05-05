@@ -43,7 +43,7 @@ ConfigPresetTableView::ConfigPresetTableView(CVDJartnet* vdjArtnet) {
 	this->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
 
 	ConfigPresetDataSource^ dataSource = gcnew ConfigPresetDataSource(512);
-	for (int i = 0; i < vdjArtnet->config->getPresets().size(); i++) {
+	for (size_t i = 0; i < vdjArtnet->config->getPresets().size(); i++) {
 		dataSource->Add(gcnew ConfigPresetRowString(vdjArtnet->config->getPresets()[i]));
 	}
 	this->DataSource = dataSource;
