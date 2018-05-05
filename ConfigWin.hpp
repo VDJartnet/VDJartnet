@@ -65,10 +65,10 @@ public:
      void hide();
 
 private:
-	CVDJartnet * vdjArtnet;
+    CVDJartnet * vdjArtnet;
 
     ConfigWindow^ window;
-	ConfigPresetWindow^ presetWindow;
+    ConfigPresetWindow^ presetWindow;
 
     DataGridViewRow^ rowToDrag;
     System::Drawing::Rectangle dragBoxFromMouseDown;
@@ -78,7 +78,7 @@ class ConfigToolNative {
 public:
     msclr::gcroot<ConfigTool^> configTool;
 
-	ConfigToolNative(CVDJartnet* vdjArtnet) : configTool(gcnew ConfigTool(vdjArtnet)) {}
+    ConfigToolNative(CVDJartnet* vdjArtnet) : configTool(gcnew ConfigTool(vdjArtnet)) {}
 };
 
 #endif // CLRFREE

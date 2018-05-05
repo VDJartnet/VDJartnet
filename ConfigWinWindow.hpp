@@ -52,19 +52,19 @@ using namespace System;
 ref class ConfigWindow : public Form {
 
 public:
-	ConfigWindow(CVDJartnet* vdjArtnetTMP);
-	void reLayout(Object^ sender, LayoutEventArgs^ e);
-	void didClose(Object^ sender, FormClosedEventArgs^ e);
-	void updateIPaddress(Object^ sender, EventArgs^ e);
-	void updateIPport(Object^ sender, EventArgs^ e);
-	void ipKeyDown(Object^ sender, KeyEventArgs^ e);
+    ConfigWindow(CVDJartnet* vdjArtnetTMP);
+    void reLayout(Object^ sender, LayoutEventArgs^ e);
+    void didClose(Object^ sender, FormClosedEventArgs^ e);
+    void updateIPaddress(Object^ sender, EventArgs^ e);
+    void updateIPport(Object^ sender, EventArgs^ e);
+    void ipKeyDown(Object^ sender, KeyEventArgs^ e);
 private:
-	CVDJartnet * vdjArtnet;
+    CVDJartnet * vdjArtnet;
 
-	Label^ ipLabel;
-	TextBox^ ipAddress;
-	TextBox^ ipPort;
-	ConfigTableView^ tableView;
+    Label^ ipLabel;
+    TextBox^ ipAddress;
+    TextBox^ ipPort;
+    ConfigTableView^ tableView;
 };
 
 #endif /* ConfigWinWindow_hpp */

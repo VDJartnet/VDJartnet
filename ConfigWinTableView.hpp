@@ -55,32 +55,32 @@ delegate void ConfigTableViewKeyEventHandler(Message% msg, Keys keyData);
 
 interface struct IConfigTableView {  
 public:  
-	event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
+    event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
 };
 
 ref class ConfigTableView : public DataGridView, public IConfigTableView {
 public:
-	virtual event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
+    virtual event ConfigTableViewKeyEventHandler^ ConfigTableViewKeyDown;
 
-	virtual bool ProcessCmdKey(Message% msg, Keys keyData) override {
-		ConfigTableViewKeyDown(msg, keyData);
-		return DataGridView::ProcessCmdKey(msg, keyData);
+    virtual bool ProcessCmdKey(Message% msg, Keys keyData) override {
+        ConfigTableViewKeyDown(msg, keyData);
+        return DataGridView::ProcessCmdKey(msg, keyData);
     }
 
-	ConfigTableView(CVDJartnet* vdjArtnet);
+    ConfigTableView(CVDJartnet* vdjArtnet);
 
-	void tableViewKeyDown(Object^ sender, KeyEventArgs^ e);
-	void tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e);
-	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
-	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
-	void tableViewDragEnter(Object^ sender, DragEventArgs^ e);
-	void tableViewDragDrop(Object^ sender, DragEventArgs^ e);
+    void tableViewKeyDown(Object^ sender, KeyEventArgs^ e);
+    void tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e);
+    void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+    void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+    void tableViewDragEnter(Object^ sender, DragEventArgs^ e);
+    void tableViewDragDrop(Object^ sender, DragEventArgs^ e);
 
 private:
-	DataGridViewRow ^ rowToDrag;
-	System::Drawing::Rectangle dragBoxFromMouseDown;
+    DataGridViewRow ^ rowToDrag;
+    System::Drawing::Rectangle dragBoxFromMouseDown;
 
-	CSUndoManager* undoManager;
+    CSUndoManager* undoManager;
 };
 
 #endif /* ConfigWinTableView_hpp */

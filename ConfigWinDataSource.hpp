@@ -53,16 +53,16 @@ using namespace System;
 
 ref class ConfigRowString : public Object {
 public:
-	property String^ Value {
-		String^ get();
-		void set(String^ newVal);
-	}
+    property String^ Value {
+        String^ get();
+        void set(String^ newVal);
+    }
 
-	ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP, CSUndoManager* undoManagerTMP);
+    ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP, CSUndoManager* undoManagerTMP);
 private:
-	CVDJartnet * vdjArtnet;
-	int row;
-	CSUndoManager* undoManager;
+    CVDJartnet * vdjArtnet;
+    int row;
+    CSUndoManager* undoManager;
 };
 
 typedef System::Collections::Generic::List<ConfigRowString^> ConfigDataSource;
