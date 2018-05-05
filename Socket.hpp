@@ -39,6 +39,7 @@
 #include <time.h>
 
 #ifdef _WIN32
+#define _WINSOCK_DEPRECATED_NO_WARNINGS //Prevent the older APIs from showing warnings
 #include <winsock2.h>
 #else
 #include <sys/socket.h>

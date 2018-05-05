@@ -35,81 +35,83 @@
 
 Socket::Socket(unsigned int port, int non_blocking) {
 #ifdef _WIN32
-    WSADATA wsa_data;
-    if (WSAStartup(MAKEWORD(2, 2), &wsa_data) != 0) {
-        throw std::runtime_error("Windows Sockets failed to start");
-    }
+	WSADATA wsa_data;
+	if (WSAStartup(MAKEWORD(2, 2), &wsa_data) != 0) {
+		throw std::runtime_error("Windows Sockets failed to start");
+	}
 #endif
 
-    // Create the socket
-    handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    if (handle <= 0) {
-        throw std::runtime_error("Failed to create socket");
-    }
+	// Create the socket
+	handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (handle <= 0) {
+		throw std::runtime_error("Failed to create socket");
+	}
 
-    // Bind the socket to the port
-    struct sockaddr_in address;
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(port);
+	// Bind the socket to the port
+	struct sockaddr_in address;
+	address.sin_family = AF_INET;
+	address.sin_addr.s_addr = INADDR_ANY;
+	address.sin_port = htons(port);
 
-    if (bind(handle, (const struct sockaddr *) &address, sizeof(struct sockaddr_in)) != 0) {
-        throw std::runtime_error("Failed to bind socket");
-    }
+	if (bind(handle, (const struct sockaddr *) &address, sizeof(struct sockaddr_in)) != 0) {
+		throw std::runtime_error("Failed to bind socket");
+	}
 
-    // Set the socket to non-blocking if neccessary
-    if (non_blocking) {
+	// Set the socket to non-blocking if neccessary
+	if (non_blocking) {
 #ifdef _WIN32
-        if (ioctlsocket(handle, FIONBIO, (u_long*)&non_blocking) != 0) {
-            throw std::runtime_error("Failed to set socket to non-blocking");
-        }
+		if (ioctlsocket(handle, FIONBIO, (u_long*)&non_blocking) != 0) {
+			throw std::runtime_error("Failed to set socket to non-blocking");
+		}
 #else
-        if (fcntl(handle, F_SETFL, O_NONBLOCK, non_blocking) != 0) {
-            throw std::runtime_error("Failed to set socket to non-blocking");
-        }
+		if (fcntl(handle, F_SETFL, O_NONBLOCK, non_blocking) != 0) {
+			throw std::runtime_error("Failed to set socket to non-blocking");
+		}
 #endif
-    }
+	}
 
-    this->non_blocking = non_blocking;
+	this->non_blocking = non_blocking;
 }
 
 Socket::~Socket() {
-    if (handle) {
+	if (handle) {
 #ifdef _WIN32
-        closesocket(handle);
+		closesocket(handle);
 #else
-        close(handle);
+		close(handle);
 #endif
-    }
+	}
 
 #ifdef _WIN32
-    WSACleanup();
+	WSACleanup();
 #endif
 }
 
 void Socket::send(std::string hostS, unsigned short port, const void* data, int size) {
-    unsigned int host;
-    if (hostS.empty()) {
-        host = INADDR_ANY;
-    } else {
-        host = inet_addr(hostS.c_str());
-        if (host == INADDR_NONE) {
-            struct hostent *hostent = gethostbyname(hostS.c_str());
-            if (hostent) {
-                memcpy(&host, hostent->h_addr, (size_t)hostent->h_length);
-            } else {
-                throw std::runtime_error("Invalid host name");
-            }
-        }
-    }
+	unsigned int host;
+	if (hostS.empty()) {
+		host = INADDR_ANY;
+	}
+	else {
+		host = inet_addr(hostS.c_str());
+		if (host == INADDR_NONE) {
+			struct hostent *hostent = gethostbyname(hostS.c_str());
+			if (hostent) {
+				memcpy(&host, hostent->h_addr, (size_t)hostent->h_length);
+			}
+			else {
+				throw std::runtime_error("Invalid host name");
+			}
+		}
+	}
 
-    struct sockaddr_in address;
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = host;
-    address.sin_port = htons(port);
+	struct sockaddr_in address;
+	address.sin_family = AF_INET;
+	address.sin_addr.s_addr = host;
+	address.sin_port = htons(port);
 
-    //ssize_t sent_bytes = sendto(handle, (const char *) data, (size_t)size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
-    //if (sent_bytes != size) {
-    //    throw std::runtime_error("Failed to send data");
-    //}
+	size_t sent_bytes = sendto(handle, (const char *) data, (size_t)size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
+	if (sent_bytes != size) {
+	    throw std::runtime_error("Failed to send data");
+	}
 }
