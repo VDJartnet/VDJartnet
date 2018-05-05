@@ -45,17 +45,6 @@ void Config::loadConfig() {
         for (int i = 0; i < 512; i++) {
             channelCommands[i].clear();
         }
-
-        std::string line;
-        safeGetLine(fin, line);
-        size_t delimPos = line.find(":");
-        host = line.substr(0, delimPos);
-        if (delimPos != std::string::npos) {
-            std::string portS = line.substr(delimPos + 1, std::string::npos);
-            if (portS.find_first_not_of("0123456789") == std::string::npos) {
-                port = (unsigned short)std::stoi(portS);
-            }
-        }
     }
     presets.clear();
     parseConfigFile(fin);
@@ -148,6 +137,17 @@ void Config::parseConfigLine(std::string line){
         return;
     }
 
+    if(line.substr(0,2).compare("+H") == 0){
+      size_t delimPos = line.find(":");
+      host = line.substr((line.at(2) == ' ' ? 3 : 2), delimPos);
+      if (delimPos != std::string::npos) {
+          std::string portS = line.substr(delimPos + 1, std::string::npos);
+          if (portS.find_first_not_of("0123456789") == std::string::npos) {
+              port = (unsigned short)std::stoi(portS);
+          }
+      }
+    }
+
     //line does not match any special command line so assume it is a channel definition
     parseCommandConfigLine(line);
 }
@@ -194,4 +194,3 @@ std::istream& safeGetLine(std::istream& is, std::string& t) {
         }
     }
 }
-
