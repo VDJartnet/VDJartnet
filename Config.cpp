@@ -112,7 +112,7 @@ void Config::parseConfigLine(std::string line){
         size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
         std::string path = line.substr(pathStart, std::string::npos);
 
-        if(loadedConfigPaths.find(path) != std::set::end){
+        if(loadedConfigPaths.find(path) !=loadedConfigPaths.end()){
           //the file has already been loaded
           //skip this line as we have already consumed this file
           return;
