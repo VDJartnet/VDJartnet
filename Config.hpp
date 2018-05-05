@@ -68,6 +68,8 @@ private:
 
     std::vector<Preset> presets;
 
+    std::set<std::string> loadedConfigPaths;
+
     int skipPacketLimit;
     std::chrono::milliseconds checkRate = std::chrono::milliseconds(10);
 

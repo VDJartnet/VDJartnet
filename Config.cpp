@@ -45,6 +45,9 @@ void Config::loadConfig() {
         for (int i = 0; i < 512; i++) {
             channelCommands[i].clear();
         }
+
+        //this file has been loaded mark it as loaded to prevent looping
+        loadedConfigPaths.insert(configPath);
     }
     presets.clear();
     parseConfigFile(fin);
@@ -106,8 +109,15 @@ void Config::parseConfigLine(std::string line){
     if (line.at(0) == '@'){
         //include statement
         //load a second file and begin a parse on that
-		size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
-		std::string path = line.substr(pathStart, std::string::npos);
+    		size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
+    		std::string path = line.substr(pathStart, std::string::npos);
+
+        if(loadedConfigPaths.find(path) != std::set::end){
+          //the file has already been loaded
+          //skip this line as we have already consumed this file
+          return;
+        }
+
         std::ifstream fin(path);
         if (line.at(1) == 'c') {
             parseConfigFile(fin);
@@ -117,6 +127,8 @@ void Config::parseConfigLine(std::string line){
                 fin.close();
             }
         }
+        //insert into the set of loaded config files to stop a ensure the same file is not looped over
+        loadedConfigPaths.insert(path);
         //finished with new file
         return;
     }
