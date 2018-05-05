@@ -52,18 +52,18 @@ using namespace System;
 
 ref class ConfigPresetTableView : public DataGridView {
 public:
-	ConfigPresetTableView(CVDJartnet* vdjArtnet);
+    ConfigPresetTableView(CVDJartnet* vdjArtnet);
 
-	DataObject^ GetClipboardContent() override;
+    DataObject^ GetClipboardContent() override;
 
-	void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
-	void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
+    void tableViewMouseDown(Object^ sender, MouseEventArgs^ e);
+    void tableViewMouseMove(Object^ sender, MouseEventArgs^ e);
 
 private:
-	ConfigPresetDataSource ^ dataSource;
+    ConfigPresetDataSource ^ dataSource;
 
-	DataGridViewRow ^ rowToDrag;
-	System::Drawing::Rectangle dragBoxFromMouseDown;
+    DataGridViewRow ^ rowToDrag;
+    System::Drawing::Rectangle dragBoxFromMouseDown;
 };
 
 #endif /* ConfigWinPresetTableView_hpp */

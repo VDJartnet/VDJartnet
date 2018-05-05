@@ -34,78 +34,78 @@
 #include "ConfigWin.hpp"
 
 ConfigWindow::ConfigWindow(CVDJartnet* vdjArtnetTMP) {
-	vdjArtnet = vdjArtnetTMP;
+    vdjArtnet = vdjArtnetTMP;
 
-	this->Name = "VDJartnetConfig";
-	this->Text = "VDJartnetConfig";
-	this->Size = System::Drawing::Size(600, 600);
-	this->StartPosition = FormStartPosition::CenterScreen;
-	this->KeyPreview = true;
+    this->Name = "VDJartnetConfig";
+    this->Text = "VDJartnetConfig";
+    this->Size = System::Drawing::Size(600, 600);
+    this->StartPosition = FormStartPosition::CenterScreen;
+    this->KeyPreview = true;
 
-	ipLabel = gcnew Label();
-	ipLabel->Text = "IP Address:";
-	ipLabel->AutoSize = true;
-	this->Controls->Add(ipLabel);
+    ipLabel = gcnew Label();
+    ipLabel->Text = "IP Address:";
+    ipLabel->AutoSize = true;
+    this->Controls->Add(ipLabel);
 
-	ipAddress = gcnew TextBox();
-	ipAddress->Text = gcnew String(vdjArtnet->config->host.c_str());
-	ipAddress->Leave += gcnew EventHandler(this, &ConfigWindow::updateIPaddress);
-	ipAddress->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::ipKeyDown);
-	this->Controls->Add(ipAddress);
+    ipAddress = gcnew TextBox();
+    ipAddress->Text = gcnew String(vdjArtnet->config->host.c_str());
+    ipAddress->Leave += gcnew EventHandler(this, &ConfigWindow::updateIPaddress);
+    ipAddress->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::ipKeyDown);
+    this->Controls->Add(ipAddress);
 
-	ipPort = gcnew TextBox();
-	ipPort->Text = vdjArtnet->config->port.ToString();
-	ipPort->Leave += gcnew EventHandler(this, &ConfigWindow::updateIPport);
-	ipPort->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::ipKeyDown);
-	this->Controls->Add(ipPort);
+    ipPort = gcnew TextBox();
+    ipPort->Text = vdjArtnet->config->port.ToString();
+    ipPort->Leave += gcnew EventHandler(this, &ConfigWindow::updateIPport);
+    ipPort->KeyDown += gcnew KeyEventHandler(this, &ConfigWindow::ipKeyDown);
+    this->Controls->Add(ipPort);
 
-	tableView = gcnew ConfigTableView(vdjArtnet);
-	this->Controls->Add(tableView);
+    tableView = gcnew ConfigTableView(vdjArtnet);
+    this->Controls->Add(tableView);
 
-	this->Layout += gcnew LayoutEventHandler(this, &ConfigWindow::reLayout);
+    this->Layout += gcnew LayoutEventHandler(this, &ConfigWindow::reLayout);
 
-	this->Show();
+    this->Show();
 
-	this->FormClosed += gcnew FormClosedEventHandler(this, &ConfigWindow::didClose);
+    this->FormClosed += gcnew FormClosedEventHandler(this, &ConfigWindow::didClose);
 }
 
 void ConfigWindow::reLayout(Object^ sender, LayoutEventArgs^ e) {
-	ipLabel->Location = System::Drawing::Point(0, 0);
+    ipLabel->Location = System::Drawing::Point(0, 0);
 
-	ipPort->Size = System::Drawing::Size(50, 20);
-	ipAddress->Size = System::Drawing::Size(this->ClientSize.Width - ipLabel->Width - ipPort->Width, 20);
+    ipPort->Size = System::Drawing::Size(50, 20);
+    ipAddress->Size = System::Drawing::Size(this->ClientSize.Width - ipLabel->Width - ipPort->Width, 20);
 
-	ipPort->Location = System::Drawing::Point(this->ClientSize.Width - ipPort->Width, 0);
-	ipAddress->Location = System::Drawing::Point(ipLabel->Width, 0);
+    ipPort->Location = System::Drawing::Point(this->ClientSize.Width - ipPort->Width, 0);
+    ipAddress->Location = System::Drawing::Point(ipLabel->Width, 0);
 
-	tableView->Location = System::Drawing::Point(0, 20);
-	tableView->Size = System::Drawing::Size(this->ClientSize.Width, this->ClientSize.Height - ipAddress->Height);
+    tableView->Location = System::Drawing::Point(0, 20);
+    tableView->Size = System::Drawing::Size(this->ClientSize.Width, this->ClientSize.Height - ipAddress->Height);
 
-	for each (DataGridViewRow^ row in tableView->Rows) {
-		row->HeaderCell->Value = String::Format("{0}", row->Index + 1);
-	}
-	tableView->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
+    for each (DataGridViewRow^ row in tableView->Rows) {
+        row->HeaderCell->Value = String::Format("{0}", row->Index + 1);
+    }
+    tableView->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
 }
 
 void ConfigWindow::didClose(Object^ sender, FormClosedEventArgs^ e) {
-	((ConfigToolNative*)(vdjArtnet->configTool))->configTool->hide();
-	delete ((ConfigToolNative*)(vdjArtnet->configTool));
-	vdjArtnet->configTool = nullptr;
+    ((ConfigToolNative*)(vdjArtnet->configTool))->configTool->hide();
+    delete ((ConfigToolNative*)(vdjArtnet->configTool));
+    vdjArtnet->configTool = nullptr;
 }
 
 void ConfigWindow::updateIPaddress(Object^ sender, EventArgs^ e) {
-	vdjArtnet->config->host = msclr::interop::marshal_as<std::string>(ipAddress->Text);
-	vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    vdjArtnet->config->host = msclr::interop::marshal_as<std::string>(ipAddress->Text);
+    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
 }
 
 void ConfigWindow::updateIPport(Object^ sender, EventArgs^ e) {
-	vdjArtnet->config->port = (unsigned short)int::Parse(ipPort->Text);
-	vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    vdjArtnet->config->port = (unsigned short)int::Parse(ipPort->Text);
+    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
 }
 
 void ConfigWindow::ipKeyDown(Object^ sender, KeyEventArgs^ e) {
-	if (e->KeyCode == Keys::Enter) {
-		updateIPaddress(sender, e);
-		updateIPport(sender, e);
-	}
+    if (e->KeyCode == Keys::Enter) {
+        updateIPaddress(sender, e);
+        updateIPport(sender, e);
+    }
 }

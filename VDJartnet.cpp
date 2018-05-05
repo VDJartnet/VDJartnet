@@ -55,7 +55,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
         DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
         DeclareParameterButton(&m_Config,ID_CONFIG_BUTTON,"Config","C");
 
-		setupThread = new std::thread(globalSetup);
+        setupThread = new std::thread(globalSetup);
     }
     return S_OK;
 }
@@ -76,9 +76,9 @@ void CVDJartnet::init() {
         
     }
 
-	if (pollThread == nullptr) {
-		pollThread = new std::thread(globalUpdate);
-	}
+    if (pollThread == nullptr) {
+        pollThread = new std::thread(globalUpdate);
+    }
 }
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
@@ -93,16 +93,16 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 }
 
 ULONG VDJ_API CVDJartnet::Release() {
-	if (configTool != nullptr) {
+    if (configTool != nullptr) {
 #if (defined(VDJ_WIN))
-		closeConfigTool(configTool);
-		delete configTool;
-		configTool = nullptr;
+        closeConfigTool(configTool);
+        delete configTool;
+        configTool = nullptr;
 #elif (defined(VDJ_MAC))
         CFRelease(configTool);
         configTool = nullptr;
 #endif
-	}
+    }
 
     delete config;
     delete this;
@@ -132,12 +132,12 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
         case ID_CONFIG_BUTTON:
             if (m_Config == 1) {
 #if (defined(VDJ_WIN))
-				if (configTool != nullptr) {
-					closeConfigTool(configTool);
-					delete configTool;
-					configTool = nullptr;
-				}
-				configTool = createConfigTool(this);
+                if (configTool != nullptr) {
+                    closeConfigTool(configTool);
+                    delete configTool;
+                    configTool = nullptr;
+                }
+                configTool = createConfigTool(this);
 #elif (defined(VDJ_MAC))
                 if (configTool != nullptr) {
                     CFRelease(configTool);
@@ -206,6 +206,6 @@ void globalUpdate() {
     for (;;) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
         CVDJartnet::getInstance()->updateDMXvalues();
-		std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
+        std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
     }
 }

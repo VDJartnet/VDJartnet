@@ -38,7 +38,7 @@ ConfigTool::ConfigTool(CVDJartnet* vdjArtnetTMP) {
 
     window = gcnew ConfigWindow(vdjArtnet);
     presetWindow = gcnew ConfigPresetWindow(vdjArtnet);
-	presetWindow->Location = System::Drawing::Point(window->Location.X + window->Width, window->Location.Y);
+    presetWindow->Location = System::Drawing::Point(window->Location.X + window->Width, window->Location.Y);
 }
 
 
@@ -50,9 +50,9 @@ void ConfigTool::hide() {
 }
 
 void* createConfigTool(CVDJartnet* vdjArtnet) {
-	return new ConfigToolNative(vdjArtnet);
+    return new ConfigToolNative(vdjArtnet);
 }
 
 void closeConfigTool(void* configTool) {
-	((ConfigToolNative*)configTool)->configTool->hide();
+    ((ConfigToolNative*)configTool)->configTool->hide();
 }

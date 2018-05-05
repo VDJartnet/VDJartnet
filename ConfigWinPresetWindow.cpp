@@ -34,20 +34,20 @@
 #include "ConfigWinPresetWindow.hpp"
 
 ConfigPresetWindow::ConfigPresetWindow(CVDJartnet* vdjArtnet) {
-	this->Name = "Presets";
-	this->Text = "Presets";
-	this->Size = System::Drawing::Size(200, 600);
+    this->Name = "Presets";
+    this->Text = "Presets";
+    this->Size = System::Drawing::Size(200, 600);
 
-	tableView = gcnew ConfigPresetTableView(vdjArtnet);
+    tableView = gcnew ConfigPresetTableView(vdjArtnet);
 
-	this->Layout += gcnew LayoutEventHandler(this, &ConfigPresetWindow::reLayout);
-	this->Controls->Add(tableView);
+    this->Layout += gcnew LayoutEventHandler(this, &ConfigPresetWindow::reLayout);
+    this->Controls->Add(tableView);
 
-	this->Show();
+    this->Show();
 }
 
 void ConfigPresetWindow::reLayout(Object^ sender, LayoutEventArgs^ e) {
-	tableView->Location = System::Drawing::Point(0, 0);
-	tableView->Size = this->ClientSize;
+    tableView->Location = System::Drawing::Point(0, 0);
+    tableView->Size = this->ClientSize;
 }
 

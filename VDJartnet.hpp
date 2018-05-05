@@ -49,8 +49,8 @@
 class CVDJartnet : public IVdjPlugin8 {
 public:
     static CVDJartnet* getInstance() {
-		static CVDJartnet* instance = new CVDJartnet();
-		return instance;
+        static CVDJartnet* instance = new CVDJartnet();
+        return instance;
     }
 
     int m_Enable;

@@ -106,8 +106,8 @@ void Config::parseConfigLine(std::string line){
     if (line.at(0) == '@'){
         //include statement
         //load a second file and begin a parse on that
-		size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
-		std::string path = line.substr(pathStart, std::string::npos);
+        size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
+        std::string path = line.substr(pathStart, std::string::npos);
         std::ifstream fin(path);
         if (line.at(1) == 'c') {
             parseConfigFile(fin);
@@ -121,36 +121,36 @@ void Config::parseConfigLine(std::string line){
         return;
     }
 
-	if (line.at(0) == '+') {
-		size_t valueStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
-		std::string value = line.substr(valueStart, std::string::npos);
+    if (line.at(0) == '+') {
+        size_t valueStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
+        std::string value = line.substr(valueStart, std::string::npos);
 
-		switch (line.at(1)) {
-		case 'T':
-			if (value.find_first_not_of("0123456789") == std::string::npos) {
-				skipPacketLimit = stoi(value);
-			}
-			break;
+        switch (line.at(1)) {
+        case 'T':
+            if (value.find_first_not_of("0123456789") == std::string::npos) {
+                skipPacketLimit = stoi(value);
+            }
+            break;
 
-		case 'C':
-			if (value.find_first_not_of("0123456789") == std::string::npos) {
-				checkRate = std::chrono::milliseconds(stoi(value));
-			}
-			break;
+        case 'C':
+            if (value.find_first_not_of("0123456789") == std::string::npos) {
+                checkRate = std::chrono::milliseconds(stoi(value));
+            }
+            break;
 
-		case 'H':
-			size_t delimPos = value.find(":");
-			host = value.substr(0, delimPos);
-			if (delimPos != std::string::npos) {
-				std::string portS = value.substr(delimPos + 1, std::string::npos);
-				if (portS.find_first_not_of("0123456789") == std::string::npos) {
-					port = (unsigned short)std::stoi(portS);
-				}
-			}
-			break;
-		}
-		return;
-	}
+        case 'H':
+            size_t delimPos = value.find(":");
+            host = value.substr(0, delimPos);
+            if (delimPos != std::string::npos) {
+                std::string portS = value.substr(delimPos + 1, std::string::npos);
+                if (portS.find_first_not_of("0123456789") == std::string::npos) {
+                    port = (unsigned short)std::stoi(portS);
+                }
+            }
+            break;
+        }
+        return;
+    }
 
     //line does not match any special command line so assume it is a channel definition
     size_t delimPos = line.find('~');

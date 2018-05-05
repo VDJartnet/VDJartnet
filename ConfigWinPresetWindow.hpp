@@ -52,10 +52,10 @@ using namespace System;
 ref class ConfigPresetWindow : public Form {
 
 public:
-	ConfigPresetWindow(CVDJartnet* vdjArtnetTMP);
-	void reLayout(Object^ sender, LayoutEventArgs^ e);
+    ConfigPresetWindow(CVDJartnet* vdjArtnetTMP);
+    void reLayout(Object^ sender, LayoutEventArgs^ e);
 private:
-	ConfigPresetTableView^ tableView;
+    ConfigPresetTableView^ tableView;
 };
 
 #endif /* ConfigWinPresetWindow_hpp */
