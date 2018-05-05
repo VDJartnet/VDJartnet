@@ -106,7 +106,6 @@ void Config::parseConfigLine(std::string line){
     if (line.at(0) == '@'){
         //include statement
         //load a second file and begin a parse on that
-        //included file cannot include hostname
         std::string path = line.substr(2, std::string::npos);
         std::ifstream fin(path);
         if (line.at(1) == 'c') {
