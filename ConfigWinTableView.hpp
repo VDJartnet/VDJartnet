@@ -39,6 +39,7 @@
 #include "VDJartnet.hpp"
 
 #include "ConfigWinDataSource.hpp"
+#include "CppStep/CSUndoManager.hpp"
 
 #include "windows.h" 
 
@@ -78,6 +79,8 @@ public:
 private:
 	DataGridViewRow ^ rowToDrag;
 	System::Drawing::Rectangle dragBoxFromMouseDown;
+
+	CSUndoManager* undoManager;
 };
 
 #endif /* ConfigWinTableView_hpp */

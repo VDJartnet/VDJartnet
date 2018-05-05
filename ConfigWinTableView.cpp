@@ -42,9 +42,11 @@ ConfigTableView::ConfigTableView(CVDJartnet* vdjArtnet) {
 	this->ClipboardCopyMode = DataGridViewClipboardCopyMode::EnableWithoutHeaderText;
 	this->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
 
+	undoManager = new CSUndoManager();
+
 	ConfigDataSource^ dataSource = gcnew ConfigDataSource(512);
 	for (int row = 0; row < 512; row++) {
-		dataSource->Add(gcnew ConfigRowString(vdjArtnet, row));
+		dataSource->Add(gcnew ConfigRowString(vdjArtnet, row, undoManager));
 	}
 	this->DataSource = dataSource;
 
@@ -80,13 +82,15 @@ void ConfigTableView::tableViewKeyDown(Object^ sender, KeyEventArgs^ e) {
 		break;
 	case Keys::Z:
 		if (!e->Shift) {
+			this->undoManager->undo();
+			this->Refresh();
 			break;
 		} // else fallthrough
 	case Keys::Y:
+		this->undoManager->redo();
+		this->Refresh();
 		break;
 	}
-	//}
-	//    }
 }
 
 void ConfigTableView::tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e) {

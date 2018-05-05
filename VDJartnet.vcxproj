@@ -66,10 +66,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,10 +122,15 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="ConfigWinDataSource.cpp" />
     <ClCompile Include="ConfigWinPresetTableView.cpp" />
     <ClCompile Include="ConfigWinPresetWindow.cpp" />
     <ClCompile Include="ConfigWinTableView.cpp" />
     <ClCompile Include="ConfigWinWindow.cpp" />
+    <ClCompile Include="CppStep\CSUndoManager.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
@@ -149,6 +154,7 @@
     <ClInclude Include="ConfigWinPresetWindow.hpp" />
     <ClInclude Include="ConfigWinTableView.hpp" />
     <ClInclude Include="ConfigWinWindow.hpp" />
+    <ClInclude Include="CppStep\CSUndoManager.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Socket.hpp" />
     <ClInclude Include="VDJartnet.hpp" />

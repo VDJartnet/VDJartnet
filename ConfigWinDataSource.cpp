@@ -2,7 +2,7 @@
 //  ConfigWinDataSource.hpp
 //  VDJartnet
 //
-//  Copyright Â© 2017-18 Jonathan Tanner. All rights reserved.
+//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -31,43 +31,29 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef ConfigWinDataSource_hpp
-#define ConfigWinDataSource_hpp
+#include "ConfigWinDataSource.hpp"
 
-#include <stdio.h>
+String^ ConfigRowString::Value::get() {
+	return gcnew String(vdjArtnet->config->channelCommands[row].c_str());
+}
+void ConfigRowString::Value::set(String^ newVal) {
 
-#define NODLLEXPORT
-#include "VDJartnet.hpp"
-
-#include "CppStep/CSUndoManager.hpp"
-
-#include "windows.h" 
-
-#using <mscorlib.dll> 
-#using <System.dll> 
-#using <System.Windows.Forms.dll> 
-#include <msclr\marshal_cppstd.h>
-
-using namespace System::Windows::Forms;
-using namespace System;
-
-ref class ConfigRowString : public Object {
-public:
-	property String^ Value {
-		String^ get();
-		void set(String^ newVal);
+	undoManager->registerUndoFuncpArg2<gcroot<ConfigRowString^ const> const, gcroot<String^ const > const>(setValue, gcroot<ConfigRowString^ const>(this), gcroot<String^ const>(this->Value));
+	if (newVal == nullptr) {
+		vdjArtnet->config->channelCommands[row] = "";
 	}
+	else {
+		vdjArtnet->config->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
+	}
+	vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+}
 
-	ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP, CSUndoManager* undoManagerTMP);
-private:
-	CVDJartnet * vdjArtnet;
-	int row;
-	CSUndoManager* undoManager;
-};
+ConfigRowString::ConfigRowString(CVDJartnet* vdjArtnetTMP, int rowTMP, CSUndoManager* undoManagerTMP) {
+	vdjArtnet = vdjArtnetTMP;
+	row = rowTMP;
+	undoManager = undoManagerTMP;
+}
 
-typedef System::Collections::Generic::List<ConfigRowString^> ConfigDataSource;
-
-void setValue(gcroot<ConfigRowString^ const> const target, gcroot<String^ const > const newVal);
-
-#endif /* ConfigWinDataSource_hpp */
-
+void setValue(gcroot<ConfigRowString^ const> const target, gcroot<String^ const > const newVal) {
+	target->Value = newVal;
+}
