@@ -1,0 +1,8 @@
+<map id="ConfigWinRowString" name="ConfigWinRowString">
+<area shape="rect" id="node3" href="$classCSUndoManager.html" title="An undo manager. " alt="" coords="132,199,255,225"/>
+<area shape="rect" id="node4" href="$classCSUndoManager_1_1UndoItem.html" title="An event that can be undone. " alt="" coords="5,95,192,121"/>
+<area shape="rect" id="node5" href="$classCVDJartnet.html" title="A singleton class representing the plugin. " alt="" coords="337,199,428,225"/>
+<area shape="rect" id="node7" href="$classConfig.html" title="A config parser and writer. " alt="" coords="382,95,442,121"/>
+<area shape="rect" id="node8" href="$classArtnet.html" title="A class to send Art&#45;Net data. " alt="" coords="466,95,523,121"/>
+<area shape="rect" id="node9" href="$structArtnet_1_1ArtNetPacket.html" title="An Art&#45;Net packet. " alt="" coords="423,5,567,32"/>
+</map>
