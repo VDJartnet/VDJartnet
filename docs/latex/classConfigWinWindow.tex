@@ -1,0 +1,79 @@
+\hypertarget{classConfigWinWindow}{}\section{Config\+Win\+Window Class Reference}
+\label{classConfigWinWindow}\index{Config\+Win\+Window@{Config\+Win\+Window}}
+
+
+A window containing a list of commands.  
+
+
+
+
+{\ttfamily \#include $<$Config\+Win\+Window.\+hpp$>$}
+
+
+
+Inheritance diagram for Config\+Win\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classConfigWinWindow__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Config\+Win\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConfigWinWindow__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConfigWinWindow_a450c1273eeacf866a5cbdc77899c59f1}\label{classConfigWinWindow_a450c1273eeacf866a5cbdc77899c59f1}} 
+\hyperlink{classConfigWinWindow_a450c1273eeacf866a5cbdc77899c59f1}{Config\+Win\+Window} (\hyperlink{classCVDJartnet}{C\+V\+D\+Jartnet} $\ast$vdj\+Artnet\+T\+MP)
+\begin{DoxyCompactList}\small\item\em Construct a window with a list of commands with the given instance of the plugin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_a3181fb8df8491c448b0afe6011d9b71d}\label{classConfigWinWindow_a3181fb8df8491c448b0afe6011d9b71d}} 
+void \hyperlink{classConfigWinWindow_a3181fb8df8491c448b0afe6011d9b71d}{re\+Layout} (Object$^\wedge$ sender, Layout\+Event\+Args$^\wedge$ e)
+\begin{DoxyCompactList}\small\item\em Relayout the window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_af0ef395b86d59a38d4d5bb8f978c63f4}\label{classConfigWinWindow_af0ef395b86d59a38d4d5bb8f978c63f4}} 
+void \hyperlink{classConfigWinWindow_af0ef395b86d59a38d4d5bb8f978c63f4}{did\+Close} (Object$^\wedge$ sender, Form\+Closed\+Event\+Args$^\wedge$ e)
+\begin{DoxyCompactList}\small\item\em The window has been closed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_a89a9b6154e716142854ecbec1eaccb15}\label{classConfigWinWindow_a89a9b6154e716142854ecbec1eaccb15}} 
+void \hyperlink{classConfigWinWindow_a89a9b6154e716142854ecbec1eaccb15}{update\+I\+Paddress} (Object$^\wedge$ sender, Event\+Args$^\wedge$ e)
+\begin{DoxyCompactList}\small\item\em Update the IP address in the config. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_ac1a7295061c09db580be48222baef958}\label{classConfigWinWindow_ac1a7295061c09db580be48222baef958}} 
+void \hyperlink{classConfigWinWindow_ac1a7295061c09db580be48222baef958}{update\+I\+Pport} (Object$^\wedge$ sender, Event\+Args$^\wedge$ e)
+\begin{DoxyCompactList}\small\item\em Update the port in the config. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_a04f73656ff5be88aa0497d75557c2229}\label{classConfigWinWindow_a04f73656ff5be88aa0497d75557c2229}} 
+void \hyperlink{classConfigWinWindow_a04f73656ff5be88aa0497d75557c2229}{ip\+Key\+Down} (Object$^\wedge$ sender, Key\+Event\+Args$^\wedge$ e)
+\begin{DoxyCompactList}\small\item\em A key has been pressed in the IP address field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConfigWinWindow_add13d144a5a011195cedd76ed259ecff}\label{classConfigWinWindow_add13d144a5a011195cedd76ed259ecff}} 
+\hyperlink{classCVDJartnet}{C\+V\+D\+Jartnet} $\ast$ \hyperlink{classConfigWinWindow_add13d144a5a011195cedd76ed259ecff}{vdj\+Artnet}
+\begin{DoxyCompactList}\small\item\em A pointer to the plugin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_aaa2e34f0cf75b85f6da371baa86e4eac}\label{classConfigWinWindow_aaa2e34f0cf75b85f6da371baa86e4eac}} 
+Label $^\wedge$ \hyperlink{classConfigWinWindow_aaa2e34f0cf75b85f6da371baa86e4eac}{ip\+Label}
+\begin{DoxyCompactList}\small\item\em A label for the IP address field. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_af41aee8bafd96f1e86fbc900dccadc45}\label{classConfigWinWindow_af41aee8bafd96f1e86fbc900dccadc45}} 
+Text\+Box $^\wedge$ \hyperlink{classConfigWinWindow_af41aee8bafd96f1e86fbc900dccadc45}{ip\+Address}
+\begin{DoxyCompactList}\small\item\em The IP address field. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_a383e4fe684dbe4e040cfcee7ec2034d9}\label{classConfigWinWindow_a383e4fe684dbe4e040cfcee7ec2034d9}} 
+Text\+Box $^\wedge$ \hyperlink{classConfigWinWindow_a383e4fe684dbe4e040cfcee7ec2034d9}{ip\+Port}
+\begin{DoxyCompactList}\small\item\em The port field. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigWinWindow_a16003ab2a1160a652d4cc1a17075d7e4}\label{classConfigWinWindow_a16003ab2a1160a652d4cc1a17075d7e4}} 
+\hyperlink{classConfigWinTableView}{Config\+Win\+Table\+View} $^\wedge$ \hyperlink{classConfigWinWindow_a16003ab2a1160a652d4cc1a17075d7e4}{table\+View}
+\begin{DoxyCompactList}\small\item\em The list of commands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A window containing a list of commands. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Config\+Win\+Window.\+hpp\item 
+src/Config\+Win\+Window.\+cpp\end{DoxyCompactItemize}

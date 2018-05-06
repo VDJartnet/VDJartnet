@@ -1,0 +1,25 @@
+digraph "ConfigRowString"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="ConfigRowString",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Object",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" undoManager" ];
+  Node4 [label="CSUndoManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCSUndoManager.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" redoStack\nundoStack" ];
+  Node5 [label="CSUndoManager::UndoItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCSUndoManager_1_1UndoItem.html"];
+  Node5 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next" ];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" vdjArtnet" ];
+  Node6 [label="CVDJartnet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCVDJartnet.html"];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="IVdjPlugin8",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIVdjPlugin8.html"];
+  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cb" ];
+  Node8 [label="IVdjCallbacks8",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structIVdjCallbacks8.html"];
+  Node9 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" config" ];
+  Node9 [label="Config",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classConfig.html",tooltip="A config parser and writer. "];
+  Node10 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" artnet" ];
+  Node10 [label="Artnet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classArtnet.html"];
+  Node11 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" packet" ];
+  Node11 [label="Artnet::ArtNetPacket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structArtnet_1_1ArtNetPacket.html",tooltip="An Art-Net packet. "];
+}

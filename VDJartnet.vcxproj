@@ -110,61 +110,76 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Artnet.cpp">
+    <ClCompile Include="src\Artnet.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="Config.cpp">
+    <ClCompile Include="src\Config.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="ConfigWin.cpp">
+    <ClCompile Include="src\ConfigWin.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="ConfigWinDataSource.cpp" />
-    <ClCompile Include="ConfigWinPresetTableView.cpp" />
-    <ClCompile Include="ConfigWinPresetWindow.cpp" />
-    <ClCompile Include="ConfigWinTableView.cpp" />
-    <ClCompile Include="ConfigWinWindow.cpp" />
-    <ClCompile Include="CppStep\CSUndoManager.cpp">
+    <ClCompile Include="src\ConfigWinDataSource.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\ConfigWinPresetTableView.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\ConfigWinPresetWindow.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\ConfigWinTableView.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\ConfigWinWindow.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\CSUndoManager.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="Socket.cpp">
+    <ClCompile Include="src\Socket.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="VDJartnet.cpp">
+    <ClCompile Include="src\VDJartnet.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Artnet.hpp" />
-    <ClInclude Include="Config.hpp" />
-    <ClInclude Include="ConfigWin.hpp" />
-    <ClInclude Include="ConfigWinDataSource.hpp" />
-    <ClInclude Include="ConfigWinPresetDataSource.hpp" />
-    <ClInclude Include="ConfigWinPresetTableView.hpp" />
-    <ClInclude Include="ConfigWinPresetWindow.hpp" />
-    <ClInclude Include="ConfigWinTableView.hpp" />
-    <ClInclude Include="ConfigWinWindow.hpp" />
-    <ClInclude Include="CppStep\CSUndoManager.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Socket.hpp" />
-    <ClInclude Include="VDJartnet.hpp" />
-    <ClInclude Include="vdjPlugin8.h" />
+    <ClInclude Include="src\Artnet.hpp" />
+    <ClInclude Include="src\Config.hpp" />
+    <ClInclude Include="src\ConfigWin.hpp" />
+    <ClInclude Include="src\ConfigWinDataSource.hpp" />
+    <ClInclude Include="src\ConfigWinPresetDataSource.hpp" />
+    <ClInclude Include="src\ConfigWinPresetTableView.hpp" />
+    <ClInclude Include="src\ConfigWinPresetWindow.hpp" />
+    <ClInclude Include="src\ConfigWinTableView.hpp" />
+    <ClInclude Include="src\ConfigWinWindow.hpp" />
+    <ClInclude Include="src\CppStep\CSUndoManager.hpp" />
+    <ClInclude Include="src\Socket.hpp" />
+    <ClInclude Include="src\VDJartnet.hpp" />
+    <ClInclude Include="src\vdjPlugin8.h" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="presets.txt" />
+    <Text Include="src\presets.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,122 @@
+\hypertarget{classConfig}{}\section{Config Class Reference}
+\label{classConfig}\index{Config@{Config}}
+
+
+A config parser and writer.  
+
+
+
+
+{\ttfamily \#include $<$Config.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConfig_aff4607e897113173420e19882796d866}\label{classConfig_aff4607e897113173420e19882796d866}} 
+std\+::vector$<$ \hyperlink{structPreset}{Preset} $>$ const  \& \hyperlink{classConfig_aff4607e897113173420e19882796d866}{get\+Presets} ()
+\begin{DoxyCompactList}\small\item\em Get the list of presets. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a8cbdb452e8ebd40185783fde637851e4}\label{classConfig_a8cbdb452e8ebd40185783fde637851e4}} 
+int \hyperlink{classConfig_a8cbdb452e8ebd40185783fde637851e4}{get\+Skip\+Packet\+Limit} ()
+\begin{DoxyCompactList}\small\item\em Get the number of identical packets to be skipped before resending. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_ac485e8b97e04fd82ca33c89416fbcce0}\label{classConfig_ac485e8b97e04fd82ca33c89416fbcce0}} 
+std\+::chrono\+::milliseconds \hyperlink{classConfig_ac485e8b97e04fd82ca33c89416fbcce0}{get\+Check\+Rate} ()
+\begin{DoxyCompactList}\small\item\em Get the time between requests to Virtual\+DJ. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a12421ddabec031b3d724d377fc920c8d}\label{classConfig_a12421ddabec031b3d724d377fc920c8d}} 
+\hyperlink{classConfig_a12421ddabec031b3d724d377fc920c8d}{Config} (std\+::string config\+Path\+T\+MP)
+\begin{DoxyCompactList}\small\item\em Constuct a config parser for the given config file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a38d923d7d9553c2e92559c599937100b}\label{classConfig_a38d923d7d9553c2e92559c599937100b}} 
+void \hyperlink{classConfig_a38d923d7d9553c2e92559c599937100b}{load\+Config} ()
+\begin{DoxyCompactList}\small\item\em Load the config file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a64000eb3f2292cba44278cec34fc076d}\label{classConfig_a64000eb3f2292cba44278cec34fc076d}} 
+void \hyperlink{classConfig_a64000eb3f2292cba44278cec34fc076d}{save\+Config} ()
+\begin{DoxyCompactList}\small\item\em Save the config file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConfig_ada2efbde15130b44645f383ed71894ae}\label{classConfig_ada2efbde15130b44645f383ed71894ae}} 
+std\+::string \hyperlink{classConfig_ada2efbde15130b44645f383ed71894ae}{channel\+Commands} \mbox{[}512\mbox{]}
+\begin{DoxyCompactList}\small\item\em The list of commands to be sent to Virtual\+DJ. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_aff7a38d3fada71d2d0aa7e1b01c43ea7}\label{classConfig_aff7a38d3fada71d2d0aa7e1b01c43ea7}} 
+std\+::string \hyperlink{classConfig_aff7a38d3fada71d2d0aa7e1b01c43ea7}{host} = \char`\"{}127.\+0.\+0.\+1\char`\"{}
+\begin{DoxyCompactList}\small\item\em The host to which the Art-\/\+Net data should be sent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a5e0403fc897ee2ac5571ee45c6803d3e}\label{classConfig_a5e0403fc897ee2ac5571ee45c6803d3e}} 
+unsigned short \hyperlink{classConfig_a5e0403fc897ee2ac5571ee45c6803d3e}{port} = 0x1936
+\begin{DoxyCompactList}\small\item\em The port on which the Art-\/\+Net data should be sent. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConfig_ab3f3b04d3ab2602141212c1af509b808}\label{classConfig_ab3f3b04d3ab2602141212c1af509b808}} 
+void \hyperlink{classConfig_ab3f3b04d3ab2602141212c1af509b808}{load\+Preset\+Presets} ()
+\begin{DoxyCompactList}\small\item\em Load the pre compiled presets. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_ad05fb468c16ec451652abb2de179caf5}\label{classConfig_ad05fb468c16ec451652abb2de179caf5}} 
+void \hyperlink{classConfig_ad05fb468c16ec451652abb2de179caf5}{parse\+Presets\+Stream} (std\+::istream \&fin)
+\begin{DoxyCompactList}\small\item\em Parse the given stream for presets. \end{DoxyCompactList}\item 
+void \hyperlink{classConfig_a9f578681efe13ea4c4baca735f6b3c6e}{parse\+Presets\+Line} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Parse the given string for a preset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a6c2a4d8a853cbcc51825d3cb0c96ff61}\label{classConfig_a6c2a4d8a853cbcc51825d3cb0c96ff61}} 
+void \hyperlink{classConfig_a6c2a4d8a853cbcc51825d3cb0c96ff61}{parse\+Config\+File} (std\+::ifstream \&fin)
+\begin{DoxyCompactList}\small\item\em Parse the given file for presets. \end{DoxyCompactList}\item 
+void \hyperlink{classConfig_a9a85fd4fb07775bccf974a83645159e2}{parse\+Config\+Line} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Parse the given string for a config command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConfig_aa82482a705c93a00da195e3f9f974b23}\label{classConfig_aa82482a705c93a00da195e3f9f974b23}} 
+std\+::string \hyperlink{classConfig_aa82482a705c93a00da195e3f9f974b23}{config\+Path}
+\begin{DoxyCompactList}\small\item\em The config file to parse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a28f392a11a7cd755cd7493b25c8e89d0}\label{classConfig_a28f392a11a7cd755cd7493b25c8e89d0}} 
+std\+::vector$<$ \hyperlink{structPreset}{Preset} $>$ \hyperlink{classConfig_a28f392a11a7cd755cd7493b25c8e89d0}{presets}
+\begin{DoxyCompactList}\small\item\em The list of presets. \end{DoxyCompactList}\item 
+std\+::set$<$ std\+::string $>$ \hyperlink{classConfig_a02be73634e4b7debd0551a360dac9503}{loaded\+Config\+Paths}
+\begin{DoxyCompactList}\small\item\em The set of config files already parsed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_adb31288f02cd583f05a37faf787c480b}\label{classConfig_adb31288f02cd583f05a37faf787c480b}} 
+int \hyperlink{classConfig_adb31288f02cd583f05a37faf787c480b}{skip\+Packet\+Limit}
+\begin{DoxyCompactList}\small\item\em The number of identical packets to be skipped before resending. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfig_a7c4280b4a4c2f24cd98518f5d9757d2e}\label{classConfig_a7c4280b4a4c2f24cd98518f5d9757d2e}} 
+std\+::chrono\+::milliseconds \hyperlink{classConfig_a7c4280b4a4c2f24cd98518f5d9757d2e}{check\+Rate} = std\+::chrono\+::milliseconds(10)
+\begin{DoxyCompactList}\small\item\em The time between requests to Virtual\+DJ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A config parser and writer. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classConfig_a9a85fd4fb07775bccf974a83645159e2}\label{classConfig_a9a85fd4fb07775bccf974a83645159e2}} 
+\index{Config@{Config}!parse\+Config\+Line@{parse\+Config\+Line}}
+\index{parse\+Config\+Line@{parse\+Config\+Line}!Config@{Config}}
+\subsubsection{\texorpdfstring{parse\+Config\+Line()}{parseConfigLine()}}
+{\footnotesize\ttfamily void Config\+::parse\+Config\+Line (\begin{DoxyParamCaption}\item[{std\+::string}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Parse the given string for a config command. 
+
+A $\sim$ should be used between the channel number and the command. \mbox{\Hypertarget{classConfig_a9f578681efe13ea4c4baca735f6b3c6e}\label{classConfig_a9f578681efe13ea4c4baca735f6b3c6e}} 
+\index{Config@{Config}!parse\+Presets\+Line@{parse\+Presets\+Line}}
+\index{parse\+Presets\+Line@{parse\+Presets\+Line}!Config@{Config}}
+\subsubsection{\texorpdfstring{parse\+Presets\+Line()}{parsePresetsLine()}}
+{\footnotesize\ttfamily void Config\+::parse\+Presets\+Line (\begin{DoxyParamCaption}\item[{std\+::string}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Parse the given string for a preset. 
+
+A $\sim$ should be used between the name and the command. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classConfig_a02be73634e4b7debd0551a360dac9503}\label{classConfig_a02be73634e4b7debd0551a360dac9503}} 
+\index{Config@{Config}!loaded\+Config\+Paths@{loaded\+Config\+Paths}}
+\index{loaded\+Config\+Paths@{loaded\+Config\+Paths}!Config@{Config}}
+\subsubsection{\texorpdfstring{loaded\+Config\+Paths}{loadedConfigPaths}}
+{\footnotesize\ttfamily std\+::set$<$std\+::string$>$ Config\+::loaded\+Config\+Paths\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The set of config files already parsed. 
+
+This is used to prevent an infinite loop. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{Config_8hpp}{Config.\+hpp}\item 
+src/Config.\+cpp\end{DoxyCompactItemize}

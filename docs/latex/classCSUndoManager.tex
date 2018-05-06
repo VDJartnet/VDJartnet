@@ -1,0 +1,113 @@
+\hypertarget{classCSUndoManager}{}\section{C\+S\+Undo\+Manager Class Reference}
+\label{classCSUndoManager}\index{C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}}
+
+
+An undo manager.  
+
+
+
+
+{\ttfamily \#include $<$C\+S\+Undo\+Manager.\+hpp$>$}
+
+
+
+Collaboration diagram for C\+S\+Undo\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classCSUndoManager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classCSUndoManager_1_1UndoItem}{Undo\+Item}
+\begin{DoxyCompactList}\small\item\em An event that can be undone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCSUndoManager_a8195893d40647952225158b9bc883ac8}\label{classCSUndoManager_a8195893d40647952225158b9bc883ac8}} 
+\hyperlink{classCSUndoManager_a8195893d40647952225158b9bc883ac8}{C\+S\+Undo\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Construct an undo manager. \end{DoxyCompactList}\item 
+void \hyperlink{classCSUndoManager_af8b0d7f2acb9d6686cd030e1cef1640e}{register\+Undo\+Func} (std\+::function$<$ void()$>$ f)
+\begin{DoxyCompactList}\small\item\em Register an undo to the stack with the given function object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_a35d72c80c1aefbd08592a866ea18f0da}\label{classCSUndoManager_a35d72c80c1aefbd08592a866ea18f0da}} 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classCSUndoManager_a35d72c80c1aefbd08592a866ea18f0da}{register\+Undo\+Func\+Arg} (std\+::function$<$ void(T)$>$ f, T arg)
+\begin{DoxyCompactList}\small\item\em Register an undo to the stack with the given function and pair of arguments to pass it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_af5412c615c1bb86d6e6657bab1e2175e}\label{classCSUndoManager_af5412c615c1bb86d6e6657bab1e2175e}} 
+{\footnotesize template$<$typename S , typename T $>$ }\\void \hyperlink{classCSUndoManager_af5412c615c1bb86d6e6657bab1e2175e}{register\+Undo\+Funcp\+Arg2} (void($\ast$f)(S, T), S arg1, T arg2)
+\begin{DoxyCompactList}\small\item\em Register an undo to the stack that restores the value of the given target. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_a7bb75a1243d60c291e6c1a6cc5d5f6a7}\label{classCSUndoManager_a7bb75a1243d60c291e6c1a6cc5d5f6a7}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries register\+Undo\+Target} (T $\ast$target)
+\item 
+\mbox{\Hypertarget{classCSUndoManager_aba7234583f74080689d126d142cee5fa}\label{classCSUndoManager_aba7234583f74080689d126d142cee5fa}} 
+bool \hyperlink{classCSUndoManager_aba7234583f74080689d126d142cee5fa}{can\+Undo} ()
+\begin{DoxyCompactList}\small\item\em There is an undo on the stack. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_af604822084540cbee8a7b99dd6139600}\label{classCSUndoManager_af604822084540cbee8a7b99dd6139600}} 
+void \hyperlink{classCSUndoManager_af604822084540cbee8a7b99dd6139600}{undo} ()
+\begin{DoxyCompactList}\small\item\em Undo the last value from the undo stack. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_aac205c66f6620adc3785321f52679023}\label{classCSUndoManager_aac205c66f6620adc3785321f52679023}} 
+bool \hyperlink{classCSUndoManager_aac205c66f6620adc3785321f52679023}{can\+Redo} ()
+\begin{DoxyCompactList}\small\item\em There is a redo on the stack. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_ae87a60c82efa48a8693a08bf6502ebc9}\label{classCSUndoManager_ae87a60c82efa48a8693a08bf6502ebc9}} 
+void \hyperlink{classCSUndoManager_ae87a60c82efa48a8693a08bf6502ebc9}{redo} ()
+\begin{DoxyCompactList}\small\item\em Redo the last value from the redo stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCSUndoManager_a9106500b4517e3608235a4ea6b35f03e}\label{classCSUndoManager_a9106500b4517e3608235a4ea6b35f03e}} 
+\hyperlink{classCSUndoManager_1_1UndoItem}{Undo\+Item} $\ast$ \hyperlink{classCSUndoManager_a9106500b4517e3608235a4ea6b35f03e}{undo\+Stack}
+\begin{DoxyCompactList}\small\item\em The stack of undos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSUndoManager_a4245926b269d6471833384272d52ae79}\label{classCSUndoManager_a4245926b269d6471833384272d52ae79}} 
+\hyperlink{classCSUndoManager_1_1UndoItem}{Undo\+Item} $\ast$ \hyperlink{classCSUndoManager_a4245926b269d6471833384272d52ae79}{redo\+Stack}
+\begin{DoxyCompactList}\small\item\em The stack of redos. \end{DoxyCompactList}\item 
+bool \hyperlink{classCSUndoManager_ace8ec35440a0d96267d659135dcf0c39}{is\+Undoing}
+\begin{DoxyCompactList}\small\item\em Is undoing an event. \end{DoxyCompactList}\item 
+bool \hyperlink{classCSUndoManager_ad1087a3d4480bba871ac58935f4efd95}{is\+Redoing}
+\begin{DoxyCompactList}\small\item\em Is redoing an event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An undo manager. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCSUndoManager_af8b0d7f2acb9d6686cd030e1cef1640e}\label{classCSUndoManager_af8b0d7f2acb9d6686cd030e1cef1640e}} 
+\index{C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}!register\+Undo\+Func@{register\+Undo\+Func}}
+\index{register\+Undo\+Func@{register\+Undo\+Func}!C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}}
+\subsubsection{\texorpdfstring{register\+Undo\+Func()}{registerUndoFunc()}}
+{\footnotesize\ttfamily void C\+S\+Undo\+Manager\+::register\+Undo\+Func (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{f }\end{DoxyParamCaption})}
+
+
+
+Register an undo to the stack with the given function object. 
+
+Register an undo to the stack with the given function and argument to pass it 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classCSUndoManager_ad1087a3d4480bba871ac58935f4efd95}\label{classCSUndoManager_ad1087a3d4480bba871ac58935f4efd95}} 
+\index{C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}!is\+Redoing@{is\+Redoing}}
+\index{is\+Redoing@{is\+Redoing}!C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}}
+\subsubsection{\texorpdfstring{is\+Redoing}{isRedoing}}
+{\footnotesize\ttfamily bool C\+S\+Undo\+Manager\+::is\+Redoing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Is redoing an event. 
+
+While redoing a new event registered should not clear the redo stack. \mbox{\Hypertarget{classCSUndoManager_ace8ec35440a0d96267d659135dcf0c39}\label{classCSUndoManager_ace8ec35440a0d96267d659135dcf0c39}} 
+\index{C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}!is\+Undoing@{is\+Undoing}}
+\index{is\+Undoing@{is\+Undoing}!C\+S\+Undo\+Manager@{C\+S\+Undo\+Manager}}
+\subsubsection{\texorpdfstring{is\+Undoing}{isUndoing}}
+{\footnotesize\ttfamily bool C\+S\+Undo\+Manager\+::is\+Undoing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Is undoing an event. 
+
+While undoing a new event registered is a redo. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cpp\+Step/C\+S\+Undo\+Manager.\+hpp\item 
+src/\+Cpp\+Step/C\+S\+Undo\+Manager.\+cpp\end{DoxyCompactItemize}

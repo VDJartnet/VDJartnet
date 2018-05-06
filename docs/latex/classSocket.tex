@@ -1,0 +1,41 @@
+\hypertarget{classSocket}{}\section{Socket Class Reference}
+\label{classSocket}\index{Socket@{Socket}}
+
+
+$<$ A U\+DP socket  
+
+
+
+
+{\ttfamily \#include $<$Socket.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSocket_ad584e40f858c7c56d84ffadef63f3ab9}\label{classSocket_ad584e40f858c7c56d84ffadef63f3ab9}} 
+\hyperlink{classSocket_ad584e40f858c7c56d84ffadef63f3ab9}{Socket} (unsigned int port, int \hyperlink{classSocket_ad962ba2bb1875300c69ff5b4e6a70cd1}{non\+\_\+blocking})
+\begin{DoxyCompactList}\small\item\em Construct a socket with the given source port and value of non\+\_\+blocking. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSocket_aeac4eb6379a543d38ed88977d3b6630a}\label{classSocket_aeac4eb6379a543d38ed88977d3b6630a}} 
+\hyperlink{classSocket_aeac4eb6379a543d38ed88977d3b6630a}{$\sim$\+Socket} ()
+\begin{DoxyCompactList}\small\item\em Destruct the socket. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSocket_a557ad7665a79556c164e6b30488f70f9}\label{classSocket_a557ad7665a79556c164e6b30488f70f9}} 
+void \hyperlink{classSocket_a557ad7665a79556c164e6b30488f70f9}{send} (std\+::string hostS, unsigned short port, const void $\ast$data, int size)
+\begin{DoxyCompactList}\small\item\em Send the given data to the given host and port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSocket_a1d1e25e0a7eddecb3473350a1a8c3178}\label{classSocket_a1d1e25e0a7eddecb3473350a1a8c3178}} 
+int \hyperlink{classSocket_a1d1e25e0a7eddecb3473350a1a8c3178}{handle}
+\begin{DoxyCompactList}\small\item\em The handle to the socket. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSocket_ad962ba2bb1875300c69ff5b4e6a70cd1}\label{classSocket_ad962ba2bb1875300c69ff5b4e6a70cd1}} 
+int \hyperlink{classSocket_ad962ba2bb1875300c69ff5b4e6a70cd1}{non\+\_\+blocking}
+\begin{DoxyCompactList}\small\item\em Whether the socket is blocking. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+$<$ A U\+DP socket 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Socket.\+hpp\item 
+src/Socket.\+cpp\end{DoxyCompactItemize}
