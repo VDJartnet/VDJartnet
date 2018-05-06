@@ -27,11 +27,11 @@
 
 #import "ConfigMacEditMenu.h"
 
-@implementation ConfigEditMenu {
-    ConfigViewController* viewController;
+@implementation ConfigMacEditMenu {
+    ConfigMacViewController* viewController; /**< The view controller for the list of commands */
 }
 
-- (id)initWithUndoManager:(NSUndoManager*)undoManager viewController:(ConfigViewController*)viewControllerTMP {
+- (id)initWithUndoManager:(NSUndoManager*)undoManager viewController:(ConfigMacViewController*)viewControllerTMP {
     if ( self = [super initWithTitle:NSLocalizedString(@"Edit", @"Edit menu title")] ) {
         viewController = viewControllerTMP;
     

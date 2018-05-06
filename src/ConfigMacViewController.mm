@@ -27,13 +27,13 @@
 
 #import "ConfigMacViewController.h"
 
-@implementation ConfigViewController {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacViewController {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
     
-    NSScrollView* scrollView;
-    ConfigIpAddress* ipAddress;
-    ConfigIpPort* ipPort;
-    NSTextField* ipLabel;
+    NSScrollView* scrollView; /**< The scroll view containing the list of commands */
+    ConfigMacIpAddress* ipAddress; /**< The IP address field */
+    ConfigMacIpPort* ipPort; /**< The port field */
+    NSTextField* ipLabel; /**< A label for the IP address field */
 }
 
 - (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
@@ -48,17 +48,17 @@
 - (void)loadView {
     self.view = [[NSView alloc] init];
 
-    _tableView = [[ConfigTableView alloc] initWithVDJartnet:vdjArtnet];
+    _tableView = [[ConfigMacTableView alloc] initWithVDJartnet:vdjArtnet];
 
     scrollView = [[NSScrollView alloc] initWithFrame:NSZeroRect];
     [scrollView setDocumentView:_tableView];
     [scrollView setHasVerticalScroller:YES];
     [[self view] addSubview:scrollView];
     
-    ipAddress = [[ConfigIpAddress alloc] initWithFrame:NSZeroRect VDJartnet:vdjArtnet];
+    ipAddress = [[ConfigMacIpAddress alloc] initWithFrame:NSZeroRect VDJartnet:vdjArtnet];
     [[self view] addSubview:ipAddress];
     
-    ipPort = [[ConfigIpPort alloc] initWithFrame:NSZeroRect VDJartnet:vdjArtnet];
+    ipPort = [[ConfigMacIpPort alloc] initWithFrame:NSZeroRect VDJartnet:vdjArtnet];
     [[self view] addSubview:ipPort];
 
     ipLabel = [[NSTextField alloc] initWithFrame:NSZeroRect];

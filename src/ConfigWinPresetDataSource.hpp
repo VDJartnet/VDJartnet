@@ -71,6 +71,6 @@ public:
     }
 };
 
-typedef System::Collections::Generic::List<ConfigWinPresetRowString^> ConfigWinPresetDataSource; /**< The data source which shall provide the preset rows. It is a list of the ConfigWinPresetRowStrings. */
+typedef System::Collections::Generic::List<ConfigWinPresetRowString^> ConfigWinPresetDataSource; /**< A data source that provides the preset rows. It is a list of the ConfigWinPresetRowStrings. */
 
 #endif /* ConfigWinPresetDataSource_hpp */

@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['tableview',['tableView',['../classConfigWinPresetWindow.html#a39234b6105a76a2864775e51d53ea719',1,'ConfigWinPresetWindow::tableView()'],['../classConfigWinWindow.html#a16003ab2a1160a652d4cc1a17075d7e4',1,'ConfigWinWindow::tableView()']]]
+  ['sequence',['sequence',['../structArtnet_1_1ArtNetPacket.html#a78157adb70a494456d9fce018d465116',1,'Artnet::ArtNetPacket']]],
+  ['setupthread',['setupThread',['../classCVDJartnet.html#ae1b2c37bca6832820d7a6cd9df718d02',1,'CVDJartnet']]],
+  ['skippacketlimit',['skipPacketLimit',['../classConfig.html#adb31288f02cd583f05a37faf787c480b',1,'Config::skipPacketLimit()'],['../classCVDJartnet.html#abbc42ef43456cdbd170ed46118fced1b',1,'CVDJartnet::skipPacketLimit()']]],
+  ['skippedpackets',['skippedPackets',['../classCVDJartnet.html#a61ed7725b775d516e9f34e3ed9113d62',1,'CVDJartnet']]]
 ];

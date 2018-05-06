@@ -27,12 +27,12 @@
 
 #import "ConfigMacPresetWindow.h"
 
-@implementation ConfigPresetWindow {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacPresetWindow {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
     
-    NSTableView* presetTableView;
-    NSScrollView* presetScrollView;
-    ConfigPresetDataSource* presetDataSource;
+    NSTableView* presetTableView; /**< The list of presets */
+    NSScrollView* presetScrollView; /**< The scroll view containing the list of presets */
+    ConfigMacPresetDataSource* presetDataSource; /**< The data source providing the preset rows */
 }
 
 - (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
@@ -46,7 +46,7 @@
         [[presetTableView tableColumns][0] setEditable:NO];
         [presetTableView setHeaderView:nil];
         
-        presetDataSource = [[ConfigPresetDataSource alloc] initWithVDJartnet:vdjArtnet];
+        presetDataSource = [[ConfigMacPresetDataSource alloc] initWithVDJartnet:vdjArtnet];
         [presetTableView setDataSource:presetDataSource];
         
         [presetTableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];

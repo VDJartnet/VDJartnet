@@ -27,11 +27,11 @@
 
 #import "ConfigMacWindow.h"
 
-@implementation ConfigWindow {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacWindow {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
 
-    ConfigViewController* viewController;
-    NSMenuItem* editMenuItem;
+    ConfigMacViewController* viewController; /**< The view controller */
+    NSMenuItem* editMenuItem; /**< The "Edit" menu */
 }
 
 - (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
@@ -39,7 +39,7 @@
         
         vdjArtnet = vdjArtnetTMP;
         
-        viewController = [[ConfigViewController alloc] initWithVDJartnet:vdjArtnet];
+        viewController = [[ConfigMacViewController alloc] initWithVDJartnet:vdjArtnet];
                 
         [self setReleasedWhenClosed: NO];
         [self setContentView:[viewController view]];
@@ -47,7 +47,7 @@
         [self setTitle: NSLocalizedString(@"VDJartnetConfig", @"Config window title")];
         [self makeKeyAndOrderFront:self];
         
-        ConfigEditMenu* editMenu = [[ConfigEditMenu alloc] initWithUndoManager:[self undoManager] viewController:viewController];
+        ConfigMacEditMenu* editMenu = [[ConfigMacEditMenu alloc] initWithUndoManager:[self undoManager] viewController:viewController];
         editMenuItem = [[[NSApplication sharedApplication] mainMenu] addItemWithTitle:NSLocalizedString(@"Edit", @"Edit menu title") action:nil keyEquivalent:@""];
         [editMenuItem setSubmenu:editMenu];
         

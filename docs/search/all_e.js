@@ -4,6 +4,7 @@ var searchData=
   ['saveconfig',['saveConfig',['../classConfig.html#a64000eb3f2292cba44278cec34fc076d',1,'Config']]],
   ['send',['send',['../classSocket.html#a557ad7665a79556c164e6b30488f70f9',1,'Socket']]],
   ['sendartnetpacket',['sendArtnetPacket',['../classArtnet.html#aeb06c6aa3357345140dc9bf6ab024b9e',1,'Artnet']]],
+  ['sequence',['sequence',['../structArtnet_1_1ArtNetPacket.html#a78157adb70a494456d9fce018d465116',1,'Artnet::ArtNetPacket']]],
   ['setchannel',['setChannel',['../classArtnet.html#ac3de43f38fbdcc4f737c56c7dd071eb4',1,'Artnet']]],
   ['setup',['setup',['../classCVDJartnet.html#a2bcd778bf57ec099afef11019b72edec',1,'CVDJartnet']]],
   ['setupthread',['setupThread',['../classCVDJartnet.html#ae1b2c37bca6832820d7a6cd9df718d02',1,'CVDJartnet']]],

@@ -36,13 +36,14 @@
 #include "VDJartnet.hpp"
 #endif
 
-@interface ConfigViewController : NSViewController
+/** A view controller containing a list of commands and IP and port fields */
+@interface ConfigMacViewController : NSViewController
 
-@property (strong) ConfigTableView* tableView;
+@property (strong) ConfigMacTableView* tableView; /**< The list of commands */
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
-- (void)loadView;
-- (void)viewDidLayout;
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a view controller with the given instance of the plugin */
+- (void)loadView; /**< Load the view associated with this view controller */
+- (void)viewDidLayout; /**< The view has been re layed out */
 
 @end
 

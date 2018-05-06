@@ -1,7 +1,0 @@
-<map id="CVDJartnet" name="CVDJartnet">
-<area shape="rect" id="node2" href="$classIVdjPlugin8.html" title="IVdjPlugin8" alt="" coords="17,95,105,121"/>
-<area shape="rect" id="node3" href="$structIVdjCallbacks8.html" title="IVdjCallbacks8" alt="" coords="5,5,116,32"/>
-<area shape="rect" id="node4" href="$classConfig.html" title="A config parser and writer. " alt="" coords="129,95,189,121"/>
-<area shape="rect" id="node5" href="$classArtnet.html" title="A class to send Art&#45;Net data. " alt="" coords="213,95,271,121"/>
-<area shape="rect" id="node6" href="$structArtnet_1_1ArtNetPacket.html" title="An Art&#45;Net packet. " alt="" coords="170,5,314,32"/>
-</map>

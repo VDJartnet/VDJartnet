@@ -7,73 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6842A7981F00612B009EC942 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DD1E4D29FF002C7ED1 /* main.cpp */; };
-		6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */; };
 		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
-		68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684CFF651ECCAD6500C538B2 /* ConfigMac.mm */; };
-		68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA811EE170B500335D50 /* ConfigMacViewController.mm */; };
-		68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */; };
-		68B8DB62202749FB00449F10 /* ConfigMacTableView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6801FA871EE206F700335D50 /* ConfigMacTableView.mm */; };
-		68BC26CD2099460500B79334 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26C72099460400B79334 /* Config.cpp */; };
-		68BC26CE2099460500B79334 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26C92099460500B79334 /* Socket.cpp */; };
-		68BC26CF2099460500B79334 /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26CB2099460500B79334 /* Artnet.cpp */; };
-		68BC26D2209B7D1F00B79334 /* ConfigMacIpAddress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26D1209B7D1F00B79334 /* ConfigMacIpAddress.mm */; };
-		68BC26D5209B7F1B00B79334 /* ConfigMacIpPort.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68BC26D4209B7F1B00B79334 /* ConfigMacIpPort.mm */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		68CF233D209C885A0072437B /* presets.txt in Resources */ = {isa = PBXBuildFile; fileRef = 68CF233C209C885A0072437B /* presets.txt */; };
-		68CF2340209CAF2B0072437B /* ConfigMacEditMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF233F209CAF2B0072437B /* ConfigMacEditMenu.mm */; };
-		68CF2343209CB2ED0072437B /* ConfigMacWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2342209CB2ED0072437B /* ConfigMacWindow.mm */; };
-		68CF2346209CB5B60072437B /* ConfigMacPresetWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2345209CB5B60072437B /* ConfigMacPresetWindow.mm */; };
+		68CF23A9209F41030072437B /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF239E209F406F0072437B /* Artnet.cpp */; };
+		68CF23AA209F41030072437B /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2396209F406F0072437B /* Config.cpp */; };
+		68CF23AB209F41030072437B /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF238A209F406F0072437B /* ConfigMac.mm */; };
+		68CF23AC209F41030072437B /* ConfigMacEditMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A2209F406F0072437B /* ConfigMacEditMenu.mm */; };
+		68CF23AD209F41030072437B /* ConfigMacIpAddress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A4209F406F0072437B /* ConfigMacIpAddress.mm */; };
+		68CF23AE209F41030072437B /* ConfigMacIpPort.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2388209F406F0072437B /* ConfigMacIpPort.mm */; };
+		68CF23AF209F41030072437B /* ConfigMacPresetDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A6209F406F0072437B /* ConfigMacPresetDataSource.mm */; };
+		68CF23B0209F41030072437B /* ConfigMacPresetWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2397209F406F0072437B /* ConfigMacPresetWindow.mm */; };
+		68CF23B1209F41030072437B /* ConfigMacTableView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2392209F406F0072437B /* ConfigMacTableView.mm */; };
+		68CF23B2209F41030072437B /* ConfigMacViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF237E209F406F0072437B /* ConfigMacViewController.mm */; };
+		68CF23B3209F41030072437B /* ConfigMacWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2393209F406F0072437B /* ConfigMacWindow.mm */; };
+		68CF23B4209F41030072437B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A1209F406F0072437B /* main.cpp */; };
+		68CF23B5209F41030072437B /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2386209F406F0072437B /* Socket.cpp */; };
+		68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2395209F406F0072437B /* VDJartnet.cpp */; };
 		68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6801FA811EE170B500335D50 /* ConfigMacViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacViewController.mm; sourceTree = "<group>"; };
-		6801FA831EE170D100335D50 /* ConfigMacViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacViewController.h; sourceTree = "<group>"; };
-		6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacPresetDataSource.mm; sourceTree = "<group>"; };
-		6801FA861EE1D5D000335D50 /* ConfigMacPresetDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacPresetDataSource.h; sourceTree = "<group>"; };
-		6801FA871EE206F700335D50 /* ConfigMacTableView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacTableView.mm; sourceTree = "<group>"; };
-		6801FA891EE2070500335D50 /* ConfigMacTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacTableView.h; sourceTree = "<group>"; };
-		684CFF651ECCAD6500C538B2 /* ConfigMac.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = ConfigMac.mm; sourceTree = "<group>"; };
-		684CFF661ECCAD6500C538B2 /* ConfigMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigMac.h; sourceTree = "<group>"; };
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VDJartnet.cpp; sourceTree = "<group>"; };
-		686A93DB1E4D29E0002C7ED1 /* VDJartnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VDJartnet.hpp; sourceTree = "<group>"; };
-		686A93DD1E4D29FF002C7ED1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		686A93E01E4D2A46002C7ED1 /* vdjPlugin8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vdjPlugin8.h; sourceTree = "<group>"; };
-		686CB3AB1EE30495008A8883 /* ConfigWin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigWin.cpp; sourceTree = "<group>"; };
-		686CB3AC1EE30495008A8883 /* ConfigWin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConfigWin.hpp; sourceTree = "<group>"; };
-		686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinDataSource.hpp; sourceTree = "<group>"; };
 		68B8DB5B20267B8600449F10 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		68BC26C72099460400B79334 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
-		68BC26C82099460500B79334 /* Artnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Artnet.hpp; sourceTree = "<group>"; };
-		68BC26C92099460500B79334 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
-		68BC26CA2099460500B79334 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
-		68BC26CB2099460500B79334 /* Artnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Artnet.cpp; sourceTree = "<group>"; };
-		68BC26CC2099460500B79334 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
-		68BC26D0209B7D1F00B79334 /* ConfigMacIpAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacIpAddress.h; sourceTree = "<group>"; };
-		68BC26D1209B7D1F00B79334 /* ConfigMacIpAddress.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacIpAddress.mm; sourceTree = "<group>"; };
-		68BC26D3209B7F1B00B79334 /* ConfigMacIpPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacIpPort.h; sourceTree = "<group>"; };
-		68BC26D4209B7F1B00B79334 /* ConfigMacIpPort.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacIpPort.mm; sourceTree = "<group>"; };
 		68C4F73E1EACE18B007C4A7D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		68CF233C209C885A0072437B /* presets.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = presets.txt; sourceTree = "<group>"; };
-		68CF233E209CAF2B0072437B /* ConfigMacEditMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacEditMenu.h; sourceTree = "<group>"; };
-		68CF233F209CAF2B0072437B /* ConfigMacEditMenu.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacEditMenu.mm; sourceTree = "<group>"; };
-		68CF2341209CB2ED0072437B /* ConfigMacWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacWindow.h; sourceTree = "<group>"; };
-		68CF2342209CB2ED0072437B /* ConfigMacWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacWindow.mm; sourceTree = "<group>"; };
-		68CF2344209CB5B60072437B /* ConfigMacPresetWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacPresetWindow.h; sourceTree = "<group>"; };
-		68CF2345209CB5B60072437B /* ConfigMacPresetWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacPresetWindow.mm; sourceTree = "<group>"; };
+		68CF237E209F406F0072437B /* ConfigMacViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacViewController.mm; sourceTree = "<group>"; };
+		68CF237F209F406F0072437B /* ConfigMacWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacWindow.h; sourceTree = "<group>"; };
+		68CF2381209F406F0072437B /* Artnet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Artnet.hpp; sourceTree = "<group>"; };
+		68CF2383209F406F0072437B /* ConfigMacPresetWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacPresetWindow.h; sourceTree = "<group>"; };
+		68CF2385209F406F0072437B /* ConfigMacTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacTableView.h; sourceTree = "<group>"; };
+		68CF2386209F406F0072437B /* Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
+		68CF2388209F406F0072437B /* ConfigMacIpPort.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacIpPort.mm; sourceTree = "<group>"; };
+		68CF2389209F406F0072437B /* VDJartnet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VDJartnet.hpp; sourceTree = "<group>"; };
+		68CF238A209F406F0072437B /* ConfigMac.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMac.mm; sourceTree = "<group>"; };
+		68CF238B209F406F0072437B /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		68CF238C209F406F0072437B /* ConfigMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMac.h; sourceTree = "<group>"; };
+		68CF238E209F406F0072437B /* ConfigMacEditMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacEditMenu.h; sourceTree = "<group>"; };
+		68CF238F209F406F0072437B /* ConfigMacIpAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacIpAddress.h; sourceTree = "<group>"; };
+		68CF2391209F406F0072437B /* Socket.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
+		68CF2392209F406F0072437B /* ConfigMacTableView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacTableView.mm; sourceTree = "<group>"; };
+		68CF2393209F406F0072437B /* ConfigMacWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacWindow.mm; sourceTree = "<group>"; };
+		68CF2394209F406F0072437B /* ConfigMacIpPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacIpPort.h; sourceTree = "<group>"; };
+		68CF2395209F406F0072437B /* VDJartnet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VDJartnet.cpp; sourceTree = "<group>"; };
+		68CF2396209F406F0072437B /* Config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		68CF2397209F406F0072437B /* ConfigMacPresetWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacPresetWindow.mm; sourceTree = "<group>"; };
+		68CF239A209F406F0072437B /* ConfigMacPresetDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacPresetDataSource.h; sourceTree = "<group>"; };
+		68CF239B209F406F0072437B /* vdjPlugin8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vdjPlugin8.h; sourceTree = "<group>"; };
+		68CF239D209F406F0072437B /* ConfigMacViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacViewController.h; sourceTree = "<group>"; };
+		68CF239E209F406F0072437B /* Artnet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Artnet.cpp; sourceTree = "<group>"; };
+		68CF23A1209F406F0072437B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		68CF23A2209F406F0072437B /* ConfigMacEditMenu.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacEditMenu.mm; sourceTree = "<group>"; };
+		68CF23A4209F406F0072437B /* ConfigMacIpAddress.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacIpAddress.mm; sourceTree = "<group>"; };
+		68CF23A5209F406F0072437B /* presets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = presets.txt; sourceTree = "<group>"; };
+		68CF23A6209F406F0072437B /* ConfigMacPresetDataSource.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacPresetDataSource.mm; sourceTree = "<group>"; };
 		68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReadmeDlg.wxs; sourceTree = "<group>"; };
 		68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = buildPackageWin.bat; sourceTree = "<group>"; };
 		68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildPackageMac.sh; sourceTree = "<group>"; };
 		68F9E8511F981DAE002F8CEF /* distributionTransformMac.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = distributionTransformMac.xsl; sourceTree = "<group>"; };
 		68F9E8521F981DAF002F8CEF /* winInstaller.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = winInstaller.wxs; sourceTree = "<group>"; };
-		68F9E8591F981DBC002F8CEF /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
-		68F9E85B1F981DBC002F8CEF /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
 		68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VDJartnet.plist; sourceTree = "<group>"; };
-		68F9E8601F981E10002F8CEF /* ConfigWinTableView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinTableView.hpp; sourceTree = "<group>"; };
-		68F9E8611F981E10002F8CEF /* ConfigWinPresetDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWinPresetDataSource.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,42 +101,9 @@
 		686A93D11E4D291B002C7ED1 /* VDJartnet */ = {
 			isa = PBXGroup;
 			children = (
-				686A93E01E4D2A46002C7ED1 /* vdjPlugin8.h */,
+				68CF23A7209F406F0072437B /* src */,
 				686A93D21E4D291B002C7ED1 /* Info.plist */,
 				68B8DB5B20267B8600449F10 /* Localizable.strings */,
-				686A93DD1E4D29FF002C7ED1 /* main.cpp */,
-				686A93DB1E4D29E0002C7ED1 /* VDJartnet.hpp */,
-				686A93DA1E4D29E0002C7ED1 /* VDJartnet.cpp */,
-				68BC26CA2099460500B79334 /* Config.hpp */,
-				68BC26C72099460400B79334 /* Config.cpp */,
-				68CF233C209C885A0072437B /* presets.txt */,
-				68BC26C82099460500B79334 /* Artnet.hpp */,
-				68BC26CB2099460500B79334 /* Artnet.cpp */,
-				68BC26CC2099460500B79334 /* Socket.hpp */,
-				68BC26C92099460500B79334 /* Socket.cpp */,
-				684CFF661ECCAD6500C538B2 /* ConfigMac.h */,
-				684CFF651ECCAD6500C538B2 /* ConfigMac.mm */,
-				68CF2341209CB2ED0072437B /* ConfigMacWindow.h */,
-				68CF2342209CB2ED0072437B /* ConfigMacWindow.mm */,
-				68CF233E209CAF2B0072437B /* ConfigMacEditMenu.h */,
-				68CF233F209CAF2B0072437B /* ConfigMacEditMenu.mm */,
-				6801FA831EE170D100335D50 /* ConfigMacViewController.h */,
-				6801FA811EE170B500335D50 /* ConfigMacViewController.mm */,
-				6801FA891EE2070500335D50 /* ConfigMacTableView.h */,
-				6801FA871EE206F700335D50 /* ConfigMacTableView.mm */,
-				68BC26D0209B7D1F00B79334 /* ConfigMacIpAddress.h */,
-				68BC26D1209B7D1F00B79334 /* ConfigMacIpAddress.mm */,
-				68BC26D3209B7F1B00B79334 /* ConfigMacIpPort.h */,
-				68BC26D4209B7F1B00B79334 /* ConfigMacIpPort.mm */,
-				68CF2344209CB5B60072437B /* ConfigMacPresetWindow.h */,
-				68CF2345209CB5B60072437B /* ConfigMacPresetWindow.mm */,
-				6801FA861EE1D5D000335D50 /* ConfigMacPresetDataSource.h */,
-				6801FA841EE1D5C300335D50 /* ConfigMacPresetDataSource.mm */,
-				686CB3AC1EE30495008A8883 /* ConfigWin.hpp */,
-				686CB3AB1EE30495008A8883 /* ConfigWin.cpp */,
-				68F9E8611F981E10002F8CEF /* ConfigWinPresetDataSource.hpp */,
-				686CB3AE1EE311F8008A8883 /* ConfigWinDataSource.hpp */,
-				68F9E8601F981E10002F8CEF /* ConfigWinTableView.hpp */,
 			);
 			name = VDJartnet;
 			sourceTree = "<group>";
@@ -157,29 +116,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		68F9E8581F981DBC002F8CEF /* updateConfigMac */ = {
+		68CF23A7209F406F0072437B /* src */ = {
 			isa = PBXGroup;
 			children = (
-				68F9E8591F981DBC002F8CEF /* postinstall */,
+				68CF239E209F406F0072437B /* Artnet.cpp */,
+				68CF2381209F406F0072437B /* Artnet.hpp */,
+				68CF2396209F406F0072437B /* Config.cpp */,
+				68CF238B209F406F0072437B /* Config.hpp */,
+				68CF238C209F406F0072437B /* ConfigMac.h */,
+				68CF238A209F406F0072437B /* ConfigMac.mm */,
+				68CF238E209F406F0072437B /* ConfigMacEditMenu.h */,
+				68CF23A2209F406F0072437B /* ConfigMacEditMenu.mm */,
+				68CF238F209F406F0072437B /* ConfigMacIpAddress.h */,
+				68CF23A4209F406F0072437B /* ConfigMacIpAddress.mm */,
+				68CF2394209F406F0072437B /* ConfigMacIpPort.h */,
+				68CF2388209F406F0072437B /* ConfigMacIpPort.mm */,
+				68CF239A209F406F0072437B /* ConfigMacPresetDataSource.h */,
+				68CF23A6209F406F0072437B /* ConfigMacPresetDataSource.mm */,
+				68CF2383209F406F0072437B /* ConfigMacPresetWindow.h */,
+				68CF2397209F406F0072437B /* ConfigMacPresetWindow.mm */,
+				68CF2385209F406F0072437B /* ConfigMacTableView.h */,
+				68CF2392209F406F0072437B /* ConfigMacTableView.mm */,
+				68CF239D209F406F0072437B /* ConfigMacViewController.h */,
+				68CF237E209F406F0072437B /* ConfigMacViewController.mm */,
+				68CF237F209F406F0072437B /* ConfigMacWindow.h */,
+				68CF2393209F406F0072437B /* ConfigMacWindow.mm */,
+				68CF23A1209F406F0072437B /* main.cpp */,
+				68CF23A5209F406F0072437B /* presets.txt */,
+				68CF2386209F406F0072437B /* Socket.cpp */,
+				68CF2391209F406F0072437B /* Socket.hpp */,
+				68CF2395209F406F0072437B /* VDJartnet.cpp */,
+				68CF2389209F406F0072437B /* VDJartnet.hpp */,
+				68CF239B209F406F0072437B /* vdjPlugin8.h */,
 			);
-			path = updateConfigMac;
-			sourceTree = "<group>";
-		};
-		68F9E85A1F981DBC002F8CEF /* updatePresetsMac */ = {
-			isa = PBXGroup;
-			children = (
-				68F9E85B1F981DBC002F8CEF /* postinstall */,
-			);
-			path = updatePresetsMac;
-			sourceTree = "<group>";
+			name = src;
+			path = /Users/jonathantanner/Documents/VDJartnet/Sources/VDJartnet/src;
+			sourceTree = "<absolute>";
 		};
 		68F9E85E1F981DC5002F8CEF /* Installers */ = {
 			isa = PBXGroup;
 			children = (
 				68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */,
 				68F9E8511F981DAE002F8CEF /* distributionTransformMac.xsl */,
-				68F9E8581F981DBC002F8CEF /* updateConfigMac */,
-				68F9E85A1F981DBC002F8CEF /* updatePresetsMac */,
 				68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */,
 				68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */,
 				68F9E8521F981DAF002F8CEF /* winInstaller.wxs */,
@@ -245,7 +223,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68CF233D209C885A0072437B /* presets.txt in Resources */,
 				68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */,
 				68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */,
 			);
@@ -258,20 +235,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6842A7981F00612B009EC942 /* main.cpp in Sources */,
-				68BC26D5209B7F1B00B79334 /* ConfigMacIpPort.mm in Sources */,
-				6842A7991F006130009EC942 /* VDJartnet.cpp in Sources */,
-				68BC26CD2099460500B79334 /* Config.cpp in Sources */,
-				68CF2340209CAF2B0072437B /* ConfigMacEditMenu.mm in Sources */,
-				68CF2343209CB2ED0072437B /* ConfigMacWindow.mm in Sources */,
-				68CF2346209CB5B60072437B /* ConfigMacPresetWindow.mm in Sources */,
-				68BC26CF2099460500B79334 /* Artnet.cpp in Sources */,
-				68BC26D2209B7D1F00B79334 /* ConfigMacIpAddress.mm in Sources */,
-				68BC26CE2099460500B79334 /* Socket.cpp in Sources */,
-				68B8DB5F202749F200449F10 /* ConfigMac.mm in Sources */,
-				68B8DB60202749F600449F10 /* ConfigMacViewController.mm in Sources */,
-				68B8DB61202749F800449F10 /* ConfigMacPresetDataSource.mm in Sources */,
-				68B8DB62202749FB00449F10 /* ConfigMacTableView.mm in Sources */,
+				68CF23A9209F41030072437B /* Artnet.cpp in Sources */,
+				68CF23AA209F41030072437B /* Config.cpp in Sources */,
+				68CF23AB209F41030072437B /* ConfigMac.mm in Sources */,
+				68CF23AC209F41030072437B /* ConfigMacEditMenu.mm in Sources */,
+				68CF23AD209F41030072437B /* ConfigMacIpAddress.mm in Sources */,
+				68CF23AE209F41030072437B /* ConfigMacIpPort.mm in Sources */,
+				68CF23AF209F41030072437B /* ConfigMacPresetDataSource.mm in Sources */,
+				68CF23B0209F41030072437B /* ConfigMacPresetWindow.mm in Sources */,
+				68CF23B1209F41030072437B /* ConfigMacTableView.mm in Sources */,
+				68CF23B2209F41030072437B /* ConfigMacViewController.mm in Sources */,
+				68CF23B3209F41030072437B /* ConfigMacWindow.mm in Sources */,
+				68CF23B4209F41030072437B /* main.cpp in Sources */,
+				68CF23B5209F41030072437B /* Socket.cpp in Sources */,
+				68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

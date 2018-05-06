@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value',['Value',['../classConfigWinRowString.html#ad8324c1c0df6f0069626c15119539e6c',1,'ConfigWinRowString']]]
+  ['tableview',['tableView',['../interfaceConfigMacViewController.html#a47b3d76a83c9d4dff9f52ee3201af6d8',1,'ConfigMacViewController']]]
 ];

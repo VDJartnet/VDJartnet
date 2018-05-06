@@ -34,10 +34,11 @@
 #include "ConfigMacEditMenu.h"
 #include "ConfigMacViewController.h"
 
-@interface ConfigWindow : NSWindow <NSWindowDelegate>
+/**< A window containing a list of commands and IP and port fields */
+@interface ConfigMacWindow : NSWindow <NSWindowDelegate>
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
-- (void)windowWillClose:(NSNotification*)notification;
-- (void)dealloc;
+- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a window with the given instance of the plugin */
+- (void)windowWillClose:(NSNotification*)notification; /**< The window has been closed */
+- (void)dealloc; /**< Destruct the window */
 
 @end

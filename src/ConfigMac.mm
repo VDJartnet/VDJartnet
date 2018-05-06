@@ -27,17 +27,17 @@
 
 #include "ConfigMac.h"
 
-@implementation ConfigTool {
-    CVDJartnet* vdjArtnet;
-    ConfigWindow* window;
-    ConfigPresetWindow* presetWindow;
+@implementation ConfigMacTool {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    ConfigMacWindow* window; /**< The main window representing the config file */
+    ConfigMacPresetWindow* presetWindow; /**< A window with presets representing common config lines */
 }
 
 - (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
     if ( self = [super init] ) {
         vdjArtnet = vdjArtnetTMP;
-        window = [[ConfigWindow alloc] initWithVDJartnet:vdjArtnet];
-        presetWindow = [[ConfigPresetWindow alloc] initWithVDJartnet:vdjArtnet];
+        window = [[ConfigMacWindow alloc] initWithVDJartnet:vdjArtnet];
+        presetWindow = [[ConfigMacPresetWindow alloc] initWithVDJartnet:vdjArtnet];
 
         [NSWindow setAllowsAutomaticWindowTabbing: NO];
 

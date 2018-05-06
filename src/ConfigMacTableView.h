@@ -33,19 +33,20 @@
 #include "VDJartnet.hpp"
 #endif
 
-@interface ConfigTableView : NSTableView <NSTableViewDataSource, NSTableViewDelegate>
+/** A list of commands */
+@interface ConfigMacTableView : NSTableView <NSTableViewDataSource, NSTableViewDelegate>
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a list of commands with the given instance of the plugin */
 
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)localDestination;
+- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)localDestination; /**< Get which dragging operations are supported */
 
-- (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView;
-- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row;
-- (void)tableView:(NSTableView*)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row;
+- (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView; /**< The number of commands in the list */
+- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row; /**< Get the value of the command in the given row */
+- (void)tableView:(NSTableView*)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row; /**< Set the value of the command in the given row */
 
-- (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard*)pboard;
-- (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation;
-- (BOOL)tableView:(NSTableView*)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation;
+- (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard*)pboard; /**< Write the contents of the given rows to the clipboard */
+- (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation; /**< Check if the given row is ready to recieve the given drop */
+- (BOOL)tableView:(NSTableView*)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation; /**< Insert the contents of the drop into the given row */
 
 @end
 

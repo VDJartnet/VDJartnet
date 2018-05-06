@@ -27,8 +27,8 @@
 
 #import "ConfigMacIpPort.h"
 
-@implementation ConfigIpPort {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacIpPort {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
 }
 
 - (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP {

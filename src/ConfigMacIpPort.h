@@ -30,9 +30,10 @@
 #include "VDJartnet.hpp"
 #endif
 
-@interface ConfigIpPort : NSTextField <NSTextFieldDelegate>
+/** A port field */
+@interface ConfigMacIpPort : NSTextField <NSTextFieldDelegate>
 
-- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP;
-- (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor;
+- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise an IP address field with the given frame and instance of the plugin */
+- (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor; /**< The text has been edited */
 
 @end

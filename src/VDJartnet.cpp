@@ -143,7 +143,7 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
                     CFRelease(configTool);
                     configTool = nullptr;
                 }
-                configTool = (__bridge_retained void*)[[ConfigWinTool alloc] initWithVDJartnet: this];
+                configTool = (__bridge_retained void*)[[ConfigMacTool alloc] initWithVDJartnet: this];
 #endif
             }
             break;

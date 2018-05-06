@@ -33,8 +33,9 @@
 
 #include "ConfigMacPresetDataSource.h"
 
-@interface ConfigPresetWindow : NSWindow
+/** A window containing a list of presets */
+@interface ConfigMacPresetWindow : NSWindow
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
+- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a preset window with the given instance of the plugin */
 
 @end

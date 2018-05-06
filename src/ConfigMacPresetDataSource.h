@@ -33,13 +33,14 @@
 #include "VDJartnet.hpp"
 #endif
 
-@interface ConfigPresetDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate>
+/** A data source that provides the preset rows */
+@interface ConfigMacPresetDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
-- (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView;
-- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row;
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a data source with the given instance of the plugin */
+- (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView; /**< The number of rows in the list */
+- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row; /**< The name of the preset in the given row */
 
-- (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard *)pboard;
+- (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard *)pboard; /**< Write the contents of the given rows to the clipboard */
 
 @end
 

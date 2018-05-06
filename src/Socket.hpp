@@ -50,7 +50,7 @@
 #include <fcntl.h>
 #endif
 
-/**< A UDP socket */
+/** A UDP socket */
 class Socket {
 public:
     Socket(unsigned int port, int non_blocking); /**< Construct a socket with the given source port and value of non_blocking */

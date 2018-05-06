@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['setupthread',['setupThread',['../classCVDJartnet.html#ae1b2c37bca6832820d7a6cd9df718d02',1,'CVDJartnet']]],
-  ['skippacketlimit',['skipPacketLimit',['../classConfig.html#adb31288f02cd583f05a37faf787c480b',1,'Config::skipPacketLimit()'],['../classCVDJartnet.html#abbc42ef43456cdbd170ed46118fced1b',1,'CVDJartnet::skipPacketLimit()']]],
-  ['skippedpackets',['skippedPackets',['../classCVDJartnet.html#a61ed7725b775d516e9f34e3ed9113d62',1,'CVDJartnet']]]
+  ['redostack',['redoStack',['../classCSUndoManager.html#a4245926b269d6471833384272d52ae79',1,'CSUndoManager']]],
+  ['row',['row',['../classConfigWinRowString.html#a6b3d9b4d2c7775ea440a52ef78697d87',1,'ConfigWinRowString']]],
+  ['rowtodrag',['rowToDrag',['../classConfigWinPresetTableView.html#a773fceaf2e0a1986710eec5ea0e607a4',1,'ConfigWinPresetTableView::rowToDrag()'],['../classConfigWinTableView.html#a17e877f059f696a751ee9e765c699b16',1,'ConfigWinTableView::rowToDrag()']]]
 ];

@@ -27,12 +27,12 @@
 
 #import "ConfigMacIpAddress.h"
 
-@implementation ConfigIpAddress {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacIpAddress {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
 }
 
 - (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP {
-    if ( self = [super init]){//WithFrame:frame] ) {
+    if ( self = [super initWithFrame:frame] ) {
         vdjArtnet = vdjArtnetTMP;
         
         [self setStringValue: @(vdjArtnet->config->host.c_str())];

@@ -110,7 +110,12 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
     address.sin_addr.s_addr = host;
     address.sin_port = htons(port);
 
-    size_t sent_bytes = sendto(handle, (const char *) data, (size_t)size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
+#ifdef _WIN32
+    typedef size_t Size;
+#else
+    typedef ssize_t Size;
+#endif
+    Size sent_bytes = sendto(handle, (const char *) data, (size_t)size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
     if (sent_bytes != size) {
         throw std::runtime_error("Failed to send data");
     }

@@ -28,12 +28,13 @@
 #include <AppKit/AppKit.h>
 #include "ConfigMacViewController.h"
 
-@interface ConfigEditMenu : NSMenu
+/** The menu under "Edit" in the menu bar */
+@interface ConfigMacEditMenu : NSMenu
 
-- (id)initWithUndoManager:(NSUndoManager*)undoManager viewController:(ConfigViewController*)viewControllerTMP;
+- (id)initWithUndoManager:(NSUndoManager*)undoManager viewController:(ConfigMacViewController*)viewControllerTMP; /**< Initialise an "Edit" menu with the given undo manager and view controller for the list of commands */
 
-- (void) copyRow;
-- (void) pasteRow;
-- (void) deleteRow;
+- (void) copyRow; /**< Copy the currently selected command in the list to the clipboard */
+- (void) pasteRow; /**< Paste the clipboard contents into the currently selected command */
+- (void) deleteRow; /**< Clear the currently selected command */
 
 @end

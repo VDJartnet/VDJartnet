@@ -2,7 +2,7 @@
 //  CSUndoManager.hpp
 //  CppStep
 //
-//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
+//  Copyright ï¿½ 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of CppStep.
 //
@@ -31,19 +31,19 @@ public:
 
     void registerUndoFunc(std::function<void()> f); /**< Register an undo to the stack with the given function object */
 
-    /**< Register an undo to the stack with the given function and argument to pass it */
+    /** Register an undo to the stack with the given function and argument to pass it */
     template<typename T>
     void registerUndoFuncArg(std::function<void(T)> f, T arg) {
         registerUndoFunc([f, arg]() { f(arg); });
     }
 
-    /**< Register an undo to the stack with the given function and pair of arguments to pass it */
+    /** Register an undo to the stack with the given function and pair of arguments to pass it */
     template<typename S, typename T>
     void registerUndoFuncpArg2(void(*f)(S, T), S arg1, T arg2) {
         registerUndoFunc([f, arg1, arg2]() { f(arg1, arg2); });
     }
 
-    /**< Register an undo to the stack that restores the value of the given target */
+    /** Register an undo to the stack that restores the value of the given target */
     template<typename T>
     void registerUndoTarget(T* target) {
         T value = *target;

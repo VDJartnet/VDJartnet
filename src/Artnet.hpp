@@ -45,29 +45,28 @@ public:
 private:
     /** An Art-Net packet */
     struct ArtNetPacket {
-        //uint8_t header[8] = "Art-Net";
-        uint8_t header0 = 'A';
-        uint8_t header1 = 'r';
-        uint8_t header2 = 't';
-        uint8_t header3 = '-';
-        uint8_t header4 = 'N';
-        uint8_t header5 = 'e';
-        uint8_t header6 = 't';
-        uint8_t header7 = 0;
-        uint8_t opcodeLo = 0x00;
-        uint8_t opcodeHi = 0x50;
-        uint8_t versionHi = 00;
-        uint8_t versionLo = 14;
-        uint8_t sequence = 1;
-        uint8_t physical = 0;
-        uint8_t universeLo = 0;
-        uint8_t universeHi = 0;
-        uint8_t lengthHi = 0x02;
-        uint8_t lengthLo = 0x00;
-        uint8_t data[512];
+        uint8_t header0 = 'A'; /**< The 'A' character of the Art-Net header */
+        uint8_t header1 = 'r'; /**< The 'r' character of the Art-Net header */
+        uint8_t header2 = 't'; /**< The 't' character of the Art-Net header */
+        uint8_t header3 = '-'; /**< The '-' character of the Art-Net header */
+        uint8_t header4 = 'N'; /**< The 'N' character of the Art-Net header */
+        uint8_t header5 = 'e'; /**< The 'e' character of the Art-Net header */
+        uint8_t header6 = 't'; /**< The 't' character of the Art-Net header */
+        uint8_t header7 = 0; /**< The NULL terminator of the Art-Net header */
+        uint8_t opcodeLo = 0x00; /**< The low byte of the 0x5000 Art-Net opcode */
+        uint8_t opcodeHi = 0x50; /**< The high byte of the Art-Net opcode (0x5000) */
+        uint8_t versionHi = 00; /**< The high byte of the Art-Net version (14) */
+        uint8_t versionLo = 14; /**< The low byte of the Art-Net version (14) */
+        uint8_t sequence = 1; /**< The Art-Net sequence field. Used to reorder out of order packets. 0 means unused, otherwise increase with sequential packets from 1 to 255 then loop to 1 again. */
+        uint8_t physical = 0; /**< The Art-Net physical field. Shows the original physical universe of the data. Always set to 0. */
+        uint8_t universeLo = 0; /**< The low byte of the Art-Net universe field */
+        uint8_t universeHi = 0; /**< The high byte of the Art-Net universe field */
+        uint8_t lengthHi = 0x02; /**< The high byte of the Art-Net length field. This field is always set to 255. */
+        uint8_t lengthLo = 0x00; /**< The low byte of the Art-Net length field. This field is always set to 255. */
+        uint8_t data[512]; /**< The DMX data to be sent */
     };
 
-    ArtNetPacket packet; /** The packet to be sent */
+    ArtNetPacket packet; /**< The packet to be sent */
 
     /** Get the shared Socket */
     Socket* getSocket() {

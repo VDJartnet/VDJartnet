@@ -27,8 +27,8 @@
 
 #import "ConfigMacTableView.h"
 
-@implementation ConfigTableView {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacTableView {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
 }
 
 - (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {

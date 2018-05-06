@@ -40,11 +40,11 @@
 #include "ConfigMacWindow.h"
 #include "ConfigMacPresetWindow.h"
 
-@interface ConfigTool : NSObject <NSWindowDelegate>
+/** A config tool to help the user write a correctly formatted config file */
+@interface ConfigMacTool : NSObject <NSWindowDelegate>
 
-
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP;
-- (void)dealloc;
+- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a config tool with the given instance of the plugin */
+- (void)dealloc; /**< Destruct the config tool */
 
 @end
 

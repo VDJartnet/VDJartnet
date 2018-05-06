@@ -43,11 +43,11 @@
 
 #include "CppStep/CSUndoManager.hpp"
 
-#include "windows.h" 
+#include "windows.h"
 
-#using <mscorlib.dll> 
-#using <System.dll> 
-#using <System.Windows.Forms.dll> 
+#using <mscorlib.dll>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
 #include <msclr\marshal_cppstd.h>
 
 using namespace System::Windows::Forms;
@@ -58,8 +58,8 @@ ref class ConfigWinRowString : public Object {
 public:
     /** The value of the command. */
     property String^ Value {
-        String^ get();
-        void set(String^ newVal);
+        String^ get(); /**< Get the value of the command */
+        void set(String^ newVal); /**< Set the value of the command */
     }
 
     ConfigWinRowString(CVDJartnet* vdjArtnetTMP, int rowTMP, CSUndoManager* undoManagerTMP); /**< Construct a row with the given instance of the plugin, row number and undo manager */
@@ -74,4 +74,3 @@ typedef System::Collections::Generic::List<ConfigWinRowString^> ConfigWinDataSou
 void setValue(gcroot<ConfigWinRowString^ const> const target, gcroot<String^ const > const newVal); /**< Set the value of a given row to a certain value in a native compatible way */
 
 #endif /* ConfigWinDataSource_hpp */
-

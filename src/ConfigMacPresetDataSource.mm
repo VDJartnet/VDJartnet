@@ -27,8 +27,8 @@
 
 #import "ConfigMacPresetDataSource.h"
 
-@implementation ConfigPresetDataSource {
-    CVDJartnet* vdjArtnet;
+@implementation ConfigMacPresetDataSource {
+    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
 }
 
 - (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
