@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iconfigwintableview',['IConfigWinTableView',['../structIConfigWinTableView.html',1,'']]]
+  ['preset',['Preset',['../structPreset.html',1,'']]]
 ];

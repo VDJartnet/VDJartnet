@@ -37,6 +37,8 @@ ConfigWinPresetWindow::ConfigWinPresetWindow(CVDJartnet* vdjArtnet) {
     this->Name = "Presets";
     this->Text = "Presets";
     this->Size = System::Drawing::Size(200, 600);
+    this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Sizable;
+    this->ControlBox = false;
 
     tableView = gcnew ConfigWinPresetTableView(vdjArtnet);
 

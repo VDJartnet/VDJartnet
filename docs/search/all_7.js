@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['iconfigwintableview',['IConfigWinTableView',['../structIConfigWinTableView.html',1,'']]],
   ['id_5finterface',['ID_Interface',['../classCVDJartnet.html#a932dbf4dc412424e9349a298ee1f4363',1,'CVDJartnet']]],
   ['init',['init',['../classCVDJartnet.html#aed57c58c3ca5fe51181244bd745a2d75',1,'CVDJartnet']]],
   ['initwithframe_3avdjartnet_3a',['initWithFrame:VDJartnet:',['../interfaceConfigMacIpAddress.html#a91a9a36430c612c3258a47750a81e6de',1,'ConfigMacIpAddress::initWithFrame:VDJartnet:()'],['../interfaceConfigMacIpPort.html#a055d8d87e2d0af5fc9124f8afa4aa4d9',1,'ConfigMacIpPort::initWithFrame:VDJartnet:()']]],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['preset',['Preset',['../structPreset.html',1,'']]]
+  ['socket',['Socket',['../classSocket.html',1,'']]]
 ];
