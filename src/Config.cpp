@@ -148,7 +148,10 @@ void Config::parseConfigLine(std::string line){
 
         case 'C':
             if (value.find_first_not_of("0123456789") == std::string::npos) {
-                checkRate = std::chrono::milliseconds(stoi(value));
+                int crValue = stoi(value);
+                if(crValue > 0){
+                  checkRate = std::chrono::milliseconds(crValue);
+                }
             }
             break;
 
