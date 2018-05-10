@@ -14,3 +14,4 @@ userguide/
 *.exp
 *.lib
 *.DS_Store
+VDJartnet.xcodeproj/project.xcworkspace/xcuserdata/*

@@ -49,7 +49,7 @@
 		68CF2393209F406F0072437B /* ConfigMacWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacWindow.mm; sourceTree = "<group>"; };
 		68CF2394209F406F0072437B /* ConfigMacIpPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacIpPort.h; sourceTree = "<group>"; };
 		68CF2395209F406F0072437B /* VDJartnet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VDJartnet.cpp; sourceTree = "<group>"; };
-		68CF2396209F406F0072437B /* Config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		68CF2396209F406F0072437B /* Config.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		68CF2397209F406F0072437B /* ConfigMacPresetWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacPresetWindow.mm; sourceTree = "<group>"; };
 		68CF239A209F406F0072437B /* ConfigMacPresetDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacPresetDataSource.h; sourceTree = "<group>"; };
 		68CF239B209F406F0072437B /* vdjPlugin8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vdjPlugin8.h; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				68CF239B209F406F0072437B /* vdjPlugin8.h */,
 			);
 			name = src;
-			path = /Users/jonathantanner/Documents/VDJartnet/Sources/VDJartnet/src;
+			path = /Users/benjamin/Documents/projects/vdjartnet/VDJartnet/src;
 			sourceTree = "<absolute>";
 		};
 		68F9E85E1F981DC5002F8CEF /* Installers */ = {
