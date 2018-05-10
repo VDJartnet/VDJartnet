@@ -12,9 +12,9 @@ If a line begins with \+\# where # is a character as given below then it is conf
 A line of the form \+H \<host\>\:\<port\> will set the destination host for the Art-Net data to \<host\> and send it to the port \<port\>
 
 #### +T - Set maximum number of skipped packets
-If all the commands return the same value several times in a row then VDJartnet will refrain from resending the data up to this many times.
+If all the commands return the same value several times in a row then VDJartnet will refrain from resending the data up to this many times. The default is too skip 20 packets.
 
 #### +C - Set the check rate
-This value is the time delay (in milliseconds) between polling VirtualDJ.
+This value is the time delay (in milliseconds) between polling VirtualDJ. The default is too wait 10ms.
 
 All of these lines are optional but will be added by the config tool if it is run.
