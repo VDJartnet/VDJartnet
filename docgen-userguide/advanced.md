@@ -20,12 +20,12 @@ This value is the time delay (in milliseconds) between polling VirtualDJ. The de
 All of these lines are optional but will be added by the config tool if it is run.
 
 ### Include Statements
-Other files can be included by reference in a config file, for example channel definitions could be in a separate file. The files are included using a line beginning with @ symbol. The next character should be an indicator as to wether the included file contains config or preset definitions, for a config file the selector is c for a preset file a p is used. This is followed by the path to the file to load.
+Other files can be included in a config file, for example channel definitions could be in a separate file. The files are included using a line beginning with @ symbol followed by either c for config files or p for preset files followed by a space then the path to the file to be included.
 
 ### Example Config
-  +H 127.0.0.1:6454
-  +T 50
-  +C 20
-  \@c extraconfig
-  \@p presets
-  001~Cue 001~var $artnet 1 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+    +H 127.0.0.1:6454
+    +T 50
+    +C 20
+    @c extraconfig
+    @p presets
+    001~Cue 001~var $artnet 1 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
