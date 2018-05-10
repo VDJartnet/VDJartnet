@@ -3,6 +3,9 @@
 VDJartnet is a plugin for VirtualDJ to allow it to output Art-Net data to control a DMX program such as QLC+.
 While it has only been tested on QLC+ it should also work on other DMX software that can take an artnet input.
 
+The below is all outdated
+=========================
+
 VDJartnet is configured using a config file which can be found at \<VirtualDJ\>/Plugins64/AutoStart/VDJartnet/config.txt on Mac and \<VirtualDJ\>\\Plugins\\AutoStart\\VDJartnet\\config.txt on Windows
 
 ## The config file layout is as described below

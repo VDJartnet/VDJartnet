@@ -3,6 +3,8 @@ Debug/
 Release/
 x64/
 build/
+docs/
+userguide/
 .vs/
 *.obj
 *.dll
