@@ -109,7 +109,7 @@ void Config::parseConfigLine(std::string line){
     if (line.at(0) == '@'){
         //include statement
         //load a second file and begin a parse on that
-        size_t pathStart = line.substr(2, std::string::npos).find_first_not_of(' ') + 2;
+        size_t pathStart = line.find_first_not_of(' ', 2);
         std::string path = line.substr(pathStart, std::string::npos);
 
         if(loadedConfigPaths.find(path) !=loadedConfigPaths.end()){
