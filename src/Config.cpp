@@ -142,7 +142,10 @@ void Config::parseConfigLine(std::string line){
         switch (line.at(1)) {
         case 'T':
             if (value.find_first_not_of("0123456789") == std::string::npos) {
-                skipPacketLimit = stoi(value);
+                int splValue = stoi(value);
+                if (splValue >= 0) {
+                    skipPacketLimit = stoi(value);
+                }
             }
             break;
 
