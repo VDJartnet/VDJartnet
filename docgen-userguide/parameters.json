@@ -1,6 +1,6 @@
 {
 	"title" : "VDJartnet User Guide",
-	"name": "Jonathan Tanner",
+	"name": "VDJartnet",
 	"version" : "1.0.0",
 	"date" : "XX/XX/XXXX",
 	"organization" : {
@@ -8,8 +8,8 @@
 		"url" : ""
 	},
 	"author" : {
-		"name" : "",
-		"url" : ""
+		"name" : "Jonathan Tanner",
+		"url" : "https://github.com/nixCodeX"
 	},
 	"owner" : {
 		"name" : "",
@@ -17,8 +17,8 @@
 	},
 	"contributors" : [
 		{
-			"name" : "",
-			"url" : ""
+			"name" : "Flumeware",
+			"url" : "https://www.github.com/flumeware"
 		}
 	],
 	"website" : {
