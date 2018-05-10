@@ -31,7 +31,7 @@
 	},
 	"module" : "",
 	"id" : "",
-	"summary" : "",
+	"summary" : "VDJartnet is a plugin for VirtualDJ to allow it to output Art-Net data to control a DMX program such as QLC+.",
 	"marking" : "",
-	"legalese" : ""
+	"legalese" : "VDJartnet is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
 }
