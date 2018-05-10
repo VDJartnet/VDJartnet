@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['socket',['Socket',['../classSocket.html',1,'']]]
+  ['undoitem',['UndoItem',['../classCSUndoManager_1_1UndoItem.html',1,'CSUndoManager']]]
 ];
