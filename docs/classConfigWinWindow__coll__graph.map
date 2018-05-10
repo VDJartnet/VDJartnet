@@ -1,9 +1,0 @@
-<map id="ConfigWinWindow" name="ConfigWinWindow">
-<area shape="rect" id="node3" href="$classConfigWinTableView.html" title="A list of commands. " alt="" coords="122,199,266,225"/>
-<area shape="rect" id="node5" href="$classCSUndoManager.html" title="An undo manager. " alt="" coords="133,109,255,136"/>
-<area shape="rect" id="node6" href="$classCSUndoManager_1_1UndoItem.html" title="An event that can be undone. " alt="" coords="101,5,287,32"/>
-<area shape="rect" id="node7" href="$classCVDJartnet.html" title="A singleton class representing the plugin. " alt="" coords="333,199,423,225"/>
-<area shape="rect" id="node9" href="$classConfig.html" title="A config parser and writer. " alt="" coords="392,109,452,136"/>
-<area shape="rect" id="node10" href="$classArtnet.html" title="A class to send Art&#45;Net data. " alt="" coords="476,109,533,136"/>
-<area shape="rect" id="node11" href="$structArtnet_1_1ArtNetPacket.html" title="An Art&#45;Net packet. " alt="" coords="433,5,577,32"/>
-</map>
