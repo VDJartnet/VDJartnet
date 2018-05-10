@@ -30,13 +30,13 @@
 
 #include <AppKit/AppKit.h>
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 /** A data source that provides the preset rows */
 @interface ConfigMacPresetDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a data source with the given instance of the plugin */
+- (id)initWithConfig:(Config*)configTMP; /**< Initialise a data source with the given instance of the cofig */
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView; /**< The number of rows in the list */
 - (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row; /**< The name of the preset in the given row */
 

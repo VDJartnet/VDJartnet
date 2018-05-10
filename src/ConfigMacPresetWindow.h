@@ -28,7 +28,7 @@
 #include <AppKit/AppKit.h>
 
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 #include "ConfigMacPresetDataSource.h"
@@ -36,6 +36,6 @@
 /** A window containing a list of presets */
 @interface ConfigMacPresetWindow : NSWindow
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a preset window with the given instance of the plugin */
+- (id) initWithConfig:(Config*)config; /**< Initialise a preset window with the given instance of the config */
 
 @end

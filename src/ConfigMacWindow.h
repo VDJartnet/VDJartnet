@@ -28,16 +28,18 @@
 #include <AppKit/AppKit.h>
 
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 #include "ConfigMacEditMenu.h"
 #include "ConfigMacViewController.h"
 
+#include <functional>
+
 /**< A window containing a list of commands and IP and port fields */
 @interface ConfigMacWindow : NSWindow <NSWindowDelegate>
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a window with the given instance of the plugin */
+- (id) initWithConfig:(Config*)config Destructor:(std::function<void()>)destructorTMP; /**< Initialise a window with the given instance of the plugin */
 - (void)windowWillClose:(NSNotification*)notification; /**< The window has been closed */
 - (void)dealloc; /**< Destruct the window */
 

@@ -28,17 +28,15 @@
 #import "ConfigMacIpAddress.h"
 
 @implementation ConfigMacIpAddress {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the config */
 }
 
-- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id) initWithFrame:(CGRect)frame Config:(Config*)configTMP {
     if ( self = [super initWithFrame:frame] ) {
-        vdjArtnet = vdjArtnetTMP;
-        
-        [self setStringValue: @(vdjArtnet->config->host.c_str())];
+        config = configTMP;
+        [self setStringValue: @(config->host.c_str())];
         [self setEditable:YES];
         [self setDelegate:self];
-        
         return self;
     } else {
         return nil;
@@ -46,9 +44,8 @@
 }
 
 - (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor {
-    vdjArtnet->config->host = std::string([[fieldEditor string] UTF8String]);
-    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
-    
+    config->host = std::string([[fieldEditor string] UTF8String]);
+    config->saveConfig();
     return YES;
 }
 

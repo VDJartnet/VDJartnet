@@ -39,6 +39,11 @@
 #include "Config.hpp"
 #include "Artnet.hpp"
 
+#if (defined(VDJ_MAC))
+#include "ConfigNativeMac.h"
+#elif (defined(VDJ_WIN))
+#endif
+
 #include <string>
 #include <fstream>
 #include <chrono>
@@ -58,6 +63,7 @@ public:
     int m_Enable; /**< Whether the plugin is enabled */
     int m_Refresh; /**< Reload the config data */
     int m_Config; /**< Open the config tool */
+    int m_About; /**< Open the about window */
 
     HRESULT VDJ_API OnLoad(); /**< The config has been loaded by VirtualDJ. VirtualDJ APIs cannot be called from this function */
     HRESULT VDJ_API OnGetPluginInfo(TVdjPluginInfo8 *infos); /**< Give the plugin info to VirtualDJ */
@@ -71,18 +77,16 @@ public:
     void updateDMXvalues(); /**< Get the DMX values from VirtualDJ and send them over Art-Net */
 
     /** The properties that can be passed to OnParameter(int id) */
-    typedef enum _ID_Interface
-    {
+    enum ID_Interface {
     ID_ENABLE_BUTTON,
     ID_REFRESH_BUTTON,
     ID_CONFIG_BUTTON,
-    ID_SETUP,
-    ID_SAVE
-    } ID_Interface;
+    ID_ABOUT_BUTTON
+    };
 
     Config* config; /**< The config parser */
 
-    void* configTool; /**< A pointer to the config tool. This is a void* because on different platforms the type is different. */
+    ConfigNative* configTool; /**< A pointer to the config tool. */
 
 private:
     Artnet artnet; /**< The object that sends the Art-Net data */

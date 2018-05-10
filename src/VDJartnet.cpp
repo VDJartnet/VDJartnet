@@ -33,13 +33,6 @@
 
 #include "VDJartnet.hpp"
 
-#if (defined(VDJ_WIN))
-#define CLRFREE
-#include "ConfigWin.hpp"
-#elif (defined(VDJ_MAC))
-#include "ConfigMac.h"
-#endif
-
 #include <thread> //Include here because thread is incompatible with CLR
 
 HRESULT VDJ_API CVDJartnet::OnLoad() {
@@ -54,6 +47,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
         DeclareParameterSwitch(&m_Enable,ID_ENABLE_BUTTON,"Enable","E", true);
         DeclareParameterButton(&m_Refresh,ID_REFRESH_BUTTON,"Refresh","R");
         DeclareParameterButton(&m_Config,ID_CONFIG_BUTTON,"Config","C");
+        DeclareParameterButton(&m_About, ID_ABOUT_BUTTON, "About", "A");
 
         setupThread = new std::thread(CVDJartnet::setup);
     }
@@ -73,7 +67,10 @@ void CVDJartnet::init() {
 #endif
 
         config = new Config(path);
-        
+#if (defined(VDJ_MAC))
+        configTool = new ConfigNativeMac(config);
+#elif (defined(VDJ_WIN))
+#endif
     }
 
     if (pollThread == nullptr) {
@@ -125,29 +122,18 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
             config->loadConfig();
             break;
 
-        case ID_SAVE:
-            config->saveConfig();
-            break;
-
         case ID_CONFIG_BUTTON:
             if (m_Config == 1) {
-#if (defined(VDJ_WIN))
-                if (configTool != nullptr) {
-                    closeConfigWinTool(configTool);
-                    delete configTool;
-                    configTool = nullptr;
-                }
-                configTool = createConfigWinTool(this);
-#elif (defined(VDJ_MAC))
-                if (configTool != nullptr) {
-                    CFRelease(configTool);
-                    configTool = nullptr;
-                }
-                configTool = (__bridge_retained void*)[[ConfigMacTool alloc] initWithVDJartnet: this];
-#endif
+                configTool->presentConfigTool();
             }
             break;
 
+        case ID_ABOUT_BUTTON:
+            if (m_About == 1) {
+                configTool->presentText("About VDJartnet",
+#include "about.txt"
+                                        );
+            }
     }
 
     return S_OK;
@@ -160,6 +146,8 @@ HRESULT VDJ_API CVDJartnet::OnGetParameterString(int id, char *outParam, int out
         case ID_REFRESH_BUTTON:
             break;
         case ID_CONFIG_BUTTON:
+            break;
+        case ID_ABOUT_BUTTON:
             break;
     }
 

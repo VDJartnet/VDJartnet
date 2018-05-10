@@ -33,7 +33,7 @@
 #import "ConfigMacIpAddress.h"
 #import "ConfigMacIpPort.h"
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 /** A view controller containing a list of commands and IP and port fields */
@@ -41,7 +41,7 @@
 
 @property (strong) ConfigMacTableView* tableView; /**< The list of commands */
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a view controller with the given instance of the plugin */
+- (id)initWithConfig:(Config*)configTMP; /**< Initialise a view controller with the given instance of the plugin */
 - (void)loadView; /**< Load the view associated with this view controller */
 - (void)viewDidLayout; /**< The view has been re layed out */
 

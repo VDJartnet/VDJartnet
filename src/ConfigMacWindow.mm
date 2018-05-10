@@ -28,18 +28,20 @@
 #import "ConfigMacWindow.h"
 
 @implementation ConfigMacWindow {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the config */
+    std::function<void()> destructor; /**< A function to be called to close the window */
 
     ConfigMacViewController* viewController; /**< The view controller */
     NSMenuItem* editMenuItem; /**< The "Edit" menu */
 }
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id) initWithConfig:(Config*)configTMP Destructor:(std::function<void()>)destructorTMP {
     if ( self = [super initWithContentRect:NSMakeRect(0, 0, 600, 600) styleMask:(NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView) backing:NSBackingStoreBuffered defer:false screen:nullptr] ) {
         
-        vdjArtnet = vdjArtnetTMP;
+        config = configTMP;
+        destructor = destructorTMP;
         
-        viewController = [[ConfigMacViewController alloc] initWithVDJartnet:vdjArtnet];
+        viewController = [[ConfigMacViewController alloc] initWithConfig:config];
                 
         [self setReleasedWhenClosed: NO];
         [self setContentView:[viewController view]];
@@ -58,10 +60,10 @@
 }
 
 - (void)windowWillClose:(NSNotification*)notification {
-    if (vdjArtnet->configTool != nullptr) {
-        CFRelease(vdjArtnet->configTool);
-        vdjArtnet->configTool = nullptr;
+    for (NSWindow* childWindow in [self childWindows]) {
+        [childWindow performClose:self];
     }
+    destructor();
 }
 
 - (void)dealloc {

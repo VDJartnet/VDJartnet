@@ -28,12 +28,12 @@
 #import "ConfigMacTableView.h"
 
 @implementation ConfigMacTableView {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the config */
 }
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id)initWithConfig:(Config*)configTMP {
     if ( self = [super init] ) {
-        vdjArtnet = vdjArtnetTMP;
+        config = configTMP;
         
         [self addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"Channel"]];
         [self addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"VDJscript"]];
@@ -67,23 +67,22 @@
     if ([[tableColumn identifier]  isEqual: @"Channel"]) {
         return [[NSString alloc] initWithFormat:@"%ld", row + 1 ];
     } else if ([[tableColumn identifier]  isEqual: @"VDJscript"]) {
-        return @(vdjArtnet->config->channelCommands[row].c_str());
+        return @(config->channelCommands[row].c_str());
     } else {
         return @"";
     }
 }
 
 - (void)tableView:(NSTableView*)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row {
-    [[[[tableView window] undoManager] prepareWithInvocationTarget:self] tableView:tableView setObjectValue:@(vdjArtnet->config->channelCommands[row].c_str()) forTableColumn:tableColumn row:row];
-    vdjArtnet->config->channelCommands[row] = std::string([object UTF8String]);
-    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    [[[[tableView window] undoManager] prepareWithInvocationTarget:self] tableView:tableView setObjectValue:@(config->channelCommands[row].c_str()) forTableColumn:tableColumn row:row];
+    config->channelCommands[row] = std::string([object UTF8String]);
+    config->saveConfig();
     [tableView reloadData];
 }
 
 - (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard*)pboard {
     [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
     [pboard setString:[self tableView:tableView objectValueForTableColumn:[tableView tableColumns][1] row:(NSInteger)[rowIndexes firstIndex]] forType:NSStringPboardType];
-    
     return YES;
 }
 

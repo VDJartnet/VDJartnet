@@ -30,13 +30,13 @@
 
 #include <AppKit/AppKit.h>
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 /** A list of commands */
 @interface ConfigMacTableView : NSTableView <NSTableViewDataSource, NSTableViewDelegate>
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a list of commands with the given instance of the plugin */
+- (id)initWithConfig:(Config*)configTMP; /**< Initialise a list of commands with the given instance of the plugin */
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)localDestination; /**< Get which dragging operations are supported */
 

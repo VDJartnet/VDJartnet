@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6862EA9E20A4B45800C41D9D /* ConfigNativeMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6862EA9C20A4B45700C41D9D /* ConfigNativeMac.mm */; };
 		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		68CF23A9209F41030072437B /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF239E209F406F0072437B /* Artnet.cpp */; };
 		68CF23AA209F41030072437B /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2396209F406F0072437B /* Config.cpp */; };
-		68CF23AB209F41030072437B /* ConfigMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF238A209F406F0072437B /* ConfigMac.mm */; };
+		68CF23AB209F41030072437B /* ConfigMacTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF238A209F406F0072437B /* ConfigMacTool.mm */; };
 		68CF23AC209F41030072437B /* ConfigMacEditMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A2209F406F0072437B /* ConfigMacEditMenu.mm */; };
 		68CF23AD209F41030072437B /* ConfigMacIpAddress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A4209F406F0072437B /* ConfigMacIpAddress.mm */; };
 		68CF23AE209F41030072437B /* ConfigMacIpPort.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2388209F406F0072437B /* ConfigMacIpPort.mm */; };
@@ -27,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6862EA9C20A4B45700C41D9D /* ConfigNativeMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigNativeMac.mm; sourceTree = "<group>"; };
+		6862EA9D20A4B45700C41D9D /* ConfigNativeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigNativeMac.h; sourceTree = "<group>"; };
+		6862EA9F20A4BB3200C41D9D /* ConfigNative.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConfigNative.hpp; sourceTree = "<group>"; };
+		6862EAA020A50C7600C41D9D /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B8DB5B20267B8600449F10 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -39,9 +44,9 @@
 		68CF2386209F406F0072437B /* Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		68CF2388209F406F0072437B /* ConfigMacIpPort.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacIpPort.mm; sourceTree = "<group>"; };
 		68CF2389209F406F0072437B /* VDJartnet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VDJartnet.hpp; sourceTree = "<group>"; };
-		68CF238A209F406F0072437B /* ConfigMac.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMac.mm; sourceTree = "<group>"; };
+		68CF238A209F406F0072437B /* ConfigMacTool.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacTool.mm; sourceTree = "<group>"; };
 		68CF238B209F406F0072437B /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
-		68CF238C209F406F0072437B /* ConfigMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMac.h; sourceTree = "<group>"; };
+		68CF238C209F406F0072437B /* ConfigMacTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacTool.h; sourceTree = "<group>"; };
 		68CF238E209F406F0072437B /* ConfigMacEditMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacEditMenu.h; sourceTree = "<group>"; };
 		68CF238F209F406F0072437B /* ConfigMacIpAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigMacIpAddress.h; sourceTree = "<group>"; };
 		68CF2391209F406F0072437B /* Socket.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
@@ -119,12 +124,11 @@
 		68CF23A7209F406F0072437B /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6862EAA020A50C7600C41D9D /* about.txt */,
 				68CF239E209F406F0072437B /* Artnet.cpp */,
 				68CF2381209F406F0072437B /* Artnet.hpp */,
 				68CF2396209F406F0072437B /* Config.cpp */,
 				68CF238B209F406F0072437B /* Config.hpp */,
-				68CF238C209F406F0072437B /* ConfigMac.h */,
-				68CF238A209F406F0072437B /* ConfigMac.mm */,
 				68CF238E209F406F0072437B /* ConfigMacEditMenu.h */,
 				68CF23A2209F406F0072437B /* ConfigMacEditMenu.mm */,
 				68CF238F209F406F0072437B /* ConfigMacIpAddress.h */,
@@ -137,10 +141,15 @@
 				68CF2397209F406F0072437B /* ConfigMacPresetWindow.mm */,
 				68CF2385209F406F0072437B /* ConfigMacTableView.h */,
 				68CF2392209F406F0072437B /* ConfigMacTableView.mm */,
+				68CF238C209F406F0072437B /* ConfigMacTool.h */,
+				68CF238A209F406F0072437B /* ConfigMacTool.mm */,
 				68CF239D209F406F0072437B /* ConfigMacViewController.h */,
 				68CF237E209F406F0072437B /* ConfigMacViewController.mm */,
 				68CF237F209F406F0072437B /* ConfigMacWindow.h */,
 				68CF2393209F406F0072437B /* ConfigMacWindow.mm */,
+				6862EA9F20A4BB3200C41D9D /* ConfigNative.hpp */,
+				6862EA9D20A4B45700C41D9D /* ConfigNativeMac.h */,
+				6862EA9C20A4B45700C41D9D /* ConfigNativeMac.mm */,
 				68CF23A1209F406F0072437B /* main.cpp */,
 				68CF23A5209F406F0072437B /* presets.txt */,
 				68CF2386209F406F0072437B /* Socket.cpp */,
@@ -237,7 +246,8 @@
 			files = (
 				68CF23A9209F41030072437B /* Artnet.cpp in Sources */,
 				68CF23AA209F41030072437B /* Config.cpp in Sources */,
-				68CF23AB209F41030072437B /* ConfigMac.mm in Sources */,
+				68CF23AB209F41030072437B /* ConfigMacTool.mm in Sources */,
+				6862EA9E20A4B45800C41D9D /* ConfigNativeMac.mm in Sources */,
 				68CF23AC209F41030072437B /* ConfigMacEditMenu.mm in Sources */,
 				68CF23AD209F41030072437B /* ConfigMacIpAddress.mm in Sources */,
 				68CF23AE209F41030072437B /* ConfigMacIpPort.mm in Sources */,

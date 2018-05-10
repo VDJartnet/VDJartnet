@@ -28,12 +28,12 @@
 #import "ConfigMacPresetDataSource.h"
 
 @implementation ConfigMacPresetDataSource {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the plugin */
 }
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id)initWithConfig:(Config*)configTMP {
     if ( self = [super init] ) {
-        vdjArtnet = vdjArtnetTMP;
+        config = configTMP;
         return self;
     } else {
         return nil;
@@ -41,16 +41,16 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView {
-    return (NSInteger)vdjArtnet->config->getPresets().size();
+    return (NSInteger)config->getPresets().size();
 }
 
 - (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row {
-    return @(vdjArtnet->config->getPresets()[(unsigned long)row].name.c_str());
+    return @(config->getPresets()[(unsigned long)row].name.c_str());
 }
 
 - (BOOL)tableView:(NSTableView*)tableView writeRowsWithIndexes:(NSIndexSet*)rowIndexes toPasteboard:(NSPasteboard*)pboard {
     [pboard declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
-    [pboard setString:@(vdjArtnet->config->getPresets()[[rowIndexes firstIndex]].preset.c_str()) forType:NSStringPboardType];
+    [pboard setString:@(config->getPresets()[[rowIndexes firstIndex]].preset.c_str()) forType:NSStringPboardType];
     return YES;
 }
 

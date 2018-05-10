@@ -27,13 +27,13 @@
 
 #include <AppKit/AppKit.h>
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 /** A port field */
 @interface ConfigMacIpPort : NSTextField <NSTextFieldDelegate>
 
-- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise an IP address field with the given frame and instance of the plugin */
+- (id) initWithFrame:(CGRect)frame Config:(Config*)configTMP; /**< Initialise an IP address field with the given frame and instance of the plugin */
 - (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor; /**< The text has been edited */
 
 @end

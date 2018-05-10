@@ -1,5 +1,5 @@
 //
-//  ConfigMac.mm
+//  ConfigMacTool.mm
 //  VDJartnet
 //
 //  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
@@ -25,19 +25,19 @@
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
 
-#include "ConfigMac.h"
+#include "ConfigMacTool.h"
 
 @implementation ConfigMacTool {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
     ConfigMacWindow* window; /**< The main window representing the config file */
     ConfigMacPresetWindow* presetWindow; /**< A window with presets representing common config lines */
 }
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id) initWithConfig:(Config*)config Destructor:(std::function<void ()>)destructor {
     if ( self = [super init] ) {
-        vdjArtnet = vdjArtnetTMP;
-        window = [[ConfigMacWindow alloc] initWithVDJartnet:vdjArtnet];
-        presetWindow = [[ConfigMacPresetWindow alloc] initWithVDJartnet:vdjArtnet];
+        window = [[ConfigMacWindow alloc] initWithConfig:config Destructor:destructor];
+        presetWindow = [[ConfigMacPresetWindow alloc] initWithConfig:config];
+
+        [window addChildWindow:presetWindow ordered:NSWindowBelow];
 
         [NSWindow setAllowsAutomaticWindowTabbing: NO];
 

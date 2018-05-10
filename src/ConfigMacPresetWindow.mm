@@ -28,17 +28,13 @@
 #import "ConfigMacPresetWindow.h"
 
 @implementation ConfigMacPresetWindow {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
-    
     NSTableView* presetTableView; /**< The list of presets */
     NSScrollView* presetScrollView; /**< The scroll view containing the list of presets */
     ConfigMacPresetDataSource* presetDataSource; /**< The data source providing the preset rows */
 }
 
-- (id) initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id) initWithConfig:(Config*)config {
     if ( self = [super initWithContentRect:NSMakeRect(600, 0, 200, 600) styleMask:(NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView) backing:NSBackingStoreBuffered defer:false screen:nullptr] ) {
-        
-        vdjArtnet = vdjArtnetTMP;
         
         presetTableView = [[NSTableView alloc] initWithFrame:[self frame]];
         [presetTableView addTableColumn:[[NSTableColumn alloc] initWithIdentifier:@"Names"]];
@@ -46,7 +42,7 @@
         [[presetTableView tableColumns][0] setEditable:NO];
         [presetTableView setHeaderView:nil];
         
-        presetDataSource = [[ConfigMacPresetDataSource alloc] initWithVDJartnet:vdjArtnet];
+        presetDataSource = [[ConfigMacPresetDataSource alloc] initWithConfig:config];
         [presetTableView setDataSource:presetDataSource];
         
         [presetTableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];

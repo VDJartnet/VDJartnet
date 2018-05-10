@@ -1,5 +1,5 @@
 //
-//  ConfigMac.h
+//  ConfigMacTool.h
 //  VDJartnet
 //
 //  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
@@ -25,8 +25,8 @@
 //combining it with VirtualDJ, the licensors of this Program grant you
 //additional permission to convey the resulting work.
 
-#ifndef ConfigMac_h
-#define ConfigMac_h
+#ifndef ConfigMacTool_h
+#define ConfigMacTool_h
 
 #include <stdio.h>
 
@@ -34,18 +34,20 @@
 #include <AppKit/AppKit.h>
 
 #ifdef __cplusplus
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 #endif
 
 #include "ConfigMacWindow.h"
 #include "ConfigMacPresetWindow.h"
 
+#include <functional>
+
 /** A config tool to help the user write a correctly formatted config file */
 @interface ConfigMacTool : NSObject <NSWindowDelegate>
 
-- (id)initWithVDJartnet:(CVDJartnet*)vdjArtnetTMP; /**< Initialise a config tool with the given instance of the plugin */
+- (id)initWithConfig:(Config*)config Destructor:(std::function<void()>)destructor; /**< Initialise a config tool with the given instance of the plugin */
 - (void)dealloc; /**< Destruct the config tool */
 
 @end
 
-#endif /* ConfigMac_h */
+#endif /* ConfigMacTool_h */

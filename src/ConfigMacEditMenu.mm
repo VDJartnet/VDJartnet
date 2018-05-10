@@ -69,7 +69,6 @@
 - (void) copyRow {
     [[NSPasteboard generalPasteboard] declareTypes:[NSArray<NSString*> arrayWithObject:NSStringPboardType] owner:self];
     [[NSPasteboard generalPasteboard] setString:[[viewController tableView] tableView:[viewController tableView] objectValueForTableColumn:[[viewController tableView] tableColumns][1] row:(NSInteger)[[viewController tableView] selectedRow]] forType:NSStringPboardType];
-    
 }
 
 - (void) pasteRow {

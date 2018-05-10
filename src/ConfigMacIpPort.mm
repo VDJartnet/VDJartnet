@@ -28,14 +28,14 @@
 #import "ConfigMacIpPort.h"
 
 @implementation ConfigMacIpPort {
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the plugin */
 }
 
-- (id) initWithFrame:(CGRect)frame VDJartnet:(CVDJartnet*)vdjArtnetTMP {
+- (id) initWithFrame:(CGRect)frame Config:(Config*)configTMP {
     if ( self = [super initWithFrame:frame] ) {
-        vdjArtnet = vdjArtnetTMP;
+        config = configTMP;
         
-        [self setStringValue: [@(vdjArtnet->config->port) stringValue]];
+        [self setStringValue: [@(config->port) stringValue]];
         [self setEditable:YES];
         [self setDelegate:self];
 
@@ -48,9 +48,8 @@
 - (BOOL)control:(NSControl*)control textShouldEndEditing:(NSText*)fieldEditor {
     unsigned short value = [[NSNumber numberWithInteger:[[fieldEditor string] integerValue]] unsignedShortValue];
     if (value > 0) {
-        vdjArtnet->config->port = value;
-        vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
-                
+        config->port = value;
+        config->saveConfig();
         return YES;
     } else {
         return NO;
