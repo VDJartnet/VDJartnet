@@ -55,7 +55,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
 }
 //-----------------------------------------------------------------------------
 void CVDJartnet::init() {
-    
+
     if (config == nullptr) {
         char pathC[256];
         GetStringInfo("get_vdj_folder", pathC, 256);
@@ -175,7 +175,7 @@ void CVDJartnet::updateDMXvalues() {
             }
         }
 
-        if (updated || skippedPackets > skipPacketLimit) {
+        if (updated || skippedPackets > config -> getSkipPacketLimit()) {
             artnet.sendArtnetPacket(config->host, config->port);
             skippedPackets = 0;
         } else {

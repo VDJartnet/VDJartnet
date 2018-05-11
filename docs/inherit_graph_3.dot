@@ -1,9 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node24 [label="NSMenu",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node24 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="ConfigMacEditMenu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceConfigMacEditMenu.html",tooltip="The menu under \"Edit\" in the menu bar. "];
-}

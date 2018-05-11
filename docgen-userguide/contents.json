@@ -1,0 +1,48 @@
+[
+	{
+		"heading" : "Quick Start",
+		"column" : 1,
+		"pages" : [
+			{
+				"title": "Overview",
+				"source": "index.md"
+			},
+			{
+				"title": "Getting Started",
+				"source": "getting-started.md"
+			}
+		]
+	},
+	{
+		"heading" : "Advanced",
+		"column" : 2,
+		"pages" : [
+			{
+				"title": "Advanced Config",
+				"source": "advanced.md"
+			},
+			{
+				"title": "Get involved",
+				"source": "get-involved.md"
+			}
+		]
+	},
+	{
+		"heading" : "Developers",
+		"column" : 3,
+		"pages" : [
+			{
+				"title": "Developing for VDJartnet",
+				"source": "developers.md"
+			},
+			{
+				"title": "Setup macOS development environment",
+				"source": "develop-env-mac.md"
+			},
+			{
+				"title": "Setup win development environment",
+				"source": "develop-env-win.md"
+			}
+		]
+	}
+]

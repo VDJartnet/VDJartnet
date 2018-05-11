@@ -53,13 +53,8 @@ using namespace System;
 
 delegate void ConfigWinTableViewKeyEventHandler(Message% msg, Keys keyData);  
 
-interface struct IConfigWinTableView {  
-public:  
-    event ConfigWinTableViewKeyEventHandler^ ConfigTableViewKeyDown;
-};
-
 /** A list of commands */
-ref class ConfigWinTableView : public DataGridView, public IConfigWinTableView {
+ref class ConfigWinTableView : public DataGridView {
 public:
     virtual event ConfigWinTableViewKeyEventHandler^ ConfigTableViewKeyDown; /**< A key has been pressed */
 

@@ -3,6 +3,8 @@ Debug/
 Release/
 x64/
 build/
+docs/
+userguide/
 .vs/
 *.obj
 *.dll
@@ -12,3 +14,4 @@ build/
 *.exp
 *.lib
 *.DS_Store
+VDJartnet.xcodeproj/project.xcworkspace/xcuserdata/*

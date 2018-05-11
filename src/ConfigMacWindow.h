@@ -36,7 +36,7 @@
 
 #include <functional>
 
-/**< A window containing a list of commands and IP and port fields */
+/** A window containing a list of commands and IP and port fields */
 @interface ConfigMacWindow : NSWindow <NSWindowDelegate>
 
 - (id) initWithConfig:(Config*)config Destructor:(std::function<void()>)destructorTMP; /**< Initialise a window with the given instance of the plugin */

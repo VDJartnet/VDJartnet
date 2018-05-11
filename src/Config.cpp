@@ -84,6 +84,8 @@ void Config::saveConfig() {
     std::ofstream fout(configPath);
     if (fout.is_open()) {
         fout << "+H " << host << ":" << port << std::endl;
+        fout << "+T " << skipPacketLimit << std::endl;
+        fout << "+C " << std::to_string(checkRate.count()) << std::endl;
         for (int i = 0; i < 512; i++) {
             if (channelCommands[i] != "") {
                 fout << std::string(3 - ((unsigned long)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
@@ -140,13 +142,19 @@ void Config::parseConfigLine(std::string line){
         switch (line.at(1)) {
         case 'T':
             if (value.find_first_not_of("0123456789") == std::string::npos) {
-                skipPacketLimit = stoi(value);
+                int splValue = stoi(value);
+                if (splValue >= 0) {
+                    skipPacketLimit = stoi(value);
+                }
             }
             break;
 
         case 'C':
             if (value.find_first_not_of("0123456789") == std::string::npos) {
-                checkRate = std::chrono::milliseconds(stoi(value));
+                int crValue = stoi(value);
+                if(crValue > 0){
+                  checkRate = std::chrono::milliseconds(crValue);
+                }
             }
             break;
 

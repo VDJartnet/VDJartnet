@@ -1,0 +1,37 @@
+{
+	"title" : "VDJartnet User Guide",
+	"name": "VDJartnet",
+	"version" : "1.0.0",
+	"date" : "XX/XX/XXXX",
+	"organization" : {
+		"name" : "",
+		"url" : ""
+	},
+	"author" : {
+		"name" : "Jonathan Tanner",
+		"url" : "https://github.com/nixCodeX"
+	},
+	"owner" : {
+		"name" : "",
+		"url" : ""
+	},
+	"contributors" : [
+		{
+			"name" : "Flumeware",
+			"url" : "https://www.github.com/flumeware"
+		}
+	],
+	"website" : {
+		"name" : "Main website",
+		"url" : "https://www.kepler22b.uk/vdjartnet"
+	},
+	"backlink" : {
+		"name" : "",
+		"url" : ""
+	},
+	"module" : "",
+	"id" : "",
+	"summary" : "VDJartnet is a plugin for VirtualDJ to allow it to output Art-Net data to control a DMX program such as QLC+.",
+	"marking" : "",
+	"legalese" : "VDJartnet is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
+}

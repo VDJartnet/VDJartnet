@@ -75,7 +75,7 @@ private:
 
     std::set<std::string> loadedConfigPaths; /**< The set of config files already parsed. This is used to prevent an infinite loop. */
 
-    int skipPacketLimit; /**< The number of identical packets to be skipped before resending */
+    int skipPacketLimit = 20; /**< The number of identical packets to be skipped before resending */
     std::chrono::milliseconds checkRate = std::chrono::milliseconds(10); /**< The time between requests to VirtualDJ */
 
     void loadPresetPresets(); /**< Load the pre compiled presets */
