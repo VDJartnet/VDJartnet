@@ -1,5 +1,5 @@
 //
-//  ConfigWin.cpp
+//  ConfigWinTool.hpp
 //  VDJartnet
 //
 //  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
@@ -31,28 +31,42 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#include "ConfigWin.hpp"
+/** @file ConfigWinTool.hpp */
 
-ConfigWinTool::ConfigWinTool(CVDJartnet* vdjArtnetTMP) {
-    vdjArtnet = vdjArtnetTMP;
+#ifndef ConfigWinTool_hpp
+#define ConfigWinTool_hpp
 
-    window = gcnew ConfigWinWindow(vdjArtnet);
-    presetWindow = gcnew ConfigWinPresetWindow(vdjArtnet);
-    presetWindow->Location = System::Drawing::Point(window->Location.X + window->Width, window->Location.Y);
-}
+#include "Config.hpp"
 
+//#ifndef CLRFREE
 
-void ConfigWinTool::hide() {
-    presetWindow->Hide();
-    window->Hide();
-    presetWindow = nullptr;
-    window = nullptr;
-}
+#include <stdio.h>
 
-void* createConfigWinTool(CVDJartnet* vdjArtnet) {
-    return new ConfigWinToolNative(vdjArtnet);
-}
+#include "ConfigWinWindow.hpp"
+#include "ConfigWinPresetWindow.hpp"
 
-void closeConfigWinTool(void* configTool) {
-    ((ConfigWinToolNative*)configTool)->configTool->hide();
-}
+#include "windows.h"
+
+#using <mscorlib.dll>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
+
+using namespace System::Windows::Forms;
+using namespace System::Drawing;
+using namespace System;
+
+/** A config tool to help the user write a correctly formatted config file */
+ref class ConfigWinTool {
+public:
+     ConfigWinTool(Config* configTMP); /**< Construct a config tool with the given instance of the plugin */
+     void hide(); /**< Hide the config tool after the user has finished */
+private:
+    Config* config; /**< A pointer to the config */
+
+    ConfigWinWindow^ window; /**< The main window representing the config file */
+    ConfigWinPresetWindow^ presetWindow; /**< A window with presets representing common config lines */
+};
+
+//#endif // CLRFREE
+#endif /* ConfigWinTool_hpp */

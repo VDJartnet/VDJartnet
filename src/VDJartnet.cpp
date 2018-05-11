@@ -70,6 +70,7 @@ void CVDJartnet::init() {
 #if (defined(VDJ_MAC))
         configTool = new ConfigNativeMac(config);
 #elif (defined(VDJ_WIN))
+        configTool = new ConfigNativeWin(config);
 #endif
     }
 
@@ -90,17 +91,6 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 }
 
 ULONG VDJ_API CVDJartnet::Release() {
-    if (configTool != nullptr) {
-#if (defined(VDJ_WIN))
-        closeConfigWinTool(configTool);
-        delete configTool;
-        configTool = nullptr;
-#elif (defined(VDJ_MAC))
-        CFRelease(configTool);
-        configTool = nullptr;
-#endif
-    }
-
     delete config;
     delete this;
     return 0;

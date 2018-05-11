@@ -34,7 +34,7 @@
 #ifndef ConfigWinPresetWindow_hpp
 #define ConfigWinPresetWindow_hpp
 
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "ConfigWinPresetTableView.hpp"
 
@@ -52,7 +52,7 @@ using namespace System;
 /** A window containing a list of presets */
 ref class ConfigWinPresetWindow : public Form {
 public:
-    ConfigWinPresetWindow(CVDJartnet* vdjArtnetTMP); /**< Construct a window with a list of presets with the given instance of the plugin */
+    ConfigWinPresetWindow(Config* config); /**< Construct a window with a list of presets with the given instance of the plugin */
     void reLayout(Object^ sender, LayoutEventArgs^ e); /**< Relayout the window */
 private:
     ConfigWinPresetTableView^ tableView; /**< The list of preset */

@@ -10,6 +10,8 @@
 #define ConfigNative_h
 
 #include <string>
+#include <vector>
+#include <functional>
 
 class ConfigNative {
 public:

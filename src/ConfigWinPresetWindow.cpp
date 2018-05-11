@@ -33,14 +33,14 @@
 
 #include "ConfigWinPresetWindow.hpp"
 
-ConfigWinPresetWindow::ConfigWinPresetWindow(CVDJartnet* vdjArtnet) {
+ConfigWinPresetWindow::ConfigWinPresetWindow(Config* config) {
     this->Name = "Presets";
     this->Text = "Presets";
     this->Size = System::Drawing::Size(200, 600);
     this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Sizable;
     this->ControlBox = false;
 
-    tableView = gcnew ConfigWinPresetTableView(vdjArtnet);
+    tableView = gcnew ConfigWinPresetTableView(config);
 
     this->Layout += gcnew LayoutEventHandler(this, &ConfigWinPresetWindow::reLayout);
     this->Controls->Add(tableView);

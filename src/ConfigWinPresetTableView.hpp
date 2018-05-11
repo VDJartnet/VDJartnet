@@ -36,7 +36,7 @@
 
 #include <stdio.h>
 
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "ConfigWinPresetDataSource.hpp"
 
@@ -53,7 +53,7 @@ using namespace System;
 /** A list of presets */
 ref class ConfigWinPresetTableView : public DataGridView {
 public:
-    ConfigWinPresetTableView(CVDJartnet* vdjArtnet); /**< Construct a list of presets with the given instance of the plugin */
+    ConfigWinPresetTableView(Config* config); /**< Construct a list of presets with the given instance of the plugin */
 
     DataObject^ GetClipboardContent() override; /**< Get the command to be copied */
 

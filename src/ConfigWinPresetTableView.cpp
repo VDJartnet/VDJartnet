@@ -33,7 +33,7 @@
 
 #include "ConfigWinPresetTableView.hpp"
 
-ConfigWinPresetTableView::ConfigWinPresetTableView(CVDJartnet* vdjArtnet) {
+ConfigWinPresetTableView::ConfigWinPresetTableView(Config* config) {
     this->Name = "Presets";
     this->AutoGenerateColumns = false;
     this->RowHeadersVisible = false;
@@ -43,8 +43,8 @@ ConfigWinPresetTableView::ConfigWinPresetTableView(CVDJartnet* vdjArtnet) {
     this->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
 
     ConfigWinPresetDataSource^ dataSource = gcnew ConfigWinPresetDataSource(512);
-    for (size_t i = 0; i < vdjArtnet->config->getPresets().size(); i++) {
-        dataSource->Add(gcnew ConfigWinPresetRowString(vdjArtnet->config->getPresets()[i]));
+    for (size_t i = 0; i < config->getPresets().size(); i++) {
+        dataSource->Add(gcnew ConfigWinPresetRowString(config->getPresets()[i]));
     }
     this->DataSource = dataSource;
 

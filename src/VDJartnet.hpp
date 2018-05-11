@@ -36,12 +36,14 @@
 
 #include "vdjPlugin8.h"
 
-#include "Config.hpp"
 #include "Artnet.hpp"
+#include "Config.hpp"
 
 #if (defined(VDJ_MAC))
 #include "ConfigNativeMac.h"
 #elif (defined(VDJ_WIN))
+#define CLRFREE
+#include "ConfigNativeWin.hpp"
 #endif
 
 #include <string>
