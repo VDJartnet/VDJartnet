@@ -6,6 +6,7 @@ build/
 docs/
 userguide/
 .vs/
+VDJartnet.xcodeproj/project.xcworkspace/xcuserdata/*
 *.obj
 *.dll
 *.wixobj
@@ -14,4 +15,4 @@ userguide/
 *.exp
 *.lib
 *.DS_Store
-VDJartnet.xcodeproj/project.xcworkspace/xcuserdata/*
+nohup.out
