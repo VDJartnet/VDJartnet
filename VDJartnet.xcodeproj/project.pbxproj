@@ -158,9 +158,8 @@
 				68CF2389209F406F0072437B /* VDJartnet.hpp */,
 				68CF239B209F406F0072437B /* vdjPlugin8.h */,
 			);
-			name = src;
-			path = /Users/benjamin/Documents/projects/vdjartnet/VDJartnet/src;
-			sourceTree = "<absolute>";
+			path = src;
+			sourceTree = "<group>";
 		};
 		68F9E85E1F981DC5002F8CEF /* Installers */ = {
 			isa = PBXGroup;
