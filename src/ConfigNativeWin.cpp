@@ -6,27 +6,20 @@
 //  Copyright © 2018 Jonathan Tanner. All rights reserved.
 //
 
-#import "ConfigTool.hpp"
+#include "ConfigNativeWin.hpp"
 
-#if (defined(VDJ_MAC))
-
-ConfigTool::ConfigTool(CVDJartnet* vdjArtnet) {
-    configMacTool = [[ConfigMacTool alloc] initWithVDJartnet: vdjArtnet];
+ConfigNativeWin::ConfigNativeWin(Config* configTMP) {
+    config = configTMP;
 }
 
-ConfigTool::~ConfigTool() {
-    [configMacTool dealloc];
+void ConfigNativeWin::presentConfigTool() {
+    configTool = gcnew ConfigWinTool(config);
 }
 
-#elif (defined(VDJ_WIN))
-
-ConfigTool::ConfigTool(CVDJartnet vdjArtnet) {
-    if (configTool != nullptr) {
-        closeConfigWinTool(configTool);
-        delete configTool;
-        configTool = nullptr;
-    }
-    configTool = createConfigWinTool(this);
+void ConfigNativeWin::presentText(std::string message, std::string information) {
+    System::Windows::Forms::MessageBox::Show(gcnew String(information.c_str()), gcnew String(message.c_str()));
 }
 
-#endif
+int ConfigNativeWin::presentDialog(std::string message, std::string information, std::vector<std::string> responses, std::function<int()> callback) {
+    return -2;
+}

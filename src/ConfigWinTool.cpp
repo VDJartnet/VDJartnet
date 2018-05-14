@@ -1,8 +1,8 @@
 //
-//  ConfigWinDataSource.hpp
+//  ConfigWinTool.cpp
 //  VDJartnet
 //
-//  Copyright © 2017-18 Jonathan Tanner. All rights reserved.
+//  Copyright Â© 2017-18 Jonathan Tanner. All rights reserved.
 //
 //This file is part of VDJartnet.
 //
@@ -31,29 +31,20 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#include "ConfigWinDataSource.hpp"
+#include "ConfigWinTool.hpp"
 
-String^ ConfigWinRowString::Value::get() {
-    return gcnew String(config->channelCommands[row].c_str());
-}
-void ConfigWinRowString::Value::set(String^ newVal) {
-
-    undoManager->registerUndoFuncpArg2<gcroot<ConfigWinRowString^ const> const, gcroot<String^ const > const>(setValue, gcroot<ConfigWinRowString^ const>(this), gcroot<String^ const>(this->Value));
-    if (newVal == nullptr) {
-        config->channelCommands[row] = "";
-    }
-    else {
-        config->channelCommands[row] = msclr::interop::marshal_as<std::string>(newVal);
-    }
-    config->saveConfig();
-}
-
-ConfigWinRowString::ConfigWinRowString(Config* configTMP, int rowTMP, CSUndoManager* undoManagerTMP) {
+ConfigWinTool::ConfigWinTool(Config* configTMP) {
     config = configTMP;
-    row = rowTMP;
-    undoManager = undoManagerTMP;
+
+    window = gcnew ConfigWinWindow(config);
+    presetWindow = gcnew ConfigWinPresetWindow(config);
+    presetWindow->Location = System::Drawing::Point(window->Location.X + window->Width, window->Location.Y);
+    window->addChildWindow(presetWindow);
 }
 
-void setValue(gcroot<ConfigWinRowString^ const> const target, gcroot<String^ const > const newVal) {
-    target->Value = newVal;
+void ConfigWinTool::hide() {
+    presetWindow->Hide();
+    window->Hide();
+    presetWindow = nullptr;
+    window = nullptr;
 }

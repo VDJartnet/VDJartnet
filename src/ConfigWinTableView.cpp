@@ -33,7 +33,7 @@
 
 #include "ConfigWinTableView.hpp"
 
-ConfigWinTableView::ConfigWinTableView(CVDJartnet* vdjArtnet) {
+ConfigWinTableView::ConfigWinTableView(Config* config) {
     this->Name = "VDJscript";
     this->AutoGenerateColumns = false;
     this->RowHeadersVisible = true;
@@ -46,7 +46,7 @@ ConfigWinTableView::ConfigWinTableView(CVDJartnet* vdjArtnet) {
 
     ConfigWinDataSource^ dataSource = gcnew ConfigWinDataSource(512);
     for (int row = 0; row < 512; row++) {
-        dataSource->Add(gcnew ConfigWinRowString(vdjArtnet, row, undoManager));
+        dataSource->Add(gcnew ConfigWinRowString(config, row, undoManager));
     }
     this->DataSource = dataSource;
 

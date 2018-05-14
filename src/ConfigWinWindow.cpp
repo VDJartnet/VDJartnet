@@ -31,10 +31,10 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#include "ConfigWin.hpp"
+#include "ConfigWinWindow.hpp"
 
-ConfigWinWindow::ConfigWinWindow(CVDJartnet* vdjArtnetTMP) {
-    vdjArtnet = vdjArtnetTMP;
+ConfigWinWindow::ConfigWinWindow(Config* configTMP) {
+    config = configTMP;
 
     this->Name = "VDJartnetConfig";
     this->Text = "VDJartnetConfig";
@@ -48,18 +48,18 @@ ConfigWinWindow::ConfigWinWindow(CVDJartnet* vdjArtnetTMP) {
     this->Controls->Add(ipLabel);
 
     ipAddress = gcnew TextBox();
-    ipAddress->Text = gcnew String(vdjArtnet->config->host.c_str());
+    ipAddress->Text = gcnew String(config->host.c_str());
     ipAddress->Leave += gcnew EventHandler(this, &ConfigWinWindow::updateIPaddress);
     ipAddress->KeyDown += gcnew KeyEventHandler(this, &ConfigWinWindow::ipKeyDown);
     this->Controls->Add(ipAddress);
 
     ipPort = gcnew TextBox();
-    ipPort->Text = vdjArtnet->config->port.ToString();
+    ipPort->Text = config->port.ToString();
     ipPort->Leave += gcnew EventHandler(this, &ConfigWinWindow::updateIPport);
     ipPort->KeyDown += gcnew KeyEventHandler(this, &ConfigWinWindow::ipKeyDown);
     this->Controls->Add(ipPort);
 
-    tableView = gcnew ConfigWinTableView(vdjArtnet);
+    tableView = gcnew ConfigWinTableView(config);
     this->Controls->Add(tableView);
 
     this->Layout += gcnew LayoutEventHandler(this, &ConfigWinWindow::reLayout);
@@ -88,19 +88,19 @@ void ConfigWinWindow::reLayout(Object^ sender, LayoutEventArgs^ e) {
 }
 
 void ConfigWinWindow::didClose(Object^ sender, FormClosedEventArgs^ e) {
-    ((ConfigWinToolNative*)(vdjArtnet->configTool))->configTool->hide();
-    delete ((ConfigWinToolNative*)(vdjArtnet->configTool));
-    vdjArtnet->configTool = nullptr;
+    for each (Form^ child in children) {
+        child->Hide();
+    }
 }
 
 void ConfigWinWindow::updateIPaddress(Object^ sender, EventArgs^ e) {
-    vdjArtnet->config->host = msclr::interop::marshal_as<std::string>(ipAddress->Text);
-    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    config->host = msclr::interop::marshal_as<std::string>(ipAddress->Text);
+    config->saveConfig();
 }
 
 void ConfigWinWindow::updateIPport(Object^ sender, EventArgs^ e) {
-    vdjArtnet->config->port = (unsigned short)int::Parse(ipPort->Text);
-    vdjArtnet->OnParameter(CVDJartnet::ID_SAVE);
+    config->port = (unsigned short)int::Parse(ipPort->Text);
+    config->saveConfig();
 }
 
 void ConfigWinWindow::ipKeyDown(Object^ sender, KeyEventArgs^ e) {
@@ -108,4 +108,8 @@ void ConfigWinWindow::ipKeyDown(Object^ sender, KeyEventArgs^ e) {
         updateIPaddress(sender, e);
         updateIPport(sender, e);
     }
+}
+
+void ConfigWinWindow::addChildWindow(Form^ child) {
+    children->Add(child);
 }

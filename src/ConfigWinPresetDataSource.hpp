@@ -34,10 +34,8 @@
 #ifndef ConfigWinPresetDataSource_hpp
 #define ConfigWinPresetDataSource_hpp
 
-#include <stdio.h>
-
 #define NODLLEXPORT
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "windows.h"
 

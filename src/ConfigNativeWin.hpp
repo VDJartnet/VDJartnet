@@ -9,26 +9,29 @@
 #ifndef ConfigNativeMac_hpp
 #define ConfigNativeMac_hpp
 
-#include "ConfigMacTool.h"
+#include "ConfigNative.hpp"
 
-#if (defined(VDJ_MAC))
-#include "ConfigMacTool.h"
-#include <CoreFoundation/CoreFoundation.h>
-#elif (defined(VDJ_WIN))
-#define CLRFREE
-#include "ConfigWin.hpp"
+#ifndef CLRFREE
+#include "ConfigWinTool.hpp"
+#include <msclr\gcroot.h>
 #endif
+
+#include <string>
+#include <vector>
+#include <functional>
 
 class CVDJartnet;
 
-class ConfigNativeMac {
+class ConfigNativeWin : public ConfigNative {
 public:
-    ConfigNativeMac(CVDJartnet* vdjArtnet);
-    ~ConfigNativeMac();
+    ConfigNativeWin(Config* config);
+    void presentConfigTool();
+    void presentText(std::string message, std::string information);
+    int presentDialog(std::string message, std::string information, std::vector<std::string> responses, std::function<int()> callback);
 private:
-#if (defined(VDJ_MAC))
-    __strong ConfigMacTool* configMacTool;
-#elif (defined(VDJ_WIN))
+    Config* config;
+#ifndef CLRFREE
+    msclr::gcroot<ConfigWinTool^> configTool; /**< The managed ConfigWinTool */
 #endif
 };
 

@@ -36,7 +36,7 @@
 
 #include <stdio.h>
 
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "ConfigWinDataSource.hpp"
 #include "CppStep/CSUndoManager.hpp"
@@ -64,7 +64,7 @@ public:
         return DataGridView::ProcessCmdKey(msg, keyData);
     }
 
-    ConfigWinTableView(CVDJartnet* vdjArtnet); /**< Construct a list of commands with the given instance of the plugin */
+    ConfigWinTableView(Config* config); /**< Construct a list of commands with the given instance of the config */
 
     void tableViewKeyDown(Object^ sender, KeyEventArgs^ e); /**< A key has been pressed */
     void tableViewEditingControlShowing(Object^ sender, DataGridViewEditingControlShowingEventArgs^ e); /**< A cell is about to be shown */

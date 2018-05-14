@@ -34,7 +34,7 @@
 #ifndef ConfigWinWindow_hpp
 #define ConfigWinWindow_hpp
 
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "ConfigWinTableView.hpp"
 
@@ -52,18 +52,20 @@ using namespace System;
 /** A window containing a list of commands */
 ref class ConfigWinWindow : public Form {
 public:
-    ConfigWinWindow(CVDJartnet* vdjArtnetTMP); /**< Construct a window with a list of commands with the given instance of the plugin */
+    ConfigWinWindow(Config* configTMP); /**< Construct a window with a list of commands with the given instance of the config */
     void reLayout(Object^ sender, LayoutEventArgs^ e); /**< Relayout the window */
     void didClose(Object^ sender, FormClosedEventArgs^ e); /**< The window has been closed */
     void updateIPaddress(Object^ sender, EventArgs^ e); /**< Update the IP address in the config */
     void updateIPport(Object^ sender, EventArgs^ e); /**< Update the port in the config */
     void ipKeyDown(Object^ sender, KeyEventArgs^ e); /**< A key has been pressed in the IP address field */
+    void addChildWindow(Form^ child); /**< Add a child window */
 private:
-    CVDJartnet* vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the config */
     Label^ ipLabel; /**< A label for the IP address field */
     TextBox^ ipAddress; /**< The IP address field */
     TextBox^ ipPort; /**< The port field */
     ConfigWinTableView^ tableView; /**< The list of commands */
+    Collections::Generic::List<Form^>^ children = gcnew Collections::Generic::List<Form^>(); /**< The child windows */
 };
 
 #endif /* ConfigWinWindow_hpp */

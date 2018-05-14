@@ -39,7 +39,7 @@
 #include <stdio.h>
 
 #define NODLLEXPORT
-#include "VDJartnet.hpp"
+#include "Config.hpp"
 
 #include "CppStep/CSUndoManager.hpp"
 
@@ -62,9 +62,9 @@ public:
         void set(String^ newVal); /**< Set the value of the command */
     }
 
-    ConfigWinRowString(CVDJartnet* vdjArtnetTMP, int rowTMP, CSUndoManager* undoManagerTMP); /**< Construct a row with the given instance of the plugin, row number and undo manager */
+    ConfigWinRowString(Config* configTMP, int rowTMP, CSUndoManager* undoManagerTMP); /**< Construct a row with the given instance of the config, row number and undo manager */
 private:
-    CVDJartnet * vdjArtnet; /**< A pointer to the plugin */
+    Config* config; /**< A pointer to the plugin */
     int row; /**< The number of this row */
     CSUndoManager* undoManager; /**< A pointer to the undo manager */
 };

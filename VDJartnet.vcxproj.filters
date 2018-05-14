@@ -21,9 +21,6 @@
     <ClCompile Include="src\Config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ConfigWin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\ConfigWinDataSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,15 +48,18 @@
     <ClCompile Include="src\VDJartnet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ConfigWinTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConfigNativeWin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Artnet.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Config.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWin.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ConfigWinDataSource.hpp">
@@ -95,8 +95,18 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ConfigNative.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConfigNativeWin.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConfigWinTool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\presets.txt" />
+    <Text Include="src\about.txt" />
   </ItemGroup>
 </Project>
