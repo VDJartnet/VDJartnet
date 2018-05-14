@@ -24,6 +24,10 @@
 		68CF23B4209F41030072437B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A1209F406F0072437B /* main.cpp */; };
 		68CF23B5209F41030072437B /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2386209F406F0072437B /* Socket.cpp */; };
 		68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2395209F406F0072437B /* VDJartnet.cpp */; };
+		68F7741C20A86B5500BD5F8C /* CSAttributedString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68F7741620A8635800BD5F8C /* CSAttributedString.cpp */; };
+		68F7741F20A878ED00BD5F8C /* NSAttributedString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68F7741E20A878ED00BD5F8C /* NSAttributedString.mm */; };
+		68F7742520A89A1900BD5F8C /* NSDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68F7742420A89A1900BD5F8C /* NSDictionary.mm */; };
+		68F7742720A89F4800BD5F8C /* NSRange.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68F7742620A89F4800BD5F8C /* NSRange.mm */; };
 		68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +69,15 @@
 		68CF23A4209F406F0072437B /* ConfigMacIpAddress.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacIpAddress.mm; sourceTree = "<group>"; };
 		68CF23A5209F406F0072437B /* presets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = presets.txt; sourceTree = "<group>"; };
 		68CF23A6209F406F0072437B /* ConfigMacPresetDataSource.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigMacPresetDataSource.mm; sourceTree = "<group>"; };
+		68F7741220A8635800BD5F8C /* CSAttributedString.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSAttributedString.hpp; sourceTree = "<group>"; };
+		68F7741620A8635800BD5F8C /* CSAttributedString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSAttributedString.cpp; sourceTree = "<group>"; };
+		68F7741920A8675400BD5F8C /* CSRange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CSRange.hpp; sourceTree = "<group>"; };
+		68F7741D20A878ED00BD5F8C /* NSAttributedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSAttributedString.h; sourceTree = "<group>"; };
+		68F7741E20A878ED00BD5F8C /* NSAttributedString.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NSAttributedString.mm; sourceTree = "<group>"; };
+		68F7742020A896DE00BD5F8C /* NSRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSRange.h; sourceTree = "<group>"; };
+		68F7742320A89A1900BD5F8C /* NSDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDictionary.h; sourceTree = "<group>"; };
+		68F7742420A89A1900BD5F8C /* NSDictionary.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NSDictionary.mm; sourceTree = "<group>"; };
+		68F7742620A89F4800BD5F8C /* NSRange.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NSRange.mm; sourceTree = "<group>"; };
 		68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReadmeDlg.wxs; sourceTree = "<group>"; };
 		68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = buildPackageWin.bat; sourceTree = "<group>"; };
 		68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildPackageMac.sh; sourceTree = "<group>"; };
@@ -150,6 +163,7 @@
 				6862EA9F20A4BB3200C41D9D /* ConfigNative.hpp */,
 				6862EA9D20A4B45700C41D9D /* ConfigNativeMac.h */,
 				6862EA9C20A4B45700C41D9D /* ConfigNativeMac.mm */,
+				68F7741820A8635800BD5F8C /* CppStep */,
 				68CF23A1209F406F0072437B /* main.cpp */,
 				68CF23A5209F406F0072437B /* presets.txt */,
 				68CF2386209F406F0072437B /* Socket.cpp */,
@@ -160,6 +174,23 @@
 			);
 			path = src;
 			sourceTree = "<group>";
+		};
+		68F7741820A8635800BD5F8C /* CppStep */ = {
+			isa = PBXGroup;
+			children = (
+				68F7741620A8635800BD5F8C /* CSAttributedString.cpp */,
+				68F7741220A8635800BD5F8C /* CSAttributedString.hpp */,
+				68F7741920A8675400BD5F8C /* CSRange.hpp */,
+				68F7741D20A878ED00BD5F8C /* NSAttributedString.h */,
+				68F7741E20A878ED00BD5F8C /* NSAttributedString.mm */,
+				68F7742320A89A1900BD5F8C /* NSDictionary.h */,
+				68F7742420A89A1900BD5F8C /* NSDictionary.mm */,
+				68F7742620A89F4800BD5F8C /* NSRange.mm */,
+				68F7742020A896DE00BD5F8C /* NSRange.h */,
+			);
+			name = CppStep;
+			path = /Users/jonathantanner/Documents/VDJartnet/Sources/VDJartnet/src/CppStep;
+			sourceTree = "<absolute>";
 		};
 		68F9E85E1F981DC5002F8CEF /* Installers */ = {
 			isa = PBXGroup;
@@ -248,13 +279,17 @@
 				68CF23AB209F41030072437B /* ConfigMacTool.mm in Sources */,
 				6862EA9E20A4B45800C41D9D /* ConfigNativeMac.mm in Sources */,
 				68CF23AC209F41030072437B /* ConfigMacEditMenu.mm in Sources */,
+				68F7741F20A878ED00BD5F8C /* NSAttributedString.mm in Sources */,
+				68F7742720A89F4800BD5F8C /* NSRange.mm in Sources */,
 				68CF23AD209F41030072437B /* ConfigMacIpAddress.mm in Sources */,
 				68CF23AE209F41030072437B /* ConfigMacIpPort.mm in Sources */,
+				68F7742520A89A1900BD5F8C /* NSDictionary.mm in Sources */,
 				68CF23AF209F41030072437B /* ConfigMacPresetDataSource.mm in Sources */,
 				68CF23B0209F41030072437B /* ConfigMacPresetWindow.mm in Sources */,
 				68CF23B1209F41030072437B /* ConfigMacTableView.mm in Sources */,
 				68CF23B2209F41030072437B /* ConfigMacViewController.mm in Sources */,
 				68CF23B3209F41030072437B /* ConfigMacWindow.mm in Sources */,
+				68F7741C20A86B5500BD5F8C /* CSAttributedString.cpp in Sources */,
 				68CF23B4209F41030072437B /* main.cpp in Sources */,
 				68CF23B5209F41030072437B /* Socket.cpp in Sources */,
 				68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */,
