@@ -1,3 +1,3 @@
 [submodule "src/CppStep"]
 	path = src/CppStep
-	url = git@github.com:nixCodeX/CppStep
+	url = https://github.com/nixCodeX/CppStep.git
