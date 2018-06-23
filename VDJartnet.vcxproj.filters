@@ -13,30 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="CppStep">
+      <UniqueIdentifier>{7dd72f9d-5b22-47c3-bf9f-bdd35cec5ffe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Artnet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Config.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ConfigWinDataSource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ConfigWinPresetTableView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ConfigWinPresetWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ConfigWinTableView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ConfigWinWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CppStep\CSUndoManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
@@ -48,11 +33,41 @@
     <ClCompile Include="src\VDJartnet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ConfigWinTool.cpp">
+    <ClCompile Include="src\ConfigWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ConfigNativeWin.cpp">
+    <ClCompile Include="src\CppStep\src\WinForm.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinTableViewDataSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSAlignView.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSApp.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSLabel.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSSuperView.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSTableView.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSTextField.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSUndoManager.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSView.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSWindow.cpp">
+      <Filter>CppStep</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,27 +75,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Config.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWinDataSource.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWinPresetDataSource.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWinPresetTableView.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWinPresetWindow.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWinTableView.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigWinWindow.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CppStep\CSUndoManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Socket.hpp">
@@ -95,14 +89,59 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ConfigNative.hpp">
+    <ClInclude Include="src\ConfigTableViewDataSource.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ConfigNativeWin.hpp">
+    <ClInclude Include="src\ConfigWindow.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ConfigWinTool.hpp">
+    <ClInclude Include="src\CppStep\src\WinForm.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinTableViewDataSource.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSAlignView.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSApp.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSCore.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSLabel.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSRange.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSRect.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSSuperView.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSTableView.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSTableViewDataSource.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSTextField.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSUndoManager.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSView.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSWindow.hpp">
+      <Filter>CppStep</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

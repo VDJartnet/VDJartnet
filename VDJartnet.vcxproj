@@ -122,51 +122,72 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\ConfigNativeWin.cpp">
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
-    </ClCompile>
-    <ClCompile Include="src\ConfigWinTool.cpp">
+    <ClCompile Include="src\ConfigWindow.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\ConfigWinDataSource.cpp">
+    <ClCompile Include="src\CppStep\src\CSAlignView.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\ConfigWinPresetTableView.cpp">
+    <ClCompile Include="src\CppStep\src\CSApp.cpp" />
+    <ClCompile Include="src\CppStep\src\CSLabel.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\ConfigWinPresetWindow.cpp">
+    <ClCompile Include="src\CppStep\src\CSSuperView.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\ConfigWinTableView.cpp">
+    <ClCompile Include="src\CppStep\src\CSTableView.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\ConfigWinWindow.cpp">
+    <ClCompile Include="src\CppStep\src\CSTextField.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\CppStep\CSUndoManager.cpp">
+    <ClCompile Include="src\CppStep\src\CSUndoManager.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSView.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSWindow.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinForm.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinTableViewDataSource.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -191,16 +212,24 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\Artnet.hpp" />
     <ClInclude Include="src\Config.hpp" />
-    <ClInclude Include="src\ConfigNative.hpp" />
-    <ClInclude Include="src\ConfigNativeWin.hpp" />
-    <ClInclude Include="src\ConfigWinTool.hpp" />
-    <ClInclude Include="src\ConfigWinDataSource.hpp" />
-    <ClInclude Include="src\ConfigWinPresetDataSource.hpp" />
-    <ClInclude Include="src\ConfigWinPresetTableView.hpp" />
-    <ClInclude Include="src\ConfigWinPresetWindow.hpp" />
-    <ClInclude Include="src\ConfigWinTableView.hpp" />
-    <ClInclude Include="src\ConfigWinWindow.hpp" />
-    <ClInclude Include="src\CppStep\CSUndoManager.hpp" />
+    <ClInclude Include="src\ConfigTableViewDataSource.hpp" />
+    <ClInclude Include="src\ConfigWindow.hpp" />
+    <ClInclude Include="src\CppStep\src\CSAlignView.hpp" />
+    <ClInclude Include="src\CppStep\src\CSApp.hpp" />
+    <ClInclude Include="src\CppStep\src\CSCore.hpp" />
+    <ClInclude Include="src\CppStep\src\CSLabel.hpp" />
+    <ClInclude Include="src\CppStep\src\CSRange.hpp" />
+    <ClInclude Include="src\CppStep\src\CSRect.hpp" />
+    <ClInclude Include="src\CppStep\src\CSSuperView.hpp" />
+    <ClInclude Include="src\CppStep\src\CSTableView.hpp" />
+    <ClInclude Include="src\CppStep\src\CSTableViewDataSource.hpp" />
+    <ClInclude Include="src\CppStep\src\CSTextField.hpp" />
+    <ClInclude Include="src\CppStep\src\CSUndoManager.hpp" />
+    <ClInclude Include="src\CppStep\src\CSView.hpp" />
+    <ClInclude Include="src\CppStep\src\CSWindow.hpp" />
+    <ClInclude Include="src\CppStep\src\WinForm.hpp" />
+    <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp" />
+    <ClInclude Include="src\CppStep\src\WinTableViewDataSource.hpp" />
     <ClInclude Include="src\Socket.hpp" />
     <ClInclude Include="src\VDJartnet.hpp" />
     <ClInclude Include="src\vdjPlugin8.h" />

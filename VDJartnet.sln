@@ -5,6 +5,19 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDJartnet", "VDJartnet.vcxproj", "{5A6B6DB1-F41C-4120-800F-E4291C9F91BD}"
 EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "virtualdj8", "..\..\..\..\..\Program Files (x86)\VirtualDJ\virtualdj8.exe", "{651C0850-C032-4A53-8656-A449BC778600}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = C:\Program Files (x86)\VirtualDJ\virtualdj8.exe
+		RemoteMachine = DESKTOP-U0BH46A
+		StartingDirectory = C:\Program Files (x86)\VirtualDJ
+		Environment = Default
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		UseLegacyDebugEngines = No
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +34,10 @@ Global
 		{5A6B6DB1-F41C-4120-800F-E4291C9F91BD}.Release|x64.Build.0 = Release|x64
 		{5A6B6DB1-F41C-4120-800F-E4291C9F91BD}.Release|x86.ActiveCfg = Release|Win32
 		{5A6B6DB1-F41C-4120-800F-E4291C9F91BD}.Release|x86.Build.0 = Release|Win32
+		{651C0850-C032-4A53-8656-A449BC778600}.Debug|x64.ActiveCfg = Release|x86
+		{651C0850-C032-4A53-8656-A449BC778600}.Debug|x86.ActiveCfg = Release|x86
+		{651C0850-C032-4A53-8656-A449BC778600}.Release|x64.ActiveCfg = Release|x86
+		{651C0850-C032-4A53-8656-A449BC778600}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

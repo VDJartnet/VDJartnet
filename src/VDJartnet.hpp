@@ -39,12 +39,15 @@
 #include "Artnet.hpp"
 #include "Config.hpp"
 
-#if (defined(VDJ_MAC))
-#include "ConfigNativeMac.h"
-#elif (defined(VDJ_WIN))
+// #if (defined(VDJ_MAC))
+// #include "ConfigNativeMac.h"
+// #elif (defined(VDJ_WIN))
+// #define CLRFREE
+// #include "ConfigNativeWin.hpp"
+// #endif
 #define CLRFREE
-#include "ConfigNativeWin.hpp"
-#endif
+#include "CppStep/src/CSApp.hpp"
+#include "ConfigWindow.hpp"
 
 #include <string>
 #include <fstream>
@@ -88,7 +91,8 @@ public:
 
     Config* config; /**< The config parser */
 
-    ConfigNative* configTool; /**< A pointer to the config tool. */
+    // ConfigNative* configTool; /**< A pointer to the config tool. */
+    ConfigWindow* configTool; /**< A pointer to the config tool. */
 
 private:
     Artnet artnet; /**< The object that sends the Art-Net data */

@@ -55,6 +55,7 @@ HRESULT VDJ_API CVDJartnet::OnLoad() {
 }
 //-----------------------------------------------------------------------------
 void CVDJartnet::init() {
+    CSApp::Init();
 
     if (config == nullptr) {
         char pathC[256];
@@ -67,16 +68,19 @@ void CVDJartnet::init() {
 #endif
 
         config = new Config(path);
-#if (defined(VDJ_MAC))
-        configTool = new ConfigNativeMac(config);
-#elif (defined(VDJ_WIN))
-        configTool = new ConfigNativeWin(config);
-#endif
+// #if (defined(VDJ_MAC))
+//         configTool = new ConfigNativeMac(config);
+// #elif (defined(VDJ_WIN))
+//         configTool = new ConfigNativeWin(config);
+// #endif
+        configTool = new ConfigWindow(config);
     }
 
     if (pollThread == nullptr) {
         pollThread = new std::thread(CVDJartnet::update);
     }
+
+    CSApp::Run();
 }
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
@@ -114,15 +118,16 @@ HRESULT VDJ_API CVDJartnet::OnParameter(int id) {
 
         case ID_CONFIG_BUTTON:
             if (m_Config == 1) {
-                configTool->presentConfigTool();
+                configTool->show();
+                //configTool->presentConfigTool();
             }
             break;
 
         case ID_ABOUT_BUTTON:
             if (m_About == 1) {
-                configTool->presentText("About VDJartnet",
-#include "about.txt"
-                                        );
+                //configTool->presentText("About VDJartnet",
+//#include "about.txt"
+                                        //);
             }
     }
 

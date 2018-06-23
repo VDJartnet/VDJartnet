@@ -88,6 +88,7 @@ Socket::~Socket() {
 }
 
 void Socket::send(std::string hostS, unsigned short port, const void* data, int size) {
+    return; // TODO: Fix function
     unsigned int host;
     if (hostS.empty()) {
         host = INADDR_ANY;
@@ -111,11 +112,13 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
     address.sin_port = htons(port);
 
 #ifdef _WIN32
-    typedef size_t Size;
+    typedef int SSize;
+    typedef int Size;
 #else
-    typedef ssize_t Size;
+    typedef ssize_t SSize;
+    typedef size_t Size;
 #endif
-    Size sent_bytes = sendto(handle, (const char *) data, (size_t)size, 0, (const struct sockaddr *) &address, sizeof(struct sockaddr_in));
+    SSize sent_bytes = sendto(handle, (const char *) data, (Size)size, 0, (const struct sockaddr *) &address, (Size)sizeof(struct sockaddr_in));
     if (sent_bytes != size) {
         throw std::runtime_error("Failed to send data");
     }
