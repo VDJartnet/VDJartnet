@@ -1,5 +1,5 @@
 //
-//  ConfigWindow.hpp
+//  ConfigPresetWindow.hpp
 //  VDJartnet
 //
 //  Copyright � 2017-18 Jonathan Tanner. All rights reserved.
@@ -31,13 +31,12 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef ConfigWindow_hpp
-#define ConfigWindow_hpp
+#ifndef ConfigPresetWindow_hpp
+#define ConfigPresetWindow_hpp
 
 #include "Config.hpp"
 
-#include "ConfigTableViewDataSource.hpp"
-#include "ConfigPresetWindow.hpp"
+#include "ConfigPresetTableViewDataSource.hpp"
 
 #ifndef CLRFREE
 #include "CppStep/src/CSWindow.hpp"
@@ -50,25 +49,18 @@ class CSWindow;
 #endif
 
 /** A window containing a list of commands */
-class ConfigWindow {
+class ConfigPresetWindow {
 public:
-    ConfigWindow(Config* config); /**< Construct a window with a list of commands with the given instance of the config */
+    ConfigPresetWindow(Config* config); /**< Construct a window with a list of commands with the given instance of the config */
     void show(); /**< Show the window */
+    void hide(); /**< Hide the window */
     void didClose(); /**< The window has been closed */
-    void updateIPaddress(); /**< Update the IP address in the config */
-    void updateIPport(); /**< Update the port in the config */
 private:
 #ifndef CLRFREE
     Config* config; /**< A pointer to the config */
     CSWindow* window; /**< The window */
-    CSLabel* ipLabel; /**< A label for the IP address field */
-    CSTextField* ipAddress; /**< The IP address field */
-    CSTextField* ipPort; /**< The port field */
-    CSAlignView* ipFields; /**< The top bar with the IP fields */
-    CSTableView* tableView; /**< The list of commands */
-    CSAlignView* mainView; /**< The main view */
-    ConfigPresetWindow* presetWindow;
+    CSTableView* tableView; /**< The list of presets */
 #endif
 };
 
-#endif /* ConfigWindow_hpp */
+#endif /* ConfigPresetWindow_hpp */

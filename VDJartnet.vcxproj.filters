@@ -72,6 +72,9 @@
     <ClCompile Include="src\CppStep\src\WinTableViewDataSource.cpp">
       <Filter>CppStep</Filter>
     </ClCompile>
+    <ClCompile Include="src\ConfigPresetWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Artnet.hpp">
@@ -147,6 +150,12 @@
       <Filter>CppStep</Filter>
     </ClInclude>
     <ClInclude Include="src\vdjPlugin8.h" />
+    <ClInclude Include="src\ConfigPresetWindow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConfigPresetTableViewDataSource.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\presets.txt" />

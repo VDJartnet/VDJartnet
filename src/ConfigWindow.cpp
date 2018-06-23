@@ -38,10 +38,12 @@ ConfigWindow::ConfigWindow(Config* config)
                           "VDJartnetConfig",
                           true,
                           true)),
-      config(config) {
+      config(config),
+      presetWindow(new ConfigPresetWindow(config)) {
 
     window->setClosingCallback([this]() {
         this->window->hide();
+        presetWindow->hide();
         return false;
     });
 
@@ -76,18 +78,8 @@ ConfigWindow::ConfigWindow(Config* config)
 void ConfigWindow::show() {
     window->show();
     tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
+    presetWindow->show();
 }
-
-    // for each (DataGridViewRow^ row in tableView->Rows) {
-    //     row->HeaderCell->Value = String::Format("{0}", row->Index + 1);
-    // }
-    // tableView->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
-
-//void ConfigWindow::didClose(Object^ sender, FormClosedEventArgs^ e) {
-//    for each (Form^ child in children) {
-//        child->Hide();
-//    }
-//}
 
 void ConfigWindow::updateIPaddress() {
     config->host = ipAddress->getText();
@@ -97,9 +89,4 @@ void ConfigWindow::updateIPaddress() {
 void ConfigWindow::updateIPport() {
     config->port = (unsigned short)std::stoi(ipPort->getText());
     config->saveConfig();
-}
-
-
-void ConfigWindow::addChildWindow(CSWindow* child) {
-    //children->Add(child);
 }

@@ -1,5 +1,5 @@
 //
-//  ConfigWindow.hpp
+//  ConfigPresetWindow.cpp
 //  VDJartnet
 //
 //  Copyright � 2017-18 Jonathan Tanner. All rights reserved.
@@ -31,44 +31,31 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
-#ifndef ConfigWindow_hpp
-#define ConfigWindow_hpp
-
-#include "Config.hpp"
-
-#include "ConfigTableViewDataSource.hpp"
 #include "ConfigPresetWindow.hpp"
 
-#ifndef CLRFREE
-#include "CppStep/src/CSWindow.hpp"
-#include "CppStep/src/CSLabel.hpp"
-#include "CppStep/src/CSTextField.hpp"
-#include "CppStep/src/CSTableView.hpp"
-#include "CppStep/src/CSAlignView.hpp"
-#else
-class CSWindow;
-#endif
+ConfigPresetWindow::ConfigPresetWindow(Config* config)
+    : window(new CSWindow(CSRect(600, 0, 300, 600),
+                          "Presets",
+                          false,
+                          true)),
+      config(config) {
 
-/** A window containing a list of commands */
-class ConfigWindow {
-public:
-    ConfigWindow(Config* config); /**< Construct a window with a list of commands with the given instance of the config */
-    void show(); /**< Show the window */
-    void didClose(); /**< The window has been closed */
-    void updateIPaddress(); /**< Update the IP address in the config */
-    void updateIPport(); /**< Update the port in the config */
-private:
-#ifndef CLRFREE
-    Config* config; /**< A pointer to the config */
-    CSWindow* window; /**< The window */
-    CSLabel* ipLabel; /**< A label for the IP address field */
-    CSTextField* ipAddress; /**< The IP address field */
-    CSTextField* ipPort; /**< The port field */
-    CSAlignView* ipFields; /**< The top bar with the IP fields */
-    CSTableView* tableView; /**< The list of commands */
-    CSAlignView* mainView; /**< The main view */
-    ConfigPresetWindow* presetWindow;
-#endif
-};
+    window->setClosingCallback([this]() {
+        this->window->hide();
+        return false;
+    });
 
-#endif /* ConfigWindow_hpp */
+    tableView = new CSTableView();
+    tableView->setDataSource(new ConfigPresetTableViewDataSource(config));
+    tableView->addColumn("Presets");
+
+    window->presentView(tableView);
+}
+
+void ConfigPresetWindow::show() {
+    window->show();
+}
+
+void ConfigPresetWindow::hide() {
+    window->hide();
+}
