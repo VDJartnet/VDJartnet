@@ -74,6 +74,17 @@ public:
             throw "Column not recognised";
         }
     }
+
+    virtual bool canDragFromRow(int row) { return true; }
+    virtual bool canDropIntoRow(int row) { return true; }
+
+    virtual std::string dragStringValueFromRow(int row) {
+        return config->channelCommands[row];
+    }
+    virtual void dropStringValueInRow(int row, std::string value) {
+        config->channelCommands[row] = value;
+        config->saveConfig();
+    }
 };
 
 #endif /* ConfigTableViewDataSource_hpp */

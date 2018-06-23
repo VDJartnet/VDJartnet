@@ -36,12 +36,6 @@
     <ClCompile Include="src\ConfigWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CppStep\src\WinForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CppStep\src\WinTableViewDataSource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\CppStep\src\CSAlignView.cpp">
       <Filter>CppStep</Filter>
     </ClCompile>
@@ -69,6 +63,15 @@
     <ClCompile Include="src\CppStep\src\CSWindow.cpp">
       <Filter>CppStep</Filter>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinForm.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinTableView.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinTableViewDataSource.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Artnet.hpp">
@@ -83,9 +86,6 @@
     <ClInclude Include="src\VDJartnet.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vdjPlugin8.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,15 +93,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ConfigWindow.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CppStep\src\WinForm.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CppStep\src\WinTableViewDataSource.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\CppStep\src\CSAlignView.hpp">
@@ -143,6 +134,19 @@
     <ClInclude Include="src\CppStep\src\CSWindow.hpp">
       <Filter>CppStep</Filter>
     </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinForm.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinTableView.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinTableViewDataSource.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vdjPlugin8.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\presets.txt" />

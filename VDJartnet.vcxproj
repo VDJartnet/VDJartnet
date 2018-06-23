@@ -183,6 +183,7 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinTableView.cpp" />
     <ClCompile Include="src\CppStep\src\WinTableViewDataSource.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
@@ -229,6 +230,7 @@
     <ClInclude Include="src\CppStep\src\CSWindow.hpp" />
     <ClInclude Include="src\CppStep\src\WinForm.hpp" />
     <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp" />
+    <ClInclude Include="src\CppStep\src\WinTableView.hpp" />
     <ClInclude Include="src\CppStep\src\WinTableViewDataSource.hpp" />
     <ClInclude Include="src\Socket.hpp" />
     <ClInclude Include="src\VDJartnet.hpp" />
