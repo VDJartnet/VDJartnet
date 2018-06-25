@@ -72,7 +72,23 @@ ConfigWindow::ConfigWindow(Config* config)
     tableView->addColumn("VDJscript");
     mainView->addView(tableView, true);
 
-    window->presentView(mainView);
+    CSMenuItem* undoItem = new CSMenuItem("Undo", [this]() { /*this->undo();*/ });
+    CSMenuItem* redoItem = new CSMenuItem("Redo", [this]() { /*this->redo();*/ });
+    CSMenuItem* copyItem = new CSMenuItem("Copy", [this]() { /*this->copyRow();*/ });
+    CSMenuItem* pasteItem = new CSMenuItem("Paste", [this]() { /*this->pasteRow();*/ });
+    CSMenuItem* deleteItem = new CSMenuItem("Delete", [this]() { /*this->deleteRow();*/ });
+
+    CSSubMenu* editMenu = new CSSubMenu("Edit");
+    editMenu->addItems(undoItem,
+                       redoItem,
+                       copyItem,
+                       pasteItem,
+                       deleteItem);
+
+    CSMenuBar* menuBar = new CSMenuBar();
+    menuBar->addSubMenu(editMenu);
+
+    window->presentView(mainView, menuBar);
 }
 
 void ConfigWindow::show() {
