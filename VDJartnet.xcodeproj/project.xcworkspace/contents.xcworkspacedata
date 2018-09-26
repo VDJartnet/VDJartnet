@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "group:/Users/jonathantanner/Documents/VDJartnet/Sources/VDJartnet/src/CppStep"
-      name = "CppStep">
-      <FileRef
-         location = "group:CSAttributedString.hpp">
-      </FileRef>
-      <FileRef
-         location = "group:CSUndoManager.cpp">
-      </FileRef>
-      <FileRef
-         location = "group:README.md">
-      </FileRef>
-      <FileRef
-         location = "group:COPYING">
-      </FileRef>
-      <FileRef
-         location = "group:CSAttributedString.cpp">
-      </FileRef>
-      <FileRef
-         location = "group:CSUndoManager.hpp">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:../src/CppStep/README.md">
+   </FileRef>
    <FileRef
       location = "self:">
    </FileRef>
