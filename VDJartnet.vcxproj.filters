@@ -75,8 +75,11 @@
     <ClCompile Include="src\ConfigPresetWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSClipboard.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
     <ClCompile Include="src\CppStep\src\CSMenu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>CppStep</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +96,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigTableViewDataSource.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ConfigWindow.hpp">
@@ -159,8 +159,17 @@
     <ClInclude Include="src\ConfigPresetTableViewDataSource.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\CppStep\src\CSMenu.hpp">
+    <ClInclude Include="src\ConfigDataSource.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSMenu.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSClipboard.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSKeyCode.hpp">
+      <Filter>CppStep</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

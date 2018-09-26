@@ -44,6 +44,8 @@
 #include "CppStep/src/CSTextField.hpp"
 #include "CppStep/src/CSTableView.hpp"
 #include "CppStep/src/CSAlignView.hpp"
+#include "CppStep/src/CSMenu.hpp"
+#include "CppStep/src/CSClipboard.hpp"
 #else
 class CSWindow;
 #endif
@@ -55,6 +57,7 @@ public:
     void show(); /**< Show the window */
     void hide(); /**< Hide the window */
     void didClose(); /**< The window has been closed */
+    void copyRow();
 private:
 #ifndef CLRFREE
     Config* config; /**< A pointer to the config */

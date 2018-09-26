@@ -147,6 +147,7 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSClipboard.cpp" />
     <ClCompile Include="src\CppStep\src\CSLabel.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
@@ -238,11 +239,13 @@
     <ClInclude Include="src\Config.hpp" />
     <ClInclude Include="src\ConfigPresetTableViewDataSource.hpp" />
     <ClInclude Include="src\ConfigPresetWindow.hpp" />
-    <ClInclude Include="src\ConfigTableViewDataSource.hpp" />
+    <ClInclude Include="src\ConfigDataSource.hpp" />
     <ClInclude Include="src\ConfigWindow.hpp" />
     <ClInclude Include="src\CppStep\src\CSAlignView.hpp" />
     <ClInclude Include="src\CppStep\src\CSApp.hpp" />
+    <ClInclude Include="src\CppStep\src\CSClipboard.hpp" />
     <ClInclude Include="src\CppStep\src\CSCore.hpp" />
+    <ClInclude Include="src\CppStep\src\CSKeyCode.hpp" />
     <ClInclude Include="src\CppStep\src\CSLabel.hpp" />
     <ClInclude Include="src\CppStep\src\CSMenu.hpp" />
     <ClInclude Include="src\CppStep\src\CSRange.hpp" />

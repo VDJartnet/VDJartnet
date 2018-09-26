@@ -45,8 +45,13 @@ ConfigPresetWindow::ConfigPresetWindow(Config* config)
         return false;
     });
 
+    CSMenuItem* copyItem = new CSMenuItem("Copy", [this]() { this->copyRow(); }, CSKeyCode("C", true, false, false));
+    CSContextMenu* contextMenu = new CSContextMenu();
+    contextMenu->addItem(copyItem);
+
     tableView = new CSTableView();
     tableView->setDataSource(new ConfigPresetTableViewDataSource(config));
+    tableView->setContextMenu(contextMenu);
     tableView->addColumn("Presets");
 
     window->presentView(tableView);
@@ -58,4 +63,12 @@ void ConfigPresetWindow::show() {
 
 void ConfigPresetWindow::hide() {
     window->hide();
+}
+
+void ConfigPresetWindow::copyRow() {
+    int row = tableView->getSelectedRow();
+    if (row >= 0) {
+        CSClipboard::clear();
+        CSClipboard::setStringValue(config->getPresets()[row].preset);
+    }
 }
