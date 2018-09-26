@@ -33,13 +33,16 @@
 
 #include "ConfigWindow.hpp"
 
-ConfigWindow::ConfigWindow(Config* config)
-    : window(new CSWindow(CSRect(0, 0, 600, 600),
-                          "VDJartnetConfig",
-                          true,
-                          true)),
-      config(config),
-      presetWindow(new ConfigPresetWindow(config)) {
+ConfigWindow::ConfigWindow(Config* config) :
+    window(new CSWindow(CSRect(0, 0, 600, 600),
+                        "VDJartnetConfig",
+                        true,
+                        true)),
+    config(config) {
+    
+    undoManager = new CSUndoManager;
+    dataSource = new ConfigDataSource(config, nullptr);
+    presetWindow = new ConfigPresetWindow(config);
 
     window->setClosingCallback([this]() {
         this->window->hide();
@@ -68,15 +71,15 @@ ConfigWindow::ConfigWindow(Config* config)
     mainView->addView(ipFields, false);
 
     tableView = new CSTableView();
-    tableView->setDataSource(new ConfigTableViewDataSource(config));
+    tableView->setDataSource(dataSource);
     tableView->addColumn("VDJscript");
     mainView->addView(tableView, true);
 
-    CSMenuItem* undoItem = new CSMenuItem("Undo", [this]() { /*this->undo();*/ });
-    CSMenuItem* redoItem = new CSMenuItem("Redo", [this]() { /*this->redo();*/ });
-    CSMenuItem* copyItem = new CSMenuItem("Copy", [this]() { /*this->copyRow();*/ });
-    CSMenuItem* pasteItem = new CSMenuItem("Paste", [this]() { /*this->pasteRow();*/ });
-    CSMenuItem* deleteItem = new CSMenuItem("Delete", [this]() { /*this->deleteRow();*/ });
+    CSMenuItem* undoItem = new CSMenuItem("Undo", [this]() { this->undo(); }, CSKeyCode("Z", true, false, false));
+    CSMenuItem* redoItem = new CSMenuItem("Redo", [this]() { this->redo(); }, CSKeyCode("Z", true, false, true));
+    CSMenuItem* copyItem = new CSMenuItem("Copy", [this]() { this->copyRow(); }, CSKeyCode("E", true, false, false));
+    CSMenuItem* pasteItem = new CSMenuItem("Paste", [this]() { this->pasteRow(); }, CSKeyCode("R", true, false, false));
+    CSMenuItem* deleteItem = new CSMenuItem("Delete", [this]() { this->deleteRow(); }, CSKeyCode("D", true, false, false));
 
     CSSubMenu* editMenu = new CSSubMenu("Edit");
     editMenu->addItems(undoItem,
@@ -105,4 +108,43 @@ void ConfigWindow::updateIPaddress() {
 void ConfigWindow::updateIPport() {
     config->port = (unsigned short)std::stoi(ipPort->getText());
     config->saveConfig();
+}
+
+void ConfigWindow::undo() {
+    if (undoManager->canUndo()) {
+        undoManager->undo();
+        tableView->reload();
+    }
+}
+
+void ConfigWindow::redo() {
+    if (undoManager->canRedo()) {
+        undoManager->redo();
+        tableView->reload();
+    }
+}
+
+void ConfigWindow::copyRow() {
+    int row = tableView->getSelectedRow();
+    if (row >= 0) {
+        CSClipboard::clear();
+        CSClipboard::setStringValue(dataSource->getChannelCommand(row));
+    }
+}
+
+void ConfigWindow::pasteRow() {
+    int row = tableView->getSelectedRow();
+    if (row >= 0) {
+        dataSource->setChannelCommand(row, CSClipboard::getStringValue());
+        tableView->reload();
+    }
+}
+
+void ConfigWindow::deleteRow() {
+    int row = tableView->getSelectedRow();
+    if (row >= 0) {
+        config->channelCommands[row] = "";
+        config->saveConfig();
+        tableView->reload();
+    }
 }

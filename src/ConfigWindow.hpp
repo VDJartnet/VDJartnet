@@ -36,8 +36,9 @@
 
 #include "Config.hpp"
 
-#include "ConfigTableViewDataSource.hpp"
+#include "ConfigDataSource.hpp"
 #include "ConfigPresetWindow.hpp"
+#include "CppStep/src/CSUndoManager.hpp"
 
 #ifndef CLRFREE
 #include "CppStep/src/CSWindow.hpp"
@@ -45,6 +46,7 @@
 #include "CppStep/src/CSTextField.hpp"
 #include "CppStep/src/CSTableView.hpp"
 #include "CppStep/src/CSAlignView.hpp"
+#include "CppStep/src/CSClipboard.hpp"
 #else
 class CSWindow;
 #endif
@@ -57,10 +59,18 @@ public:
     void didClose(); /**< The window has been closed */
     void updateIPaddress(); /**< Update the IP address in the config */
     void updateIPport(); /**< Update the port in the config */
+
+    void undo();
+    void redo();
+    void copyRow();
+    void pasteRow();
+    void deleteRow();
 private:
+    CSUndoManager* undoManager;
 #ifndef CLRFREE
     Config* config; /**< A pointer to the config */
     CSWindow* window; /**< The window */
+    ConfigDataSource* dataSource;
     CSLabel* ipLabel; /**< A label for the IP address field */
     CSTextField* ipAddress; /**< The IP address field */
     CSTextField* ipPort; /**< The port field */
