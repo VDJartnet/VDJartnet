@@ -47,6 +47,7 @@
 // #endif
 #define CLRFREE
 #include "CppStep/src/CSApp.hpp"
+#include "CppStep/src/CSThread.hpp"
 #include "ConfigWindow.hpp"
 
 #include <string>

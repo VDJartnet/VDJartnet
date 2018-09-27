@@ -42,11 +42,11 @@ ConfigWindow::ConfigWindow(Config* config) :
     
     undoManager = new CSUndoManager;
     dataSource = new ConfigDataSource(config, nullptr);
-    presetWindow = new ConfigPresetWindow(config);
+    //presetWindow = new ConfigPresetWindow(config);
 
     window->setClosingCallback([this]() {
         this->window->hide();
-        presetWindow->hide();
+        //presetWindow->hide();
         return false;
     });
 
@@ -97,7 +97,7 @@ ConfigWindow::ConfigWindow(Config* config) :
 void ConfigWindow::show() {
     window->show();
     tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
-    presetWindow->show();
+    //presetWindow->show();
 }
 
 void ConfigWindow::updateIPaddress() {

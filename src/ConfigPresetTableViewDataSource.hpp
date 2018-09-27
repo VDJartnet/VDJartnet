@@ -34,7 +34,7 @@ private:
     Config* config;
 public:
     ConfigPresetTableViewDataSource(Config* config) : config(config) {}
-    virtual int numberOfRows() { return config->getPresets().size(); };
+    virtual int numberOfRows() { return (int)config->getPresets().size(); };
     virtual int numberOfColumns() { return 1; };
     virtual std::string getColumnName(int index) {
         switch (index) {
@@ -51,7 +51,7 @@ public:
     }
     virtual std::string getStringValueInCell(std::string col, int row) {
         if (col == "Presets") {
-            return config->getPresets()[row].name;
+            return config->getPresets()[(unsigned long)row].name;
         } else {
             throw "Column not recognised";
         }
@@ -61,7 +61,7 @@ public:
     virtual bool canDropIntoRow(int row) { return false; }
 
     virtual std::string dragStringValueFromRow(int row) {
-        return config->getPresets()[row].preset;
+        return config->getPresets()[(unsigned long)row].preset;
     }
 };
 

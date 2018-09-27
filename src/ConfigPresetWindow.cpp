@@ -34,7 +34,7 @@
 #include "ConfigPresetWindow.hpp"
 
 ConfigPresetWindow::ConfigPresetWindow(Config* config)
-    : window(new CSWindow(CSRect(600, 0, 300, 600),
+    : window(new CSWindow(CSRect(0, 0, 0, 0),//CSRect(600, 0, 300, 600),
                           "Presets",
                           false,
                           true)),
@@ -69,6 +69,6 @@ void ConfigPresetWindow::copyRow() {
     int row = tableView->getSelectedRow();
     if (row >= 0) {
         CSClipboard::clear();
-        CSClipboard::setStringValue(config->getPresets()[row].preset);
+        CSClipboard::setStringValue(config->getPresets()[(unsigned long)row].preset);
     }
 }

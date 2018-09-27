@@ -48,17 +48,7 @@ public:
             default: throw "Column not recognised";
         }
     }
-    virtual bool isReadOnly(std::string col)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    {
+    virtual bool isReadOnly(std::string col) {
         if (col == "Channel") {
             return true;
         } else if (col == "VDJscript") {

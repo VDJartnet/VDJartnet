@@ -7,7 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68B87A5C215BE333009A77F4 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 68B87A5B215BE333009A77F4 /* src */; };
+		68B73933215BEA240027098B /* ConfigPresetWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73930215BEA230027098B /* ConfigPresetWindow.cpp */; };
+		68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73932215BEA240027098B /* ConfigWindow.cpp */; };
+		68B73968215BEBD50027098B /* CSNSTableViewDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B73935215BEBD20027098B /* CSNSTableViewDataSource.mm */; };
+		68B73969215BEBD50027098B /* CSTextField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73936215BEBD20027098B /* CSTextField.cpp */; };
+		68B7396A215BEBD50027098B /* NSWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B7393F215BEBD20027098B /* NSWindow.mm */; };
+		68B7396B215BEBD50027098B /* NSDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B73940215BEBD20027098B /* NSDictionary.mm */; };
+		68B7396C215BEBD50027098B /* CSView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73943215BEBD30027098B /* CSView.cpp */; };
+		68B7396E215BEBD50027098B /* NSAttributedString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B73946215BEBD30027098B /* NSAttributedString.mm */; };
+		68B73971215BEBD50027098B /* CSMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73950215BEBD30027098B /* CSMenu.cpp */; };
+		68B73973215BEBD50027098B /* CSTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73955215BEBD40027098B /* CSTableView.cpp */; };
+		68B73974215BEBD50027098B /* CSWebView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73958215BEBD40027098B /* CSWebView.cpp */; };
+		68B73975215BEBD50027098B /* CSAttributedString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73959215BEBD40027098B /* CSAttributedString.cpp */; };
+		68B73976215BEBD50027098B /* CSWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B7395A215BEBD40027098B /* CSWindow.cpp */; };
+		68B73977215BEBD50027098B /* CSAlignView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B7395B215BEBD40027098B /* CSAlignView.cpp */; };
+		68B73978215BEBD50027098B /* NSTextField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B7395E215BEBD40027098B /* NSTextField.mm */; };
+		68B73979215BEBD50027098B /* CSSuperView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73960215BEBD40027098B /* CSSuperView.cpp */; };
+		68B7397A215BEBD50027098B /* CSLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73962215BEBD40027098B /* CSLabel.cpp */; };
+		68B7397B215BEBD50027098B /* CSUndoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73964215BEBD50027098B /* CSUndoManager.cpp */; };
+		68B7397C215BEBD50027098B /* NSRange.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B73965215BEBD50027098B /* NSRange.mm */; };
+		68B7397D215BEBD50027098B /* CSClipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73966215BEBD50027098B /* CSClipboard.cpp */; };
+		68B73980215C01670027098B /* NSString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B7397F215C01670027098B /* NSString.mm */; };
+		68B73982215C06280027098B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B73981215C06280027098B /* Foundation.framework */; };
+		68B73984215C062F0027098B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B73983215C062F0027098B /* WebKit.framework */; };
+		68B73989215D1A770027098B /* CSApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73988215D1A770027098B /* CSApp.cpp */; };
+		68B7398B215D1C3A0027098B /* CSThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B7398A215D1C3A0027098B /* CSThread.cpp */; };
 		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		68CF23A9209F41030072437B /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF239E209F406F0072437B /* Artnet.cpp */; };
@@ -22,7 +46,62 @@
 		6862EAA020A50C7600C41D9D /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68B87A5B215BE333009A77F4 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = CppStep/src; sourceTree = "<group>"; };
+		68B7392D215BEA230027098B /* ConfigWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWindow.hpp; sourceTree = "<group>"; };
+		68B7392E215BEA230027098B /* ConfigPresetTableViewDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetTableViewDataSource.hpp; sourceTree = "<group>"; };
+		68B7392F215BEA230027098B /* ConfigDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigDataSource.hpp; sourceTree = "<group>"; };
+		68B73930215BEA230027098B /* ConfigPresetWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigPresetWindow.cpp; sourceTree = "<group>"; };
+		68B73931215BEA240027098B /* ConfigPresetWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetWindow.hpp; sourceTree = "<group>"; };
+		68B73932215BEA240027098B /* ConfigWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigWindow.cpp; sourceTree = "<group>"; };
+		68B73935215BEBD20027098B /* CSNSTableViewDataSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CSNSTableViewDataSource.mm; path = src/CppStep/src/CSNSTableViewDataSource.mm; sourceTree = SOURCE_ROOT; };
+		68B73936215BEBD20027098B /* CSTextField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSTextField.cpp; path = src/CppStep/src/CSTextField.cpp; sourceTree = SOURCE_ROOT; };
+		68B73937215BEBD20027098B /* CSView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSView.hpp; path = src/CppStep/src/CSView.hpp; sourceTree = SOURCE_ROOT; };
+		68B73938215BEBD20027098B /* CSTableViewDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSTableViewDataSource.hpp; path = src/CppStep/src/CSTableViewDataSource.hpp; sourceTree = SOURCE_ROOT; };
+		68B73939215BEBD20027098B /* CSSuperView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSSuperView.hpp; path = src/CppStep/src/CSSuperView.hpp; sourceTree = SOURCE_ROOT; };
+		68B7393B215BEBD20027098B /* CSApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSApp.hpp; path = src/CppStep/src/CSApp.hpp; sourceTree = SOURCE_ROOT; };
+		68B7393C215BEBD20027098B /* CSRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSRect.hpp; path = src/CppStep/src/CSRect.hpp; sourceTree = SOURCE_ROOT; };
+		68B7393E215BEBD20027098B /* NSRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSRange.h; path = src/CppStep/src/NSRange.h; sourceTree = SOURCE_ROOT; };
+		68B7393F215BEBD20027098B /* NSWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSWindow.mm; path = src/CppStep/src/NSWindow.mm; sourceTree = SOURCE_ROOT; };
+		68B73940215BEBD20027098B /* NSDictionary.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSDictionary.mm; path = src/CppStep/src/NSDictionary.mm; sourceTree = SOURCE_ROOT; };
+		68B73941215BEBD20027098B /* CSTextField.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSTextField.hpp; path = src/CppStep/src/CSTextField.hpp; sourceTree = SOURCE_ROOT; };
+		68B73942215BEBD20027098B /* CSUndoManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSUndoManager.hpp; path = src/CppStep/src/CSUndoManager.hpp; sourceTree = SOURCE_ROOT; };
+		68B73943215BEBD30027098B /* CSView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSView.cpp; path = src/CppStep/src/CSView.cpp; sourceTree = SOURCE_ROOT; };
+		68B73945215BEBD30027098B /* CSWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSWindow.hpp; path = src/CppStep/src/CSWindow.hpp; sourceTree = SOURCE_ROOT; };
+		68B73946215BEBD30027098B /* NSAttributedString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSAttributedString.mm; path = src/CppStep/src/NSAttributedString.mm; sourceTree = SOURCE_ROOT; };
+		68B73947215BEBD30027098B /* CSMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSMenu.hpp; path = src/CppStep/src/CSMenu.hpp; sourceTree = SOURCE_ROOT; };
+		68B73948215BEBD30027098B /* CSClipboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSClipboard.hpp; path = src/CppStep/src/CSClipboard.hpp; sourceTree = SOURCE_ROOT; };
+		68B7394A215BEBD30027098B /* CSWebView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSWebView.hpp; path = src/CppStep/src/CSWebView.hpp; sourceTree = SOURCE_ROOT; };
+		68B7394B215BEBD30027098B /* NSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTextField.h; path = src/CppStep/src/NSTextField.h; sourceTree = SOURCE_ROOT; };
+		68B7394C215BEBD30027098B /* CSTableView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSTableView.hpp; path = src/CppStep/src/CSTableView.hpp; sourceTree = SOURCE_ROOT; };
+		68B7394D215BEBD30027098B /* CSNSTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSNSTableViewDataSource.h; path = src/CppStep/src/CSNSTableViewDataSource.h; sourceTree = SOURCE_ROOT; };
+		68B7394F215BEBD30027098B /* NSDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDictionary.h; path = src/CppStep/src/NSDictionary.h; sourceTree = SOURCE_ROOT; };
+		68B73950215BEBD30027098B /* CSMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSMenu.cpp; path = src/CppStep/src/CSMenu.cpp; sourceTree = SOURCE_ROOT; };
+		68B73952215BEBD30027098B /* CSKeyCode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSKeyCode.hpp; path = src/CppStep/src/CSKeyCode.hpp; sourceTree = SOURCE_ROOT; };
+		68B73953215BEBD30027098B /* CSAlignView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSAlignView.hpp; path = src/CppStep/src/CSAlignView.hpp; sourceTree = SOURCE_ROOT; };
+		68B73955215BEBD40027098B /* CSTableView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSTableView.cpp; path = src/CppStep/src/CSTableView.cpp; sourceTree = SOURCE_ROOT; };
+		68B73957215BEBD40027098B /* CSRange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSRange.hpp; path = src/CppStep/src/CSRange.hpp; sourceTree = SOURCE_ROOT; };
+		68B73958215BEBD40027098B /* CSWebView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSWebView.cpp; path = src/CppStep/src/CSWebView.cpp; sourceTree = SOURCE_ROOT; };
+		68B73959215BEBD40027098B /* CSAttributedString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSAttributedString.cpp; path = src/CppStep/src/CSAttributedString.cpp; sourceTree = SOURCE_ROOT; };
+		68B7395A215BEBD40027098B /* CSWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSWindow.cpp; path = src/CppStep/src/CSWindow.cpp; sourceTree = SOURCE_ROOT; };
+		68B7395B215BEBD40027098B /* CSAlignView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSAlignView.cpp; path = src/CppStep/src/CSAlignView.cpp; sourceTree = SOURCE_ROOT; };
+		68B7395C215BEBD40027098B /* CSCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSCore.hpp; path = src/CppStep/src/CSCore.hpp; sourceTree = SOURCE_ROOT; };
+		68B7395D215BEBD40027098B /* CSLabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSLabel.hpp; path = src/CppStep/src/CSLabel.hpp; sourceTree = SOURCE_ROOT; };
+		68B7395E215BEBD40027098B /* NSTextField.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSTextField.mm; path = src/CppStep/src/NSTextField.mm; sourceTree = SOURCE_ROOT; };
+		68B7395F215BEBD40027098B /* NSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSWindow.h; path = src/CppStep/src/NSWindow.h; sourceTree = SOURCE_ROOT; };
+		68B73960215BEBD40027098B /* CSSuperView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSSuperView.cpp; path = src/CppStep/src/CSSuperView.cpp; sourceTree = SOURCE_ROOT; };
+		68B73961215BEBD40027098B /* NSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSAttributedString.h; path = src/CppStep/src/NSAttributedString.h; sourceTree = SOURCE_ROOT; };
+		68B73962215BEBD40027098B /* CSLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSLabel.cpp; path = src/CppStep/src/CSLabel.cpp; sourceTree = SOURCE_ROOT; };
+		68B73963215BEBD50027098B /* CSAttributedString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSAttributedString.hpp; path = src/CppStep/src/CSAttributedString.hpp; sourceTree = SOURCE_ROOT; };
+		68B73964215BEBD50027098B /* CSUndoManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSUndoManager.cpp; path = src/CppStep/src/CSUndoManager.cpp; sourceTree = SOURCE_ROOT; };
+		68B73965215BEBD50027098B /* NSRange.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSRange.mm; path = src/CppStep/src/NSRange.mm; sourceTree = SOURCE_ROOT; };
+		68B73966215BEBD50027098B /* CSClipboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSClipboard.cpp; path = src/CppStep/src/CSClipboard.cpp; sourceTree = SOURCE_ROOT; };
+		68B73967215BEBD50027098B /* CSArbitraryView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSArbitraryView.hpp; path = src/CppStep/src/CSArbitraryView.hpp; sourceTree = SOURCE_ROOT; };
+		68B7397E215C01670027098B /* NSString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSString.h; path = src/CppStep/src/NSString.h; sourceTree = SOURCE_ROOT; };
+		68B7397F215C01670027098B /* NSString.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = NSString.mm; path = src/CppStep/src/NSString.mm; sourceTree = SOURCE_ROOT; };
+		68B73981215C06280027098B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		68B73983215C062F0027098B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		68B73986215D1A670027098B /* CSThread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSThread.hpp; path = src/CppStep/src/CSThread.hpp; sourceTree = SOURCE_ROOT; };
+		68B73988215D1A770027098B /* CSApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSApp.cpp; path = src/CppStep/src/CSApp.cpp; sourceTree = SOURCE_ROOT; };
+		68B7398A215D1C3A0027098B /* CSThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSThread.cpp; path = src/CppStep/src/CSThread.cpp; sourceTree = SOURCE_ROOT; };
 		68B8DB5B20267B8600449F10 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		68C4F73E1EACE18B007C4A7D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		68CF2381209F406F0072437B /* Artnet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Artnet.hpp; sourceTree = "<group>"; };
@@ -49,7 +128,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B73982215C06280027098B /* Foundation.framework in Frameworks */,
 				68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */,
+				68B73984215C062F0027098B /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,16 +168,83 @@
 		686A93E41E4E57FD002C7ED1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68B73983215C062F0027098B /* WebKit.framework */,
+				68B73981215C06280027098B /* Foundation.framework */,
 				68C4F73E1EACE18B007C4A7D /* AppKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		68B738EC215BE9970027098B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				68B7395B215BEBD40027098B /* CSAlignView.cpp */,
+				68B73953215BEBD30027098B /* CSAlignView.hpp */,
+				68B73988215D1A770027098B /* CSApp.cpp */,
+				68B7393B215BEBD20027098B /* CSApp.hpp */,
+				68B73967215BEBD50027098B /* CSArbitraryView.hpp */,
+				68B73959215BEBD40027098B /* CSAttributedString.cpp */,
+				68B73963215BEBD50027098B /* CSAttributedString.hpp */,
+				68B73966215BEBD50027098B /* CSClipboard.cpp */,
+				68B73948215BEBD30027098B /* CSClipboard.hpp */,
+				68B7395C215BEBD40027098B /* CSCore.hpp */,
+				68B73952215BEBD30027098B /* CSKeyCode.hpp */,
+				68B73962215BEBD40027098B /* CSLabel.cpp */,
+				68B7395D215BEBD40027098B /* CSLabel.hpp */,
+				68B73950215BEBD30027098B /* CSMenu.cpp */,
+				68B73947215BEBD30027098B /* CSMenu.hpp */,
+				68B7394D215BEBD30027098B /* CSNSTableViewDataSource.h */,
+				68B73935215BEBD20027098B /* CSNSTableViewDataSource.mm */,
+				68B73957215BEBD40027098B /* CSRange.hpp */,
+				68B7393C215BEBD20027098B /* CSRect.hpp */,
+				68B73960215BEBD40027098B /* CSSuperView.cpp */,
+				68B73939215BEBD20027098B /* CSSuperView.hpp */,
+				68B73955215BEBD40027098B /* CSTableView.cpp */,
+				68B7394C215BEBD30027098B /* CSTableView.hpp */,
+				68B73938215BEBD20027098B /* CSTableViewDataSource.hpp */,
+				68B73936215BEBD20027098B /* CSTextField.cpp */,
+				68B73941215BEBD20027098B /* CSTextField.hpp */,
+				68B7398A215D1C3A0027098B /* CSThread.cpp */,
+				68B73986215D1A670027098B /* CSThread.hpp */,
+				68B73964215BEBD50027098B /* CSUndoManager.cpp */,
+				68B73942215BEBD20027098B /* CSUndoManager.hpp */,
+				68B73943215BEBD30027098B /* CSView.cpp */,
+				68B73937215BEBD20027098B /* CSView.hpp */,
+				68B73958215BEBD40027098B /* CSWebView.cpp */,
+				68B7394A215BEBD30027098B /* CSWebView.hpp */,
+				68B7395A215BEBD40027098B /* CSWindow.cpp */,
+				68B73945215BEBD30027098B /* CSWindow.hpp */,
+				68B73961215BEBD40027098B /* NSAttributedString.h */,
+				68B73946215BEBD30027098B /* NSAttributedString.mm */,
+				68B7394F215BEBD30027098B /* NSDictionary.h */,
+				68B73940215BEBD20027098B /* NSDictionary.mm */,
+				68B7393E215BEBD20027098B /* NSRange.h */,
+				68B73965215BEBD50027098B /* NSRange.mm */,
+				68B7394B215BEBD30027098B /* NSTextField.h */,
+				68B7395E215BEBD40027098B /* NSTextField.mm */,
+				68B7395F215BEBD40027098B /* NSWindow.h */,
+				68B7393F215BEBD20027098B /* NSWindow.mm */,
+				68B7397E215C01670027098B /* NSString.h */,
+				68B7397F215C01670027098B /* NSString.mm */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		68B73919215BE9B40027098B /* CppStep */ = {
+			isa = PBXGroup;
+			children = (
+				68B738EC215BE9970027098B /* src */,
+			);
+			name = CppStep;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		68CF23A7209F406F0072437B /* src */ = {
 			isa = PBXGroup;
 			children = (
-				68B87A5B215BE333009A77F4 /* src */,
 				6862EAA020A50C7600C41D9D /* about.txt */,
+				68CF239B209F406F0072437B /* vdjPlugin8.h */,
+				68B73919215BE9B40027098B /* CppStep */,
 				68CF239E209F406F0072437B /* Artnet.cpp */,
 				68CF2381209F406F0072437B /* Artnet.hpp */,
 				68CF2396209F406F0072437B /* Config.cpp */,
@@ -107,7 +255,12 @@
 				68CF2391209F406F0072437B /* Socket.hpp */,
 				68CF2395209F406F0072437B /* VDJartnet.cpp */,
 				68CF2389209F406F0072437B /* VDJartnet.hpp */,
-				68CF239B209F406F0072437B /* vdjPlugin8.h */,
+				68B7392F215BEA230027098B /* ConfigDataSource.hpp */,
+				68B7392E215BEA230027098B /* ConfigPresetTableViewDataSource.hpp */,
+				68B73930215BEA230027098B /* ConfigPresetWindow.cpp */,
+				68B73931215BEA240027098B /* ConfigPresetWindow.hpp */,
+				68B73932215BEA240027098B /* ConfigWindow.cpp */,
+				68B7392D215BEA230027098B /* ConfigWindow.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -182,7 +335,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68B87A5C215BE333009A77F4 /* src in Resources */,
 				68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */,
 				68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */,
 			);
@@ -195,11 +347,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B73978215BEBD50027098B /* NSTextField.mm in Sources */,
+				68B7396A215BEBD50027098B /* NSWindow.mm in Sources */,
+				68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */,
+				68B73971215BEBD50027098B /* CSMenu.cpp in Sources */,
+				68B7397D215BEBD50027098B /* CSClipboard.cpp in Sources */,
+				68B7397B215BEBD50027098B /* CSUndoManager.cpp in Sources */,
+				68B73933215BEA240027098B /* ConfigPresetWindow.cpp in Sources */,
+				68B73974215BEBD50027098B /* CSWebView.cpp in Sources */,
 				68CF23A9209F41030072437B /* Artnet.cpp in Sources */,
 				68CF23AA209F41030072437B /* Config.cpp in Sources */,
+				68B73976215BEBD50027098B /* CSWindow.cpp in Sources */,
+				68B7398B215D1C3A0027098B /* CSThread.cpp in Sources */,
+				68B73969215BEBD50027098B /* CSTextField.cpp in Sources */,
 				68CF23B4209F41030072437B /* main.cpp in Sources */,
 				68CF23B5209F41030072437B /* Socket.cpp in Sources */,
+				68B73973215BEBD50027098B /* CSTableView.cpp in Sources */,
+				68B73979215BEBD50027098B /* CSSuperView.cpp in Sources */,
+				68B7396C215BEBD50027098B /* CSView.cpp in Sources */,
+				68B7396E215BEBD50027098B /* NSAttributedString.mm in Sources */,
+				68B73980215C01670027098B /* NSString.mm in Sources */,
 				68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */,
+				68B7397C215BEBD50027098B /* NSRange.mm in Sources */,
+				68B7396B215BEBD50027098B /* NSDictionary.mm in Sources */,
+				68B7397A215BEBD50027098B /* CSLabel.cpp in Sources */,
+				68B73977215BEBD50027098B /* CSAlignView.cpp in Sources */,
+				68B73989215D1A770027098B /* CSApp.cpp in Sources */,
+				68B73968215BEBD50027098B /* CSNSTableViewDataSource.mm in Sources */,
+				68B73975215BEBD50027098B /* CSAttributedString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +535,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.nixCode.VDJartnet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -380,6 +556,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.nixCode.VDJartnet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

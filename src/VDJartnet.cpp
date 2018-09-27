@@ -79,8 +79,8 @@ void CVDJartnet::init() {
     if (pollThread == nullptr) {
         pollThread = new std::thread(CVDJartnet::update);
     }
-
-    CSApp::Run();
+    
+    CSApp::Run(false);
 }
 //-----------------------------------------------------------------------------
 HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
@@ -182,7 +182,7 @@ void CVDJartnet::updateDMXvalues() {
 void CVDJartnet::setup() {
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     std::this_thread::sleep_until(start + std::chrono::seconds(1));
-    CVDJartnet::getInstance()->init();
+    CSThread::dispatchMain([](){CVDJartnet::getInstance()->init();});
 }
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::update() {
