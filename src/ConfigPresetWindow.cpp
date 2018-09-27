@@ -34,7 +34,7 @@
 #include "ConfigPresetWindow.hpp"
 
 ConfigPresetWindow::ConfigPresetWindow(Config* config)
-    : window(new CSWindow(CSRect(0, 0, 0, 0),//CSRect(600, 0, 300, 600),
+    : window(new CSWindow(CSRect(600, 0, 300, 600),
                           "Presets",
                           false,
                           true)),
@@ -50,7 +50,8 @@ ConfigPresetWindow::ConfigPresetWindow(Config* config)
     contextMenu->addItem(copyItem);
 
     tableView = new CSTableView();
-    tableView->setDataSource(new ConfigPresetTableViewDataSource(config));
+    nativeDataSource = new ConfigPresetDataSource(config);
+    tableView->setDataSource(nativeDataSource);
     tableView->setContextMenu(contextMenu);
     tableView->addColumn("Presets");
 
@@ -58,6 +59,7 @@ ConfigPresetWindow::ConfigPresetWindow(Config* config)
 }
 
 void ConfigPresetWindow::show() {
+    tableView->reload();
     window->show();
 }
 

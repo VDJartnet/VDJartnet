@@ -36,7 +36,7 @@
 
 #include "Config.hpp"
 
-#include "ConfigPresetTableViewDataSource.hpp"
+#include "ConfigPresetDataSource.hpp"
 
 #ifndef CLRFREE
 #include "CppStep/src/CSWindow.hpp"
@@ -59,6 +59,9 @@ public:
     void didClose(); /**< The window has been closed */
     void copyRow();
 private:
+#if defined(CS_Mac)
+    ConfigPresetDataSource* nativeDataSource;
+#endif
 #ifndef CLRFREE
     Config* config; /**< A pointer to the config */
     CSWindow* window; /**< The window */

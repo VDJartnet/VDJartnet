@@ -47,7 +47,7 @@
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B7392D215BEA230027098B /* ConfigWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWindow.hpp; sourceTree = "<group>"; };
-		68B7392E215BEA230027098B /* ConfigPresetTableViewDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetTableViewDataSource.hpp; sourceTree = "<group>"; };
+		68B7392E215BEA230027098B /* ConfigPresetDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetDataSource.hpp; sourceTree = "<group>"; };
 		68B7392F215BEA230027098B /* ConfigDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigDataSource.hpp; sourceTree = "<group>"; };
 		68B73930215BEA230027098B /* ConfigPresetWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigPresetWindow.cpp; sourceTree = "<group>"; };
 		68B73931215BEA240027098B /* ConfigPresetWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetWindow.hpp; sourceTree = "<group>"; };
@@ -255,10 +255,10 @@
 				68CF2391209F406F0072437B /* Socket.hpp */,
 				68CF2395209F406F0072437B /* VDJartnet.cpp */,
 				68CF2389209F406F0072437B /* VDJartnet.hpp */,
-				68B7392F215BEA230027098B /* ConfigDataSource.hpp */,
-				68B7392E215BEA230027098B /* ConfigPresetTableViewDataSource.hpp */,
+				68B7392E215BEA230027098B /* ConfigPresetDataSource.hpp */,
 				68B73930215BEA230027098B /* ConfigPresetWindow.cpp */,
 				68B73931215BEA240027098B /* ConfigPresetWindow.hpp */,
+				68B7392F215BEA230027098B /* ConfigDataSource.hpp */,
 				68B73932215BEA240027098B /* ConfigWindow.cpp */,
 				68B7392D215BEA230027098B /* ConfigWindow.hpp */,
 			);

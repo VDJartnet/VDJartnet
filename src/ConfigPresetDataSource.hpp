@@ -1,5 +1,5 @@
 //
-//  ConfigPresetTableViewDataSource.hpp
+//  ConfigPresetDataSource.hpp
 //  CppStep
 //
 //  Copyright � 2018 Jonathan Tanner. All rights reserved.
@@ -19,8 +19,8 @@
 //You should have received a copy of the GNU General Public License
 //along with CppStep.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef ConfigPresetTableViewDataSource_hpp
-#define ConfigPresetTableViewDataSource_hpp
+#ifndef ConfigPresetDataSource_hpp
+#define ConfigPresetDataSource_hpp
 
 #include "Config.hpp"
 #include "CppStep/src/CSTableViewDataSource.hpp"
@@ -29,11 +29,11 @@
 #include <utility>
 
 /** A data source for a CSTableView */
-class ConfigPresetTableViewDataSource : public CSTableViewDataSource {
+class ConfigPresetDataSource : public CSTableViewDataSource {
 private:
     Config* config;
 public:
-    ConfigPresetTableViewDataSource(Config* config) : config(config) {}
+    ConfigPresetDataSource(Config* config) : config(config) {}
     virtual int numberOfRows() { return (int)config->getPresets().size(); };
     virtual int numberOfColumns() { return 1; };
     virtual std::string getColumnName(int index) {
@@ -65,4 +65,4 @@ public:
     }
 };
 
-#endif /* ConfigPresetTableViewDataSource_hpp */
+#endif /* ConfigPresetDataSource_hpp */
