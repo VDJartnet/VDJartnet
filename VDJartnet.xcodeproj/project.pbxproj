@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		684AFE58217A5CAB0076F213 /* NSFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE57217A5CAB0076F213 /* NSFunction.mm */; };
+		684AFE5B217A6C500076F213 /* NSUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5A217A6C500076F213 /* NSUndoManager.m */; };
+		689F8B10215E767D00728F5F /* CSNSUndoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 689F8B0F215E767D00728F5F /* CSNSUndoManager.cpp */; };
 		68B73933215BEA240027098B /* ConfigPresetWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73930215BEA230027098B /* ConfigPresetWindow.cpp */; };
 		68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73932215BEA240027098B /* ConfigWindow.cpp */; };
 		68B73968215BEBD50027098B /* CSNSTableViewDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68B73935215BEBD20027098B /* CSNSTableViewDataSource.mm */; };
@@ -43,9 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		684AFE56217A5CAB0076F213 /* NSFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSFunction.h; path = src/CppStep/src/NSFunction.h; sourceTree = SOURCE_ROOT; };
+		684AFE57217A5CAB0076F213 /* NSFunction.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = NSFunction.mm; path = src/CppStep/src/NSFunction.mm; sourceTree = SOURCE_ROOT; };
+		684AFE59217A6C500076F213 /* NSUndoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSUndoManager.h; path = src/CppStep/src/NSUndoManager.h; sourceTree = SOURCE_ROOT; };
+		684AFE5A217A6C500076F213 /* NSUndoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NSUndoManager.m; path = src/CppStep/src/NSUndoManager.m; sourceTree = SOURCE_ROOT; };
 		6862EAA020A50C7600C41D9D /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		689F8B0F215E767D00728F5F /* CSNSUndoManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CSNSUndoManager.cpp; path = src/CppStep/src/CSNSUndoManager.cpp; sourceTree = SOURCE_ROOT; };
 		68B7392D215BEA230027098B /* ConfigWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWindow.hpp; sourceTree = "<group>"; };
 		68B7392E215BEA230027098B /* ConfigPresetDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetDataSource.hpp; sourceTree = "<group>"; };
 		68B7392F215BEA230027098B /* ConfigDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigDataSource.hpp; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 				68B73986215D1A670027098B /* CSThread.hpp */,
 				68B73964215BEBD50027098B /* CSUndoManager.cpp */,
 				68B73942215BEBD20027098B /* CSUndoManager.hpp */,
+				689F8B0F215E767D00728F5F /* CSNSUndoManager.cpp */,
 				68B73943215BEBD30027098B /* CSView.cpp */,
 				68B73937215BEBD20027098B /* CSView.hpp */,
 				68B73958215BEBD40027098B /* CSWebView.cpp */,
@@ -226,6 +235,10 @@
 				68B7393F215BEBD20027098B /* NSWindow.mm */,
 				68B7397E215C01670027098B /* NSString.h */,
 				68B7397F215C01670027098B /* NSString.mm */,
+				684AFE56217A5CAB0076F213 /* NSFunction.h */,
+				684AFE57217A5CAB0076F213 /* NSFunction.mm */,
+				684AFE59217A6C500076F213 /* NSUndoManager.h */,
+				684AFE5A217A6C500076F213 /* NSUndoManager.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -363,13 +376,16 @@
 				68CF23B4209F41030072437B /* main.cpp in Sources */,
 				68CF23B5209F41030072437B /* Socket.cpp in Sources */,
 				68B73973215BEBD50027098B /* CSTableView.cpp in Sources */,
+				684AFE5B217A6C500076F213 /* NSUndoManager.m in Sources */,
 				68B73979215BEBD50027098B /* CSSuperView.cpp in Sources */,
 				68B7396C215BEBD50027098B /* CSView.cpp in Sources */,
 				68B7396E215BEBD50027098B /* NSAttributedString.mm in Sources */,
+				689F8B10215E767D00728F5F /* CSNSUndoManager.cpp in Sources */,
 				68B73980215C01670027098B /* NSString.mm in Sources */,
 				68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */,
 				68B7397C215BEBD50027098B /* NSRange.mm in Sources */,
 				68B7396B215BEBD50027098B /* NSDictionary.mm in Sources */,
+				684AFE58217A5CAB0076F213 /* NSFunction.mm in Sources */,
 				68B7397A215BEBD50027098B /* CSLabel.cpp in Sources */,
 				68B73977215BEBD50027098B /* CSAlignView.cpp in Sources */,
 				68B73989215D1A770027098B /* CSApp.cpp in Sources */,
@@ -522,7 +538,7 @@
 		686A93D61E4D291B002C7ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Info.plist;
@@ -543,7 +559,7 @@
 		686A93D71E4D291B002C7ED1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Info.plist;

@@ -28,6 +28,7 @@
 
 #include <string>
 #include <utility>
+#include <functional>
 
 /** A data source for a CSTableView */
 class ConfigDataSource : public CSTableViewDataSource {
@@ -35,6 +36,7 @@ private:
     Config* config;
     CSUndoManager* undoManager;
 public:
+    std::function<void()> reloadTable = [](){};
     ConfigDataSource(Config* config,
                      CSUndoManager* undoManager) :
                      config(config),
@@ -63,11 +65,11 @@ public:
     void setChannelCommand(int row, std::string value) {
         if (undoManager != nullptr) {
             std::string oldValue = config->channelCommands[row];
-            if (value == oldValue) {
-                undoManager->registerUndoFunc(std::bind(&ConfigDataSource::setChannelCommand,
-                    this,
-                    row,
-                    oldValue));
+            if (value != oldValue) {
+                undoManager->registerUndoFunc([this, row, oldValue](){
+                    this->setChannelCommand(row, oldValue);
+                    this->reloadTable();
+                });
             }
         }
         config->channelCommands[row] = value;
@@ -76,11 +78,9 @@ public:
     virtual std::string getStringValueInCell(std::string col, int row) {
         if (col == "Channel") {
             return std::to_string(row + 1);
-        }
-        else if (col == "VDJscript") {
+        } else if (col == "VDJscript") {
             return getChannelCommand(row);
-        }
-        else {
+        } else {
             throw "Column not recognised";
         }
     }

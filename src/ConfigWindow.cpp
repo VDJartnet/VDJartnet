@@ -40,8 +40,8 @@ ConfigWindow::ConfigWindow(Config* config) :
                         true)),
     config(config) {
     
-    undoManager = new CSUndoManager;
-    dataSource = new ConfigDataSource(config, nullptr);
+    undoManager = window->undoManager();
+    dataSource = new ConfigDataSource(config, undoManager);
     presetWindow = new ConfigPresetWindow(config);
 
     window->setClosingCallback([this]() {
@@ -74,12 +74,15 @@ ConfigWindow::ConfigWindow(Config* config) :
     tableView->setDataSource(dataSource);
     tableView->addColumn("VDJscript");
     mainView->addView(tableView, true);
+        
+    dataSource->reloadTable = [this](){ tableView->reload(); };
 
-    CSMenuItem* undoItem = new CSMenuItem("Undo", [this]() { this->undo(); }, CSKeyCode("Z", true, false, false));
-    CSMenuItem* redoItem = new CSMenuItem("Redo", [this]() { this->redo(); }, CSKeyCode("Z", true, false, true));
-    CSMenuItem* copyItem = new CSMenuItem("Copy", [this]() { this->copyRow(); }, CSKeyCode("E", true, false, false));
-    CSMenuItem* pasteItem = new CSMenuItem("Paste", [this]() { this->pasteRow(); }, CSKeyCode("R", true, false, false));
-    CSMenuItem* deleteItem = new CSMenuItem("Delete", [this]() { this->deleteRow(); }, CSKeyCode("D", true, false, false));
+    CSMenuItem* undoItem = undoManager->undoMenuItem(CSKeyCode("z", true, false, false));
+    CSMenuItem* redoItem = undoManager->redoMenuItem(CSKeyCode("Z", true, false, true));
+    CSMenuItem* copyItem = new CSMenuItem("Copy", [this]() { this->copyRow(); }, CSKeyCode("c", true, false, false));
+    CSMenuItem* pasteItem = new CSMenuItem("Paste", [this]() { this->pasteRow(); }, CSKeyCode("v", true, false, false));
+    //CSMenuItem* deleteItem = new CSMenuItem("Delete", [this]() { this->deleteRow(); }, CSKeyCode("d", true, false, false));
+    CSMenuItem* deleteItem = new CSMenuItem("Delete", [this]() { this->deleteRow(); }, CSKeyCode::backspace());
 
     CSSubMenu* editMenu = new CSSubMenu("Edit");
     editMenu->addItems(undoItem,
@@ -101,6 +104,11 @@ void ConfigWindow::show() {
 }
 
 void ConfigWindow::updateIPaddress() {
+    std::string oldText = config->host;
+    undoManager->registerUndoFunc([this, oldText]() {
+        ipAddress->setText(oldText);
+        updateIPaddress();
+    });
     config->host = ipAddress->getText();
     config->saveConfig();
 }
@@ -143,8 +151,7 @@ void ConfigWindow::pasteRow() {
 void ConfigWindow::deleteRow() {
     int row = tableView->getSelectedRow();
     if (row >= 0) {
-        config->channelCommands[row] = "";
-        config->saveConfig();
+        dataSource->setChannelCommand(row, "");
         tableView->reload();
     }
 }
