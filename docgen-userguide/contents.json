@@ -10,6 +10,10 @@
 			{
 				"title": "Getting Started",
 				"source": "getting-started.md"
+			},
+			{
+				"title": "How to use with QLC+",
+				"source": "qlc.md"
 			}
 		]
 	},
