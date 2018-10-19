@@ -81,6 +81,12 @@
     <ClCompile Include="src\CppStep\src\CSMenu.cpp">
       <Filter>CppStep</Filter>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSThread.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSWebView.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Artnet.hpp">
@@ -170,6 +176,15 @@
     </ClInclude>
     <ClInclude Include="src\CppStep\src\CSKeyCode.hpp">
       <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSArbitraryView.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSThread.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSWebView.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

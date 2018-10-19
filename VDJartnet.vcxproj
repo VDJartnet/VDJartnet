@@ -147,7 +147,12 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="src\CppStep\src\CSClipboard.cpp" />
+    <ClCompile Include="src\CppStep\src\CSClipboard.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="src\CppStep\src\CSLabel.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
@@ -178,13 +183,25 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSThread.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="src\CppStep\src\CSUndoManager.cpp">
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
     <ClCompile Include="src\CppStep\src\CSView.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSWebView.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
@@ -243,6 +260,7 @@
     <ClInclude Include="src\ConfigWindow.hpp" />
     <ClInclude Include="src\CppStep\src\CSAlignView.hpp" />
     <ClInclude Include="src\CppStep\src\CSApp.hpp" />
+    <ClInclude Include="src\CppStep\src\CSArbitraryView.hpp" />
     <ClInclude Include="src\CppStep\src\CSClipboard.hpp" />
     <ClInclude Include="src\CppStep\src\CSCore.hpp" />
     <ClInclude Include="src\CppStep\src\CSKeyCode.hpp" />
@@ -254,8 +272,10 @@
     <ClInclude Include="src\CppStep\src\CSTableView.hpp" />
     <ClInclude Include="src\CppStep\src\CSTableViewDataSource.hpp" />
     <ClInclude Include="src\CppStep\src\CSTextField.hpp" />
+    <ClInclude Include="src\CppStep\src\CSThread.hpp" />
     <ClInclude Include="src\CppStep\src\CSUndoManager.hpp" />
     <ClInclude Include="src\CppStep\src\CSView.hpp" />
+    <ClInclude Include="src\CppStep\src\CSWebView.hpp" />
     <ClInclude Include="src\CppStep\src\CSWindow.hpp" />
     <ClInclude Include="src\CppStep\src\WinForm.hpp" />
     <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp" />
