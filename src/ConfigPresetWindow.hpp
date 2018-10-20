@@ -36,9 +36,8 @@
 
 #include "Config.hpp"
 
-#include "ConfigPresetDataSource.hpp"
-
 #ifndef CLRFREE
+#include "ConfigPresetDataSource.hpp"
 #include "CppStep/src/CSWindow.hpp"
 #include "CppStep/src/CSLabel.hpp"
 #include "CppStep/src/CSTextField.hpp"
@@ -47,6 +46,7 @@
 #include "CppStep/src/CSMenu.hpp"
 #include "CppStep/src/CSClipboard.hpp"
 #else
+class ConfigPresetDataSource;
 class CSWindow;
 #endif
 
@@ -59,9 +59,7 @@ public:
     void didClose(); /**< The window has been closed */
     void copyRow();
 private:
-#if defined(CS_Mac)
-    ConfigPresetDataSource* nativeDataSource;
-#endif
+    ConfigPresetDataSource* dataSource;
 #ifndef CLRFREE
     Config* config; /**< A pointer to the config */
     CSWindow* window; /**< The window */

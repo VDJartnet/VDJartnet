@@ -184,10 +184,10 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
     <ClCompile Include="src\CppStep\src\CSThread.cpp">
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
     </ClCompile>
     <ClCompile Include="src\CppStep\src\CSUndoManager.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
@@ -254,7 +254,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\Artnet.hpp" />
     <ClInclude Include="src\Config.hpp" />
-    <ClInclude Include="src\ConfigPresetTableViewDataSource.hpp" />
+    <ClInclude Include="src\ConfigPresetDataSource.hpp" />
     <ClInclude Include="src\ConfigPresetWindow.hpp" />
     <ClInclude Include="src\ConfigDataSource.hpp" />
     <ClInclude Include="src\ConfigWindow.hpp" />

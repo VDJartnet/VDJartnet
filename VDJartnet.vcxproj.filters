@@ -178,13 +178,13 @@
       <Filter>CppStep</Filter>
     </ClInclude>
     <ClInclude Include="src\CppStep\src\CSArbitraryView.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>CppStep</Filter>
     </ClInclude>
     <ClInclude Include="src\CppStep\src\CSThread.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>CppStep</Filter>
     </ClInclude>
     <ClInclude Include="src\CppStep\src\CSWebView.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>CppStep</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
