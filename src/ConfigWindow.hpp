@@ -36,18 +36,19 @@
 
 #include "Config.hpp"
 
-#include "ConfigDataSource.hpp"
 #include "ConfigPresetWindow.hpp"
-#include "CppStep/src/CSUndoManager.hpp"
 
 #ifndef CLRFREE
+#include "ConfigDataSource.hpp"
 #include "CppStep/src/CSWindow.hpp"
 #include "CppStep/src/CSLabel.hpp"
 #include "CppStep/src/CSTextField.hpp"
 #include "CppStep/src/CSTableView.hpp"
 #include "CppStep/src/CSAlignView.hpp"
 #include "CppStep/src/CSClipboard.hpp"
+#include "CppStep/src/CSUndoManager.hpp"
 #else
+class ConfigDataSource;
 class CSWindow;
 #endif
 
@@ -66,7 +67,6 @@ public:
     void pasteRow();
     void deleteRow();
 private:
-    CSUndoManager* undoManager;
 #ifndef CLRFREE
     Config* config; /**< A pointer to the config */
     CSWindow* window; /**< The window */
@@ -78,6 +78,7 @@ private:
     CSTableView* tableView; /**< The list of commands */
     CSAlignView* mainView; /**< The main view */
     ConfigPresetWindow* presetWindow;
+    CSUndoManager* undoManager;
 #endif
 };
 

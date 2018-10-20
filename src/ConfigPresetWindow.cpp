@@ -50,8 +50,8 @@ ConfigPresetWindow::ConfigPresetWindow(Config* config)
     contextMenu->addItem(copyItem);
 
     tableView = new CSTableView();
-    nativeDataSource = new ConfigPresetDataSource(config);
-    tableView->setDataSource(nativeDataSource);
+    dataSource = new ConfigPresetDataSource(config);
+    tableView->setDataSource(dataSource);
     tableView->setContextMenu(contextMenu);
     tableView->addColumn("Presets");
 

@@ -114,6 +114,11 @@ void ConfigWindow::updateIPaddress() {
 }
 
 void ConfigWindow::updateIPport() {
+    unsigned short oldPort = config->port;
+    undoManager->registerUndoFunc([this, oldPort]() {
+        ipPort->setText(std::to_string(oldPort));
+        updateIPport();
+    });
     config->port = (unsigned short)std::stoi(ipPort->getText());
     config->saveConfig();
 }
