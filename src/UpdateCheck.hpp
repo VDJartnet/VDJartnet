@@ -17,7 +17,8 @@
 
 class UpdateCheck{
 public:
-  int isLatest(); //0=latest 1=not latest 2=error
+    enum class Result { latest, notLatest, error };
+    Result isLatest(); //0=latest 1=not latest 2=error
 
 #define THISVERSION "2001:db8::1"
 #define VERSIONCHECK_HOSTNAME "versioncheck.vdjartnet.kepler22b.uk."
