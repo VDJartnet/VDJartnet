@@ -88,7 +88,7 @@ Socket::~Socket() {
 }
 
 void Socket::update_dest(std::string dhost, unsigned int dport){
-  if((set_dhost.compare(dhost)==0)&&(dport==set_dport)){
+  if(dest_valid && (set_dhost.compare(dhost)==0)&&(dport==set_dport)){
     //the structure is already valid
     return;
   }
@@ -114,6 +114,7 @@ void Socket::update_dest(std::string dhost, unsigned int dport){
 
   set_dhost = dhost;
   set_dport = dport;
+  dest_valid=1;
 }
 
 void Socket::send(std::string dhost, unsigned int dport, const void* data, int size) {

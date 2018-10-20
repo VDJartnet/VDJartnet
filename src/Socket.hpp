@@ -62,6 +62,7 @@ private:
     struct sockaddr_in dest;
     std::string set_dhost;
     unsigned int set_dport;
+    int dest_valid;
     void update_dest(std::string dhost, unsigned int dport);
 };
 
