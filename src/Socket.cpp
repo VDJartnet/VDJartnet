@@ -88,7 +88,6 @@ Socket::~Socket() {
 }
 
 void Socket::send(std::string hostS, unsigned short port, const void* data, int size) {
-    //return; // TODO: Fix function
     unsigned int host;
     if (hostS.empty()) {
         host = INADDR_ANY;
