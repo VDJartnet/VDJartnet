@@ -88,16 +88,20 @@ Socket::~Socket() {
 }
 
 void Socket::send(std::string hostS, unsigned short port, const void* data, int size) {
+    struct sockaddr_in address;
+    address.sin_family = AF_INET;
+    address.sin_port = htons(port);
+
     unsigned int host;
     if (hostS.empty()) {
-        host = INADDR_ANY;
+        address.sin_addr.s_addr = INADDR_ANY;
     }
     else {
-        host = inet_addr(hostS.c_str());
-        if (host == INADDR_NONE) {
+        address.sin_addr.s_addr = inet_addr(hostS.c_str());
+        if (address.sin_addr.s_addr == INADDR_NONE) {
             struct hostent *hostent = gethostbyname(hostS.c_str());
             if (hostent) {
-                memcpy(&host, hostent->h_addr, (size_t)hostent->h_length);
+                memcpy(&(address.sin_addr.s_addr), hostent->h_addr, (size_t)hostent->h_length);
             }
             else {
                 throw std::runtime_error("Invalid host name");
@@ -105,10 +109,7 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
         }
     }
 
-    struct sockaddr_in address;
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = host;
-    address.sin_port = htons(port);
+
 
 #ifdef _WIN32
     typedef int SSize;
