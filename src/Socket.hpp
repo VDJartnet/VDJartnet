@@ -53,12 +53,16 @@
 /** A UDP socket */
 class Socket {
 public:
-    Socket(unsigned int port, int non_blocking); /**< Construct a socket with the given source port and value of non_blocking */
+    Socket(int sport, int non_blocking); /**< Construct a socket with the given source port and value of non_blocking */
     ~Socket(); /**< Destruct the socket */
-    void send(std::string hostS, unsigned short port, const void* data, int size); /**< Send the given data to the given host and port */
+    void send(std::string dhost, unsigned int dport, const void* data, int size); /**< Send the given data to the given host and port */
 private:
     int handle; /**< The handle to the socket */
     int non_blocking; /**< Whether the socket is blocking */
+    struct sockaddr_in dest;
+    std::string set_dhost;
+    unsigned int set_dport;
+    void update_dest(std::string dhost, unsigned int dport);
 };
 
 #endif /* Socket_hpp */

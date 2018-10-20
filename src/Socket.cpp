@@ -33,7 +33,7 @@
 
 #include "Socket.hpp"
 
-Socket::Socket(unsigned int port, int non_blocking) {
+Socket::Socket(int sport, int non_blocking) {
 #ifdef _WIN32
     WSADATA wsa_data;
     if (WSAStartup(MAKEWORD(2, 2), &wsa_data) != 0) {
@@ -51,7 +51,7 @@ Socket::Socket(unsigned int port, int non_blocking) {
     struct sockaddr_in address;
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(port);
+    address.sin_port = htons(sport);
 
     if (bind(handle, (const struct sockaddr *) &address, sizeof(struct sockaddr_in)) != 0) {
         throw std::runtime_error("Failed to bind socket");
@@ -87,30 +87,36 @@ Socket::~Socket() {
 #endif
 }
 
-void Socket::send(std::string hostS, unsigned short port, const void* data, int size) {
-    struct sockaddr_in address;
-    address.sin_family = AF_INET;
-    address.sin_port = htons(port);
+void Socket::update_dest(std::string dhost, unsigned int dport){
+  if((set_dhost.compare(dhost)==0)&&(dport==set_dport)){
+    //the structure is already valid
+    return;
+  }
+  //setup the destination address structure
+  dest.sin_family = AF_INET;
+  dest.sin_port = htons(dport);
 
-    unsigned int host;
-    if (hostS.empty()) {
-        address.sin_addr.s_addr = INADDR_ANY;
-    }
-    else {
-        address.sin_addr.s_addr = inet_addr(hostS.c_str());
-        if (address.sin_addr.s_addr == INADDR_NONE) {
-            struct hostent *hostent = gethostbyname(hostS.c_str());
-            if (hostent) {
-                memcpy(&(address.sin_addr.s_addr), hostent->h_addr, (size_t)hostent->h_length);
-            }
-            else {
-                throw std::runtime_error("Invalid host name");
-            }
-        }
-    }
+  if (dhost.empty()) {
+      dest.sin_addr.s_addr = INADDR_ANY;
+  }
+  else {
+      dest.sin_addr.s_addr = inet_addr(dhost.c_str());
+      if (dest.sin_addr.s_addr == INADDR_NONE) {
+          struct hostent *hostent = gethostbyname(dhost.c_str());
+          if (hostent) {
+              memcpy(&(dest.sin_addr.s_addr), hostent->h_addr, (size_t)hostent->h_length);
+          }
+          else {
+              throw std::runtime_error("Invalid host name");
+          }
+      }
+  }
 
+  set_dhost = dhost;
+  set_dport = dport;
+}
 
-
+void Socket::send(std::string dhost, unsigned int dport, const void* data, int size) {
 #ifdef _WIN32
     typedef int SSize;
     typedef int Size;
@@ -118,7 +124,10 @@ void Socket::send(std::string hostS, unsigned short port, const void* data, int 
     typedef ssize_t SSize;
     typedef size_t Size;
 #endif
-    SSize sent_bytes = sendto(handle, (const char *) data, (Size)size, 0, (const struct sockaddr *) &address, (Size)sizeof(struct sockaddr_in));
+
+    update_dest(dhost, dport);
+
+    SSize sent_bytes = sendto(handle, (const char *) data, (Size)size, 0, (const struct sockaddr *) &dest, (Size)sizeof(struct sockaddr_in));
     if (sent_bytes != size) {
         throw std::runtime_error("Failed to send data");
     }
