@@ -16,10 +16,10 @@
 #endif
 
 class UpdateCheck{
+private:
+    const std::string currentVersion = "2001:db8::1";
+    constexpr static char const* const hostname = "versioncheck.vdjartnet.kepler22b.uk.";
 public:
     enum class Result { latest, notLatest, error };
     Result isLatest(); //0=latest 1=not latest 2=error
-
-#define THISVERSION "2001:db8::1"
-#define VERSIONCHECK_HOSTNAME "versioncheck.vdjartnet.kepler22b.uk."
 };

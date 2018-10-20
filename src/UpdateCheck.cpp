@@ -3,7 +3,7 @@
 UpdateCheck::Result UpdateCheck::isLatest(){
     struct addrinfo *ai;
 
-    int result = getaddrinfo(VERSIONCHECK_HOSTNAME, "80", NULL, &ai);
+    int result = getaddrinfo(hostname, "80", NULL, &ai);
 
     if(result != 0){
         return Result::error; //some error has occured during the lookup
@@ -36,7 +36,7 @@ UpdateCheck::Result UpdateCheck::isLatest(){
     vstring_lower.resize(vstring->length());
 
     std::transform(vstring->begin(), vstring->end(), vstring_lower.begin(), ::tolower);
-    if(vstring_lower.compare(THISVERSION)==0){
+    if(vstring_lower == currentVersion){
         return Result::latest;
     } else {
         return Result::notLatest;
