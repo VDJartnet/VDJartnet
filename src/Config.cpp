@@ -86,6 +86,11 @@ void Config::saveConfig() {
         fout << "+H " << host << ":" << port << std::endl;
         fout << "+T " << skipPacketLimit << std::endl;
         fout << "+C " << std::to_string(checkRate.count()) << std::endl;
+        //include all of the preset paths
+        for(std::set<std::string>::iterator preset = loadedPresetPaths.begin(); preset != loadedPresetPaths.end(); preset++){
+          fout << "@p "<<fout<<std:endl;
+        }
+
         for (int i = 0; i < 512; i++) {
             if (channelCommands[i] != "") {
                 fout << std::string(3 - ((unsigned long)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
@@ -129,6 +134,7 @@ void Config::parseConfigLine(std::string line){
             if (fin.is_open()) {
                 parsePresetsStream(fin);
                 fin.close();
+                loadedPresetPaths.insert(path);
             }
         }
         //finished with new file
