@@ -88,7 +88,7 @@ void Config::saveConfig() {
         fout << "+C " << std::to_string(checkRate.count()) << std::endl;
         //include all of the preset paths
         for(std::set<std::string>::iterator preset = loadedPresetPaths.begin(); preset != loadedPresetPaths.end(); preset++){
-          fout << "@p "<<*preset<<std:endl;
+          fout << "@p "<<*preset<<std::endl;
         }
 
         for (int i = 0; i < 512; i++) {
