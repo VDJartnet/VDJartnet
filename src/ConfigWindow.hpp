@@ -47,6 +47,7 @@
 #include "CppStep/src/CSAlignView.hpp"
 #include "CppStep/src/CSClipboard.hpp"
 #include "CppStep/src/CSUndoManager.hpp"
+#include "UpdateCheck.hpp"
 #else
 class ConfigDataSource;
 class CSWindow;

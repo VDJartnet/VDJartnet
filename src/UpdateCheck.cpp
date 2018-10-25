@@ -1,6 +1,9 @@
 #include "UpdateCheck.hpp"
 
-UpdateCheck::Result UpdateCheck::isLatest(){
+UpdateCheck::Result UpdateCheck::isLatest() {
+    const std::string currentVersion = "2001:db8::1";
+    constexpr char const* const hostname = "versioncheck.vdjartnet.kepler22b.uk.";
+    
     struct addrinfo *ai;
 
     int result = getaddrinfo(hostname, "80", NULL, &ai);
@@ -40,5 +43,16 @@ UpdateCheck::Result UpdateCheck::isLatest(){
         return Result::latest;
     } else {
         return Result::notLatest;
+    }
+}
+
+void UpdateCheck::check() {
+    switch (isLatest()) {
+        case Result::latest:
+            break;
+        case Result::notLatest:
+            CSDialog::show("Update available", "An update is available for VDJartnet, please upgrade as soon as possible", {});
+        case Result::error:
+            break;
     }
 }

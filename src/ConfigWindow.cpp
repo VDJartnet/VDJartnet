@@ -101,6 +101,7 @@ void ConfigWindow::show() {
     window->show();
     tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
     presetWindow->show();
+    UpdateCheck::check();
 }
 
 void ConfigWindow::updateIPaddress() {

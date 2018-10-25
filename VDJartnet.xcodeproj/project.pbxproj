@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		684AFE58217A5CAB0076F213 /* NSFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE57217A5CAB0076F213 /* NSFunction.mm */; };
 		684AFE5B217A6C500076F213 /* NSUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5A217A6C500076F213 /* NSUndoManager.m */; };
+		684AFE5E217BA47D0076F213 /* UpdateCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5D217BA47D0076F213 /* UpdateCheck.cpp */; };
+		684AFE61217BCA890076F213 /* CSDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5F217BCA890076F213 /* CSDialog.cpp */; };
 		689F8B10215E767D00728F5F /* CSNSUndoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 689F8B0F215E767D00728F5F /* CSNSUndoManager.cpp */; };
 		68B73933215BEA240027098B /* ConfigPresetWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73930215BEA230027098B /* ConfigPresetWindow.cpp */; };
 		68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73932215BEA240027098B /* ConfigWindow.cpp */; };
@@ -50,6 +52,10 @@
 		684AFE57217A5CAB0076F213 /* NSFunction.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = NSFunction.mm; path = src/CppStep/src/NSFunction.mm; sourceTree = SOURCE_ROOT; };
 		684AFE59217A6C500076F213 /* NSUndoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSUndoManager.h; path = src/CppStep/src/NSUndoManager.h; sourceTree = SOURCE_ROOT; };
 		684AFE5A217A6C500076F213 /* NSUndoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NSUndoManager.m; path = src/CppStep/src/NSUndoManager.m; sourceTree = SOURCE_ROOT; };
+		684AFE5C217BA47D0076F213 /* UpdateCheck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UpdateCheck.hpp; sourceTree = "<group>"; };
+		684AFE5D217BA47D0076F213 /* UpdateCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UpdateCheck.cpp; sourceTree = "<group>"; };
+		684AFE5F217BCA890076F213 /* CSDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CSDialog.cpp; path = src/CppStep/src/CSDialog.cpp; sourceTree = SOURCE_ROOT; };
+		684AFE60217BCA890076F213 /* CSDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CSDialog.hpp; path = src/CppStep/src/CSDialog.hpp; sourceTree = SOURCE_ROOT; };
 		6862EAA020A50C7600C41D9D /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 				68B73966215BEBD50027098B /* CSClipboard.cpp */,
 				68B73948215BEBD30027098B /* CSClipboard.hpp */,
 				68B7395C215BEBD40027098B /* CSCore.hpp */,
+				684AFE5F217BCA890076F213 /* CSDialog.cpp */,
+				684AFE60217BCA890076F213 /* CSDialog.hpp */,
 				68B73952215BEBD30027098B /* CSKeyCode.hpp */,
 				68B73962215BEBD40027098B /* CSLabel.cpp */,
 				68B7395D215BEBD40027098B /* CSLabel.hpp */,
@@ -274,6 +282,8 @@
 				68B7392F215BEA230027098B /* ConfigDataSource.hpp */,
 				68B73932215BEA240027098B /* ConfigWindow.cpp */,
 				68B7392D215BEA230027098B /* ConfigWindow.hpp */,
+				684AFE5D217BA47D0076F213 /* UpdateCheck.cpp */,
+				684AFE5C217BA47D0076F213 /* UpdateCheck.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -361,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B73978215BEBD50027098B /* NSTextField.mm in Sources */,
+				684AFE5E217BA47D0076F213 /* UpdateCheck.cpp in Sources */,
 				68B7396A215BEBD50027098B /* NSWindow.mm in Sources */,
 				68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */,
 				68B73971215BEBD50027098B /* CSMenu.cpp in Sources */,
@@ -373,6 +384,7 @@
 				68B73976215BEBD50027098B /* CSWindow.cpp in Sources */,
 				68B7398B215D1C3A0027098B /* CSThread.cpp in Sources */,
 				68B73969215BEBD50027098B /* CSTextField.cpp in Sources */,
+				684AFE61217BCA890076F213 /* CSDialog.cpp in Sources */,
 				68CF23B4209F41030072437B /* main.cpp in Sources */,
 				68CF23B5209F41030072437B /* Socket.cpp in Sources */,
 				68B73973215BEBD50027098B /* CSTableView.cpp in Sources */,
