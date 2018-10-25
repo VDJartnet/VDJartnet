@@ -163,7 +163,9 @@ void CVDJartnet::updateDMXvalues() {
 
                 if(resultInt<0){
                   resultInt=0;
-                }else if(resultInt>255){
+                }
+
+                if(resultInt>255){
                   resultInt=255;
                 }
 
