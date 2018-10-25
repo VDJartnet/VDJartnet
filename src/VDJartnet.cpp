@@ -79,7 +79,7 @@ void CVDJartnet::init() {
     if (pollThread == nullptr) {
         pollThread = new std::thread(CVDJartnet::update);
     }
-    
+
     CSApp::Run(false);
 }
 //-----------------------------------------------------------------------------
@@ -156,15 +156,20 @@ void CVDJartnet::updateDMXvalues() {
         for (int i = 0; i < 512; i++) {
             if (!config->channelCommands[i].empty()) {
                 double resultDouble = -1;
-                SendCommand("set $VDJartnetSend 256");
+                SendCommand("set $VDJartnetSend 0");
                 SendCommand(config->channelCommands[i].c_str());
                 GetInfo("get_var $VDJartnetSend", &resultDouble);
                 int resultInt = (int)round(resultDouble);
-                if (resultInt >= 0 && resultInt <= 255) {
-                    updated = artnet.setChannel(i, (uint8_t)resultInt);
-                } else {
-                    updated = artnet.setChannel(i, 0);
+
+                if(resultInt<0){
+                  resultInt=0;
                 }
+
+                if(resultInt>255){
+                  resultInt=255;
+                }
+
+                updated = artnet.setChannel(i, (uint8_t)resultInt);
             } else {
                 updated = artnet.setChannel(i, 0);
             }
