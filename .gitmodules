@@ -3,4 +3,4 @@
 	url = https://github.com/CppStep/CppStep.git
 [submodule "StringLinker"]
 	path = StringLinker
-	url = git@github.com:nixCodeX/StringLinker.git
+	url = https://github.com/nixCodeX/StringLinker.git
