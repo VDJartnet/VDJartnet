@@ -32,6 +32,7 @@
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
 #include "Config.hpp"
+#include "defaultPresets.h"
 
 Config::Config(std::string configPathTMP) {
     configPath = configPathTMP;
@@ -51,15 +52,17 @@ void Config::loadConfig() {
     }
     presets.clear();
     parseConfigFile(fin);
-    loadPresetPresets();
+    loadDefaultPresets();
 }
 
-void Config::loadPresetPresets() {
+void Config::loadDefaultPresets() {
+    /*
     std::string presetPresets =
 #include "presets.txt"
     ;
-    std::istringstream presetPresetsStream(presetPresets);
-    parsePresetsStream(presetPresetsStream);
+    */
+    std::istringstream defaultPresetsStream(defaultPresets());
+    parsePresetsStream(defaultPresetsStream);
 }
 
 void Config::parsePresetsStream(std::istream& stin) {

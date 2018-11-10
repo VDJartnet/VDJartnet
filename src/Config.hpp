@@ -111,7 +111,7 @@ private:
     int skipPacketLimit = 20; /**< The number of identical packets to be skipped before resending */
     std::chrono::milliseconds checkRate = std::chrono::milliseconds(10); /**< The time between requests to VirtualDJ */
 
-    void loadPresetPresets(); /**< Load the pre compiled presets */
+    void loadDefaultPresets(); /**< Load the pre compiled presets */
     void parsePresetsStream(std::istream& fin); /**< Parse the given stream for presets */
     void parsePresetsLine(std::string line); /**< Parse the given string for a preset. A ~ should be used between the name and the command. */
 
