@@ -38,6 +38,7 @@
 
 #include <string>
 #include <vector>
+#include <array>
 #include <fstream>
 #include <sstream>
 #include <chrono>
@@ -46,20 +47,52 @@
 
 #include <iostream>
 
-/** A preset representing a common entry in the config file */
-struct Preset {
-    std::string name; /**< The name to be shown in the list of presets */
-    std::string preset; /**< The command to be used when the preset is dragged to the config file */
-};
-
 /** A config parser and writer */
 class Config {
 public:
-    std::string channelCommands[512]; /**< The list of commands to be sent to VirtualDJ */
+    /** A preset representing a common entry in the config file */
+    struct Command {
+        std::string name; /**< The name to be shown */
+        std::string command; /**< The command to be used */
+        
+        Command(std::string name, std::string command) : name(name), command(command) {}
+        Command() : Command("", "") {}
+        explicit Command(std::string line) {
+            std::size_t delimPos = line.find('~');
+            if (delimPos == std::string::npos) {
+                name = "";
+                command = line;
+            } else {
+                name = line.substr(0, delimPos);
+                command = line.substr(delimPos + 1, std::string::npos);
+            }
+        }
+        
+        std::string toShow() const {
+            if (name == "") {
+                return command;
+            } else {
+                return name;
+            }
+        }
+        
+        std::string toLine() const {
+            return name + '~' + command;
+        }
+        
+        inline bool operator == (const Command& that) const {
+            return this->name == that.name && this->command == that.command;
+        }
+        inline bool operator != (const Command& that) const {
+            return !(*this == that);
+        }
+    };
+    
+    std::array<Command, 512> channelCommands; /**< The list of commands to be sent to VirtualDJ */
     std::string host = "127.0.0.1"; /**< The host to which the Art-Net data should be sent */
     unsigned short port = 0x1936; /**< The port on which the Art-Net data should be sent */
 
-    std::vector<Preset> const& getPresets() { return presets; } /**< Get the list of presets */
+    std::vector<Command> const& getPresets() { return presets; } /**< Get the list of presets */
 
     int getSkipPacketLimit() { return skipPacketLimit; } /**< Get the number of identical packets to be skipped before resending */
     std::chrono::milliseconds getCheckRate() { return checkRate; } /**< Get the time between requests to VirtualDJ */
@@ -71,7 +104,7 @@ public:
 private:
     std::string configPath; /**< The config file to parse */
 
-    std::vector<Preset> presets; /**< The list of presets */
+    std::vector<Command> presets; /**< The list of presets */
 
     std::set<std::string> loadedConfigPaths; /**< The set of config files already parsed. This is used to prevent an infinite loop. */
     std::set<std::string> loadedPresetPaths; /**The set of preset files loaded, tracked so that they can be insterted into the saved config file**/

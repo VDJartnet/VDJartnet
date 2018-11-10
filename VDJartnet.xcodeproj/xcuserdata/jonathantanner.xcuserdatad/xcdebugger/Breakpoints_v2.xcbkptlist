@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/ConfigPresetWindow.cpp"
-            timestampString = "559781689.653214"
+            filePath = "src/CppStep/src/CSNSTableViewDataSource.mm"
+            timestampString = "562165814.824216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "ConfigPresetWindow::show()"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-stringForObjectValue:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/ConfigPresetTableViewDataSource.hpp"
-            timestampString = "559761821.033862"
+            filePath = "src/CppStep/src/CSNSTableViewDataSource.mm"
+            timestampString = "562165814.824909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "getStringValueInCell(std::string col, int row)"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-tableView:objectValueForTableColumn:row:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/CppStep/src/CSUndoManager.cpp"
-            timestampString = "561663873.70797"
+            filePath = "src/CppStep/src/CSNSTableViewDataSource.mm"
+            timestampString = "562165814.825197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "CSUndoManager::undo()"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-tableView:dataCellForTableColumn:row:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,29 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/CppStep/src/CSUndoManager.cpp"
-            timestampString = "561663873.708048"
+            filePath = "src/CppStep/src/CSNSTableViewDataSource.mm"
+            timestampString = "562165814.825461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "CSUndoManager::registerUndoFunc(std::function&lt;void()&gt; f)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/CppStep/src/CSUndoManager.cpp"
-            timestampString = "561663873.708107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "CSUndoManager::redo()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-editingStringForObjectValue:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

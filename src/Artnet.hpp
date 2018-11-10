@@ -39,7 +39,7 @@
 /** A class to send Art-Net data */
 class Artnet {
 public:
-    bool setChannel(int channel, uint8_t value); /**< Set a given DMX channel to a given value */
+    bool setChannel(std::size_t channel, uint8_t value); /**< Set a given DMX channel to a given value */
     void sendArtnetPacket(std::string host, unsigned short port); /**< Send an Art-Net packet to the given address */
 
 private:

@@ -11,6 +11,7 @@
 		684AFE5B217A6C500076F213 /* NSUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5A217A6C500076F213 /* NSUndoManager.m */; };
 		684AFE5E217BA47D0076F213 /* UpdateCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5D217BA47D0076F213 /* UpdateCheck.cpp */; };
 		684AFE61217BCA890076F213 /* CSDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 684AFE5F217BCA890076F213 /* CSDialog.cpp */; };
+		68873C642181EB40007FF342 /* NSPair.mm in Sources */ = {isa = PBXBuildFile; fileRef = 68873C622181EB3F007FF342 /* NSPair.mm */; };
 		689F8B10215E767D00728F5F /* CSNSUndoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 689F8B0F215E767D00728F5F /* CSNSUndoManager.cpp */; };
 		68B73933215BEA240027098B /* ConfigPresetWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73930215BEA230027098B /* ConfigPresetWindow.cpp */; };
 		68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73932215BEA240027098B /* ConfigWindow.cpp */; };
@@ -59,6 +60,8 @@
 		6862EAA020A50C7600C41D9D /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		686A93CF1E4D291B002C7ED1 /* VDJartnet.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VDJartnet.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A93D21E4D291B002C7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68873C622181EB3F007FF342 /* NSPair.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSPair.mm; path = src/CppStep/src/NSPair.mm; sourceTree = SOURCE_ROOT; };
+		68873C632181EB40007FF342 /* NSPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSPair.h; path = src/CppStep/src/NSPair.h; sourceTree = SOURCE_ROOT; };
 		689F8B0F215E767D00728F5F /* CSNSUndoManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CSNSUndoManager.cpp; path = src/CppStep/src/CSNSUndoManager.cpp; sourceTree = SOURCE_ROOT; };
 		68B7392D215BEA230027098B /* ConfigWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigWindow.hpp; sourceTree = "<group>"; };
 		68B7392E215BEA230027098B /* ConfigPresetDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigPresetDataSource.hpp; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				68B7397F215C01670027098B /* NSString.mm */,
 				684AFE56217A5CAB0076F213 /* NSFunction.h */,
 				684AFE57217A5CAB0076F213 /* NSFunction.mm */,
+				68873C632181EB40007FF342 /* NSPair.h */,
+				68873C622181EB3F007FF342 /* NSPair.mm */,
 				684AFE59217A6C500076F213 /* NSUndoManager.h */,
 				684AFE5A217A6C500076F213 /* NSUndoManager.m */,
 			);
@@ -372,6 +377,7 @@
 			files = (
 				68B73978215BEBD50027098B /* NSTextField.mm in Sources */,
 				684AFE5E217BA47D0076F213 /* UpdateCheck.cpp in Sources */,
+				68873C642181EB40007FF342 /* NSPair.mm in Sources */,
 				68B7396A215BEBD50027098B /* NSWindow.mm in Sources */,
 				68B73934215BEA240027098B /* ConfigWindow.cpp in Sources */,
 				68B73971215BEBD50027098B /* CSMenu.cpp in Sources */,

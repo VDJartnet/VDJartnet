@@ -59,12 +59,12 @@ public:
             throw "Column not recognised";
         }
     }
-    std::string getChannelCommand(int row) {
+    Config::Command getChannelCommand(std::size_t row) {
         return config->channelCommands[row];
     }
-    void setChannelCommand(int row, std::string value) {
+    void setChannelCommand(std::size_t row, Config::Command value) {
         if (undoManager != nullptr) {
-            std::string oldValue = config->channelCommands[row];
+            Config::Command oldValue = config->channelCommands[row];
             if (value != oldValue) {
                 undoManager->registerUndoFunc([this, row, oldValue](){
                     this->setChannelCommand(row, oldValue);
@@ -75,33 +75,37 @@ public:
         config->channelCommands[row] = value;
         config->saveConfig();
     }
-    virtual std::string getStringValueInCell(std::string col, int row) {
+    virtual std::string getStringValueInCell(std::string col, std::size_t row, bool editing) {
         if (col == "Channel") {
             return std::to_string(row + 1);
         } else if (col == "VDJscript") {
-            return getChannelCommand(row);
+            if (editing) {
+                return getChannelCommand(row).toLine();
+            } else {
+                return getChannelCommand(row).toShow();
+            }
         } else {
             throw "Column not recognised";
         }
     }
-    virtual void setStringValueInCell(std::string col, int row, std::string value) {
+    virtual void setStringValueInCell(std::string col, std::size_t row, std::string value) {
         if (col == "Channel") {
             throw "Cannot set channel - read only";
         } else if (col == "VDJscript") {
-            setChannelCommand(row, value);
+            setChannelCommand(row, Config::Command(value));
         } else {
             throw "Column not recognised";
         }
     }
 
-    virtual bool canDragFromRow(int row) { return true; }
-    virtual bool canDropIntoRow(int row) { return true; }
+    virtual bool canDragFromRow(std::size_t row) { return true; }
+    virtual bool canDropIntoRow(std::size_t row) { return true; }
 
-    virtual std::string dragStringValueFromRow(int row) {
-        return getChannelCommand(row);
+    virtual std::string dragStringValueFromRow(std::size_t row) {
+        return getChannelCommand(row).toLine();
     }
-    virtual void dropStringValueInRow(int row, std::string value) {
-        setChannelCommand(row, value);
+    virtual void dropStringValueInRow(std::size_t row, std::string value) {
+        setChannelCommand(row, Config::Command(value));
     }
 };
 

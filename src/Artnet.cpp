@@ -33,7 +33,7 @@
 
 #include "Artnet.hpp"
 
-bool Artnet::setChannel(int channel, uint8_t value) {
+bool Artnet::setChannel(std::size_t channel, uint8_t value) {
     if (channel >= 0 && channel < 512) {
         if (packet.data[channel] != value) {
             packet.data[channel] = value;

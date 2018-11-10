@@ -49,19 +49,19 @@ public:
             throw "Column not recognised";
         }
     }
-    virtual std::string getStringValueInCell(std::string col, int row) {
+    virtual std::string getStringValueInCell(std::string col, std::size_t row, bool editing) {
         if (col == "Presets") {
-            return config->getPresets()[(unsigned long)row].name;
+            return config->getPresets()[row].toShow();
         } else {
             throw "Column not recognised";
         }
     }
 
-    virtual bool canDragFromRow(int row) { return true; }
-    virtual bool canDropIntoRow(int row) { return false; }
+    virtual bool canDragFromRow(std::size_t row) { return true; }
+    virtual bool canDropIntoRow(std::size_t row) { return false; }
 
-    virtual std::string dragStringValueFromRow(int row) {
-        return config->getPresets()[(unsigned long)row].preset;
+    virtual std::string dragStringValueFromRow(std::size_t row) {
+        return config->getPresets()[(std::size_t)row].command;
     }
 };
 

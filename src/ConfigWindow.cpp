@@ -139,25 +139,25 @@ void ConfigWindow::redo() {
 }
 
 void ConfigWindow::copyRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
         CSClipboard::clear();
-        CSClipboard::setStringValue(dataSource->getChannelCommand(row));
+        CSClipboard::setStringValue(dataSource->getChannelCommand(row).toLine());
     }
 }
 
 void ConfigWindow::pasteRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
-        dataSource->setChannelCommand(row, CSClipboard::getStringValue());
+        dataSource->setChannelCommand(row, Config::Command(CSClipboard::getStringValue()));
         tableView->reload();
     }
 }
 
 void ConfigWindow::deleteRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
-        dataSource->setChannelCommand(row, "");
+        dataSource->setChannelCommand(row, Config::Command());
         tableView->reload();
     }
 }
