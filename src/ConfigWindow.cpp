@@ -101,6 +101,7 @@ ConfigWindow::ConfigWindow(Config* config) :
 void ConfigWindow::show() {
     window->show();
     //tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
+    tableView->reload();
     presetWindow->show();
     UpdateCheck::check();
     //CSDialog::show("title", "message", { "a", "b", "c" });
