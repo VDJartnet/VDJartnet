@@ -153,11 +153,11 @@ void CVDJartnet::updateDMXvalues() {
     if (m_Enable == 1) {
         bool updated = false;
 
-        for (int i = 0; i < 512; i++) {
-            if (!config->channelCommands[i].empty()) {
+        for (std::size_t i = 0; i < 512; i++) {
+            if (!config->channelCommands[i].command.empty()) {
                 double resultDouble = -1;
                 SendCommand("set $VDJartnetSend 0");
-                SendCommand(config->channelCommands[i].c_str());
+                SendCommand(config->channelCommands[i].command.c_str());
                 GetInfo("get_var $VDJartnetSend", &resultDouble);
                 int resultInt = (int)round(resultDouble);
                 if (resultInt < 0) {

@@ -42,8 +42,8 @@ Config::Config(std::string configPathTMP) {
 void Config::loadConfig() {
     std::ifstream fin(configPath);
     if (fin.is_open()) {
-        for (int i = 0; i < 512; i++) {
-            channelCommands[i].clear();
+        for (std::size_t i = 0; i < 512; i++) {
+            channelCommands[i] = {"", ""};
         }
 
         //this file has been loaded mark it as loaded to prevent looping
@@ -73,11 +73,7 @@ void Config::parsePresetsStream(std::istream& stin) {
 }
 
 void Config::parsePresetsLine(std::string line) {
-    size_t delimPos = line.find("~");
-    Preset preset;
-    preset.name = line.substr(0, delimPos);
-    preset.preset = line.substr(delimPos + 1, std::string::npos);
-    presets.push_back(preset);
+    presets.push_back(Command(line));
 }
 
 void Config::saveConfig() {
@@ -91,9 +87,9 @@ void Config::saveConfig() {
           fout << "@p "<<*preset<<std::endl;
         }
 
-        for (int i = 0; i < 512; i++) {
-            if (channelCommands[i] != "") {
-                fout << std::string(3 - ((unsigned long)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i] << std::endl;
+        for (std::size_t i = 0; i < 512; i++) {
+            if (channelCommands[i].command != "") {
+                fout << std::string(3 - ((unsigned long)floor(std::log10(i + 1)) + 1),'0') << std::to_string(i + 1) << '~' << channelCommands[i].name << '~' << channelCommands[i].command << std::endl;
             }
         }
         fout.close();
@@ -179,12 +175,12 @@ void Config::parseConfigLine(std::string line){
     }
 
     //line does not match any special command line so assume it is a channel definition
-    size_t delimPos = line.find('~');
+    std::size_t delimPos = line.find('~');
     std::string channelNoS = line.substr(0, delimPos);
     if ((channelNoS.find_first_not_of("0123456789") == std::string::npos)) {
-        int channelNo = stoi(channelNoS) - 1;
-        if (channelNo < 512 && channelNo >= 0) {
-            channelCommands[channelNo] = line.substr(delimPos + 1, std::string::npos);
+        std::size_t channelNo = stoul(channelNoS) - 1;
+        if (channelNo >= 0 && channelNo < 512) {
+            channelCommands[channelNo] = Command(line.substr(delimPos + 1, std::string::npos));
         }
     }
 }

@@ -53,7 +53,7 @@ ConfigPresetWindow::ConfigPresetWindow(Config* config)
     dataSource = new ConfigPresetDataSource(config);
     tableView->setDataSource(dataSource);
     tableView->setContextMenu(contextMenu);
-    tableView->addColumn("Presets");
+    //tableView->addColumn("Presets");
 
     window->presentView(tableView);
 }
@@ -68,9 +68,9 @@ void ConfigPresetWindow::hide() {
 }
 
 void ConfigPresetWindow::copyRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
         CSClipboard::clear();
-        CSClipboard::setStringValue(config->getPresets()[(unsigned long)row].preset);
+        CSClipboard::setStringValue(config->getPresets()[row].command);
     }
 }

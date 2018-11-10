@@ -72,7 +72,8 @@ ConfigWindow::ConfigWindow(Config* config) :
 
     tableView = new CSTableView();
     tableView->setDataSource(dataSource);
-    tableView->addColumn("VDJscript");
+    //tableView->addColumn("Name");
+    //tableView->addColumn("VDJscript");
     mainView->addView(tableView, true);
         
     dataSource->reloadTable = [this](){ tableView->reload(); };
@@ -99,7 +100,7 @@ ConfigWindow::ConfigWindow(Config* config) :
 
 void ConfigWindow::show() {
     window->show();
-    tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
+    //tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
     presetWindow->show();
     UpdateCheck::check();
     //CSDialog::show("title", "message", { "a", "b", "c" });
@@ -140,25 +141,25 @@ void ConfigWindow::redo() {
 }
 
 void ConfigWindow::copyRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
         CSClipboard::clear();
-        CSClipboard::setStringValue(dataSource->getChannelCommand(row));
+        CSClipboard::setStringValue(dataSource->getChannelCommand(row).toLine());
     }
 }
 
 void ConfigWindow::pasteRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
-        dataSource->setChannelCommand(row, CSClipboard::getStringValue());
+        dataSource->setChannelCommand(row, Config::Command(CSClipboard::getStringValue()));
         tableView->reload();
     }
 }
 
 void ConfigWindow::deleteRow() {
-    int row = tableView->getSelectedRow();
+    std::size_t row = tableView->getSelectedRow();
     if (row >= 0) {
-        dataSource->setChannelCommand(row, "");
+        dataSource->setChannelCommand(row, Config::Command());
         tableView->reload();
     }
 }
