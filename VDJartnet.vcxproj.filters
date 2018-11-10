@@ -210,11 +210,6 @@
     <Text Include="src\about.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Presets.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
 </Project>

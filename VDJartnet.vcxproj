@@ -326,9 +326,6 @@
     <Text Include="src\presets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Presets.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

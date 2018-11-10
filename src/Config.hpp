@@ -49,14 +49,14 @@
 
 #include <iostream>
 
+/*
 #if defined(CS_Mac)
 #elif defined(CS_Win)
 #ifndef CLRFREE
 #include "CppStep/src/WinString.hpp"
-//#using <System.Resources.ResourceManager.dll>
-#using <System.Resources>
 #endif
 #endif
+*/
 
 /** A config parser and writer */
 class Config {
