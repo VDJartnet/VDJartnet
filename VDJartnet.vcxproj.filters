@@ -110,9 +110,6 @@
     <ClInclude Include="src\VDJartnet.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\ConfigWindow.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -204,9 +201,20 @@
     <ClInclude Include="src\CppStep\src\WinString.hpp">
       <Filter>CppStep</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\presets.txt" />
     <Text Include="src\about.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Presets.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

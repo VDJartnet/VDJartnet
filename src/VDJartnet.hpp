@@ -34,6 +34,8 @@
 #ifndef VDJartnet_hpp
 #define VDJartnet_hpp
 
+#define CLRFREE
+
 #include "vdjPlugin8.h"
 
 #include "Artnet.hpp"
@@ -45,7 +47,6 @@
 // #define CLRFREE
 // #include "ConfigNativeWin.hpp"
 // #endif
-#define CLRFREE
 #include "CppStep/src/CSApp.hpp"
 #include "CppStep/src/CSThread.hpp"
 #include "ConfigWindow.hpp"

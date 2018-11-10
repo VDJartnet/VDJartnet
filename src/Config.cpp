@@ -55,9 +55,13 @@ void Config::loadConfig() {
 }
 
 void Config::loadPresetPresets() {
+#if defined(CS_Mac)
     std::string presetPresets =
 #include "presets.txt"
     ;
+#elif defined(CS_Win)
+    std::string presetPresets = WinString::toStdString(System::Resources::GetString("IDR_PRESETS1"));
+#endif
     std::istringstream presetPresetsStream(presetPresets);
     parsePresetsStream(presetPresetsStream);
 }
