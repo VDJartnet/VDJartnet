@@ -1,4 +1,4 @@
-R"~~~(Is Playing~play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
+Is Playing~play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
 Is Not Playing~play ? set $VDJartnetsend 0 : set $VDJartnetsend 255
 Deck 1 Playing~deck 1 play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
 Deck 2 Playing~deck 2 play ? set $VDJartnetsend 255 : set $VDJartnetsend 0
@@ -17,4 +17,3 @@ Cue 007~var $artnet 7 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
 Cue 008~var $artnet 8 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
 Cue 009~var $artnet 9 ? set $VDJartnetsend 255 : set $VDJartnetsend 0
 Cue 1 if deck is active & faded up~var artnet 1 ? is_audible deck active ? set $VDJartnetSend 255 : set $VDJartnetSend 0 : set $VDJartnetSend 0
-)~~~"

@@ -39,6 +39,7 @@
 		68B73989215D1A770027098B /* CSApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B73988215D1A770027098B /* CSApp.cpp */; };
 		68B7398B215D1C3A0027098B /* CSThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68B7398A215D1C3A0027098B /* CSThread.cpp */; };
 		68B8DB5C20267B8600449F10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B8DB5B20267B8600449F10 /* Localizable.strings */; };
+		68C4D4CD2197772600C11C73 /* defaultPresets.txt in Sources */ = {isa = PBXBuildFile; fileRef = 68CF23A5209F406F0072437B /* defaultPresets.txt */; };
 		68C4F73F1EACE18B007C4A7D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4F73E1EACE18B007C4A7D /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		68CF23A9209F41030072437B /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF239E209F406F0072437B /* Artnet.cpp */; };
 		68CF23AA209F41030072437B /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2396209F406F0072437B /* Config.cpp */; };
@@ -47,6 +48,20 @@
 		68CF23B6209F41030072437B /* VDJartnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68CF2395209F406F0072437B /* VDJartnet.cpp */; };
 		68F9E8621F981E11002F8CEF /* VDJartnet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F9E85F1F981E0F002F8CEF /* VDJartnet.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		68C4D4CC2197762A00C11C73 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.txt";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).o",
+			);
+			script = "cd $PROJECT_DIR/StringLinker\nghc stringLinker.hs\ncd $DERIVED_FILE_DIR\n$PROJECT_DIR/StringLinker/stringLinker -i $INPUT_FILE_PATH\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		684AFE56217A5CAB0076F213 /* NSFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSFunction.h; path = src/CppStep/src/NSFunction.h; sourceTree = SOURCE_ROOT; };
@@ -131,7 +146,7 @@
 		68CF239B209F406F0072437B /* vdjPlugin8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vdjPlugin8.h; sourceTree = "<group>"; };
 		68CF239E209F406F0072437B /* Artnet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Artnet.cpp; sourceTree = "<group>"; };
 		68CF23A1209F406F0072437B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		68CF23A5209F406F0072437B /* presets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = presets.txt; sourceTree = "<group>"; };
+		68CF23A5209F406F0072437B /* defaultPresets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = defaultPresets.txt; sourceTree = "<group>"; };
 		68F9E84E1F981DAA002F8CEF /* ReadmeDlg.wxs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReadmeDlg.wxs; sourceTree = "<group>"; };
 		68F9E84F1F981DAE002F8CEF /* buildPackageWin.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = buildPackageWin.bat; sourceTree = "<group>"; };
 		68F9E8501F981DAE002F8CEF /* buildPackageMac.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildPackageMac.sh; sourceTree = "<group>"; };
@@ -276,7 +291,7 @@
 				68CF2396209F406F0072437B /* Config.cpp */,
 				68CF238B209F406F0072437B /* Config.hpp */,
 				68CF23A1209F406F0072437B /* main.cpp */,
-				68CF23A5209F406F0072437B /* presets.txt */,
+				68CF23A5209F406F0072437B /* defaultPresets.txt */,
 				68CF2386209F406F0072437B /* Socket.cpp */,
 				68CF2391209F406F0072437B /* Socket.hpp */,
 				68CF2395209F406F0072437B /* VDJartnet.cpp */,
@@ -318,6 +333,7 @@
 				686A93CD1E4D2919002C7ED1 /* Resources */,
 			);
 			buildRules = (
+				68C4D4CC2197762A00C11C73 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -375,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C4D4CD2197772600C11C73 /* defaultPresets.txt in Sources */,
 				68B73978215BEBD50027098B /* NSTextField.mm in Sources */,
 				684AFE5E217BA47D0076F213 /* UpdateCheck.cpp in Sources */,
 				68873C642181EB40007FF342 /* NSPair.mm in Sources */,
