@@ -49,7 +49,7 @@ public:
             throw "Column not recognised";
         }
     }
-    virtual std::string getStringValueInCell(std::string col, std::size_t row, bool editing) {
+    virtual std::string getStringValueInCell(std::string col, std::size_t row) {
         if (col == "Presets") {
             return config->getPresets()[row].toShow();
         } else {
@@ -61,7 +61,7 @@ public:
     virtual bool canDropIntoRow(std::size_t row) { return false; }
 
     virtual std::string dragStringValueFromRow(std::size_t row) {
-        return config->getPresets()[(std::size_t)row].command;
+        return config->getPresets()[(std::size_t)row].toLine();
     }
 };
 

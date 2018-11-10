@@ -72,7 +72,8 @@ ConfigWindow::ConfigWindow(Config* config) :
 
     tableView = new CSTableView();
     tableView->setDataSource(dataSource);
-    tableView->addColumn("VDJscript");
+    //tableView->addColumn("Name");
+    //tableView->addColumn("VDJscript");
     mainView->addView(tableView, true);
         
     dataSource->reloadTable = [this](){ tableView->reload(); };
@@ -99,7 +100,7 @@ ConfigWindow::ConfigWindow(Config* config) :
 
 void ConfigWindow::show() {
     window->show();
-    tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
+    //tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
     presetWindow->show();
     UpdateCheck::check();
 }

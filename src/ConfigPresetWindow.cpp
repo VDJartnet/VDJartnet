@@ -53,7 +53,7 @@ ConfigPresetWindow::ConfigPresetWindow(Config* config)
     dataSource = new ConfigPresetDataSource(config);
     tableView->setDataSource(dataSource);
     tableView->setContextMenu(contextMenu);
-    tableView->addColumn("Presets");
+    //tableView->addColumn("Presets");
 
     window->presentView(tableView);
 }

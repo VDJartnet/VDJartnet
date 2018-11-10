@@ -42,17 +42,23 @@ public:
                      config(config),
                      undoManager(undoManager) {}
     virtual int numberOfRows() { return 512; };
-    virtual int numberOfColumns() { return 2; };
+    virtual int numberOfColumns() { return 3; };
     virtual std::string getColumnName(int index) {
         switch (index) {
             case 0: return "Channel";
-            case 1: return "VDJscript";
+            case 1: return "Name";
+            case 2: return "VDJscript";
             default: throw "Column not recognised";
         }
+    }
+    virtual std::optional<std::string> headerColumn() {
+        return "Channel";
     }
     virtual bool isReadOnly(std::string col) {
         if (col == "Channel") {
             return true;
+        } else if (col == "Name") {
+            return false;
         } else if (col == "VDJscript") {
             return false;
         } else {
@@ -75,15 +81,13 @@ public:
         config->channelCommands[row] = value;
         config->saveConfig();
     }
-    virtual std::string getStringValueInCell(std::string col, std::size_t row, bool editing) {
+    virtual std::string getStringValueInCell(std::string col, std::size_t row) {
         if (col == "Channel") {
             return std::to_string(row + 1);
+        } else if (col == "Name") {
+            return getChannelCommand(row).name;
         } else if (col == "VDJscript") {
-            if (editing) {
-                return getChannelCommand(row).toLine();
-            } else {
-                return getChannelCommand(row).toShow();
-            }
+            return getChannelCommand(row).command;
         } else {
             throw "Column not recognised";
         }
@@ -91,8 +95,10 @@ public:
     virtual void setStringValueInCell(std::string col, std::size_t row, std::string value) {
         if (col == "Channel") {
             throw "Cannot set channel - read only";
+        } else if (col == "Name") {
+            setChannelCommand(row, Config::Command(value, getStringValueInCell("VDJscript", row)));
         } else if (col == "VDJscript") {
-            setChannelCommand(row, Config::Command(value));
+            setChannelCommand(row, Config::Command(getStringValueInCell("Name", row), value));
         } else {
             throw "Column not recognised";
         }
