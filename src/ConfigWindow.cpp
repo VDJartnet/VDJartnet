@@ -102,6 +102,7 @@ void ConfigWindow::show() {
     tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
     presetWindow->show();
     UpdateCheck::check();
+    //CSDialog::show("title", "message", { "a", "b", "c" });
 }
 
 void ConfigWindow::updateIPaddress() {

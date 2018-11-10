@@ -34,6 +34,8 @@
 #ifndef ConfigWindow_hpp
 #define ConfigWindow_hpp
 
+#include "UpdateCheck.hpp"
+
 #include "Config.hpp"
 
 #include "ConfigPresetWindow.hpp"
@@ -47,7 +49,6 @@
 #include "CppStep/src/CSAlignView.hpp"
 #include "CppStep/src/CSClipboard.hpp"
 #include "CppStep/src/CSUndoManager.hpp"
-#include "UpdateCheck.hpp"
 #else
 class ConfigDataSource;
 class CSWindow;

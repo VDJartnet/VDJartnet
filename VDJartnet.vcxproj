@@ -153,6 +153,12 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSDialog.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="src\CppStep\src\CSLabel.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
@@ -219,6 +225,12 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinString.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="src\CppStep\src\WinTableView.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
@@ -243,6 +255,12 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="src\UpdateCheck.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="src\VDJartnet.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
@@ -263,6 +281,7 @@
     <ClInclude Include="src\CppStep\src\CSArbitraryView.hpp" />
     <ClInclude Include="src\CppStep\src\CSClipboard.hpp" />
     <ClInclude Include="src\CppStep\src\CSCore.hpp" />
+    <ClInclude Include="src\CppStep\src\CSDialog.hpp" />
     <ClInclude Include="src\CppStep\src\CSKeyCode.hpp" />
     <ClInclude Include="src\CppStep\src\CSLabel.hpp" />
     <ClInclude Include="src\CppStep\src\CSMenu.hpp" />
@@ -279,9 +298,11 @@
     <ClInclude Include="src\CppStep\src\CSWindow.hpp" />
     <ClInclude Include="src\CppStep\src\WinForm.hpp" />
     <ClInclude Include="src\CppStep\src\WinNativeEventHandler.hpp" />
+    <ClInclude Include="src\CppStep\src\WinString.hpp" />
     <ClInclude Include="src\CppStep\src\WinTableView.hpp" />
     <ClInclude Include="src\CppStep\src\WinTableViewDataSource.hpp" />
     <ClInclude Include="src\Socket.hpp" />
+    <ClInclude Include="src\UpdateCheck.hpp" />
     <ClInclude Include="src\VDJartnet.hpp" />
     <ClInclude Include="src\vdjPlugin8.h" />
   </ItemGroup>

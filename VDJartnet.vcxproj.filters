@@ -87,6 +87,15 @@
     <ClCompile Include="src\CppStep\src\CSWebView.cpp">
       <Filter>CppStep</Filter>
     </ClCompile>
+    <ClCompile Include="src\UpdateCheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\CSDialog.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CppStep\src\WinString.cpp">
+      <Filter>CppStep</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Artnet.hpp">
@@ -162,9 +171,6 @@
     <ClInclude Include="src\ConfigPresetWindow.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ConfigPresetTableViewDataSource.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\ConfigDataSource.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -184,6 +190,18 @@
       <Filter>CppStep</Filter>
     </ClInclude>
     <ClInclude Include="src\CppStep\src\CSWebView.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConfigPresetDataSource.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UpdateCheck.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\CSDialog.hpp">
+      <Filter>CppStep</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CppStep\src\WinString.hpp">
       <Filter>CppStep</Filter>
     </ClInclude>
   </ItemGroup>

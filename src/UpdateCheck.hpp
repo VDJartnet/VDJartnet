@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 #include <string>
-#include <string>
 #include <algorithm>
 
 #ifdef _WIN32
@@ -16,9 +15,9 @@
 #include <arpa/inet.h>
 #endif
 
-
-
+#ifndef CLRFREE
 #include "CppStep/src/CSDialog.hpp"
+#endif
 
 namespace UpdateCheck{
     enum class Result { latest, notLatest, error };
