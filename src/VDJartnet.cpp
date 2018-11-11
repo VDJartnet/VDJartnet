@@ -98,8 +98,8 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 ULONG VDJ_API CVDJartnet::Release() {
     m_Enable = 0;
     runPollThread = false;
-    static_cast<std::thread*>(pollThread)->join();
-    delete static_cast<std::thread*>(pollThread);
+    pollThread->join();
+    delete pollThread;
     delete configTool;
     delete config;
     delete this;

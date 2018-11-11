@@ -55,6 +55,7 @@
 #include <fstream>
 #include <chrono>
 //Don't include thread here because thread is incompatible with CLR
+namespace std { class thread; }
 
 #define commandLength 512
 
@@ -102,10 +103,10 @@ private:
     int skippedPackets = 0; /**< The number of packets that have been skipped since the last sent packet */
     int skipPacketLimit = 10; /**< The maximum number of packets that can be skipped before one is sent */
 
-    void* setupThread; /**< The thread used to initialise the plugin. Of type std::thread* but can't be of thread type as thread is incompatible with CLR. */
+    std::thread* setupThread; /**< The thread used to initialise the plugin. Of type std::thread* but can't be of thread type as thread is incompatible with CLR. */
 
     bool runPollThread; /**< Used to stop the poll thread once it is done. */
-    void* pollThread; /**< The thread used to poll VirtualDJ and send the data over Art-Net. Of type std::thread* but can't be of thread type as thread is incompatible with CLR. */
+    std::thread* pollThread; /**< The thread used to poll VirtualDJ and send the data over Art-Net. Of type std::thread* but can't be of thread type as thread is incompatible with CLR. */
 
     static void setup(); /**< Setup the singleton instance of the plugin */
     static void update(); /**< Poll VirtualDJ and send the data over Art-Net */
