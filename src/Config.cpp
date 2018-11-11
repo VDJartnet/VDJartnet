@@ -55,7 +55,7 @@ void Config::loadConfig() {
     loadDefaultPresets();
 }
 
-void Config::loadPresetPresets() {
+void Config::loadDefaultPresets() {
 /*
 #if defined(CS_Mac)
     std::string presetPresets =
