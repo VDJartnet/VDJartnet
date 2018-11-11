@@ -98,6 +98,20 @@ ConfigWindow::ConfigWindow(Config* config) :
     window->presentView(mainView, menuBar);
 }
 
+ConfigWindow::~ConfigWindow() {
+    hide();
+    delete tableView;
+    delete ipPort;
+    delete ipAddress;
+    delete ipLabel;
+    delete ipFields;
+    delete mainView;
+    delete presetWindow;
+    delete dataSource;
+    delete undoManager;
+    delete window;
+}
+
 void ConfigWindow::show() {
     window->show();
     //tableView->setHeaderColumn("Channel"); // Can only do this after the tableView is shown
@@ -105,6 +119,11 @@ void ConfigWindow::show() {
     presetWindow->show();
     UpdateCheck::check();
     //CSDialog::show("title", "message", { "a", "b", "c" });
+}
+
+void ConfigWindow::hide() {
+    presetWindow->hide();
+    window->hide();
 }
 
 void ConfigWindow::updateIPaddress() {

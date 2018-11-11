@@ -58,8 +58,10 @@ class CSWindow;
 class ConfigWindow {
 public:
     ConfigWindow(Config* config); /**< Construct a window with a list of commands with the given instance of the config */
+    virtual ~ConfigWindow(); /**< Destruct the window */
     void show(); /**< Show the window */
-    void didClose(); /**< The window has been closed */
+    void hide(); /**< Hide the window */
+    //void didClose(); /**< The window has been closed */
     void updateIPaddress(); /**< Update the IP address in the config */
     void updateIPport(); /**< Update the port in the config */
 

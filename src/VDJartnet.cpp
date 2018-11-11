@@ -95,6 +95,8 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 }
 
 ULONG VDJ_API CVDJartnet::Release() {
+    m_Enable = 0;
+    delete configTool;
     delete config;
     delete this;
     return 0;
@@ -189,8 +191,10 @@ void CVDJartnet::setup() {
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::update() {
     for (;;) {
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        CVDJartnet::getInstance()->updateDMXvalues();
-        std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
+        if (CVDJartnet::getInstance()->m_Enable == 1) {
+            std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+            CVDJartnet::getInstance()->updateDMXvalues();
+            std::this_thread::sleep_until(start + CVDJartnet::getInstance()->config->getCheckRate());
+        }
     }
 }
