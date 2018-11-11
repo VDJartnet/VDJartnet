@@ -54,8 +54,12 @@
 #include <string>
 #include <fstream>
 #include <chrono>
-//Don't include thread here because thread is incompatible with CLR
+
+#ifdef CLRFREE
+#include <thread>
+#else
 namespace std { class thread; }
+#endif
 
 #define commandLength 512
 

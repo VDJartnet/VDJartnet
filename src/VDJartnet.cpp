@@ -31,9 +31,8 @@
 //Corresponding Source for a non-source form of such a combination shall not
 //include the source code for the parts of the Visual C++ Runtime used as well as that of the covered work.
 
+#define CLRFREE
 #include "VDJartnet.hpp"
-
-#include <thread> //Include here because thread is incompatible with CLR
 
 HRESULT VDJ_API CVDJartnet::OnLoad() {
     // ADD YOUR CODE HERE WHEN THE PLUGIN IS CALLED
