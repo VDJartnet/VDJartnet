@@ -103,6 +103,8 @@ private:
     int skipPacketLimit = 10; /**< The maximum number of packets that can be skipped before one is sent */
 
     void* setupThread; /**< The thread used to initialise the plugin. Of type std::thread* but can't be of thread type as thread is incompatible with CLR. */
+
+    bool runPollThread; /**< Used to stop the poll thread once it is done. */
     void* pollThread; /**< The thread used to poll VirtualDJ and send the data over Art-Net. Of type std::thread* but can't be of thread type as thread is incompatible with CLR. */
 
     static void setup(); /**< Setup the singleton instance of the plugin */

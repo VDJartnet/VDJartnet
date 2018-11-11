@@ -77,6 +77,7 @@ void CVDJartnet::init() {
     }
 
     if (pollThread == nullptr) {
+        runPollThread = true;
         pollThread = new std::thread(CVDJartnet::update);
     }
 
@@ -96,6 +97,9 @@ HRESULT VDJ_API CVDJartnet::OnGetPluginInfo(TVdjPluginInfo8 *infos) {
 
 ULONG VDJ_API CVDJartnet::Release() {
     m_Enable = 0;
+    runPollThread = false;
+    static_cast<std::thread*>(pollThread)->join();
+    delete pollThread;
     delete configTool;
     delete config;
     delete this;
@@ -190,7 +194,7 @@ void CVDJartnet::setup() {
 }
 //-------------------------------------------------------------------------------------------------------------------------------------
 void CVDJartnet::update() {
-    for (;;) {
+    while (CVDJartnet::getInstance()->runPollThread) {
         if (CVDJartnet::getInstance()->m_Enable == 1) {
             std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
             CVDJartnet::getInstance()->updateDMXvalues();

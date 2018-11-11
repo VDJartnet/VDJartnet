@@ -110,6 +110,7 @@ ConfigWindow::~ConfigWindow() {
     delete dataSource;
     delete undoManager;
     delete window;
+    delete this;
 }
 
 void ConfigWindow::show() {
