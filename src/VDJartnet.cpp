@@ -99,7 +99,7 @@ ULONG VDJ_API CVDJartnet::Release() {
     m_Enable = 0;
     runPollThread = false;
     static_cast<std::thread*>(pollThread)->join();
-    delete pollThread;
+    delete static_cast<std::thread*>(pollThread);
     delete configTool;
     delete config;
     delete this;
