@@ -1,6 +1,6 @@
 Before you start
 ----------------
-If you wish to add a feature to VDJartnet then please talk to us on [Gitter](https://gitter.im/VDJartnet) first and we will be able to advise you on how we think the feature would be best implemented and increase the chances of your pull request being merged sooner.
+If you wish to contribute directly to VDJartnet then we suggest that you first open an issue if one doesn't already exist and check as we may have recommendations on how you can best implement your suggested improvements. Then you can implement your feature and submit a pull request.
 
 Getting started
 ---------------
@@ -8,3 +8,4 @@ First setup your development environment as described [here for macOS](develop-e
 
 Then [fork the GitHub repository](https://help.github.com/articles/fork-a-repo/), make changes and then [submit a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
+Have you you clone recursively as you will also need to include the CppStep and StringLinker modules for the build to succeed.

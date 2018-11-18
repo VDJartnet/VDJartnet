@@ -1,12 +1,10 @@
 Prerequisites
 -------------
-Before installation you should have [VirtualDJ](https://virtualdj.com) installed. You will also need to install a lighting program that can recieve Art-Net signals. [QLC+](http://qlcplus.org) is recommended.
+Before installation you should have [VirtualDJ](https://virtualdj.com) installed. You will also need to install a lighting program that can receive Art-Net signals. [QLC+](http://qlcplus.org) is recommended.
 
 Installation
 ------------
-To install a copy of VDJartnet downloaded from the VirtualDJ site simply follow the instructions given [here on the VirtualDJ Wiki](https://www.virtualdj.com/wiki/Install%20VirtualDJ%208%20Addon.html).
-
-To install a copy downloaded from our site simply move the VDJartnet.bundle or VDJartnet.dll file into the VirtualDJ/Plugins[64]/AutoStart directory (the 64 is present on windows but not on macOS).
+You should download a copy of the installer for your operating system from our [downloads page](https://www.kepler22b.uk/vdjartnet/download.html). Once downloaded you just need to run the installer, this will install the plugin into the correct place. Then you just need to restart VirtualDJ if it was already running to load the plugin.
 
 Configuration
 -------------
@@ -20,5 +18,4 @@ At the top of the main window are fields where you can set the destination host 
 
 Then for simple setups drag one of the presets in the list of presets (in the second, smaller window) into a row in the list of commands in the main window. Repeat this for every signal you want to send to your lighting software.
 
-If the presets don't contain a signal that you need then you can write a command yourself or start with a preset and edit it. The command should be VDJscript that sets the variable $VDJartnetSend to an integer from 0 to 255 (inclusive). To get help on writing VDJscript commands you can check the reference [here in the VirtualDJ Wiki](https://www.virtualdj.com/wiki/VDJ8script.html).
-
+If the presets don't contain a signal that you need then you can write a command yourself or start with a preset and edit it. The command should be VDJscript that sets the variable $VDJartnetSend to an integer from 0 to 255 (inclusive). To get help on writing VDJscript commands you can check the reference [on the VirtualDJ Wiki](https://www.virtualdj.com/wiki/VDJ8script.html).
